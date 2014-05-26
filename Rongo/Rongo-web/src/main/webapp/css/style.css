@@ -1,0 +1,68 @@
+@font-face { src: url(http://fonts.googleapis.com/css?family=Lato) }
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	font-family: 'Lato', sans-serif;
+}
+
+body {
+	background-color: #03315f;
+}
+
+header {
+	background-color: #3C83A7;
+	border-bottom: 2px solid #FEFEFE;
+	color: white;
+}
+	header h2 {
+		margin: 0;
+		font-size: 2.5em;
+		padding: 10px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	header h5 {
+		margin: 0;
+		font-size: 1em;
+		padding: 10px;
+		display: inline-block;
+		vertical-align: middle;
+	}
+
+section {
+	width: 100%;
+}
+
+#login {
+	color: white;
+}
+	#login article {
+		text-align: center;
+	}
+		#login article form {
+			width: 370px;
+			margin: 100px auto;
+			color: #777;
+			background: #d7eefa;
+			padding: 10px;
+			text-align: left;
+		}
+			#login article form label{
+				display: inline-block;
+				width: 80px;
+				text-align: right;
+				margin-left: 10px;
+				vertical-align: middle;
+			}
+			#login article form input[type="text"] {
+				display: inline-block;
+				width: 150px;
+				vertical-align: middle;
+				margin-right: 5px;
+			}
+			#login article form input[type="submit"] {
+				margin: 20px auto;
+			}
+	
