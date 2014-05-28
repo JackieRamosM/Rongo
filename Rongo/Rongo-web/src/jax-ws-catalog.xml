@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="https://ws.espol.edu.ec/saac/directorioespol.asmx?WSDL" uri="wsdl/ws.espol.edu.ec/saac/directorioespol.asmx.wsdl"/>
+</catalog>
