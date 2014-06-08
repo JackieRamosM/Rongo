@@ -13,3 +13,8 @@ hs_err_pid*
 /Rongo/target/
 /Rongo/Rongo-web/target/
 /Rongo/Rongo-ejb/target/
+/Rongo/Rongo/Rongo-web/target/
+/Rongo/Rongo/Rongo-ejb/target/
+/Rongo/Rongo/Rongo-ear/target/
+/Rongo/webService/nbproject/private/
+/Rongo/webService/build/

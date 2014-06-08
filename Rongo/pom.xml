@@ -7,19 +7,8 @@
   <packaging>pom</packaging>
   <name>Rongo</name>
   <modules>
+    <module>Rongo-ear</module>
     <module>Rongo-web</module>
     <module>Rongo-ejb</module>
   </modules>
-  <dependencies>
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-web</artifactId>
-        <version>3.2.4.RELEASE</version>
-    </dependency>
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-config</artifactId>
-        <version>3.2.4.RELEASE</version>
-    </dependency>
-</dependencies>
 </project>
