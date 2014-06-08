@@ -5,10 +5,11 @@ Rongo y Cas
 
 Rongo tiene integrado la autenticación del CAS de la ESPOL. La url es: https://auth.espol.edu.ec/login
 Para poder correr Rongo. Hay que cambiar el archivo Rongo/Rongo-web/src/main/webapp/WEB-INF/web.xml
-y colocar lo siguiente 
-<context-param>
+y colocar lo siguiente:
+
+	<context-param>
 		<param-name>serverName</param-name>
-		<param-value>AQUI EL URL DE LA APLICACIÓN</param-value>
+		<param-value>http://localhost:8080</param-value>
 	</context-param>
 
 	<filter>
@@ -49,7 +50,7 @@ y colocar lo siguiente
 
 		<init-param>
 			<param-name>casServerUrlPrefix</param-name>
-			<param-value>https://auth.espol.edu.ec/login</param-value>
+			<param-value>https://www.rongo.com</param-value>
 		</init-param>
 		<init-param>
 
@@ -76,5 +77,3 @@ y colocar lo siguiente
 		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
-Recuerde cambiar la url de la aplicación.
