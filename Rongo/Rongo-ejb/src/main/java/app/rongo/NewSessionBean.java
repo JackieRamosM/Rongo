@@ -14,6 +14,11 @@ import javax.ejb.LocalBean;
 @Stateless
 @LocalBean
 public class NewSessionBean {
+    public NewSessionBean(){
+        super();
+        System.setProperty("javax.net.ssl.trustStore",  "c:\\Program Files\\Java\\jdk1.7.0_55\\jre\\lib\\security\\cacerts");  
+        System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
+    }
 
     public void businessMethod() {
     }
