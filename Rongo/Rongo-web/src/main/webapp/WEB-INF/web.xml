@@ -9,7 +9,10 @@
             30
         </session-timeout>
     </session-config>
-    
+     <context-param>
+		<param-name>serverName</param-name>
+		<param-value>https://localhost:8181/</param-value>
+	</context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -27,10 +30,7 @@
         <param-value>cas.root</param-value>
     </context-param>
     
-    <context-param>
-		<param-name>serverName</param-name>
-		<param-value>http://localhost:8080</param-value>
-	</context-param>
+   
 
 	<filter>
 		<filter-name>CAS Single Sign Out Filter</filter-name>
