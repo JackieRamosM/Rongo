@@ -11,6 +11,23 @@
     </session-config>
     
     <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/applicationContext-security.xml
+        </param-value>
+    </context-param>
+    
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/classes/log4j.properties</param-value>
+    </context-param>
+ 
+    <context-param>
+        <param-name>webAppRootKey</param-name>
+        <param-value>cas.root</param-value>
+    </context-param>
+    
+    <context-param>
 		<param-name>serverName</param-name>
 		<param-value>http://localhost:8080</param-value>
 	</context-param>
@@ -19,15 +36,29 @@
 		<filter-name>CAS Single Sign Out Filter</filter-name>
 		<filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>
 	</filter>
+        <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        </filter>
 	<filter-mapping>
-
 		<filter-name>CAS Single Sign Out Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+        
+        <filter-mapping>
+      <filter-name>springSecurityFilterChain</filter-name>
+      <url-pattern>/*</url-pattern>
+    </filter-mapping>
 	<listener>
 		<listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
-
 	</listener>
+         <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+        <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+
 	<filter>
 		<filter-name>CAS Authentication Filter</filter-name>
 		<filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
@@ -80,6 +111,9 @@
 		<filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+ <error-page>
+        <error-code>403</error-code>
+        <location>/casfailed.jsp</location>
+    </error-page>
 
-	
 </web-app>
