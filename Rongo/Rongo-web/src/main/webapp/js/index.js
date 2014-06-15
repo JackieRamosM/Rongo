@@ -4,6 +4,11 @@
  */
 
 function init(){
+    $('.message').puinotify({  
+            easing: 'easeInOutCirc',  
+            position: 'bottom'  
+        });
+    $('.message').puinotify('show','<h3>Usted es ayudante del curso "Inserte curso aqu&iacute;"</h3>');
     var params = getUrlParams();
     var ticket = params["ticket"];
     console.log(ticket);
