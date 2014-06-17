@@ -82,6 +82,12 @@
 		<filter-name>CAS Validation Filter</filter-name>
 		<filter-class>org.jasig.cas.client.validation.Saml11TicketValidationFilter</filter-class>
 
+                <init-param>
+                    <param-name>serverName</param-name>
+                    <param-value>https://localhost:8181/</param-value>
+                </init-param>
+
+
 		<init-param>
 			<param-name>casServerUrlPrefix</param-name>
 			<param-value>https://auth.espol.edu.ec/login</param-value>

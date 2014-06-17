@@ -32,12 +32,20 @@
         <artifactId>spring-security-openid</artifactId>
         <version>3.0.1.RELEASE</version>
         </dependency>
+        
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-            <version>3.0.3.RELEASE</version>
-            <scope>runtime</scope>
+	<groupId>org.apache.tomcat.maven</groupId>
+	<artifactId>tomcat7-maven-plugin</artifactId>
+	<version>2.2</version>
         </dependency>
+    
+        <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-expression</artifactId>
+        <version>3.0.3.RELEASE</version>
+        <scope>runtime</scope>
+        </dependency>
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
