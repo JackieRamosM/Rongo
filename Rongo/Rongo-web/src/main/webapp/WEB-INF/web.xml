@@ -11,7 +11,7 @@
     </session-config>
      <context-param>
 		<param-name>serverName</param-name>
-		<param-value>https://localhost:8181/</param-value>
+		<param-value>https://localhost:8181</param-value>
 	</context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>
@@ -84,7 +84,7 @@
 
                 <init-param>
                     <param-name>serverName</param-name>
-                    <param-value>https://localhost:8181</param-value>
+                    <param-value>https://localhost:8181/</param-value>
                 </init-param>
 
 
@@ -119,7 +119,7 @@
 	</filter-mapping>
  <error-page>
         <error-code>403</error-code>
-        <location>/casfailed.jsp</location>
+        <location>/index.html</location>
     </error-page>
 
 </web-app>
