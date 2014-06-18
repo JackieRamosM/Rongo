@@ -28,6 +28,10 @@
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
     </context-param>
+    <context-param> 
+        <param-name>javax.faces.CONFIG_FILES</param-name> 
+        <param-value>/WEB-INF/faces-config.xml,/WEB-INF/faces-beans.xml</param-value> 
+    </context-param> 
     <filter>
         <filter-name>CAS Single Sign Out Filter</filter-name>
         <filter-class>org.jasig.cas.client.session.SingleSignOutFilter</filter-class>

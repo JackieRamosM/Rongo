@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+    http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+    version="2.0">
+ 
+    <navigation-rule> 
+        <from-view-id>faces/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>ofertas</from-outcome> 
+            <to-view-id>ofertas.xhtml</to-view-id> 
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>

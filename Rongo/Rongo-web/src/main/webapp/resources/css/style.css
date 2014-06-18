@@ -66,14 +66,104 @@ nav {
         nav ul li:hover{
             border-bottom: 2px solid #3C83A7;
         }
-        .active {border-bottom: 2px solid #3C83A7;}
+            nav ul li a {
+                text-decoration: none;
+                color: white;
+            }
+            .active {border-bottom: 2px solid #3C83A7;}
 
 section {
     width: 100%;
-    padding: 20px 0;
+    padding: 20px 0 80px 0;
 }
+    .message {
+        display: inline-block;
+        width: 80%;
+        margin-left: 10%;
+        border: 2px solid #3C83A7;
+        color: #3C83A7;
+        padding: 5px 0;
+    }
+        .message h3 {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 0 0 1%;
+            width: 95%;
+        }
+        .message h4 {
+            display: inline-block;
+            vertical-align: middle;
+            width:2%;
+            margin: 0;
+            cursor: pointer;
+        }
     section article {
         margin-left: 10%;
         width: 80%;
-        padding: 20px 0;
+        padding: 0;
+    }
+        section article h1 {
+            font-size: 2.5em;
+        }
+        section article span{
+            display: block;
+            vertical-align: middle;
+        }
+        section article span::before {
+            content: ' \25CF';
+            font-size: 30px;
+            color: #3C83A7;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        section article #courses {
+            display: inline-block;
+            width: 70%;
+            margin-right: 5%;
+            vertical-align: middle;
+        }
+            section article #courses ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+                section article #courses ul li {
+                    display: block;
+                    text-align: left;
+                    padding: 10px 0;
+                }
+                    section article #courses ul li h3 {
+                        display: inline-block;
+                        width: auto;
+                        margin: 0 0 0 15px;
+                        padding: 0;
+                    }
+            .available { 
+                border-left: 5px solid #3C83A7;
+                cursor: pointer;
+            }
+            .available:hover {           
+                background-color: #245166;
+                color: white;
+                -webkit-transition: background-color 300ms linear;
+                -moz-transition: background-color 300ms linear;
+                -o-transition: background-color 300ms linear;
+                -ms-transition: background-color 300ms linear;
+                transition: background-color 300ms linear;
+            }
+            .not-available {background-color: #3C83A7; }
+        section article img {
+            width: 20%;
+            vertical-align: middle;
+        }
+footer {
+    display: block;
+    padding: 10px 0;
+    background: rgb(96,96,96);
+    color: white;
+    text-align: center;
+}
+    footer h3 {
+        font-size: 0.8em;
     }
