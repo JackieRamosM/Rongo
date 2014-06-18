@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>Rongo</artifactId>
-    <groupId>app.rongo</groupId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
+        <artifactId>Rongo</artifactId>
+        <groupId>app.rongo</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
     <groupId>app.rongo</groupId>
     <artifactId>Rongo-web</artifactId>
@@ -19,10 +19,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
+    <repositories>
+        <repository>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
+    
     <dependencies>
-        
-        
-        <dependency>
+               <dependency>
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-config</artifactId>
         <version>3.0.1.RELEASE</version>
@@ -31,6 +38,16 @@
         <groupId>org.springframework.security</groupId>
         <artifactId>spring-security-openid</artifactId>
         <version>3.0.1.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-web</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+                <exclusion>
+                    <groupId>xerces</groupId>
+                    <artifactId>xercesImpl</artifactId>
+                  </exclusion>
+            </exclusions>
         </dependency>
         
         <dependency>
@@ -46,6 +63,12 @@
         <scope>runtime</scope>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>3.2.4.RELEASE</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
@@ -56,8 +79,16 @@
         <artifactId>spring-security-cas</artifactId>
         <version>3.1.0.RELEASE</version>
         <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-web</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         
+        
+
     </dependencies>
 
     <build>
@@ -109,5 +140,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
