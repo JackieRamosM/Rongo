@@ -6,9 +6,9 @@
     xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ayudantes - Rongo</title>
-        <h:outputStylesheet library="css" name="jquery-ui-1.10.4.min.css"/>
-        <h:outputStylesheet library="css" name="primeui-1.0-min.css"/>
-        <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
+        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <h:outputStylesheet name="css/style.css"/>
     </h:head>  
     <h:body>
         <header>
@@ -19,7 +19,11 @@
             </div>
         </header>
         <nav>
-            
+            <ul>
+                <li class="active">Inicio</li>
+                <li><h:link value="Ayudant&iacute;as ofertadas" outcome="ofertas"/></li>
+                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
+            </ul>
         </nav>
         <section>
         </section>

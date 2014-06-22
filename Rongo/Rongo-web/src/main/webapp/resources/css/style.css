@@ -196,6 +196,13 @@ section {
                     text-align: left;
                     padding: 10px 0;
                 }
+                    section article #courses ul li a { 
+                        text-decoration: none;
+                        color: black;
+                    }
+                    section article #courses ul li a:hover { 
+                        color: white;
+                    }
                     section article #courses ul li h3 {
                         display: inline-block;
                         width: auto;
@@ -313,6 +320,29 @@ section {
                 section .ayudantia-semana div #semana div p {
                     margin: 2px;
                 }
+            section .ayudantia-semana div #semana .circle {
+                padding: 0;
+                width: 210px;
+                height: 210px;
+                background: #245166;
+                border-radius: 100%;
+                color: white;
+                display: flex;
+                display: inline-block;
+                cursor: pointer;
+            }
+            section .ayudantia-semana div #semana .circle:first-child {
+                border: none;
+                padding: 0;
+            }
+            section .ayudantia-semana div #semana .circle h2 {
+                margin-top: 80px;
+            }
+                section .ayudantia-semana div #semana .circle h2 a {
+                    color: white;
+                    text-decoration: none;
+                    vertical-align: middle;
+                }
     section article ul {
         display: block;
         margin: 0;
@@ -365,20 +395,45 @@ section {
         width: 78%;
         text-align: left;
     }
-    section article .lista-ayudantes table tbody tr td input[type="text"],
-    section article .lista-ayudantes table tbody tr td textarea {
+        section article .lista-ayudantes table tbody tr td input[type="text"],
+        section article .lista-ayudantes table tbody tr td textarea {
+            display: inline-block;
+            padding: 10px 0;
+            min-width: 100%;
+            width: 100%;
+        }
+        section article .lista-ayudantes table tbody tr td select {
+            display: inline-block;
+            padding: 10px 0;
+            width: 20%;
+            font-size: 1.2em;
+        }
+    section article .info-publica {
         display: inline-block;
-        padding: 10px 0;
-        min-width: 100%;
         width: 100%;
-    }
-    section article .lista-ayudantes table tbody tr td select {
-        display: inline-block;
+        background-color: white;
+        text-align: left;
         padding: 10px 0;
-        width: 20%;
-        font-size: 1.2em;
+        border-bottom: 2px solid #3C83A7;
     }
-         
+        section article .ayudantia {
+            text-align: left;
+            margin: 20px 0;
+        }
+        section article .ayudantia h4, section article .ayudantia h2 {
+            margin: 0;
+            padding: 0;
+        }
+        section article .ayudantia h4 {
+            font-size: 1.3em;
+        }
+        section article .ayudantia h2 {
+            font-size: 2em;
+        }
+        section article .semana {
+            text-align: center;
+            color: #3C83A7;
+        }
                         
 footer {
     display: block;
@@ -390,3 +445,17 @@ footer {
     footer h3 {
         font-size: 0.8em;
     }
+    
+// Auxiliares
+.postularse {
+    background-color: #3C83A7;
+}
+.fixed-bottom {
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+    bottom: 0;
+}
+#border {
+    border-bottom: 2px solid #3C83A7;
+}

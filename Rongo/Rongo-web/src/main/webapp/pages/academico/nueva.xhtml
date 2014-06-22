@@ -8,6 +8,7 @@
         <title>Ayudantes - Rongo</title>
         <h:outputStylesheet library="css" name="jquery-ui-1.10.4.min.css"/>
         <h:outputStylesheet library="css" name="primeui-1.0-min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="style.css"/>
     </h:head>  
     <h:body>
@@ -19,9 +20,63 @@
             </div>
         </header>
         <nav>
-            
+            <ul>
+                <li class="active">Inicio</li>
+                <li><h:link value="Ayudant&iacute;as ofertadas" outcome="ofertas"/></li>
+                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
+            </ul>
         </nav>
         <section>
+            <header>
+                <h:link outcome="ayudantias"><i class="fa fa-arrow-circle-o-left"></i></h:link>
+                <div>
+                    <h2>Registro de Ayudant&iacute;a</h2>
+                </div>
+            </header>
+            <article>
+                <div class="ayudantia">
+                    <h4>Ayudantia</h4>
+                    <h2>Estructura de Datos</h2>
+                    <h4>Paralelo 1</h4>
+                </div>
+                <div class="semana">
+                    <h2>Junio 30 a Julio 4 de 2014</h2>
+                </div>
+                <div class="lista-ayudantes">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>D&iacute;a:</th>
+                                <td>
+                                    <p:calendar value="#{calendarView.date1}" pattern="MM/dd/yyyy"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Inicio:</th>
+                                <td>
+                                    <h:inputText></h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Fin:</th>
+                                <td>
+                                    <h:inputText></h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Descripci&oacute;n:</th>
+                                <td>
+                                    <h:inputTextarea></h:inputTextarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h:button value="Agregar otro d&iacute;a" outcome="ofertas"></h:button>
+                    <h:button value="Guardar"></h:button>
+                </div>
+            </article>
         </section>
         <footer>
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
