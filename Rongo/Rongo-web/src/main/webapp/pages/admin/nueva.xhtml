@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Nueva ayudantía - Rongo</title>
+        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
+        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet name="css/style.css"/>
+    </h:head>  
+    <h:body>
+        <header>
+            <h2>Rongo</h2>
+            <div>
+                <h5>Bienvenido(a), Nombre de Usuario aqu&iacute;</h5>
+                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><h:link value="Ayudantes" outcome="index"/></li>
+                <li><h:link value="Supervisores" outcome="supervisores"/></li>
+                <li class="active">Ayudant&iacute;as ofertadas</li>
+                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
+            </ul>
+        </nav>
+        <section>
+            <header>
+                <h:link outcome="ofertas"><i class="fa fa-arrow-circle-o-left"></i></h:link>
+                <div>
+                    <h2>Ofertar nueva ayudant&iacute;a:</h2>
+                </div>
+            </header>
+            <article>
+                <div class="lista-ayudantes">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Nombre de la ayuidant&iacute;a:</th>
+                                <td>
+                                    <h:inputText></h:inputText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Horas requeridas:</th>
+                                <td>
+                                    <h:selectOneMenu value="">
+                                        <f:selectItem itemValue="5" itemLabel="5 horas" />
+                                        <f:selectItem itemValue="10" itemLabel="10 horas" />
+                                        <f:selectItem itemValue="15" itemLabel="15 horas" />
+                                        <f:selectItem itemValue="20" itemLabel="20 horas" />
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Requisitos:</th>
+                                <td>
+                                    <h:inputTextarea></h:inputTextarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Descripci&oacute;n:</th>
+                                <td>
+                                    <h:inputTextarea></h:inputTextarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Vigente desde:</th>
+                                <td>
+                                    <p:calendar value="#{calendarView.date1}" pattern="MM/dd/yyyy"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Vigente hasta:</th>
+                                <td>
+                                    <p:calendar value="#{calendarView.date1}" pattern="MM/dd/yyyy"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Supervisor:</th>
+                                <td>
+                                    <h:selectOneMenu value="">
+                                        <f:selectItem itemValue="0" itemLabel="Supervisor 1" />
+                                        <f:selectItem itemValue="1" itemLabel="Supervisor 2" />
+                                        <f:selectItem itemValue="2" itemLabel="Supervisor 3" />
+                                        <f:selectItem itemValue="3" itemLabel="Supervisor 4" />
+                                    </h:selectOneMenu>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>
+                                    <h:inputText></h:inputText>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h:button value="Cancelar" outcome="ofertas"></h:button>
+                    <h:button value="Ofertar"></h:button>
+                </div>
+            </article>
+        </section>
+        <footer>
+            <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
+        </footer>
+        <h:outputScript name="js/jquery-1.10.2.js" />
+        <h:outputScript name="js/index.js" />
+    </h:body>  
+</html>

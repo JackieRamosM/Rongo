@@ -5,7 +5,7 @@
     xmlns:f="http://java.sun.com/jsf/core"  
     xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Cuestionario</title>
+        <title>Ayudantias Ofertadas - Rongo</title>
         <h:outputStylesheet library="css" name="jquery-ui-1.10.4.min.css"/>
         <h:outputStylesheet library="css" name="primeui-1.0-min.css"/>
         <h:outputStylesheet library="css" name="style.css"/>
@@ -20,9 +20,9 @@
         </header>
         <nav>
             <ul>
-                <li><a href="../index.xhtml">Inicio</a></li>
-                <li><a href="ofertas.xhtml">Ayudant&iacute;as ofertadas</a></li>
-                <li class="active">Cuestionarios</li>
+                <li><h:link value="Inicio" outcome="index"/></li>
+                <li class="active">Ayudant&iacute;as ofertadas</li>
+                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
             </ul>
         </nav>
         <section>

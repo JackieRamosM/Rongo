@@ -6,15 +6,190 @@
     http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
     version="2.0">
  
+    <!--
+      - Navigation Rules
+      - Ayudante Académico
+      -->
+    <!--Ayudante Académico: Inicio -> Ayudantías Ofertadas || Cuestionarios-->
     <navigation-rule> 
-        <from-view-id>faces/index.xhtml</from-view-id> 
+        <from-view-id>faces/pages/academico/index.xhtml</from-view-id> 
         <navigation-case> 
             <from-outcome>ofertas</from-outcome> 
             <to-view-id>ofertas.xhtml</to-view-id> 
+            <to-flow-document-id />
         </navigation-case>
         <navigation-case> 
             <from-outcome>cuestionarios</from-outcome> 
             <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Ayudante Académico: Ayudantías Ofertadas -> Inicio || Cuestionarios-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/academico/ofertas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Ayudante Académico: Cuestionarios -> Inicio || Ayudantías Ofertadas-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/academico/cuestionarios.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>ofertas</from-outcome> 
+            <to-view-id>ofertas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--
+      - Navigation Rules
+      - Administrador
+      -->
+    <!--Administrador: Index -> Supervisores || Ayudantías Ofertadas || Cuestionarios-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/admin/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>supervisores</from-outcome> 
+            <to-view-id>supervisores.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>ofertas</from-outcome> 
+            <to-view-id>ofertas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>ayudante</from-outcome> 
+            <to-view-id>ayudante.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Administrador: Supervisores -> Index || Ayudantías Ofertadas || Cuestionarios-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/admin/supervisores.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>ofertas</from-outcome> 
+            <to-view-id>ofertas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Administrador: Ayudantías Ofertadas -> Index || Supervisores || Cuestionarios-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/admin/ofertas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>nueva</from-outcome> 
+            <to-view-id>nueva.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>supervisores</from-outcome> 
+            <to-view-id>supervisores.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Administrador: Cuestionarios -> Index || Supervisores || Ayudantías Ofertadas-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/admin/cuestionarios.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>ofertas</from-outcome> 
+            <to-view-id>ofertas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    
+    
+    <!--
+      - Navigation Rules
+      - Estudiante
+      -->
+    <!--Estudiante: Inicio -> Ayudantías Ofertadas || Cuestionarios-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/estudiante/index.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>ofertas</from-outcome> 
+            <to-view-id>ofertas.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Estudiante: Ayudantías Ofertadas -> Inicio || Cuestionarios-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/estudiante/ofertas.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>cuestionarios</from-outcome> 
+            <to-view-id>cuestionarios.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+    </navigation-rule>
+    <!--Estudiante: Cuestionarios -> Inicio || Ayudantías Ofertadas-->
+    <navigation-rule> 
+        <from-view-id>faces/pages/estudiante/cuestionarios.xhtml</from-view-id> 
+        <navigation-case> 
+            <from-outcome>index</from-outcome> 
+            <to-view-id>index.xhtml</to-view-id> 
+            <to-flow-document-id />
+        </navigation-case>
+        <navigation-case> 
+            <from-outcome>ofertas</from-outcome> 
+            <to-view-id>ofertas.xhtml</to-view-id> 
+            <to-flow-document-id />
         </navigation-case>
     </navigation-rule>
     
