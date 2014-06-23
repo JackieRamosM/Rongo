@@ -5,10 +5,10 @@
     xmlns:f="http://java.sun.com/jsf/core"  
     xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Rongo</title>
-        <h:outputStylesheet library="css" name="jquery-ui-1.10.4.min.css"/>
-        <h:outputStylesheet library="css" name="primeui-1.0-min.css"/>
-        <h:outputStylesheet library="css" name="style.css"/>
+        <title>Postulantes - Rongo</title>
+        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
+        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <h:outputStylesheet name="css/style.css"/>
     </h:head>  
     <h:body>
         <header>
@@ -20,45 +20,45 @@
         </header>
         <nav>
             <ul>
-                <li class="active">Inicio</li>
-                <li><h:link value="Ayudant&iacute;as ofertadas" outcome="ofertas"/></li>
+                <li><h:link value="Ayudantes acad&eacute;micos" outcome="index"/></li>
+                <li><h:link value="Ayudantes de actividades varias" outcome="varias"/></li>
+                <li class="active"><h:link value="Postulantes"/></li>
                 <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
             </ul>
         </nav>
         <section>
-            <div class="message">
-                <h3>Usted es ayudante del curso Nombre</h3>
-                <h4>X</h4>
-            </div>
             <article>
-                <h1>Cursos que está tomando actualmente:</h1>
-                <div id="courses">
+                <div class="lista-ayudantes">
                     <ul>
-                        <li class="available">
-                            <h3>INGENIERÍA DE SOFTWARE II (FIEC03053)</h3>
+                        <li>
+                            <div class="lista-ayudantes-datos">
+                                <h2>Liliana Jaqueline Ramos Menéndez</h2>
+                                <h4>Promedio General: 7.99</h4>
+                                <h4>Carrera: Ingeniería en Ciencias Computacionales Orientación Sistemas Multimedia</h4>
+                                <h4>Ayudantía: Ayudante de Investigación - CTI ESPOL</h4>
+                                <h4>Sanciones: no</h4>
+                                <h4>Reprobó en el término anterior: no</h4>
+                                <h4>ljramos@espol.edu.ec</h4>
+                            </div>
+                            <div class="lista-ayudantes-accion">
+                                <h:button value="Aceptar"></h:button>
+                                <h:button value="Rechazar"></h:button>
+                            </div>
                         </li>
                         <li>
-                            <h3>INTERACCIÓN HOMBRE MÁQUINA (FIEC01545)</h3>
-                        </li>
-                        <li>
-                            <h3>PROCESAMIENTO DE AUDIO Y VIDEO (FIEC05413)</h3>
-                        </li>
-                        <li class="available">
-                            <h3>PROCESAMIENTO DIGITAL DE IMÁGENES (FIEC05439)</h3>
-                        </li>
-                        <li class="available">
-                            <h3>MANDARÍN BASICO A (CELEX00265)</h3>
-                        </li>
-                    </ul>
-                </div>
-                <h:graphicImage library="images" value="book.png" />
-            </article>
-            <article>
-                <h1>Cursos de los que usted es ayudante:</h1>
-                <div id="courses">
-                    <ul>
-                        <li class="available">
-                            <h3>Nombre</h3>
+                            <div class="lista-ayudantes-datos">
+                                <h2>David Alejandro Barrera Guano</h2>
+                                <h4>Promedio General: 7.94</h4>
+                                <h4>Carrera: Ingeniería en Ciencias Computacionales Orientación Sistemas Multimedia</h4>
+                                <h4>Ayudantía: Programación Orientada a Objetos</h4>
+                                <h4>Sanciones: no</h4>
+                                <h4>Reprobó en el término anterior: no</h4>
+                                <h4>davalbar@espol.edu.ec</h4>
+                            </div>
+                            <div class="lista-ayudantes-accion">
+                                <h:button value="Aceptar"></h:button>
+                                <h:button value="Rechazar"></h:button>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -67,9 +67,5 @@
         <footer>
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
-        <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-        <script type="text/javascript" src="js/jquery-ui-1.10.4.min.js"></script>
-        <script type="text/javascript" src="js/primeui-1.0-min.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
     </h:body>  
 </html>
