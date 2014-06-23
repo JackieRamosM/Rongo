@@ -42,7 +42,7 @@
                 <div class="semana">
                     <h2>Junio 30 a Julio 4 de 2014</h2>
                 </div>
-                <div class="lista-ayudantes">
+                <div class="lista-ayudantes nueva-semana">
                     <table>
                         <tbody>
                             <tr>
@@ -54,13 +54,13 @@
                             <tr>
                                 <th>Inicio:</th>
                                 <td>
-                                    <h:inputText></h:inputText>
+                                    <p:calendar id="time1" value="#{calendarView.date2}" pattern="HH:mm a" timeOnly="true"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Fin:</th>
                                 <td>
-                                    <h:inputText></h:inputText>
+                                    <p:calendar id="time2" value="#{calendarView.date3}" pattern="HH:mm a" timeOnly="true"/>
                                 </td>
                             </tr>
                             <tr>

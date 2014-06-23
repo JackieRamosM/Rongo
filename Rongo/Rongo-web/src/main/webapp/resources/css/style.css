@@ -364,28 +364,36 @@ section {
                 font-size: 1.5em;
                 margin-left: 15px;
             }
-            section article .lista-ayudantes table thead tr th {
-                text-align: left;
-            }
-    section article .lista-ayudantes table thead tr th h1{
-        font-size: 2em;
-        display: inline-block;
-        width: 80%;
-        vertical-align: middle;
+    
+    section article .nueva-semana {
+        text-align: center;
     }
-        section article .lista-ayudantes table thead tr th input[type="button"]{
-            background-color: rgb(153,0,0);
+    section article .nueva-semana table {
+        display: inline-block;
+        width: 60%;
+    }
+    section article .lista-ayudantes table thead tr th {
+        text-align: left;
+    }
+        section article .lista-ayudantes table thead tr th h1{
+            font-size: 2em;
             display: inline-block;
-            border: none;
-            color: white;
-            padding: 10px 0;
-            margin: 0;
-            width: 19%;
+            width: 80%;
             vertical-align: middle;
         }
-        section article .lista-ayudantes table thead tr th input[type="button"]:hover{
-            background-color: rgb(108,0,0);
-        }
+            section article .lista-ayudantes table thead tr th input[type="button"]{
+                background-color: rgb(153,0,0);
+                display: inline-block;
+                border: none;
+                color: white;
+                padding: 10px 0;
+                margin: 0;
+                width: 19%;
+                vertical-align: middle;
+            }
+            section article .lista-ayudantes table thead tr th input[type="button"]:hover{
+                background-color: rgb(108,0,0);
+            }
     section article .lista-ayudantes table tbody tr th{
         width: 20%;
         padding-right: 2%;
@@ -433,8 +441,8 @@ section {
         section article .semana {
             text-align: center;
             color: #3C83A7;
-        }
-                        
+        }        
+        
 footer {
     display: block;
     padding: 10px 0;

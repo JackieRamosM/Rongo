@@ -8,6 +8,7 @@
         <title>Ayudantes - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
         <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
         <h:outputStylesheet name="css/style.css"/>
     </h:head>  
     <h:body>
@@ -26,8 +27,47 @@
             </ul>
         </nav>
         <section>
+            <header>
+                <h:link outcome="ayudantias"><i class="fa fa-arrow-circle-o-left"></i></h:link>
+                <div>
+                    <h2>Asistencia</h2>
+                </div>
+            </header>
+            <article>
+                <div class="ayudantia">
+                    <h4>Ayudantia</h4>
+                    <h2>Estructura de Datos</h2>
+                    <h4>Paralelo 1</h4>
+                </div>
+                <div class="lista-ayudantes nueva-semana asistencia">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombres</th>
+                                <th>Email</th>
+                                <th>Matr&iacute;cula</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>David Alejandro Barrera Guano</td>
+                                <td>dbarrera@espol.edu.ec</td>
+                                <td>20101345</td>
+                            </tr>
+                            <tr>
+                                <td>Denny Klever Schuldt Vizuete</td>
+                                <td>dschuldt@espol.edu.ec</td>
+                                <td>201015278</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <h:button value="Registrar alumno"></h:button>
+                </div>
+            </article>
         </section>
-        <footer>
+        <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
     </h:body>  
