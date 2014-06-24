@@ -3,6 +3,8 @@
 .fixed{
     position: fixed;
     top: 0;
+    box-shadow: 0px 3px 2px #999;
+    z-index: 10000;
 }
 
 html, body {
@@ -50,9 +52,7 @@ header {
 
 nav {
     width: 100%;
-    padding: 10px 0;
     background: #245166;
-    border-bottom: 2px solid #FEFEFE;
 }
     nav ul {
         list-style-type: none;
@@ -64,18 +64,23 @@ nav {
         nav ul li {
             display: inline-block;
             color: white;
-            padding: 0 5px;
+            padding: 10px 5px 5px 5px;
             cursor: pointer;
             border-bottom: 2px solid #245166;
+            border-bottom: 5px solid #245166;
         }
         nav ul li:hover{
-            border-bottom: 2px solid #3C83A7;
+            border-bottom: 5px solid #3C83A7;
+            color: #3C83A7;
         }
             nav ul li a {
                 text-decoration: none;
                 color: white;
             }
-            .active {border-bottom: 2px solid #3C83A7;}
+            .active {
+                border-bottom: 5px solid #3C83A7;
+                font-weight: bold;
+            }
 
 section {
     width: 100%;
@@ -135,8 +140,11 @@ section {
         width: 80%;
         padding: 0;
     }
-        section article h1 {
-            font-size: 2.5em;
+        section article h1 { font-size: 2em }
+        .header {
+            padding: 7px 7px;
+            background-color: #3C83A7;
+            color: #F5F5F5;
         }
         section article a {
             text-decoration: none;
@@ -152,9 +160,13 @@ section {
             padding: 10px 0;
             border: none;
             margin-bottom: 5px;
+            position:relative;
+            border: none;
+            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
         }
-        section article input[type="button"]:hover {
-            background-color: #245166;
+        section article input[type="button"]:active {
+            top:3px;
+            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
         }
         section article div {
             text-align: right;
@@ -171,9 +183,6 @@ section {
                 border: none;
                 margin-bottom: 5px;
                 display: inline-block;
-            }
-            section article div input[type="button"]:hover {
-                background-color: #245166;
             }
         section article span{
             display: block;
@@ -275,9 +284,6 @@ section {
                             border: none;
                             margin-bottom: 5px;
                             margin-left: 0;
-                        }
-                        section article .lista-ayudantes ul li .lista-ayudantes-accion input[type="button"]:hover {
-                            background-color: #245166;
                         }
     section .ayudantia-semana {
         display: block;
@@ -389,10 +395,14 @@ section {
                 padding: 10px 0;
                 margin: 0;
                 width: 19%;
-                vertical-align: middle;
+                vertical-align: middle;                
+                position:relative;
+                border: none;
+                box-shadow: inset 0px 1px 0px rgb(153,100,0), 0px 5px 0px 0px rgb(103,10,0);
             }
-            section article .lista-ayudantes table thead tr th input[type="button"]:hover{
-                background-color: rgb(108,0,0);
+            section article .lista-ayudantes table thead tr th input[type="button"]:active {
+                top:3px;
+                box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e;
             }
     section article .lista-ayudantes table tbody tr th{
         width: 20%;
@@ -406,14 +416,14 @@ section {
         section article .lista-ayudantes table tbody tr td input[type="text"],
         section article .lista-ayudantes table tbody tr td textarea {
             display: inline-block;
-            padding: 10px 0;
-            min-width: 100%;
-            width: 100%;
+            padding: 10px 1%;
+            min-width: 98%;
+            width: 98%;
         }
         section article .lista-ayudantes table tbody tr td select {
             display: inline-block;
-            padding: 10px 0;
-            width: 20%;
+            padding: 10px 0.5%;
+            width: auto;
             font-size: 1.2em;
         }
     section article .info-publica {
@@ -466,4 +476,17 @@ footer {
 }
 #border {
     border-bottom: 2px solid #3C83A7;
+}
+.edit {
+    float: right;
+    right: 12px;
+}
+.icon {
+    float: right;
+    right: 5px;
+    padding-top: 4px;
+}
+.asistencia table{
+    width: 100%;
+    
 }
