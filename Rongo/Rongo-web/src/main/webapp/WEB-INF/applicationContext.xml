@@ -1,124 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:sec="http://www.springframework.org/schema/security"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:sec="http://www.springframework.org/schema/security"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop"
-        xmlns:util="http://www.springframework.org/schema/util"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+http://www.springframework.org/schema/security  http://www.springframework.org/schema/security/spring-security-3.0.xsd       
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
- <sec:http entry-point-ref="casEntryPoint" use-expressions="true">
-        <sec:intercept-url pattern="/" access="permitAll"/>
-        <sec:intercept-url pattern="/index.jsp" access="permitAll"/>
-        <sec:intercept-url pattern="/cas-logout.jsp" access="permitAll"/>
-        <sec:intercept-url pattern="/casfailed.jsp" access="permitAll"/>
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
-        <sec:intercept-url pattern="/secure/extreme/**"
-            access="hasRole('ROLE_SUPERVISOR')" />
-        <sec:intercept-url pattern="/secure/**" access="hasRole('ROLE_USER')" />
-        <sec:intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-        <sec:custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
-        <sec:custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
-        <sec:custom-filter ref="casFilter" position="CAS_FILTER" />
-        <sec:logout logout-success-url="/cas-logout.jsp"/>
-    </sec:http>
-
-    <sec:authentication-manager alias="authManager">
-        <sec:authentication-provider ref="casAuthProvider" />
+ 
+ <sec:authentication-manager alias="authenticationManager">
+        <sec:authentication-provider ref="preAuthAuthProvider"/>
     </sec:authentication-manager>
 
-    <sec:user-service id="userService">
-        <sec:user name="rod" password="rod" authorities="ROLE_SUPERVISOR,ROLE_USER" />
-        <sec:user name="dianne" password="dianne" authorities="ROLE_USER" />
-        <sec:user name="scott" password="scott" authorities="ROLE_USER" />
-    </sec:user-service>
-
-    <!-- This filter handles a Single Logout Request from the CAS Server -->
-    <bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
-    <!-- This filter redirects to the CAS Server to signal Single Logout should be performed -->
-    <bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter"
-        p:filterProcessesUrl="/j_spring_cas_security_logout">
-        <constructor-arg value="https://${cas.server.host}/cas/logout"/>
+    <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+        <sec:filter-chain-map path-type="ant">
+            <sec:filter-chain pattern="/" filters="casValidationFilter, wrappingFilter" />
+            <sec:filter-chain pattern="/secure/receptor" filters="casValidationFilter" />
+            <sec:filter-chain pattern="/j_spring_security_logout" filters="logoutFilter,etf,fsi" />
+            <sec:filter-chain pattern="/**" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+        </sec:filter-chain-map>
+    </bean>
+    <bean id="sif" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
+         
+    <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator" id="ticketValidator">
+        <constructor-arg index="0" value="https://auth.espol.edu.ec/" />
+        <property name="proxyGrantingTicketStorage" ref="proxyGrantingTicketStorage" />
+        <property name="proxyCallbackUrl" value="https://auth.espol.edu.ec/secure/receptor" />
+    </bean>
+   <bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+        <constructor-arg value="/"/>
         <constructor-arg>
-            <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+            <list>
+                <bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
+            </list>
         </constructor-arg>
+        
+    </bean>
+    <bean id="fsi" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="accessDecisionManager" ref="httpRequestAccessDecisionManager"/>
+        <property name="securityMetadataSource">
+            <sec:filter-invocation-definition-source >
+<!--               
+
+                <sec:intercept-url pattern="/secure/extreme/**" access="ROLE_SUPERVISOR"/>
+                <sec:intercept-url pattern="/secure/**" access="ROLE_USER"/>
+                <sec:intercept-url pattern="/**" access="ROLE_USER"/>
+                -->
+                    
+                    
+                <sec:intercept-url pattern="/index2.html" access="ROLE_SUPERVISOR"/>
+                <sec:intercept-url pattern="/index.html" access="ROLE_USER"/>
+            </sec:filter-invocation-definition-source>
+        </property>
+      
+    </bean>
+    <bean id="proxyGrantingTicketStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl" />
+<bean id="etf" class="org.springframework.security.web.access.ExceptionTranslationFilter">
+        <property name="authenticationEntryPoint" ref="preAuthEntryPoint"/>
     </bean>
 
-    <bean id="serviceProperties"
-        class="org.springframework.security.cas.ServiceProperties"
-        p:service="https://${cas.service.host}/cas-sample/j_spring_cas_security_check"
-        p:authenticateAllArtifacts="true"/>
-    <bean id="casEntryPoint"
-        class="org.springframework.security.cas.web.CasAuthenticationEntryPoint"
-        p:serviceProperties-ref="serviceProperties" p:loginUrl="https://${cas.server.host}/cas/login" />
-    <bean id="casFilter"
-        class="org.springframework.security.cas.web.CasAuthenticationFilter"
-        p:authenticationManager-ref="authManager"
-        p:serviceProperties-ref="serviceProperties"
-        p:proxyGrantingTicketStorage-ref="pgtStorage"
-        p:proxyReceptorUrl="/j_spring_cas_security_proxyreceptor">
+     <bean id="casAuthenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">
+        <property name="casServerLoginUrl" value="https://auth.espol.edu.ec/login" />
+        <property name="serverName" value="https://localhost:8181"/>
+    </bean>
+        
+
+    
+    <bean id="casValidationFilter" class="org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter">
+        <property name="serverName" value="https://localhost:8181" />
+        <property name="exceptionOnValidationFailure" value="true" />
+        <property name="proxyGrantingTicketStorage" ref="proxyGrantingTicketStorage" />
+        <property name="redirectAfterValidation" value="true" />
+        <property name="ticketValidator" ref="ticketValidator" />
+        <property name="proxyReceptorUrl" value="/secure/receptor" />
+    </bean>
+    
+    <bean id="preAuthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+        <property name="preAuthenticatedUserDetailsService">
+            <bean id="userDetailsServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+                <property name="userDetailsService" ref="userService"/>
+            </bean>
+        </property>
+    </bean>
+    
+    <bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter"/>
+    <bean id="httpRequestAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+        <property name="allowIfAllAbstainDecisions" value="false"/>
+        <property name="decisionVoters">
+            <list>
+                <ref bean="roleVoter"/>
+            </list>
+        </property>
+    </bean>
+      <sec:user-service properties="WEB-INF/users.properties" id="userService"></sec:user-service>
+ 
+    
+     <bean id="j2eePreAuthFilter" class="org.springframework.security.web.authentication.preauth.j2ee.J2eePreAuthenticatedProcessingFilter">
+        <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationDetailsSource">
-            <bean class="org.springframework.security.cas.web.authentication.ServiceAuthenticationDetailsSource"/>
-        </property>
-        <property name="authenticationFailureHandler">
-            <bean class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"
-                p:defaultFailureUrl="/casfailed.jsp"/>
+            <bean class="org.springframework.security.web.authentication.WebAuthenticationDetailsSource" />
         </property>
     </bean>
-    <!--
-        NOTE: In a real application you should not use an in memory implementation. You will also want
-              to ensure to clean up expired tickets by calling ProxyGrantingTicketStorage.cleanup()
-     -->
-    <bean id="pgtStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl"/>
-    <bean id="casAuthProvider" class="org.springframework.security.cas.authentication.CasAuthenticationProvider"
-        p:serviceProperties-ref="serviceProperties"
-        p:key="casAuthProviderKey">
-        <property name="authenticationUserDetailsService">
-            <bean
-                class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
-                <constructor-arg ref="userService" />
-            </bean>
-        </property>
-        <property name="ticketValidator">
-            <bean
-                class="org.jasig.cas.client.validation.Cas20ProxyTicketValidator"
-                p:acceptAnyProxy="true"
-                p:proxyCallbackUrl="https://${cas.service.host}/cas-sample/j_spring_cas_security_proxyreceptor"
-                p:proxyGrantingTicketStorage-ref="pgtStorage">
-                <constructor-arg value="https://${cas.server.host}/cas" />
-            </bean>
-        </property>
-        <property name="statelessTicketCache">
-            <bean class="org.springframework.security.cas.authentication.EhCacheBasedTicketCache">
-                <property name="cache">
-                    <bean id="ehcache" class="net.sf.ehcache.Cache"
-                      init-method="initialise"
-                      destroy-method="dispose">
-                        <constructor-arg value="casTickets"/>
-                        <constructor-arg value="50"/>
-                        <constructor-arg value="true"/>
-                        <constructor-arg value="false"/>
-                        <constructor-arg value="3600"/>
-                        <constructor-arg value="900"/>
-                        <property name="cacheManager">
-                            <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"/>
-                        </property>
-                    </bean>
-                </property>
-            </bean>
-        </property>
-    </bean>
-
-    <!-- Configuration for the environment can be overriden by system properties -->
-    <context:property-placeholder system-properties-mode="OVERRIDE" properties-ref="environment"/>
-    <util:properties id="environment">
-        <prop key="cas.service.host">localhost:8443</prop>
-        <prop key="cas.server.host">localhost:9443</prop>
-    </util:properties>
+    <bean id="preAuthEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint" />
+    <bean id="wrappingFilter" class="org.jasig.cas.client.util.HttpServletRequestWrapperFilter" />
+    
+   
 </beans>

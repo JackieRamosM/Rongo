@@ -76,7 +76,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 <bean id="etf" class="org.springframework.security.web.access.ExceptionTranslationFilter">
         <property name="authenticationEntryPoint" ref="preAuthEntryPoint"/>
     </bean>
-    
+
     <bean id="casAuthenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">
         <property name="casServerLoginUrl" value="https://auth.espol.edu.ec/login" />
         <property name="serverName" value="https://localhost:8181" />
