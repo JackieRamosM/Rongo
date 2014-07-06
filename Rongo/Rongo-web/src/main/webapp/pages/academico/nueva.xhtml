@@ -1,13 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ayudantes - Rongo</title>
-        <h:outputStylesheet library="css" name="jquery-ui-1.10.4.min.css"/>
-        <h:outputStylesheet library="css" name="primeui-1.0-min.css"/>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
         <h:outputStylesheet library="css" name="style.css"/>
     </h:head>  
@@ -64,16 +61,15 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>Descripci&oacute;n:</th>
+                                <th>Descripci&oacute;n: </th>
                                 <td>
-                                    <h:inputTextarea></h:inputTextarea>
+                                    <p:inputTextarea></p:inputTextarea>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div>
-                    <h:button value="Agregar otro d&iacute;a" outcome="ofertas"></h:button>
                     <h:button value="Guardar"></h:button>
                 </div>
             </article>

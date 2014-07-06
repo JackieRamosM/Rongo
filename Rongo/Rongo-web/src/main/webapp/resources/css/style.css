@@ -135,6 +135,10 @@ section {
             margin: 0;
             cursor: pointer;
         }
+    .wrong {
+        border: 2px solid rgb(153,0,0);
+        color: rgb(153,0,0);
+    }
     section article {
         margin-left: 10%;
         width: 80%;
@@ -272,7 +276,7 @@ section {
                             width: 100%;
                             padding: 10px 0;
                             border: none;
-                            margin-bottom: 15px;
+                            margin-bottom: 7px;
                             margin-left: 0;
                         }
     section .ayudantia-semana {
@@ -394,6 +398,24 @@ section {
                 top:3px;
                 box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e;
             }
+    .asistencia {
+        display: inline-block;
+        width: 90%;
+        padding: 20px 5%;
+        background-color: rgba(255,255,255,0.6);
+    }
+        .asistencia table{
+            width: 100%;
+        }
+            .asistencia table thead tr th{
+                width: 33%;
+                text-align: center;
+                border-bottom: 2px solid #3C83A7;
+            }
+            .asistencia table tbody tr td{
+                width: 33%;
+                text-align: center;
+            }
     section article .lista-ayudantes table tbody tr th{
         width: 20%;
         padding-right: 2%;
@@ -475,7 +497,4 @@ footer {
     float: right;
     right: 5px;
     padding-top: 4px;
-}
-.asistencia table{
-    width: 100%;
 }
