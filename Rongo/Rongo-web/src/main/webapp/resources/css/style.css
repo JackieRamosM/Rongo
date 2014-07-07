@@ -464,6 +464,44 @@ section {
             text-align: center;
             color: #3C83A7;
         }        
+    .cuestionario {
+        display: inline-block;
+        width: 90%;
+        padding: 20px 5%;
+        background-color: rgba(255,255,255,0.6);
+    }
+        .cuestionario table {
+            display: inline-block;
+            width: 100%;
+        }
+            .cuestionario table thead, .cuestionario table tbody {
+                display: inline-block;
+                width: 100%;
+            }
+            .cuestionario table thead tr, .cuestionario table tbody tr {
+                display: inline-block;
+                width: 100%;
+            }
+            .cuestionario table thead tr th:nth-child(1), .cuestionario table tbody tr td:nth-child(1) {
+                display: inline-block;
+                width: 5%;
+            }
+            .cuestionario table thead tr th:nth-child(2),
+            .cuestionario table thead tr th:nth-child(3),
+            .cuestionario table thead tr th:nth-child(4){
+                text-align: center;
+            }
+            .cuestionario table thead tr th:nth-child(2),
+            .cuestionario table thead tr th:nth-child(3),
+            .cuestionario table thead tr th:nth-child(4),
+            .cuestionario table tbody tr td:nth-child(2),
+            .cuestionario table tbody tr td:nth-child(3),
+            .cuestionario table tbody tr td:nth-child(4){
+                display: inline-block;
+                width: 30%;
+            }
+        
+        
         
 footer {
     display: block;
@@ -498,3 +536,15 @@ footer {
     right: 5px;
     padding-top: 4px;
 }
+
+#cuestionario {
+    text-align: center;
+    width: 100%;
+}
+    #cuestionario h3 {
+        display: block;
+        font-weight: normal;
+        width: 100%;
+        text-align: left;
+        margin: 0;
+    }
