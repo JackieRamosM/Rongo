@@ -18,7 +18,12 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
  <sec:authentication-manager alias="authenticationManager">
         <sec:authentication-provider ref="preAuthAuthProvider"/>
     </sec:authentication-manager>
-
+    
+    <!--
+<sec:http>
+    <sec:form-login login-page="/login" default-target-url="/default"/>
+</sec:http>
+-->
     <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
         <sec:filter-chain-map path-type="ant">
             <sec:filter-chain pattern="/" filters="casValidationFilter, wrappingFilter" />
@@ -47,18 +52,18 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="accessDecisionManager" ref="httpRequestAccessDecisionManager"/>
         <property name="securityMetadataSource">
-            <sec:filter-invocation-definition-source >
-<!--               
-
+            <sec:filter-invocation-definition-source>
+            <!--               
                 <sec:intercept-url pattern="/secure/extreme/**" access="ROLE_SUPERVISOR"/>
                 <sec:intercept-url pattern="/secure/**" access="ROLE_USER"/>
                 <sec:intercept-url pattern="/**" access="ROLE_USER"/>
-                -->
-                    
-                    
+                
+                <sec:intercept-url pattern="/logout.jsp" access="ROLE_ANONYMOUS"/>
                 <sec:intercept-url pattern="/index2.html" access="ROLE_SUPERVISOR"/>
-                <sec:intercept-url pattern="/index.html" access="ROLE_USER"/>
+                -->                
+                <sec:intercept-url pattern="/**" access="ROLE_ADMIN"/>
             </sec:filter-invocation-definition-source>
+           
         </property>
       
     </bean>
@@ -70,9 +75,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
      <bean id="casAuthenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">
         <property name="casServerLoginUrl" value="https://auth.espol.edu.ec/login" />
         <property name="serverName" value="https://localhost:8181"/>
-    </bean>
-        
-
+    </bean>      
     
     <bean id="casValidationFilter" class="org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter">
         <property name="serverName" value="https://localhost:8181" />
@@ -100,9 +103,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
             </list>
         </property>
     </bean>
-      <sec:user-service properties="WEB-INF/users.properties" id="userService"></sec:user-service>
- 
-    
+     <sec:user-service properties="WEB-INF/users.properties" id="userService"></sec:user-service>
+
      <bean id="j2eePreAuthFilter" class="org.springframework.security.web.authentication.preauth.j2ee.J2eePreAuthenticatedProcessingFilter">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="authenticationDetailsSource">
