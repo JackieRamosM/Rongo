@@ -19,11 +19,6 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
         <sec:authentication-provider ref="preAuthAuthProvider"/>
     </sec:authentication-manager>
     
-    <!--
-<sec:http>
-    <sec:form-login login-page="/login" default-target-url="/default"/>
-</sec:http>
--->
     <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
         <sec:filter-chain-map path-type="ant">
             <sec:filter-chain pattern="/" filters="casValidationFilter, wrappingFilter" />
@@ -61,7 +56,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
                 <sec:intercept-url pattern="/logout.jsp" access="ROLE_ANONYMOUS"/>
                 <sec:intercept-url pattern="/index2.html" access="ROLE_SUPERVISOR"/>
                 -->                
-                <sec:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+                <sec:intercept-url pattern="/**" access="ROLE_USER"/>
             </sec:filter-invocation-definition-source>
            
         </property>
