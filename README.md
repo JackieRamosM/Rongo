@@ -6,26 +6,12 @@ Ingeniería de Software I y II.
 Archivos Utiles: SSLPoke
 =====
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package sslpoke;
 
-/**
- *
- * @author 
- */
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
  
-/** Establish a SSL connection to a host and port, writes a byte and
- * prints the response. See
- * http://confluence.atlassian.com/display/JIRA/Connecting+to+SSL+services
- */
 public class SSLPoke {
     public static void main(String[] args) {
         if (args.length != 2) {
@@ -56,51 +42,8 @@ public class SSLPoke {
 Archivos Utiles: InstallCert
 =====
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package installcert;
 
-/*
- * Copyright 2006 Sun Microsystems, Inc.  All Rights Reserved.
- *
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- *
- *   - Redistributions of source code must retain the above copyright
- *     notice, this list of conditions and the following disclaimer.
- *
- *   - Redistributions in binary form must reproduce the above copyright
- *     notice, this list of conditions and the following disclaimer in the
- *     documentation and/or other materials provided with the distribution.
- *
- *   - Neither the name of Sun Microsystems nor the names of its
- *     contributors may be used to endorse or promote products derived
- *     from this software without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- * IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
- * THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
- * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
- * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
- * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */
-/**
- * http://blogs.sun.com/andreas/resource/InstallCert.java
- * Use:
- * java InstallCert hostname
- * Example:
- *% java InstallCert ecc.fedora.redhat.com
- */
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -287,9 +230,13 @@ Como Solucionar el problema del Handshake al correr Rongo
 Compilar InstallCert.
 
 Ejecutar
+
 java -jar InstallCert.jar auth.espol.edu.ec
+
 (Respuesta: auth.espol.edu.ec añadido al keystore)
+
 java -jar InstallCert.jar localhost:8181 
+
 (Respuesta: localhost añadido al keystore)
 
 (El puerto 8181 es el puerto de seguridad de Glassfish)
@@ -318,7 +265,7 @@ Ver si java_cacerts.txt incluye el mismo certificado que está presente en el br
 el número sereal.
 En caso de no estar presente, vaya al browser, exporte el Root CA. Escoja "X.509 Certificate (DER).
 
-asumiendo que el archivo se llama example.der:
+Asumiendo que el archivo se llama example.der:
 
 keytool -import -alias example -keystore  /path/to/cacerts -file example.der
 
