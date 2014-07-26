@@ -295,9 +295,13 @@ java -jar InstallCert.jar localhost:8181
 (El puerto 8181 es el puerto de seguridad de Glassfish)
 
 Compilar SSLPoke
+
 java -jar SSLPoke.jar auth.espol.edu.ec
+
 (Respuesta: Exitoso)
+
 java -jar SSLPoke.jar localhost 8181
+
 (Respuesta: Exitoso)
 
 Copiar el archivo cacerts de la carpeta keytool en la carpeta domain del Glassfish con extensión jks.
@@ -307,6 +311,7 @@ Correr el proyecto.
 Si con lo de arriba aún no funciona, realizar lo siguiente.
 
 keytool -list -v -keystore /path/to/cacerts  > java_cacerts.txt
+
 Enter keystore password:  changeit
 
 Ver si java_cacerts.txt incluye el mismo certificado que está presente en el browser buscando 
@@ -314,7 +319,9 @@ el número sereal.
 En caso de no estar presente, vaya al browser, exporte el Root CA. Escoja "X.509 Certificate (DER).
 
 asumiendo que el archivo se llama example.der:
+
 keytool -import -alias example -keystore  /path/to/cacerts -file example.der
+
 Coloque la contraseña "changeit"
 
 Copiar el archivo cacerts de la carpeta keytool en la carpeta domain del Glassfish con extensión jks.
