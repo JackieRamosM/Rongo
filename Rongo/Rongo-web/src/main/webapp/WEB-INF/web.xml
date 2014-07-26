@@ -7,6 +7,9 @@
 
     <welcome-file-list>
         <welcome-file>faces/pages/estudiante/index.xhtml</welcome-file>
+        <welcome-file>faces/pages/academico/index.xhtml</welcome-file>
+        <welcome-file>faces/pages/admin/index.xhtml</welcome-file>
+        <welcome-file>faces/pages/supervisor/index.xhtml</welcome-file>
     </welcome-file-list>
 
     <context-param>  
@@ -52,7 +55,7 @@
     </context-param>
     <context-param> 
         <param-name>javax.faces.CONFIG_FILES</param-name> 
-        <param-value>/WEB-INF/faces-config.xml,/WEB-INF/faces-beans.xml</param-value> 
+        <param-value>/WEB-INF/faces-config.xml</param-value> 
     </context-param> 
     <filter>
         <filter-name>CAS Single Sign Out Filter</filter-name>
@@ -70,8 +73,8 @@
     </filter-mapping>
     
     <filter-mapping>
-      <filter-name>springSecurityFilterChain</filter-name>
-      <url-pattern>/*</url-pattern>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
     
     <!--
@@ -79,16 +82,8 @@
       - The application context is then available via
       - WebApplicationContextUtils.getWebApplicationContext(servletContext).
     -->
-    
-    <listener>
-        <listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
-    </listener>
-    
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    
-    <filter>
+   
+    <!--filter>
         <filter-name>CAS Authentication Filter</filter-name>
         <filter-class>org.jasig.cas.client.authentication.AuthenticationFilter</filter-class>
         <init-param>
@@ -131,5 +126,21 @@
     <filter-mapping>
         <filter-name>CAS HttpServletRequest Wrapper Filter</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping-->
+    
+    <listener>
+        <listener-class>org.jasig.cas.client.session.SingleSignOutHttpSessionListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class> org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+    </listener>   
 </web-app>
