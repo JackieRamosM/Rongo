@@ -12,7 +12,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
  
-@ManagedBean 
+@ManagedBean
 public class CalendarView {
          
     private Date date1;
