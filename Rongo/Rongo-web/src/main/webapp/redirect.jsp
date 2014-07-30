@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
     <%
-        
+        if(session.getAttribute("status")!=null){
         int i=((Integer)session.getAttribute("status")).intValue();
         session.setAttribute("status",new Integer(i+1));
         switch (i){
@@ -18,17 +18,17 @@
             response.sendRedirect("/Rongo-web/faces/pages/admin/index.xhtml");
             break;
             case 3:
-            response.sendRedirect("/Rongo-web/faces/pages/supervisor/index.xhtml?"+i);
+            response.sendRedirect("/Rongo-web/faces/pages/supervisor/index.xhtml");
            break;
-    //no pasa de 3... de alguna manera cuando llega a esa pagina y no hay filtro mas abajo pues..le deja pasar a esa pagina
+           }
         }
-        response.sendRedirect("/Rongo-web/faces/pages/ninguno/casfailed.jsp?"+i);
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello <%=request.getRemoteUser()%>!</h1>
+        <h1>Hello <%=session.getAttribute("name")%>!</h1>
+        <h1>Lamento decirte que no estas autorizado(a) a entrar a esta pagina</h1>
     </body>
 </html>

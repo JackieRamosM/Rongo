@@ -14,7 +14,7 @@
             <sec:filter-chain pattern="/faces/pages/estudiante/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
             <sec:filter-chain pattern="/faces/pages/admin/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
             <sec:filter-chain pattern="/faces/pages/academico/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
-
+            <sec:filter-chain pattern="/faces/pages/supervisor/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
         </sec:filter-chain-map>
     </bean>
  
