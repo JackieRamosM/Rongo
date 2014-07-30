@@ -6,10 +6,14 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
     <welcome-file-list>
+        <welcome-file>faces/pages/estudiante/getname.jsp</welcome-file>
+        <!--
+        <welcome-file>faces/pages/estudiante/newjsp.jsp</welcome-file>
         <welcome-file>faces/pages/estudiante/index.xhtml</welcome-file>
         <welcome-file>faces/pages/academico/index.xhtml</welcome-file>
         <welcome-file>faces/pages/admin/index.xhtml</welcome-file>
         <welcome-file>faces/pages/supervisor/index.xhtml</welcome-file>
+        -->
     </welcome-file-list>
 
     <context-param>  
@@ -142,5 +146,10 @@
     </listener>
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener>   
+    </listener> 
+      <error-page>
+        <error-code>403</error-code>
+       <location>/redirect.jsp</location>
+    </error-page>
+        
 </web-app>
