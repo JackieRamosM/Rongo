@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Estudiante - Rongo</title>
+        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
+        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet name="css/style.css"/>
+    </h:head>  
+    <h:body>
+        <header>
+            <h2>Rongo</h2>
+            <div>
+                <h5>Bienvenido(a), Nombre de Usuario aqu&iacute;</h5>
+                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li class="active">Inicio</li>
+                <li><h:link value="Ayudant&iacute;as ofertadas" outcome="ofertas"/></li>
+                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
+            </ul>
+        </nav>
+        <section>
+            <article>
+                <h1 class="header">CURSOS QUE TOMA ACTUALMENTE<i class="fa fa-book icon"></i></h1>
+                <div id="courses">
+                    <ul>
+                        <li class="available">
+                            <h3><h:link value="INGENIERÍA DE SOFTWARE II (FIEC03053)" outcome="ayudantes"/></h3>
+                        </li>
+                        <li>
+                            <h3>INTERACCIÓN HOMBRE MÁQUINA (FIEC01545)</h3>
+                        </li>
+                        <li>
+                            <h3>PROCESAMIENTO DE AUDIO Y VIDEO (FIEC05413)</h3>
+                        </li>
+                        <li class="available">
+                            <h3>PROCESAMIENTO DIGITAL DE IMÁGENES (FIEC05439)</h3>
+                        </li>
+                        <li class="available">
+                            <h3>MANDARÍN BASICO A (CELEX00265)</h3>
+                        </li>
+                    </ul>
+                </div>
+                <h:graphicImage value="/faces/resources/images/book.png" />
+            </article>
+            <article>
+                <h1 class="header">INFORMACI&Oacute;N P&Uacute;BLICA<i class="fa fa-database icon"></i></h1>
+                <div class="info-publica">
+                    <ul>
+                        <li>
+                            <div>
+                                <i class="fa fa-envelope"></i>
+                            </div>
+                            <div>
+                                <label>vvillegas@espol.edu.ec</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <i class="fa fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <label>Ingeniería en Ciencias Computacionales</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="info-publica">
+                    <ul>
+                        <li>
+                            <div>
+                                <i class="fa fa-comments"></i>
+                            </div>
+                            <div>
+                                <label>No ha especificado intereses.</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <i class="fa fa-skype"></i>
+                            </div>
+                            <div>
+                                <label>vvillegas</label>
+                            </div>
+                        </li>
+                        <li>
+                            <div>
+                                <i class="fa fa-twitter"></i>
+                            </div>
+                            <div>
+                                <label>vvillegas</label>
+                            </div>
+                        </li>
+                        <h:button value="Editar" class="edit"></h:button>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        <footer>
+            <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
+        </footer>
+        <h:outputScript name="js/jquery-1.10.2.js" />
+        <h:outputScript name="js/index.js" />
+    </h:body>  
+</html>

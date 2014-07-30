@@ -10,10 +10,12 @@
  
     <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
         <sec:filter-chain-map path-type="ant">
+            <!--sec:filter-chain pattern="/" filters="casValidationFilter, wrappingFilter" />
+            <sec:filter-chain pattern="/secure/receptor" filters="casValidationFilter" />
+            <sec:filter-chain pattern="/j_spring_security_logout" filters="logoutFilter,etf,fsi" /-->
             <sec:filter-chain pattern="/faces/pages/estudiante/**" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
             <sec:filter-chain pattern="/faces/pages/admin/**" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
             <sec:filter-chain pattern="/faces/pages/academico/**" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
-            <sec:filter-chain pattern="/faces/pages/supervisor/**" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
         </sec:filter-chain-map>
     </bean>
  
@@ -73,8 +75,8 @@
                 <!--sec:intercept-url pattern="/secure/extreme/**" access="ROLE_SUPERVISOR"/>
                 <sec:intercept-url pattern="/secure/**" access="ROLE_USER"/>
                 <sec:intercept-url pattern="/**" access="ROLE_USER"/-->
-                <sec:intercept-url pattern="/faces/pages/estudiante/**" access="ROLE_ESTUDIANTE"/>
-                <sec:intercept-url pattern="/faces/pages/academico/**" access="ROLE_AYUDANTE"/>
+                <sec:intercept-url pattern="/faces/pages/estudiante/**" access="ROLE_USER"/>
+                <sec:intercept-url pattern="/faces/pages/academico/*" access="ROLE_AYUDANTE"/>
             </sec:filter-invocation-definition-source>
         </property>
     </bean>
@@ -92,8 +94,11 @@
     <bean id="proxyGrantingTicketStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl" />
  
        <sec:user-service id="userService">
-        <sec:user name="ljramos" password="" authorities="ROLE_ESTUDIANTE" />
-        <sec:user name="hcarpio" password="" authorities="ROLE_AYUDANTE" />
+        <sec:user name="rod" password="rod" authorities="ROLE_SUPERVISOR,ROLE_USER" />
+        <sec:user name="dianne" password="dianne" authorities="ROLE_USER" />
+        <sec:user name="scott" password="scott" authorities="ROLE_USER" />
+        <sec:user name="ljramos" password="1992Ljrm" authorities="ROLE_USER" />
+        <sec:user name="hcarpio" password="Hacs1390" authorities="ROLE_AYUDANTE" />
     </sec:user-service>
     
     <bean id="casAuthenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">

@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ayudantía - Rongo</title>
+        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
+        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet name="css/style.css"/>
+    </h:head>  
+    <h:body>
+        <header>
+            <h2>Rongo</h2>
+            <div>
+                <h5>Bienvenido(a), Nombre de Usuario aqu&iacute;</h5>
+                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li class="active">Ayudantes</li>
+                <li><h:link value="Ayudant&iacute;as ofertadas" outcome="ofertas"/></li>
+                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
+            </ul>
+        </nav>
+        <section>
+            <header>
+                <h:link outcome="ayudantes"><i class="fa fa-arrow-circle-o-left"></i></h:link>
+                <div>
+                    <h2>Juan Manuel Romero</h2>
+                    <h3>Ayudante de Ingenier&iacute;a de Software I</h3>
+                </div>
+            </header>
+            <div class="ayudantia-semana">
+                <h1>Semana del 23 al 27 de junio de 2014</h1>
+                <div>
+                    <i class="fa fa-angle-left"></i>  
+                    <div id="semana">
+                        <div>
+                            <h2>Lunes 23 de Junio de 2014</h2>
+                            <h3>Horario: 14:30 - 16:30</h3>
+                            <p>Descripci&oacute;n: Est&aacute;ndares de XML: XML Languaje Specification, XML Namespaces, XML Schema, XPath, DTD, XSL</p>
+                        </div>
+                        <div>
+                            <h2>Mi&eacute;rcoles 25 de Junio de 2014</h2>
+                            <h3>Horario: 14:30 - 16:30</h3>
+                            <p>Descripci&oacute;n: Est&aacute;ndares de XML: XML Languaje Specification, XML Namespaces, XML Schema, XPath, DTD, XSL</p>
+                        </div>
+                    </div>
+                    <i class="fa fa-angle-right"></i>
+                </div>
+            </div>
+            <article>
+                <h1>INFORMACI&Oacute;N DEL AYUDANTE:</h1>
+                <ul>
+                    <li>
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div>
+                            <label>jromero@espol.edu.ec</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <label>Ingeniería en Ciencias Computacionales</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fa fa-comments"></i>
+                        </div>
+                        <div>
+                            <label>No ha especificado intereses.</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fa fa-skype"></i>
+                        </div>
+                        <div>
+                            <label>jromero</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <i class="fa fa-twitter"></i>
+                        </div>
+                        <div>
+                            <label>jromero</label>
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+        <footer>
+            <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
+        </footer>
+        <h:outputScript name="js/jquery-1.10.2.js" />
+        <h:outputScript name="js/index.js" />
+    </h:body>  
+</html>
