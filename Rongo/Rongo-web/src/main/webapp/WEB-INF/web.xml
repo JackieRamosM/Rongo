@@ -134,9 +134,5 @@
         <error-code>403</error-code>
         <location>/redirect.jsp</location>
     </error-page>
-    <!--ejb-local-ref>
-        <ejb-ref-name>ClaseFacade</ejb-ref-name>
-        <ejb-ref-type>Session</ejb-ref-type>
-        <ejb-link>Rongo-ejb-1.0-SNAPSHOT#ClaseFacade</ejb-link>
-    </ejb-local-ref-->
+    
 </web-app>

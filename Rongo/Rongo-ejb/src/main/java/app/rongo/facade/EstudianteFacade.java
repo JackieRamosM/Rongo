@@ -6,7 +6,7 @@
 
 package app.rongo.facade;
 
-import app.rongo.persistence.Clase;
+import app.rongo.persistence.Estudiante;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  * @author Liliana
  */
 @Stateless
-public class ClaseFacade extends AbstractFacade<Clase> implements ClaseFacadeLocal {
+public class EstudianteFacade extends AbstractFacade<Estudiante> implements EstudianteFacadeLocal {
     @PersistenceContext(unitName = "app.rongo_Rongo-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class ClaseFacade extends AbstractFacade<Clase> implements ClaseFacadeLoc
         return em;
     }
 
-    public ClaseFacade() {
-        super(Clase.class);
+    public EstudianteFacade() {
+        super(Estudiante.class);
     }
     
 }
