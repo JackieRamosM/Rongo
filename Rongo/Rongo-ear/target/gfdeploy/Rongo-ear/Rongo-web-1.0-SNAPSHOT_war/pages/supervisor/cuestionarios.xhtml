@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html" 
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cuestionarios - Rongo</title>
+        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
+        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet name="css/style.css"/>
+    </h:head>  
+    <h:body>
+        <header>
+            <h2>Rongo</h2>
+            <div>
+                <h5>Bienvenido(a), #{name}</h5>
+                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><h:link value="Ayudantes acad&eacute;micos" outcome="index"/></li>
+                <li><h:link value="Ayudantes de actividades varias" outcome="varias"/></li>
+                <li><h:link value="Postulantes" outcome="postulantes"/></li>
+                <li class="active"><h:link value="Cuestionarios"/></li>
+            </ul>
+        </nav>
+        <section>
+            <article>
+                <h1 class="header">CUESTIONARIOS <i class="fa fa-file-text icon"></i></h1>
+                <div class="lista-ayudantes">
+                    <ul>
+                        <li>
+                            <div class="lista-ayudantes-datos">
+                                <h2>Cuestionario para supervisores</h2>
+                                <h4>Este cuestionario ser&aacute; llenado por el supervisor de un ayudante acad&eacute;mico, o de un ayudante de actividades varias.</h4>
+                            </div>
+                            <div class="lista-ayudantes-accion">
+                                <h:button value="Llenar" outcome="cuestionario"></h:button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        <footer class="fixed-bottom">
+            <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
+        </footer>
+    </h:body>  
+</html>

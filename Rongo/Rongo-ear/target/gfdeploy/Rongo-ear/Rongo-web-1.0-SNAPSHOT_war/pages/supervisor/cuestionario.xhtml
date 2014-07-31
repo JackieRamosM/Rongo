@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cuestionario - Rongo</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet name="css/style.css"/>
+    </h:head>  
+    <h:body>
+        <header>
+            <h2>Rongo</h2>
+            <div>
+                <h5>Bienvenido(a), #{name}</h5>
+                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><h:link value="Ayudantes acad&eacute;micos" outcome="index"/></li>
+                <li><h:link value="Ayudantes de actividades varias" outcome="varias"/></li>
+                <li><h:link value="Postulantes" outcome="postulantes"/></li>
+                <li class="active"><h:link value="Cuestionarios"/></li>
+            </ul>
+        </nav>
+        <section>
+            <article>
+                <h1 class="header">CUESTIONARIO <i class="fa fa-file-text icon"></i></h1>
+                <div id="cuestionario">
+                    <h3>Ayudante: <strong>Juan Xavier Jairala</strong></h3>
+                    <h3>Ayudantía: <strong>Laboratorios de Computación</strong></h3>
+                    <h1>Valoración de Desempeño</h1>
+                    <p>Escala:4:MS(Muy Satisfactorio); 3:S(Satisfactorio); 2:PS:(Pocosatisfactorio); 1:I(Insatisfactorio)</p>
+                </div>
+                <div class="cuestionario">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Criterio</th>
+                                <th>Calificacion</th>
+                                <th>Observaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1</strong></td>
+                                <td>Asistencia y puntualidad</td>
+                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText></p:inputText></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td>Cumplimiento de Tareas Asignadas</td>
+                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText></p:inputText></td>
+                            </tr>
+                            <tr>
+                                <td><strong>3</strong></td>
+                                <td>Calidad en los trabajos realizados</td>
+                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText></p:inputText></td>
+                            </tr>
+                            <tr>
+                                <td><strong>4</strong></td>
+                                <td>Volumen de Trabajo Cubierto</td>
+                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText></p:inputText></td>
+                            </tr>
+                            <tr>
+                                <td><strong>5</strong></td>
+                                <td>Relaciones Interpersonales (actitudes)</td>
+                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText></p:inputText></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h:button value="Calificar"></h:button>
+            </article>
+        </section>
+        <footer>
+            <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
+        </footer>
+    </h:body>  
+</html>

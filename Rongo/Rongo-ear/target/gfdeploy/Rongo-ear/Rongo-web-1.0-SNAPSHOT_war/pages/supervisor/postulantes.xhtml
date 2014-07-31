@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Postulantes - Rongo</title>
+        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
+        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
+        <h:outputStylesheet name="css/style.css"/>
+    </h:head>  
+    <h:body>
+        <header>
+            <h2>Rongo</h2>
+            <div>
+                <h5>Bienvenido(a), #{name}</h5>
+                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><h:link value="Ayudantes acad&eacute;micos" outcome="index"/></li>
+                <li><h:link value="Ayudantes de actividades varias" outcome="varias"/></li>
+                <li class="active"><h:link value="Postulantes"/></li>
+                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
+            </ul>
+        </nav>
+        <section>
+            <article>
+                <h1 class="header">POSTULANTES<i class="fa fa-users icon"></i></h1>
+                <div class="lista-ayudantes">
+                    <ul>
+                        <li>
+                            <div class="lista-ayudantes-datos">
+                                <h2>Liliana Jaqueline Ramos Menéndez</h2>
+                                <h4>Promedio General: 7.99</h4>
+                                <h4>Carrera: Ingeniería en Ciencias Computacionales Orientación Sistemas Multimedia</h4>
+                                <h4>Ayudantía: Ayudante de Investigación - CTI ESPOL</h4>
+                                <h4>Sanciones: no</h4>
+                                <h4>Reprobó en el término anterior: no</h4>
+                                <h4>ljramos@espol.edu.ec</h4>
+                            </div>
+                            <div class="lista-ayudantes-accion">
+                                <h:button value="Aceptar"></h:button>
+                                <h:button value="Rechazar"></h:button>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="lista-ayudantes-datos">
+                                <h2>David Alejandro Barrera Guano</h2>
+                                <h4>Promedio General: 7.94</h4>
+                                <h4>Carrera: Ingeniería en Ciencias Computacionales Orientación Sistemas Multimedia</h4>
+                                <h4>Ayudantía: Programación Orientada a Objetos</h4>
+                                <h4>Sanciones: no</h4>
+                                <h4>Reprobó en el término anterior: no</h4>
+                                <h4>davalbar@espol.edu.ec</h4>
+                            </div>
+                            <div class="lista-ayudantes-accion">
+                                <h:button value="Aceptar"></h:button>
+                                <h:button value="Rechazar"></h:button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        <footer>
+            <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
+        </footer>
+        <h:outputScript name="js/jquery-1.10.2.js" />
+        <h:outputScript name="js/index.js" />
+    </h:body>  
+</html>

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.rongo.helpers;
+package app.rongo.facade;
 
 import app.rongo.persistence.Clase;
 import java.util.List;
@@ -22,7 +22,7 @@ import javax.persistence.Query;
  */
 @Stateless
 @LocalBean
-public class ClaseHelper {
+public class ClaseFacade {
 
     @PersistenceContext(unitName = "app.rongo_Rongo-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;

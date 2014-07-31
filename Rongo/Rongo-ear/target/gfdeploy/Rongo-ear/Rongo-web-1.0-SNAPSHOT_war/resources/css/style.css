@@ -1,0 +1,550 @@
+@font-face { src: url(http://fonts.googleapis.com/css?family=Lato) }
+
+.fixed{
+    position: fixed;
+    top: 0;
+    box-shadow: 0px 3px 2px #999;
+    z-index: 10000;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+body { background-color: #F5F5F5; }
+
+header {
+    background-color: #3C83A7;
+    width: 100%;
+    color: white;
+}
+    header h2 {
+        margin: 0;
+        font-size: 2.5em;
+        padding: 10px 1%;
+        display: inline-block;
+        width: 18%;
+        vertical-align: middle;
+    }
+    header div {
+        display: inline-block;
+        width: 79%;
+        vertical-align: middle;
+        text-align: right;
+    }
+        header div h5, header div a {
+            margin: 0;
+            font-size: 1em;
+            padding: 10px;
+            display: inline-block;
+            vertical-align: middle;
+            text-decoration: none;
+            color: white;
+        }
+        header div a {
+            border-left: 2px solid white;
+        }
+        header div a:hover {
+            color: black;
+        }
+
+nav {
+    width: 100%;
+    background: #245166;
+}
+    nav ul {
+        list-style-type: none;
+        width: 99%;
+        margin: 0 1% 0 0;
+        padding: 0;
+        text-align: right;
+    }
+        nav ul li {
+            display: inline-block;
+            color: white;
+            padding: 10px 5px 5px 5px;
+            cursor: pointer;
+            border-bottom: 2px solid #245166;
+            border-bottom: 5px solid #245166;
+        }
+        nav ul li:hover{
+            border-bottom: 5px solid #3C83A7;
+            color: #3C83A7;
+        }
+            nav ul li a {
+                text-decoration: none;
+                color: white;
+            }
+            .active {
+                border-bottom: 5px solid #3C83A7;
+                font-weight: bold;
+            }
+
+section {
+    width: 100%;
+    padding: 20px 0 80px 0;
+}
+    section header {
+        margin-left: 5%;
+        width: 90%;
+        background-color: transparent;
+        color: black;
+    }
+        section header a {
+            text-decoration: none;
+            color: black;
+        }
+            section header a i {
+                font-size: 3em;
+                vertical-align: middle;
+                margin-right: 20px;
+            }
+        section header div {
+            display: inline-block;
+            width: 90%;
+            text-align: left;
+            vertical-align: middle;
+        }
+            section header div h2 {
+                width: 80%;
+            }
+            section header div h2, section header div h3{
+                margin: 0;
+                padding: 0;
+            }
+    .message {
+        display: inline-block;
+        width: 80%;
+        margin-left: 10%;
+        border: 2px solid #3C83A7;
+        color: #3C83A7;
+        padding: 5px 0;
+    }
+        .message h3 {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 0 0 1%;
+            width: 95%;
+        }
+        .message h4 {
+            display: inline-block;
+            vertical-align: middle;
+            width:2%;
+            margin: 0;
+            cursor: pointer;
+        }
+    .wrong {
+        border: 2px solid rgb(153,0,0);
+        color: rgb(153,0,0);
+    }
+    section article {
+        margin-left: 10%;
+        width: 80%;
+        padding: 0;
+    }
+        section article h1 { font-size: 2em }
+        .header {
+            padding: 7px 7px;
+            background-color: #3C83A7;
+            color: #F5F5F5;
+        }
+        section article a {
+            text-decoration: none;
+        }
+        section article input[type="button"] {
+            background-color: #3C83A7;
+            cursor: pointer;
+            color: white;
+            font-size: 1.2em;
+            display: block;
+            width: 25%;
+            margin-left: 75%;
+            padding: 10px 0;
+            border: none;
+            margin-bottom: 5px;
+            position:relative;
+            border: none;
+            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
+        }
+        section article input[type="button"]:active {
+            top:3px;
+            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+        }
+        section article div {
+            text-align: right;
+        }
+            section article div input[type="button"] {
+                background-color: #3C83A7;
+                cursor: pointer;
+                color: white;
+                font-size: 1.2em;
+                display: block;
+                width: 20%;
+                margin: 0 0 0 10px;
+                padding: 10px 0;
+                border: none;
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+        section article span{
+            display: block;
+            vertical-align: middle;
+        }
+        section article #courses {
+            display: inline-block;
+            width: 70%;
+            margin-right: 5%;
+            vertical-align: middle;
+        }
+            section article #courses ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 100%;
+            }
+                section article #courses ul li {
+                    display: block;
+                    text-align: left;
+                    padding: 10px 0;
+                }
+                    section article #courses ul li a { 
+                        text-decoration: none;
+                        color: black;
+                    }
+                    section article #courses ul li a:hover { 
+                        color: #3C83A7;
+                    }
+                    section article #courses ul li h3 {
+                        display: inline-block;
+                        width: auto;
+                        margin: 0 0 0 15px;
+                        padding: 0;
+                    }
+            .available { 
+                border-left: 5px solid #3C83A7;
+            }
+            .not-available {background-color: #3C83A7; }
+        section article img {
+            width: 20%;
+            vertical-align: middle;
+        }
+        section article .lista-ayudantes{
+            display: inline-block;
+            width: 90%;
+            padding: 20px 5%;
+            background-color: rgba(255,255,255,0.6);
+        }
+            section article .lista-ayudantes ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+                section article .lista-ayudantes ul li {
+                    border-bottom: 2px solid #3C83A7;
+                }
+                    section article .lista-ayudantes ul li div {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: 0;
+                        padding: 0;
+                    }
+                    section article .lista-ayudantes ul li .lista-ayudantes-datos{
+                        width: 70%;
+                        padding: 20px 0;
+                        text-align: left;
+                    }
+                        section article .lista-ayudantes ul li .lista-ayudantes-datos h2 {
+                            font-size: 2em;
+                            margin: 0;
+                        }
+                        section article .lista-ayudantes ul li .lista-ayudantes-datos h3, section article .lista-ayudantes ul li .lista-ayudantes-datos h4 {
+                            font-weight: normal;
+                            margin: 0;
+                        }
+                    section article .lista-ayudantes ul li .lista-ayudantes-accion{
+                        width: 29%;
+                    }
+                        section article .lista-ayudantes ul li .lista-ayudantes-accion input[type="button"] {
+                            background-color: #3C83A7;
+                            cursor: pointer;
+                            color: white;
+                            font-size: 1.2em;
+                            display: block;
+                            width: 100%;
+                            padding: 10px 0;
+                            border: none;
+                            margin-bottom: 7px;
+                            margin-left: 0;
+                        }
+    section .ayudantia-semana {
+        display: block;
+        width: 100%;
+    }
+        section .ayudantia-semana h1{
+            padding-top: 10px;
+            font-size: 2em;
+            text-align: center;
+        }
+        section .ayudantia-semana div {
+            width: 100%;
+            background-color: #3C83A7;
+            padding: 10px 0;
+            text-align: center;
+        }
+            section .ayudantia-semana div i{
+                display: inline-block;
+                color: white;
+                font-size: 5em;
+                cursor: pointer;
+                width: 4%;
+                vertical-align: middle;
+            }
+            section .ayudantia-semana div #semana {
+                display: inline-block;
+                padding: 0 5%;
+                width: 80%;
+                vertical-align: middle;
+            }
+            section .ayudantia-semana div #semana div:first-child {
+                padding-bottom: 13px;
+                border-bottom: 2px solid white;
+            }
+                section .ayudantia-semana div #semana div h3 {
+                    font-weight: normal;
+                }
+                section .ayudantia-semana div #semana div h2, 
+                section .ayudantia-semana div #semana div h3, 
+                section .ayudantia-semana div #semana div p {
+                    margin: 2px;
+                }
+            section .ayudantia-semana div #semana .circle {
+                padding: 0;
+                width: 210px;
+                height: 210px;
+                background: #245166;
+                border-radius: 100%;
+                color: white;
+                display: flex;
+                display: inline-block;
+                cursor: pointer;
+            }
+            section .ayudantia-semana div #semana .circle:first-child {
+                border: none;
+                padding: 0;
+            }
+            section .ayudantia-semana div #semana .circle h2 {
+                margin-top: 80px;
+            }
+                section .ayudantia-semana div #semana .circle h2 a {
+                    color: white;
+                    text-decoration: none;
+                    vertical-align: middle;
+                }
+    section article ul {
+        display: block;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+        section article ul li div{
+            display: inline-block;
+            vertical-align: middle;
+        }   
+        section article ul li div:first-child {
+            width: 70px;
+        }
+            section article ul li div:first-child i {
+                color: #245166;
+                font-size: 3em;
+            }
+            section article ul li div label {
+                font-size: 1.5em;
+                margin-left: 15px;
+            }
+    
+    section article .nueva-semana {
+        text-align: center;
+    }
+    section article .nueva-semana table {
+        display: inline-block;
+        width: 60%;
+    }
+    section article .lista-ayudantes table thead tr th {
+        text-align: left;
+    }
+        section article .lista-ayudantes table thead tr th h1{
+            font-size: 2em;
+            display: inline-block;
+            width: 80%;
+            vertical-align: middle;
+        }
+            section article .lista-ayudantes table thead tr th input[type="button"]{
+                background-color: rgb(153,0,0);
+                display: inline-block;
+                border: none;
+                color: white;
+                padding: 10px 0;
+                margin: 0;
+                width: 19%;
+                vertical-align: middle;                
+                position:relative;
+                border: none;
+                box-shadow: inset 0px 1px 0px rgb(153,100,0), 0px 5px 0px 0px rgb(103,10,0);
+            }
+            section article .lista-ayudantes table thead tr th input[type="button"]:active {
+                top:3px;
+                box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e;
+            }
+    .asistencia {
+        display: inline-block;
+        width: 90%;
+        padding: 20px 5%;
+        background-color: rgba(255,255,255,0.6);
+    }
+        .asistencia table{
+            width: 100%;
+        }
+            .asistencia table thead tr th{
+                width: 33%;
+                text-align: center;
+                border-bottom: 2px solid #3C83A7;
+            }
+            .asistencia table tbody tr td{
+                width: 33%;
+                text-align: center;
+            }
+    section article .lista-ayudantes table tbody tr th{
+        width: 20%;
+        padding-right: 2%;
+        text-align: right;
+    }
+    section article .lista-ayudantes table tbody tr td{
+        width: 78%;
+        text-align: left;
+    }
+        section article .lista-ayudantes table tbody tr td input[type="text"],
+        section article .lista-ayudantes table tbody tr td textarea {
+            display: inline-block;
+            padding: 10px 1%;
+            min-width: 98%;
+            width: 98%;
+        }
+        section article .lista-ayudantes table tbody tr td select {
+            display: inline-block;
+            padding: 10px 0.5%;
+            width: auto;
+            font-size: 1.2em;
+        }
+    section article .info-publica {
+        display: inline-block;
+        width: 100%;
+        background-color: white;
+        text-align: left;
+        padding: 10px 0;
+        border-bottom: 2px solid #3C83A7;
+    }
+        section article .ayudantia {
+            text-align: left;
+            margin: 20px 0;
+        }
+        section article .ayudantia h4, section article .ayudantia h2 {
+            margin: 0;
+            padding: 0;
+        }
+        section article .ayudantia h4 {
+            font-size: 1.3em;
+        }
+        section article .ayudantia h2 {
+            font-size: 2em;
+        }
+        section article .semana {
+            text-align: center;
+            color: #3C83A7;
+        }        
+    .cuestionario {
+        display: inline-block;
+        width: 90%;
+        padding: 20px 5%;
+        background-color: rgba(255,255,255,0.6);
+    }
+        .cuestionario table {
+            display: inline-block;
+            width: 100%;
+        }
+            .cuestionario table thead, .cuestionario table tbody {
+                display: inline-block;
+                width: 100%;
+            }
+            .cuestionario table thead tr, .cuestionario table tbody tr {
+                display: inline-block;
+                width: 100%;
+            }
+            .cuestionario table thead tr th:nth-child(1), .cuestionario table tbody tr td:nth-child(1) {
+                display: inline-block;
+                width: 5%;
+            }
+            .cuestionario table thead tr th:nth-child(2),
+            .cuestionario table thead tr th:nth-child(3),
+            .cuestionario table thead tr th:nth-child(4){
+                text-align: center;
+            }
+            .cuestionario table thead tr th:nth-child(2),
+            .cuestionario table thead tr th:nth-child(3),
+            .cuestionario table thead tr th:nth-child(4),
+            .cuestionario table tbody tr td:nth-child(2),
+            .cuestionario table tbody tr td:nth-child(3),
+            .cuestionario table tbody tr td:nth-child(4){
+                display: inline-block;
+                width: 30%;
+            }
+        
+        
+        
+footer {
+    display: block;
+    padding: 10px 0;
+    background: rgb(96,96,96);
+    color: white;
+    text-align: center;
+}
+    footer h3 {
+        font-size: 0.8em;
+    }
+    
+// Auxiliares
+.postularse {
+    background-color: #3C83A7;
+}
+.fixed-bottom {
+    position: fixed;
+    display: inline-block;
+    width: 100%;
+    bottom: 0;
+}
+#border {
+    border-bottom: 2px solid #3C83A7;
+}
+.edit {
+    float: right;
+    right: 12px;
+}
+.icon {
+    float: right;
+    right: 5px;
+    padding-top: 4px;
+}
+
+#cuestionario {
+    text-align: center;
+    width: 100%;
+}
+    #cuestionario h3 {
+        display: block;
+        font-weight: normal;
+        width: 100%;
+        text-align: left;
+        margin: 0;
+    }
