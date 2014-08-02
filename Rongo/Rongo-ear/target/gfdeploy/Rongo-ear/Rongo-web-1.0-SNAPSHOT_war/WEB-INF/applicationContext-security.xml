@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
  
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:sec="http://www.springframework.org/schema/security"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
                         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
  
     <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
@@ -25,7 +25,7 @@
         <sec:authentication-provider ref="preAuthAuthProvider"/>
     </sec:authentication-manager>
  
-     <bean id="preAuthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+    <bean id="preAuthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
         <property name="preAuthenticatedUserDetailsService">
             <bean id="userDetailsServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
                 <property name="userDetailsService" ref="userService"/>
@@ -66,14 +66,11 @@
         </property>
     </bean>
  
-   <bean id="fsi" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+    <bean id="fsi" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
         <property name="authenticationManager" ref="authenticationManager"/>
         <property name="accessDecisionManager" ref="httpRequestAccessDecisionManager"/>
         <property name="securityMetadataSource">
             <sec:filter-invocation-definition-source>
-                <!--sec:intercept-url pattern="/secure/extreme/**" access="ROLE_SUPERVISOR"/>
-                <sec:intercept-url pattern="/secure/**" access="ROLE_USER"/>
-                <sec:intercept-url pattern="/**" access="ROLE_USER"/-->
                 <sec:intercept-url pattern="/faces/pages/estudiante/getname.jsp" access="ROLE_USER,ROLE_AYUDANTE,ROLE_ADMIN,ROLE_SUPERVISOR"/>
                 <sec:intercept-url pattern="/faces/pages/estudiante/*" access="ROLE_USER"/>
                 <sec:intercept-url pattern="/faces/pages/academico/*" access="ROLE_AYUDANTE"/>
@@ -96,11 +93,9 @@
     <bean id="proxyGrantingTicketStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl" />
  
     <sec:user-service id="userService">
-        <sec:user name="rod" password="rod" authorities="ROLE_SUPERVISOR,ROLE_USER" />
-        <sec:user name="dianne" password="dianne" authorities="ROLE_USER" />
-        <sec:user name="scott" password="scott" authorities="ROLE_USER" />
         <sec:user name="ljramos" password="" authorities="ROLE_USER" />
         <sec:user name="davalbar" password="" authorities="ROLE_USER" />
+        <sec:user name="dschuldt" password="" authorities="ROLE_AYUDANTE" />
         <sec:user name="hcarpio" password="" authorities="ROLE_AYUDANTE" />
     </sec:user-service>
     

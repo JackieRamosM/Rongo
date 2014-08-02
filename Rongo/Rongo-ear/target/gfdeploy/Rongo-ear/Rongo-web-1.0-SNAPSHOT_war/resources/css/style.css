@@ -548,3 +548,7 @@ footer {
         text-align: left;
         margin: 0;
     }
+    
+.details {
+    display: none;
+}

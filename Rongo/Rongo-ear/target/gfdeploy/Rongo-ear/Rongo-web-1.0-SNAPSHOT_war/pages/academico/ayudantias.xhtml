@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Ayudantes - Rongo</title>
@@ -31,59 +32,37 @@
                 <h:link outcome="index"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
                     <h2>ESTRUCTURAS DE DATOS (FIEC03012)</h2>
-                    <h3>Ayudant&iacute;as</h3>
+                    <h3>Ayudant&iacute;as dictadas</h3>
                 </div>
             </header>
+            <article>
+                <br></br>
+                <div class="lista-ayudantes">
+                    <ul>
+                        <li>
+                            <div class="lista-ayudantes-datos">
+                                <h2>Ayudant&iacute;as por semana</h2>
+                            </div>
+                            <div class="lista-ayudantes-accion">
+                                <p:button value="Agregar nueva clase" outcome="nueva"></p:button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <br></br><br></br>
+            </article>
             <div class="ayudantia-semana">
-                <h1>Ayudant&iacute;as Dictadas</h1>
                 <div>
                     <i class="fa fa-angle-left"></i>  
                     <div id="semana">
-                        <div class="circle">
-                            <h2><h:link value="Junio 16 a Junio 20 de 2014" outcome="asistencia"/></h2>
-                        </div>
-                        <div class="circle">
-                            <h2><h:link value="Junio 23 a Junio 27 de 2014" outcome="asistencia"/></h2>
-                        </div>
-                        <div class="circle">
-                            <h2><h:link value="Agregar nueva semana" outcome="nueva"/></h2>
-                        </div>
+                        <p:commandButton actionListener="#{details.buscar()}" update=":detailscontent" value="Junio 16 a Junio 20 de 2014" styleClass="circle" ></p:commandButton>
                     </div>
                     <i class="fa fa-angle-right"></i>
                 </div>
             </div>
-            <article>
+            <article class="details">
                 <h1>Detalles:</h1>
-                <!--div class="lista-ayudantes">
-                    <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Lunes 23 de Junio de 2014</h2>
-                                <h4>Horario: 11:30 - 13:30</h4>
-                                <h4>&Aacute;rboles y grafos.</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Ver asistencia" outcome="asistencia"></h:button>
-                                <h:button value="Modificar" outcome="nueva"></h:button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Mi&eacute;rcoles 25 de Junio de 2014</h2>
-                                <h4>Horario: 11:30 - 13:30</h4>
-                                <h4>&Aacute;rboles y grafos.</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Ver asistencia" outcome="asistencia"></h:button>
-                                <h:button value="Modificar" outcome="nueva"></h:button>
-                            </div>
-                        </li>
-                    </ul>
-                </div-->
-                
                 <f:view>
-
-
                     <h:form>
                         <h1><h:outputText value="List"/></h1>
                         <p:dataTable value="#{claseBean.clases}" var="item">
@@ -138,14 +117,30 @@
                         </p:dataTable>
                     </h:form>
                 </f:view>
-
-
+                <!--<p:outputPanel id="detailscontent" styleClass="lista-ayudantes">
+                    <ul>
+                        <ui:repeat var="d" value="#{details.detailsList}" varStatus="status">
+                            <li>
+                                <div class="lista-ayudantes-datos">
+                                    <h2>d.date</h2>
+                                    <h4>d.schedule</h4>
+                                    <h4>d.description</h4>
+                                </div>
+                                <div class="lista-ayudantes-accion">
+                                    <p:button value="Ver asistencia" outcome="asistencia"></p:button>
+                                    <p:button value="Modificar" outcome="nueva"></p:button>
+                                </div>
+                            </li>
+                        </ui:repeat>
+                    </ul>
+                </p:outputPanel>-->
             </article>
         </section>
-        <footer>
+        <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
+        <h:outputScript name="js/academico_ayudantias.js" />
     </h:body>  
 </html>
