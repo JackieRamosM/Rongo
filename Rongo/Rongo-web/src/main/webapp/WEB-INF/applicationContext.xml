@@ -14,7 +14,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
 
- 
+
  <sec:authentication-manager alias="authenticationManager">
         <sec:authentication-provider ref="preAuthAuthProvider"/>
     </sec:authentication-manager>
@@ -27,8 +27,9 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
             <sec:filter-chain pattern="/**" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
         </sec:filter-chain-map>
     </bean>
-    <bean id="sif" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
-         
+    <bean id="sif" class="org.springframework.security.web.authentication.Aucontext.SecurityContextPersistenceFilter"/>
+       <bean id="myAuthenticationSuccessHandler"
+        class="org.​springframework.​security.​web.​authentication.AuthenticationSuccessHandler" />  
     <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator" id="ticketValidator">
         <constructor-arg index="0" value="https://auth.espol.edu.ec/" />
         <property name="proxyGrantingTicketStorage" ref="proxyGrantingTicketStorage" />
@@ -88,7 +89,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
             </bean>
         </property>
     </bean>
-    
+    <bean id="securityContextHolderAwareRequestFilter" class="org.springframework.security.wrapper.SecurityContextHolderAwareRequestFilter"/>
     <bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter"/>
     <bean id="httpRequestAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
         <property name="allowIfAllAbstainDecisions" value="false"/>

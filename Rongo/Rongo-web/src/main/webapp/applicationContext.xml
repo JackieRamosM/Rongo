@@ -24,12 +24,16 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
     <sec:form-login login-page="/login" default-target-url="/default"/>
 </sec:http>
 -->
+
+<bean id="securityContextHolderAwareRequestFilter" class="org.springframework.security.wrapper.SecurityContextHolderAwareRequestFilter" />
+
+
     <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
         <sec:filter-chain-map path-type="ant">
             <sec:filter-chain pattern="/" filters="casValidationFilter, wrappingFilter" />
             <sec:filter-chain pattern="/secure/receptor" filters="casValidationFilter" />
             <sec:filter-chain pattern="/j_spring_security_logout" filters="logoutFilter,etf,fsi" />
-            <sec:filter-chain pattern="/**" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+            <sec:filter-chain pattern="/**" filters="casAuthenticationFilter,securityContextHolderAwareRequestFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
         </sec:filter-chain-map>
     </bean>
     <bean id="sif" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
