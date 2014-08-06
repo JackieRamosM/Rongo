@@ -16,7 +16,7 @@
             <h2>Rongo</h2>
             <div>
                 <h5>Bienvenido(a), #{name}</h5>
-                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+                <a href="../logout.jsp">Cerrar Sesi&oacute;n</a>
             </div>
         </header>
         <nav>
@@ -30,53 +30,9 @@
         <section>
             <article>
                 <h1 class="header">SUPERVISORES<i class="fa fa-male icon"></i></h1>
+                <p:button value="Agregar Supervisor" outcome="supervisor"></p:button>
                 <div class="lista-ayudantes">
                     <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>MSc. Nombre Apellido</h2>
-                                <h4>napellido@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Remover"></h:button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>MSc. Nombre Apellido</h2>
-                                <h4>napellido@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Remover"></h:button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>MSc. Nombre Apellido</h2>
-                                <h4>napellido@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Remover"></h:button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>MSc. Nombre Apellido</h2>
-                                <h4>napellido@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Remover"></h:button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>MSc. Nombre Apellido</h2>
-                                <h4>napellido@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Remover"></h:button>
-                            </div>
-                        </li>
                         <li>
                             <div class="lista-ayudantes-datos">
                                 <h2>MSc. Nombre Apellido</h2>
@@ -90,7 +46,7 @@
                 </div>
             </article>
         </section>
-        <footer>
+        <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />

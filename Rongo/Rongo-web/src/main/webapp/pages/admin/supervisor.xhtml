@@ -5,9 +5,7 @@
     xmlns:f="http://java.sun.com/jsf/core"  
     xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Supervisores - Rongo</title>
-        <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
-        <h:outputStylesheet name="css/primeui-1.0-min.css"/>
+        <title>Nueva ayudantía - Rongo</title>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
         <h:outputStylesheet name="css/style.css"/>
     </h:head>  
@@ -28,28 +26,31 @@
             </ul>
         </nav>
         <section>
+            <header>
+                <h:link outcome="supervisores"><i class="fa fa-arrow-circle-o-left"></i></h:link>
+                <div>
+                    <h2>Agregar Supervisor:</h2>
+                </div>
+                <br/><br/><br/><br/>
+            </header>
             <article>
-                <h1 class="header">SUPERVISORES<i class="fa fa-male icon"></i></h1>
-                <p:button value="Agregar Supervisor" outcome="supervisor"></p:button>
                 <div class="lista-ayudantes">
-                    <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>MSc. Nombre Apellido</h2>
-                                <h4>napellido@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Remover"></h:button>
-                            </div>
-                        </li>
-                    </ul>
+                    
+                    <f:view>
+                        <h:form>
+                            <h:commandButton action="#{supervisorBean.insertSupervisor()}"></h:commandButton>
+                            
+                        </h:form>
+                    </f:view>
+
+                    
+                    
                 </div>
             </article>
         </section>
         <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
-        <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
     </h:body>  
 </html>

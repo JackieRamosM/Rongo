@@ -93,7 +93,7 @@
     <bean id="proxyGrantingTicketStorage" class="org.jasig.cas.client.proxy.ProxyGrantingTicketStorageImpl" />
  
     <sec:user-service id="userService">
-        <sec:user name="ljramos" password="" authorities="ROLE_USER" />
+        <sec:user name="ljramos" password="" authorities="ROLE_ADMIN" />
         <sec:user name="davalbar" password="" authorities="ROLE_USER" />
         <sec:user name="dschuldt" password="" authorities="ROLE_AYUDANTE" />
         <sec:user name="hcarpio" password="" authorities="ROLE_AYUDANTE" />
@@ -115,5 +115,6 @@
  
     <bean id="wrappingFilter" class="org.jasig.cas.client.util.HttpServletRequestWrapperFilter" />
     
+   
     
 </beans>
