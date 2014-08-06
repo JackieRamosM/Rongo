@@ -9,6 +9,7 @@ package app.rongo.beans;
 import app.rongo.facade.SupervisorFacadeLocal;
 import app.rongo.persistence.Supervisor;
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -21,29 +22,43 @@ import javax.inject.Named;
 @SessionScoped
 public class SupervisorBean implements Serializable {
     @EJB
-    private SupervisorFacadeLocal supervisorFacade;
+    private SupervisorFacadeLocal supervisorFacade ;
     private Supervisor supervisor;
-    
-    
-
+   
     /**
      * Creates a new instance of SupervisorBean
      */
     public SupervisorBean() {
+        
+               
+    }
+    
+    @PostConstruct
+    public void init(){
+        this.supervisor = new Supervisor();
     }
     
     public void setSupervisores(){
-        supervisor = new Supervisor(new Integer("10"), "Liliana", "Ramos", 921886743, "lramos", true);
-        /*supervisor.setIdsupervisor(new Integer(10));
-        supervisor.setNombre("Liliana");
-        supervisor.setApellido("Ramos");
-        supervisor.setCedula(new Integer(921886743));
-        supervisor.setCorreo("lramos");
-        //supervisor.setIdcuestionario(null);*/
-       // supervisor.setActivo(true);
-        
-        //supervisor.setAyudantiaList(null);
-        
-        supervisorFacade.create(supervisor);
+        //supervisor = new Supervisor(Integer.SIZE, getNombre(), getApellido(), getCedula(), getCorreo(), true);
+        getSupervisor().setIdsupervisor(Integer.SIZE);
+        getSupervisor().setActivo(true);
+        getSupervisorFacade().create(supervisor);
     }
+
+    public SupervisorFacadeLocal getSupervisorFacade() {
+        return supervisorFacade;
+    }
+
+    public void setSupervisorFacade(SupervisorFacadeLocal supervisorFacade) {
+        this.supervisorFacade = supervisorFacade;
+    }
+
+    public Supervisor getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor) {
+        this.supervisor = supervisor;
+    }
+    
 }
