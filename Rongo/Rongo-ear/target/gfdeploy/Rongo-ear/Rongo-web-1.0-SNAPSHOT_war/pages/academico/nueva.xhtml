@@ -13,7 +13,7 @@
             <h2>Rongo</h2>
             <div>
                 <h5>Bienvenido(a), #{name}</h5>
-                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+                <a href="../logout.jsp">Cerrar Sesi&oacute;n</a>
             </div>
         </header>
         <nav>
@@ -40,37 +40,17 @@
                     <h2>Junio 30 a Julio 4 de 2014</h2>
                 </div>
                 <div class="lista-ayudantes nueva-semana">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>D&iacute;a:</th>
-                                <td>
-                                    <p:calendar value="#{calendarView.date1}" pattern="MM/dd/yyyy"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Inicio:</th>
-                                <td>
-                                    <p:calendar id="time1" value="#{calendarView.date2}" pattern="HH:mm a" timeOnly="true"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Fin:</th>
-                                <td>
-                                    <p:calendar id="time2" value="#{calendarView.date3}" pattern="HH:mm a" timeOnly="true"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Descripci&oacute;n: </th>
-                                <td>
-                                    <p:inputTextarea></p:inputTextarea>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <h:button value="Guardar"></h:button>
+                    <h:form id="form">
+                        <h:outputLabel for="dia" value="D&iacute;a:" />
+                        <p:calendar id="dia" value="#{calendarView.date1}" pattern="MM/dd/yyyy" required="true"/>
+                        <h:outputLabel for="inicio" value="Inicio:" />
+                        <p:calendar id="inicio" value="#{calendarView.date2}" pattern="HH:mm a" timeOnly="true" required="true"/>
+                        <h:outputLabel for="fin" value="Fin:" />
+                        <p:calendar id="fin" value="#{calendarView.date3}" pattern="HH:mm a" timeOnly="true" required="true"/>
+                        <h:outputLabel for="descripcion" value="Descripci&oacute;n:" />
+                        <p:inputTextarea id="descripcion" required="true"></p:inputTextarea>
+                        <h:button value="Guardar"></h:button>
+                    </h:form>
                 </div>
             </article>
         </section>

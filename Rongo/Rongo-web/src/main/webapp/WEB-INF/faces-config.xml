@@ -192,5 +192,5 @@
             <to-flow-document-id />
         </navigation-case>
     </navigation-rule>
-    
+
 </faces-config>

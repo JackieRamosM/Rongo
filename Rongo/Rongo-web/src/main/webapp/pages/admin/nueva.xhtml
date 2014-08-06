@@ -14,7 +14,7 @@
             <h2>Rongo</h2>
             <div>
                 <h5>Bienvenido(a), #{name}</h5>
-                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+                <a href="../logout.jsp">Cerrar Sesi&oacute;n</a>
             </div>
         </header>
         <nav>
@@ -35,77 +35,41 @@
             </header>
             <article>
                 <div class="lista-ayudantes">
-                    <table>
-                        <tbody>
-                            <tr>
-                                <th>Nombre de la ayuidant&iacute;a:</th>
-                                <td>
-                                    <p:selectOneMenu value="#{nuevaAyudantiaView.ayudantia}">  
-                                        <f:selectItem itemLabel="Seleccione la ayudant&iacute;a" itemValue="" />  
-                                        <f:selectItem itemLabel="Ingenier&iacute;a de Software II" itemValue="FIEC03053"/>  
-                                        <f:selectItem itemLabel="Procesamiento Digital de Im&aacute;genes" itemValue="FIEC054391"/>  
-                                        <f:selectItem itemLabel="Procesamiento de Audio y Video" itemValue="FIEC054131" />  
-                                    </p:selectOneMenu>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Horas requeridas:</th>
-                                <td>
-                                    <p:selectOneMenu value="#{nuevaAyudantiaView.horas}">
-                                        <f:selectItem itemValue="5" itemLabel="5 horas" />
-                                        <f:selectItem itemValue="10" itemLabel="10 horas" />
-                                        <f:selectItem itemValue="15" itemLabel="15 horas" />
-                                        <f:selectItem itemValue="20" itemLabel="20 horas" />
-                                    </p:selectOneMenu>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Requisitos:</th>
-                                <td>
-                                    <p:inputTextarea value="#{nuevaAyudantiaView.requisitos}"></p:inputTextarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Descripci&oacute;n:</th>
-                                <td>
-                                    <p:inputTextarea value="#{nuevaAyudantiaView.descripcion}"></p:inputTextarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Vigente desde:</th>
-                                <td>
-                                    <p:calendar id="date1" value="#{nuevaAyudantiaView.desde}" pattern="MM/dd/yyyy"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Vigente hasta:</th>
-                                <td>
-                                    <p:calendar id="date2" value="#{nuevaAyudantiaView.hasta}" pattern="MM/dd/yyyy"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Supervisor:</th>
-                                <td>
-                                    <p:selectOneMenu value="#{nuevaAyudantiaView.supervisor}">
-                                        <f:selectItem itemValue="" itemLabel="Elija un supervisor" />
-                                        <f:selectItem itemValue="0" itemLabel="Supervisor 1" />
-                                        <f:selectItem itemValue="1" itemLabel="Supervisor 2" />
-                                        <f:selectItem itemValue="2" itemLabel="Supervisor 3" />
-                                    </p:selectOneMenu>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Email:</th>
-                                <td>
-                                    <p:inputText value="#{nuevaAyudantiaView.email}"></p:inputText>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <h:button value="Cancelar" outcome="ofertas"></h:button>
-                    <h:button value="Ofertar"></h:button>
+                    <h:form styleClass="form">
+                        <h:outputLabel for="nombre" value="Nombre de la ayuidant&iacute;a:" />
+                        <p:selectOneMenu id="nombre" value="#{nuevaAyudantiaView.ayudantia}">  
+                            <f:selectItem itemLabel="Seleccione la ayudant&iacute;a" itemValue="" />  
+                            <f:selectItem itemLabel="Ingenier&iacute;a de Software II" itemValue="FIEC03053"/>  
+                            <f:selectItem itemLabel="Procesamiento Digital de Im&aacute;genes" itemValue="FIEC054391"/>  
+                            <f:selectItem itemLabel="Procesamiento de Audio y Video" itemValue="FIEC054131" />  
+                        </p:selectOneMenu><br></br>
+                        <h:outputLabel for="horas" value="Horas requeridas:" />
+                        <p:selectOneMenu id="horas" value="#{nuevaAyudantiaView.horas}">
+                            <f:selectItem itemValue="5" itemLabel="5 horas" />
+                            <f:selectItem itemValue="10" itemLabel="10 horas" />
+                            <f:selectItem itemValue="15" itemLabel="15 horas" />
+                            <f:selectItem itemValue="20" itemLabel="20 horas" />
+                        </p:selectOneMenu><br></br>
+                        <h:outputLabel for="requisitos" value="Requisitos:" />
+                        <p:inputTextarea id="requisitos" value="#{nuevaAyudantiaView.requisitos}"></p:inputTextarea><br></br>
+                        <h:outputLabel for="descripcion" value="Descripci&oacute;n:" />
+                        <p:inputTextarea id="descripcion" value="#{nuevaAyudantiaView.descripcion}"></p:inputTextarea><br></br>
+                        <h:outputLabel for="desde" value="Vigente desde:" />
+                        <p:calendar id="desde" value="#{nuevaAyudantiaView.desde}" pattern="MM/dd/yyyy"/><br></br>
+                        <h:outputLabel for="hasta" value="Vigente hasta:" />
+                        <p:calendar id="hasta" value="#{nuevaAyudantiaView.hasta}" pattern="MM/dd/yyyy"/><br></br>
+                        <h:outputLabel for="supervisor" value="Supervisor:" />
+                        <p:selectOneMenu id="supervisor" value="#{nuevaAyudantiaView.supervisor}">
+                            <f:selectItem itemValue="" itemLabel="Elija un supervisor" />
+                            <f:selectItem itemValue="0" itemLabel="Supervisor 1" />
+                            <f:selectItem itemValue="1" itemLabel="Supervisor 2" />
+                            <f:selectItem itemValue="2" itemLabel="Supervisor 3" />
+                        </p:selectOneMenu><br></br>
+                        <h:outputLabel for="email" value="Email:" />
+                        <p:inputText id="email" value="#{nuevaAyudantiaView.email}"></p:inputText><br></br>
+                        <p:button value="Cancelar" outcome="ofertas"></p:button>
+                        <p:button value="Ofertar"></p:button>
+                    </h:form>
                 </div>
             </article>
         </section>

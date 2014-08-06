@@ -17,7 +17,7 @@
             <h2>Rongo</h2>
             <div>
                 <h5>Bienvenido(a), #{name}</h5>
-                <a href="https://auth.espol.edu.ec/logout?destination=http://localhost:8080/Rongo-web">Cerrar Sesi&oacute;n</a>
+                <a href="../logout.jsp">Cerrar Sesi&oacute;n</a>
             </div>
         </header>
         <nav>
@@ -55,13 +55,18 @@
                 <div>
                     <i class="fa fa-angle-left"></i>  
                     <div id="semana">
-                        <!--p:commandButton actionListener="#{details.buscar()}" update=":detailscontent" value="Junio 16 a Junio 20 de 2014" styleClass="circle" ></p:commandButton-->
+
+                      
+
+                        <p:commandButton  value="Junio 16 a Junio 20 de 2014" styleClass="circle" ></p:commandButton>
+
                     </div>
                     <i class="fa fa-angle-right"></i>
                 </div>
             </div>
             <article class="details">
                 <h1>Detalles:</h1>
+
                 
                 
                 <f:view>
@@ -120,26 +125,7 @@
                     </h:form>
                 </f:view>
 
-                
-                
-                
-                <!--<p:outputPanel id="detailscontent" styleClass="lista-ayudantes">
-                    <ul>
-                        <ui:repeat var="d" value="#{details.detailsList}" varStatus="status">
-                            <li>
-                                <div class="lista-ayudantes-datos">
-                                    <h2>d.date</h2>
-                                    <h4>d.schedule</h4>
-                                    <h4>d.description</h4>
-                                </div>
-                                <div class="lista-ayudantes-accion">
-                                    <p:button value="Ver asistencia" outcome="asistencia"></p:button>
-                                    <p:button value="Modificar" outcome="nueva"></p:button>
-                                </div>
-                            </li>
-                        </ui:repeat>
-                    </ul>
-                </p:outputPanel>-->
+                <br></br><br></br>
             </article>
         </section>
         <footer class="fixed-bottom">

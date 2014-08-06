@@ -10,13 +10,9 @@
     <%
         session.setAttribute("name",request.getRemoteUser());
         session.setAttribute("status",new Integer(1));
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setDateHeader("Expires", -1); // Proxies.
         response.sendRedirect("faces/pages/estudiante/index.xhtml");
-        %>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+    %>
 </html>
