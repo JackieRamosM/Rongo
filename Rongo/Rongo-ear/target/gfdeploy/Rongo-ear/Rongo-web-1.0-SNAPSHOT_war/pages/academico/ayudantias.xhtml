@@ -59,9 +59,6 @@
 
                         <p:commandButton  value="Junio 16 a Junio 20 de 2014" styleClass="circle" ></p:commandButton>
 
-
-                        <p:commandButton update="detailscontent" value="Junio 16 a Junio 20 de 2014" styleClass="circle" ></p:commandButton>
-
                     </div>
                     <i class="fa fa-angle-right"></i>
                 </div>
@@ -69,89 +66,65 @@
             <article class="details">
                 <h1>Detalles:</h1>
 
-
-                
-                
                 <f:view>
+
+
                     <h:form>
                         <h1><h:outputText value="List"/></h1>
-                        <h:dataTable value="#{claseBean.clases}" var="item">
-                            <h:column>
+                        <p:dataTable value="#{claseBean.clases}" var="item">
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Idclase"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idclase}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Horaini"/>
                                 </f:facet>
                                 <h:outputText value="#{item.horaini}">
                                     <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                                 </h:outputText>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Horafin"/>
                                 </f:facet>
                                 <h:outputText value="#{item.horafin}">
                                     <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
                                 </h:outputText>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Descripcion"/>
                                 </f:facet>
                                 <h:outputText value="#{item.descripcion}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Fecha"/>
                                 </f:facet>
                                 <h:outputText value="#{item.fecha}">
                                     <f:convertDateTime pattern="MM/dd/yyyy" />
                                 </h:outputText>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Dioclase"/>
                                 </f:facet>
                                 <h:outputText value="#{item.dioclase}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText value="Idayudantia"/>
                                 </f:facet>
                                 <h:outputText value="#{item.idayudantia}"/>
-                            </h:column>
-                        </h:dataTable>
+                            </p:column>
+                        </p:dataTable>
                     </h:form>
                 </f:view>
 
-
-                <p:outputPanel id="detailscontent" styleClass="lista-ayudantes">
-                    <ul>
-                        <ui:repeat var="o" value="#{claseBean.clases}" varStatus="status">
-                            <li>
-                                <div class="lista-ayudantes-datos">
-                                    <h:outputText value="#{o.horaini}">
-                                        <f:convertDateTime pattern="HH:mm:ss" />
-                                    </h:outputText>
-                                    <h:outputText value="#{o.horafin}">
-                                        <f:convertDateTime pattern="HH:mm:ss" />
-                                    </h:outputText>
-                                    <h:outputText value="#{o.descripcion}"/>
-                                </div>
-                                <div class="lista-ayudantes-accion">
-                                    <p:button value="Ver asistencia" outcome="asistencia"></p:button>
-                                    <p:button value="Modificar" outcome="nueva"></p:button>
-                                </div>
-                            </li>
-                        </ui:repeat>
-                    </ul>
-                </p:outputPanel>
-
-                <br></br><br></br>
+                 <br></br><br></br>
             </article>
         </section>
         <footer class="fixed-bottom">
