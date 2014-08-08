@@ -10,14 +10,14 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -29,37 +29,26 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Asistencia.findAll", query = "SELECT a FROM Asistencia a"),
-    @NamedQuery(name = "Asistencia.findByIdasistencia", query = "SELECT a FROM Asistencia a WHERE a.idasistencia = :idasistencia"),
-    @NamedQuery(name = "Asistencia.findByAsistenciacol", query = "SELECT a FROM Asistencia a WHERE a.asistenciacol = :asistenciacol")})
+    @NamedQuery(name = "Asistencia.findByIdasistencia", query = "SELECT a FROM Asistencia a WHERE a.idasistencia = :idasistencia")})
 public class Asistencia implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idasistencia")
     private Integer idasistencia;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "asistenciacol")
-    private String asistenciacol;
-    @JoinColumn(name = "estudianteusuario", referencedColumnName = "Usuario")
-    @ManyToOne(optional = false)
-    private Estudiante estudianteusuario;
     @JoinColumn(name = "idclase", referencedColumnName = "idclase")
     @ManyToOne(optional = false)
     private Clase idclase;
+    @JoinColumn(name = "idestudiante", referencedColumnName = "idUsuario")
+    @ManyToOne(optional = false)
+    private Estudiante idestudiante;
 
     public Asistencia() {
     }
 
     public Asistencia(Integer idasistencia) {
         this.idasistencia = idasistencia;
-    }
-
-    public Asistencia(Integer idasistencia, String asistenciacol) {
-        this.idasistencia = idasistencia;
-        this.asistenciacol = asistenciacol;
     }
 
     public Integer getIdasistencia() {
@@ -70,28 +59,20 @@ public class Asistencia implements Serializable {
         this.idasistencia = idasistencia;
     }
 
-    public String getAsistenciacol() {
-        return asistenciacol;
-    }
-
-    public void setAsistenciacol(String asistenciacol) {
-        this.asistenciacol = asistenciacol;
-    }
-
-    public Estudiante getEstudianteusuario() {
-        return estudianteusuario;
-    }
-
-    public void setEstudianteusuario(Estudiante estudianteusuario) {
-        this.estudianteusuario = estudianteusuario;
-    }
-
     public Clase getIdclase() {
         return idclase;
     }
 
     public void setIdclase(Clase idclase) {
         this.idclase = idclase;
+    }
+
+    public Estudiante getIdestudiante() {
+        return idestudiante;
+    }
+
+    public void setIdestudiante(Estudiante idestudiante) {
+        this.idestudiante = idestudiante;
     }
 
     @Override

@@ -35,7 +35,7 @@
             </header>
             <article>
                 <div class="lista-ayudantes">
-                    
+                    #{supervisorBean.init()}
                     <f:view>
                         <h:form>
                         <p:outputLabel for="nombres" value="Nombres:" />
@@ -51,7 +51,7 @@
                         <h:commandButton value="Agregar Supervisor" action="#{supervisorBean.setSupervisores()}"></h:commandButton>
                         </h:form>
                     </f:view>
-
+              
                     
                     
                 </div>

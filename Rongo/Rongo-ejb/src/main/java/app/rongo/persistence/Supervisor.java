@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -42,8 +44,8 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Supervisor implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "idsupervisor")
     private Integer idsupervisor;
     @Basic(optional = false)
@@ -58,8 +60,9 @@ public class Supervisor implements Serializable {
     private String apellido;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 10)
     @Column(name = "cedula")
-    private int cedula;
+    private String cedula;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -84,7 +87,7 @@ public class Supervisor implements Serializable {
         this.idsupervisor = idsupervisor;
     }
 
-    public Supervisor(Integer idsupervisor, String nombre, String apellido, int cedula, String correo, boolean activo) {
+    public Supervisor(Integer idsupervisor, String nombre, String apellido, String cedula, String correo, boolean activo) {
         this.idsupervisor = idsupervisor;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -117,11 +120,11 @@ public class Supervisor implements Serializable {
         this.apellido = apellido;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 

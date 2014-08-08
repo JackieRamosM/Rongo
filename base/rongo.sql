@@ -25,15 +25,14 @@ DROP TABLE IF EXISTS `asistencia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `asistencia` (
-  `idasistencia` int(11) NOT NULL,
+  `idasistencia` int(11) NOT NULL AUTO_INCREMENT,
   `idclase` int(11) NOT NULL,
-  `estudianteusuario` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `asistenciacol` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `idestudiante` int(11) NOT NULL,
   PRIMARY KEY (`idasistencia`),
-  KEY `idclase_idx` (`idclase`),
-  KEY `estudianteusuario` (`estudianteusuario`),
-  CONSTRAINT `idclase` FOREIGN KEY (`idclase`) REFERENCES `clase` (`idclase`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `estudianteusuario` FOREIGN KEY (`estudianteusuario`) REFERENCES `estudiante` (`Usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `estudianteusuario` (`idestudiante`),
+  KEY `asistenciaEstudiante_idx` (`idclase`),
+  CONSTRAINT `asistenciaEstudiante` FOREIGN KEY (`idestudiante`) REFERENCES `estudiante` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `asistenciaClase` FOREIGN KEY (`idclase`) REFERENCES `clase` (`idclase`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,16 +53,16 @@ DROP TABLE IF EXISTS `ayudante`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ayudante` (
-  `idayudante` int(11) NOT NULL,
+  `idayudante` int(11) NOT NULL AUTO_INCREMENT,
   `idayudantia` int(11) NOT NULL,
-  `estudianteusuario` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `idEstudiante` int(11) NOT NULL,
   `fechaayudante` date DEFAULT NULL,
   `observacion` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`idayudante`),
-  KEY `idayudantia_idx` (`idayudantia`),
-  KEY `estudianteusuario2` (`estudianteusuario`),
-  CONSTRAINT `idayudantia2` FOREIGN KEY (`idayudantia`) REFERENCES `ayudantia` (`idayudantia`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `estudianteusuario2` FOREIGN KEY (`estudianteusuario`) REFERENCES `estudiante` (`Usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `ayudanteAyudantia_idx` (`idayudantia`),
+  KEY `estudianteAyudantia_idx` (`idEstudiante`),
+  CONSTRAINT `estudianteAyudantia` FOREIGN KEY (`idEstudiante`) REFERENCES `estudiante` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ayudanteAyudantia` FOREIGN KEY (`idayudantia`) REFERENCES `ayudantia` (`idayudantia`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -84,14 +83,14 @@ DROP TABLE IF EXISTS `ayudantia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ayudantia` (
-  `idayudantia` int(11) NOT NULL,
+  `idayudantia` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
   `tipodeayudantia` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `idsupervisor` int(11) NOT NULL,
   PRIMARY KEY (`idayudantia`),
   KEY `idsupervisor_idx` (`idsupervisor`),
-  CONSTRAINT `idsupervisor` FOREIGN KEY (`idsupervisor`) REFERENCES `supervisor` (`idsupervisor`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  CONSTRAINT `ayudantiaSupervisor` FOREIGN KEY (`idsupervisor`) REFERENCES `supervisor` (`idsupervisor`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +111,7 @@ DROP TABLE IF EXISTS `ayudantiasofertadas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ayudantiasofertadas` (
-  `idayudantiasofertadas` int(11) NOT NULL,
+  `idayudantiasofertadas` int(11) NOT NULL AUTO_INCREMENT,
   `cargasemanal` int(11) NOT NULL,
   `requisitos` varchar(1000) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
@@ -122,7 +121,7 @@ CREATE TABLE `ayudantiasofertadas` (
   `tipodeayudantia` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idayudantiasofertadas`),
   KEY `idsuprvisor_idx` (`idsupervisor`),
-  CONSTRAINT `idsuprvisor` FOREIGN KEY (`idsupervisor`) REFERENCES `supervisor` (`idsupervisor`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `ofertadasSupervisor` FOREIGN KEY (`idsupervisor`) REFERENCES `supervisor` (`idsupervisor`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -143,11 +142,11 @@ DROP TABLE IF EXISTS `camposcuestionario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `camposcuestionario` (
-  `idcamposcuestionario` int(11) NOT NULL,
+  `idcamposcuestionario` int(11) NOT NULL AUTO_INCREMENT,
   `idvalordesempeno` int(11) NOT NULL,
   PRIMARY KEY (`idcamposcuestionario`),
   KEY `idvalordeldesempeno_idx` (`idvalordesempeno`),
-  CONSTRAINT `idvalordeldesempeno` FOREIGN KEY (`idvalordesempeno`) REFERENCES `valordeldesempeno` (`idvalordeldesempeno`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `camposDesepeno` FOREIGN KEY (`idvalordesempeno`) REFERENCES `valordeldesempeno` (`idvalordeldesempeno`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -168,7 +167,7 @@ DROP TABLE IF EXISTS `clase`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `clase` (
-  `idclase` int(11) NOT NULL,
+  `idclase` int(11) NOT NULL AUTO_INCREMENT,
   `horaini` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `horafin` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `descripcion` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -177,8 +176,8 @@ CREATE TABLE `clase` (
   `dioclase` bit(1) DEFAULT NULL,
   PRIMARY KEY (`idclase`),
   KEY `idayudantia_idx` (`idayudantia`),
-  CONSTRAINT `idayudantia` FOREIGN KEY (`idayudantia`) REFERENCES `ayudantia` (`idayudantia`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  CONSTRAINT `claseAyudantia` FOREIGN KEY (`idayudantia`) REFERENCES `ayudantia` (`idayudantia`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -199,14 +198,14 @@ DROP TABLE IF EXISTS `cuestionario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cuestionario` (
-  `idcuestionario` int(11) NOT NULL,
+  `idcuestionario` int(11) NOT NULL AUTO_INCREMENT,
   `tipocuestionario` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
   `ruta` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `idcamposcuestionario` int(11) NOT NULL,
   PRIMARY KEY (`idcuestionario`),
   KEY `idcamposcuestionario_idx` (`idcamposcuestionario`),
-  CONSTRAINT `idcamposcuestionario` FOREIGN KEY (`idcamposcuestionario`) REFERENCES `camposcuestionario` (`idcamposcuestionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `cuestionarioCampos` FOREIGN KEY (`idcamposcuestionario`) REFERENCES `camposcuestionario` (`idcamposcuestionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -227,7 +226,7 @@ DROP TABLE IF EXISTS `curriculum`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `curriculum` (
-  `idcurriculum` int(11) NOT NULL,
+  `idcurriculum` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `archivo` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`idcurriculum`)
@@ -258,11 +257,12 @@ CREATE TABLE `estudiante` (
   `idcurriculum` int(11) NOT NULL,
   `idcuestionario` int(11) NOT NULL,
   `admin` bit(1) DEFAULT NULL,
-  PRIMARY KEY (`Usuario`),
+  `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`idUsuario`),
   KEY `idcurriculum_idx` (`idcurriculum`),
   KEY `idcuestionario_idx` (`idcuestionario`),
-  CONSTRAINT `idcurriculum` FOREIGN KEY (`idcurriculum`) REFERENCES `curriculum` (`idcurriculum`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `idcuestionario` FOREIGN KEY (`idcuestionario`) REFERENCES `cuestionario` (`idcuestionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `estudianteCuestionario` FOREIGN KEY (`idcuestionario`) REFERENCES `cuestionario` (`idcuestionario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `estudianteCurriculum` FOREIGN KEY (`idcurriculum`) REFERENCES `curriculum` (`idcurriculum`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -283,17 +283,17 @@ DROP TABLE IF EXISTS `supervisor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `supervisor` (
-  `idsupervisor` int(11) NOT NULL,
+  `idsupervisor` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `apellido` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `cedula` int(11) NOT NULL,
+  `cedula` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `correo` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `idcuestionario` int(11) DEFAULT NULL,
   `activo` bit(1) NOT NULL,
   PRIMARY KEY (`idsupervisor`),
-  KEY `idcuestionario_idx` (`idcuestionario`),
-  CONSTRAINT `idcuest` FOREIGN KEY (`idcuestionario`) REFERENCES `cuestionario` (`idcuestionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+  KEY `supervisorCuestionario_idx` (`idcuestionario`),
+  CONSTRAINT `supervisorCuestionario` FOREIGN KEY (`idcuestionario`) REFERENCES `cuestionario` (`idcuestionario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -302,7 +302,7 @@ CREATE TABLE `supervisor` (
 
 LOCK TABLES `supervisor` WRITE;
 /*!40000 ALTER TABLE `supervisor` DISABLE KEYS */;
-INSERT INTO `supervisor` VALUES (1,'Sixto','Garcia',912456378,'sgarcia',NULL,'');
+INSERT INTO `supervisor` VALUES (1,'Sixto','Garcia','912456378','sgarcia',NULL,''),(34,'Liliana ','Ramos','0921886743','ljramos@espol.edu.ec',NULL,'');
 /*!40000 ALTER TABLE `supervisor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +314,7 @@ DROP TABLE IF EXISTS `valordeldesempeno`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `valordeldesempeno` (
-  `idvalordeldesempeno` int(11) NOT NULL,
+  `idvalordeldesempeno` int(11) NOT NULL AUTO_INCREMENT,
   `criterio` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `calificacion` int(11) DEFAULT NULL,
   `observacion` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -340,4 +340,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-08-06  0:33:01
+-- Dump completed on 2014-08-07 23:01:36

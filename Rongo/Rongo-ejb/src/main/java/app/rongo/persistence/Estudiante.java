@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -37,10 +39,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Estudiante.findBySkype", query = "SELECT e FROM Estudiante e WHERE e.skype = :skype"),
     @NamedQuery(name = "Estudiante.findByTwitter", query = "SELECT e FROM Estudiante e WHERE e.twitter = :twitter"),
     @NamedQuery(name = "Estudiante.findByIntereses", query = "SELECT e FROM Estudiante e WHERE e.intereses = :intereses"),
-    @NamedQuery(name = "Estudiante.findByAdmin", query = "SELECT e FROM Estudiante e WHERE e.admin = :admin")})
+    @NamedQuery(name = "Estudiante.findByAdmin", query = "SELECT e FROM Estudiante e WHERE e.admin = :admin"),
+    @NamedQuery(name = "Estudiante.findByIdUsuario", query = "SELECT e FROM Estudiante e WHERE e.idUsuario = :idUsuario")})
 public class Estudiante implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
@@ -57,21 +59,31 @@ public class Estudiante implements Serializable {
     private String intereses;
     @Column(name = "admin")
     private Boolean admin;
-    @JoinColumn(name = "idcuestionario", referencedColumnName = "idcuestionario")
-    @ManyToOne(optional = false)
-    private Cuestionario idcuestionario;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "idUsuario")
+    private Integer idUsuario;
     @JoinColumn(name = "idcurriculum", referencedColumnName = "idcurriculum")
     @ManyToOne(optional = false)
     private Curriculum idcurriculum;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudianteusuario")
+    @JoinColumn(name = "idcuestionario", referencedColumnName = "idcuestionario")
+    @ManyToOne(optional = false)
+    private Cuestionario idcuestionario;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
     private List<Ayudante> ayudanteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudianteusuario")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
     private List<Asistencia> asistenciaList;
 
     public Estudiante() {
     }
 
-    public Estudiante(String usuario) {
+    public Estudiante(Integer idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Estudiante(Integer idUsuario, String usuario) {
+        this.idUsuario = idUsuario;
         this.usuario = usuario;
     }
 
@@ -115,12 +127,12 @@ public class Estudiante implements Serializable {
         this.admin = admin;
     }
 
-    public Cuestionario getIdcuestionario() {
-        return idcuestionario;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setIdcuestionario(Cuestionario idcuestionario) {
-        this.idcuestionario = idcuestionario;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public Curriculum getIdcurriculum() {
@@ -129,6 +141,14 @@ public class Estudiante implements Serializable {
 
     public void setIdcurriculum(Curriculum idcurriculum) {
         this.idcurriculum = idcurriculum;
+    }
+
+    public Cuestionario getIdcuestionario() {
+        return idcuestionario;
+    }
+
+    public void setIdcuestionario(Cuestionario idcuestionario) {
+        this.idcuestionario = idcuestionario;
     }
 
     @XmlTransient
@@ -152,7 +172,7 @@ public class Estudiante implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (usuario != null ? usuario.hashCode() : 0);
+        hash += (idUsuario != null ? idUsuario.hashCode() : 0);
         return hash;
     }
 
@@ -163,7 +183,7 @@ public class Estudiante implements Serializable {
             return false;
         }
         Estudiante other = (Estudiante) object;
-        if ((this.usuario == null && other.usuario != null) || (this.usuario != null && !this.usuario.equals(other.usuario))) {
+        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
             return false;
         }
         return true;
@@ -171,7 +191,7 @@ public class Estudiante implements Serializable {
 
     @Override
     public String toString() {
-        return "app.rongo.persistence.Estudiante[ usuario=" + usuario + " ]";
+        return "app.rongo.persistence.Estudiante[ idUsuario=" + idUsuario + " ]";
     }
     
 }

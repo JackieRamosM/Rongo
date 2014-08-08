@@ -9,7 +9,6 @@ package app.rongo.beans;
 import app.rongo.facade.SupervisorFacadeLocal;
 import app.rongo.persistence.Supervisor;
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -22,27 +21,27 @@ import javax.inject.Named;
 @SessionScoped
 public class SupervisorBean implements Serializable {
     @EJB
-    private SupervisorFacadeLocal supervisorFacade ;
-    private Supervisor supervisor;
-   
+    private SupervisorFacadeLocal supervisorFacade;
+    private Supervisor supervisor = new Supervisor();
+
+    
     /**
      * Creates a new instance of SupervisorBean
      */
     public SupervisorBean() {
-        
-               
     }
     
-    @PostConstruct
     public void init(){
-        this.supervisor = new Supervisor();
+        
+        supervisor.setActivo(true);
+        supervisor.setApellido("");
+        supervisor.setCedula("");
+        supervisor.setNombre("");
+        supervisor.setIdsupervisor(Integer.SIZE);
     }
     
     public void setSupervisores(){
-        //supervisor = new Supervisor(Integer.SIZE, getNombre(), getApellido(), getCedula(), getCorreo(), true);
-        getSupervisor().setIdsupervisor(Integer.SIZE);
-        getSupervisor().setActivo(true);
-        getSupervisorFacade().create(supervisor);
+        supervisorFacade.create(supervisor);
     }
 
     public SupervisorFacadeLocal getSupervisorFacade() {
@@ -60,5 +59,6 @@ public class SupervisorBean implements Serializable {
     public void setSupervisor(Supervisor supervisor) {
         this.supervisor = supervisor;
     }
+    
     
 }
