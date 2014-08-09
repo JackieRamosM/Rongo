@@ -548,7 +548,66 @@ footer {
         text-align: left;
         margin: 0;
     }
-    
-.details {
-   /* display: none;*/
+
+.hFrom {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+    .hForm .label {
+        display: inline-block;
+        font-size: 1.3em;
+        width: 10%;
+        margin: 10px 5px;
+    }
+    .hForm .input {
+        display: inline-block;
+        font-size: 1.3em;
+        width: 50%;
+    }
+    .hForm .hButton {
+        background-color: #3C83A7;
+        cursor: pointer;
+        color: white;
+        font-size: 1.2em;
+        display: block;
+        width: 25%;
+        margin-left: 75%;
+        padding: 10px 0;
+        border: none;
+        margin-bottom: 5px;
+        position:relative;
+        border: none;
+        box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
+    }
+        .hForm .hButton:active {
+            top:3px;
+            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+        }
+.outterButton {
+    background-color: #3C83A7;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    display: block;
+    width: 25%;
+    margin-left: 75%;
+    padding: 10px 0;
+    border: none;
+    margin-bottom: 5px;
+    position:relative;
+    border: none;
+    box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
+}
+    .outterButton:active {
+        top:3px;
+        box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+    }
+
+.nuevo-supervisor{
+    display: inline-block;
+    display: none;
+    width: 90%;
+    padding: 20px 5%;
+    background-color: rgba(255,255,255,0.6);
 }

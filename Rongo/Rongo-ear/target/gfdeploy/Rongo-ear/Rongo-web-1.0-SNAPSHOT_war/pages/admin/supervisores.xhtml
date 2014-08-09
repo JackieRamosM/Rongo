@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Supervisores - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -30,20 +31,50 @@
         <section>
             <article>
                 <h1 class="header">SUPERVISORES<i class="fa fa-male icon"></i></h1>
-                <p:button value="Agregar Supervisor" outcome="supervisor"></p:button>
+                <input type="button" value="Agregar Supervisor" class="outterButton"></input>
+                <br></br>
+                #{supervisoresBean.encontrarSupervisores()}
                 <div class="lista-ayudantes">
                     <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>MSc. Nombre Apellido</h2>
-                                <h4>napellido@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Remover"></h:button>
-                            </div>
-                        </li>
+                        <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
+                            <li>
+                                <div class="lista-ayudantes-datos">
+                                    <h2><h:outputText value="#{sup.nombre} #{sup.apellido}" styleClass="supervisoresh2"/></h2>
+                                    <h4><h:outputText value="#{sup.correo}" styleClass="supervisoresh4"/></h4>
+                                </div>
+                                <div class="lista-ayudantes-accion">
+                                    <h:button value="Remover"></h:button>
+                                </div>
+                            </li>
+                        </ui:repeat>
                     </ul>
                 </div>
+                <br></br>
+                <div class="nuevo-supervisor">
+                    <header>
+                        <div>
+                            <h2>Agregar Supervisor</h2>
+                        </div>
+                        <br/><br/>
+                    </header>
+                    #{supervisoresBean.init()}
+                    <f:view>
+                        <h:form styleClass="hForm">
+                            <p:outputLabel for="nombres" value="Nombres:" styleClass="label"/>
+                            <p:inputText id="nombres" value="#{supervisoresBean.supervisor.nombre}" styleClass="input"></p:inputText><br></br>
+                            <p:outputLabel for="apellidos" value="Apellidos:" styleClass="label"/>
+                            <p:inputText id="apellidos" value="#{supervisoresBean.supervisor.apellido}" styleClass="input"></p:inputText><br></br>
+                            <p:outputLabel for="cedula" value="Cedula:" styleClass="label"/>
+                            <p:inputText id="cedula" value="#{supervisoresBean.supervisor.cedula}" onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;" styleClass="input"></p:inputText><br></br>
+                            <p:outputLabel for="email" value="Correo:" styleClass="label"/>
+                            <p:inputText id="email" value="#{supervisoresBean.supervisor.correo}" styleClass="input">
+                                <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                            </p:inputText><br></br><br></br>
+                            <h:commandButton value="Agregar Supervisor" action="#{supervisoresBean.setSupervisores()}" styleClass="hButton"></h:commandButton>
+                        </h:form>
+                    </f:view>
+                </div>
+                <br></br><br></br><br></br>
             </article>
         </section>
         <footer class="fixed-bottom">
@@ -51,5 +82,6 @@
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
+        <h:outputScript name="js/admin_supervisores.js" />
     </h:body>  
 </html>
