@@ -37,6 +37,7 @@ public class SupervisorBean implements Serializable {
         supervisor.setApellido("");
         supervisor.setCedula("");
         supervisor.setNombre("");
+        supervisor.setCorreo("");
         supervisor.setIdsupervisor(Integer.SIZE);
     }
     
