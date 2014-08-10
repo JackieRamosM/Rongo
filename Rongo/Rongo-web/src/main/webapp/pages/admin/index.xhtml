@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Administrador - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -31,20 +32,24 @@
             <article>
                 <h1 class="header">AYUDANTES ACAD&Eacute;MICOS <i class="fa fa-pencil icon"></i></h1>
                 <div class="lista-ayudantes">
-                    <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Juan Manuel Romero</h2>
-                                <h4>Ayudante del curso de Ingeniería de Software I</h4>
-                                <h4>Carga semanal: 5 horas</h4>
-                                <h4>jromero@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Reporte de Clases" outcome="ayudante"></h:button>
-                                <h:button value="Finalizar Ayudantia"></h:button>
-                            </div>
-                        </li>
-                    </ul>
+                    <h:form styleClass="hForm">
+                        <ul>
+                            <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
+                                <li>
+                                    <div class="lista-ayudantes-datos">
+                                        <h2>Juan Manuel Romero</h2>
+                                        <h4>Ayudante del curso de Ingeniería de Software I</h4>
+                                        <h4>Carga semanal: 5 horas</h4>
+                                        <h4>jromero@espol.edu.ec</h4>
+                                    </div>
+                                    <div class="lista-ayudantes-accion">
+                                        <h:button value="Reporte de Clases" outcome="ayudante"></h:button>
+                                        <h:button value="Finalizar Ayudantia"></h:button>
+                                    </div>
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                    </h:form>
                 </div>
             </article>
             <article>

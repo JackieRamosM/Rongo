@@ -246,7 +246,6 @@ section {
                     border-bottom: 2px solid #3C83A7;
                 }
                     section article .lista-ayudantes ul li div {
-                        display: inline-block;
                         vertical-align: middle;
                         margin: 0;
                         padding: 0;
@@ -549,28 +548,33 @@ footer {
         margin: 0;
     }
 
-.hFrom {
+.hForm {
     display: inline-block;
     width: 100%;
-    text-align: center;
+    text-align: left;
 }
     .hForm .label {
         display: inline-block;
         font-size: 1.3em;
-        width: 10%;
+        width: 45%;
         margin: 10px 5px;
+        text-align: right;
+        vertical-align: middle;
     }
     .hForm .input {
         display: inline-block;
         font-size: 1.3em;
         width: 50%;
+        vertical-align: middle;
     }
-    .hForm .hButton {
+    .hForm .input input {
+        width: 100%;
+    }
+    .hForm .hButton, .hForm .hEdit {
         background-color: #3C83A7;
         cursor: pointer;
         color: white;
         font-size: 1.2em;
-        display: block;
         width: 25%;
         margin-left: 75%;
         padding: 10px 0;
@@ -580,9 +584,13 @@ footer {
         border: none;
         box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
     }
-        .hForm .hButton:active {
+        .hForm .hButton:active, .hForm .hEdit:active {
             top:3px;
             box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+        }
+        .hForm .hEdit {
+            margin-left: 50%;
+            width: 45%;
         }
 .outterButton {
     background-color: #3C83A7;
@@ -604,7 +612,7 @@ footer {
         box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
     }
 
-.nuevo-supervisor{
+.nuevo-supervisor, .editar-supervisor{
     display: inline-block;
     display: none;
     width: 90%;

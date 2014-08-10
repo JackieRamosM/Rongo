@@ -8,6 +8,9 @@ function init() {
     $(".outterButton").click(function(){
         $(".nuevo-supervisor").fadeIn();
     });
+    $(".hEdit").click(function(){
+        $("#edit-" + $(this).attr('id')).fadeIn();
+    });
 }
 
 window.onload = init;

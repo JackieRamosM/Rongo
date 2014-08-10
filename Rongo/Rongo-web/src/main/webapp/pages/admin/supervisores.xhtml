@@ -33,26 +33,7 @@
             <article>
                 <h1 class="header">SUPERVISORES<i class="fa fa-male icon"></i></h1>
                 <input type="button" value="Agregar Supervisor" class="outterButton"></input>
-                <br></br>
-                #{supervisoresBean.encontrarSupervisores()}
-                <div class="lista-ayudantes">
-                    <h:form>
-                        <ul>
-                            <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
-                                <li>
-                                    <div class="lista-ayudantes-datos">
-                                        <h2><h:outputText value="#{sup.nombre} #{sup.apellido}" styleClass="supervisoresh2"/></h2>
-                                        <h4><h:outputText value="#{sup.correo}" styleClass="supervisoresh4"/></h4>
-                                    </div>
-                                    <div class="lista-ayudantes-accion">
-                                        <h:commandButton value="Remover" action="#{supervisoresBean.removerSupervisor(sup)}"></h:commandButton>
-                                    </div>
-                                </li>
-                            </ui:repeat>
-                        </ul>
-                    </h:form>
-                </div>
-                <br></br>
+                <br/>
                 <div class="nuevo-supervisor">
                     <header>
                         <div>
@@ -77,7 +58,46 @@
                         </h:form>
                     </f:view>
                 </div>
-                <br></br><br></br><br></br>
+                <br/>
+                #{supervisoresBean.encontrarSupervisores()}
+                <div class="lista-ayudantes">
+                    <h:form styleClass="hForm">
+                        <ul>
+                            <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
+                                <li>
+                                    <div class="lista-ayudantes-datos">
+                                        <h2><h:outputText value="#{sup.nombre} #{sup.apellido}" styleClass="supervisoresh2"/></h2>
+                                        <h4><h:outputText value="#{sup.correo}" styleClass="supervisoresh4"/></h4>
+                                        <h4><h:outputText value="Activo: #{sup.activo}" styleClass="supervisoresh4"/></h4>
+                                    </div>
+                                    <div class="lista-ayudantes-accion">
+                                        <input type="button" value="Editar" class="hEdit" id="#{sup.cedula}"></input>
+                                    </div>
+                                    <div class="editar-supervisor" id="edit-#{sup.cedula}">
+                                        <header>
+                                            <h1>Editar Supervisor</h1>
+                                        </header>
+                                        <p:outputLabel for="nombres" value="Nombres:" styleClass="label"/>
+                                        <p:inputText id="nombres" value="#{sup.nombre}" styleClass="input"></p:inputText><br></br>
+                                        <p:outputLabel for="apellidos" value="Apellidos:" styleClass="label"/>
+                                        <p:inputText id="apellidos" value="#{sup.apellido}" styleClass="input"></p:inputText><br></br>
+                                        <p:outputLabel for="cedula" value="Cedula:" styleClass="label"/>
+                                        <p:inputText id="cedula" value="#{sup.cedula}" onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;" styleClass="input"></p:inputText><br></br>
+                                        <p:outputLabel for="email" value="Correo:" styleClass="label"/>
+                                        <p:inputText id="email" value="#{sup.correo}" styleClass="input">
+                                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                        </p:inputText><br/><br/>
+                                        <p:outputLabel for="activo" value="Activo:" styleClass="label"/>
+                                        <h:selectBooleanCheckbox id="activo" value="#{sup.activo}"></h:selectBooleanCheckbox><br/><br/>
+                                        <h:commandButton value="Editar y Guardar" action="#{supervisoresBean.editarSupervisor(sup)}" styleClass="hButton"></h:commandButton>
+                                    </div>
+                                    <br/><br/>
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                    </h:form>
+                </div>
+                <br/><br/><br/>
             </article>
         </section>
         <footer class="fixed-bottom">

@@ -53,6 +53,10 @@ public class SupervisoresBean implements Serializable {
     public void removerSupervisor(Supervisor supervisor) throws IOException{
         supervisorFacade.remove(supervisor);
         FacesContext.getCurrentInstance().getExternalContext().redirect("supervisores.xhtml");
+    }    
+    public void editarSupervisor(Supervisor supervisor) throws IOException{
+        supervisorFacade.edit(supervisor);        
+        FacesContext.getCurrentInstance().getExternalContext().redirect("supervisores.xhtml");
     }
 
     public SupervisorFacadeLocal getSupervisorFacade() {
