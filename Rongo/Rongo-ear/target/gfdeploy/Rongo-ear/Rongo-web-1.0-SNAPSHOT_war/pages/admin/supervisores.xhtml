@@ -12,6 +12,7 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
         <h:outputStylesheet name="css/style.css"/>
     </h:head>  
+    <h:head/>
     <h:body>
         <header>
             <h2>Rongo</h2>
@@ -35,19 +36,21 @@
                 <br></br>
                 #{supervisoresBean.encontrarSupervisores()}
                 <div class="lista-ayudantes">
-                    <ul>
-                        <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
-                            <li>
-                                <div class="lista-ayudantes-datos">
-                                    <h2><h:outputText value="#{sup.nombre} #{sup.apellido}" styleClass="supervisoresh2"/></h2>
-                                    <h4><h:outputText value="#{sup.correo}" styleClass="supervisoresh4"/></h4>
-                                </div>
-                                <div class="lista-ayudantes-accion">
-                                    <h:button value="Remover"></h:button>
-                                </div>
-                            </li>
-                        </ui:repeat>
-                    </ul>
+                    <h:form>
+                        <ul>
+                            <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
+                                <li>
+                                    <div class="lista-ayudantes-datos">
+                                        <h2><h:outputText value="#{sup.nombre} #{sup.apellido}" styleClass="supervisoresh2"/></h2>
+                                        <h4><h:outputText value="#{sup.correo}" styleClass="supervisoresh4"/></h4>
+                                    </div>
+                                    <div class="lista-ayudantes-accion">
+                                        <h:commandButton value="Remover" action="#{supervisoresBean.removerSupervisor(sup)}"></h:commandButton>
+                                    </div>
+                                </li>
+                            </ui:repeat>
+                        </ul>
+                    </h:form>
                 </div>
                 <br></br>
                 <div class="nuevo-supervisor">

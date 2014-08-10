@@ -22,3 +22,5 @@ hs_err_pid*
 /TesterCASClient/nbproject/private/
 /espolPhantom/nbproject/private/
 /espolPhantom/build/
+/getMatriculas/dist/
+/espolPhantom/dist/

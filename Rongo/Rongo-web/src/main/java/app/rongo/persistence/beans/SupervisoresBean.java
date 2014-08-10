@@ -8,10 +8,12 @@ package app.rongo.persistence.beans;
 
 import app.rongo.facade.SupervisorFacadeLocal;
 import app.rongo.persistence.Supervisor;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -44,9 +46,13 @@ public class SupervisoresBean implements Serializable {
     public void encontrarSupervisores(){
         supervisores = supervisorFacade.findAll();
     }
-    
-    public void setSupervisores(){
+    public void setSupervisores() throws IOException{
         supervisorFacade.create(supervisor);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("supervisores.xhtml");
+    }
+    public void removerSupervisor(Supervisor supervisor) throws IOException{
+        supervisorFacade.remove(supervisor);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("supervisores.xhtml");
     }
 
     public SupervisorFacadeLocal getSupervisorFacade() {

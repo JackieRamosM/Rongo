@@ -91,6 +91,12 @@
             <to-flow-document-id />
         </navigation-case>
         <navigation-case> 
+            <from-outcome>supervisores</from-outcome> 
+            <to-view-id>/faces/pages/admin/supervisores.xhtml</to-view-id> 
+            <to-flow-document-id />
+            <redirect/>
+        </navigation-case>
+        <navigation-case> 
             <from-outcome>ofertas</from-outcome> 
             <to-view-id>/faces/pages/admin/ofertas.xhtml</to-view-id> 
             <to-flow-document-id />
