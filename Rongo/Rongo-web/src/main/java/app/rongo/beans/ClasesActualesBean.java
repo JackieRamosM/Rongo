@@ -24,9 +24,8 @@ public class ClasesActualesBean implements Serializable {
     private final Session session= new Session();
     private List<String> materias = session.getMateriasuser(); ;
     
-        
     
-
+     
     public List<String> getMaterias() {
         return materias;
     }

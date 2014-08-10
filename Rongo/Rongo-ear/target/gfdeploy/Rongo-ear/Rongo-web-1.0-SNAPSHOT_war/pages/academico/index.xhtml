@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ayudante Académico - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -50,7 +51,10 @@
                             <h3>MANDARÍN BASICO A (CELEX00265)</h3>
                         </li>
                     </ul-->
-                    #{clasesActualesBean.materias}
+                    
+                    <ui:repeat value="#{clasesActualesBean.materias}" var="m">
+                        <h:outputText  class="available" value="#{m}" /><br/>
+                    </ui:repeat>  
                 </div>
                 <h:graphicImage value="/faces/resources/images/book.png" />
             </article>
