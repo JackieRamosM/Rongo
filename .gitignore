@@ -20,3 +20,5 @@ hs_err_pid*
 /Rongo/webService/build/
 /Rongo/Rongo-ear/target/
 /TesterCASClient/nbproject/private/
+/espolPhantom/nbproject/private/
+/espolPhantom/build/

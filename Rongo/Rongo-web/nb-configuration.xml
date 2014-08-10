@@ -9,6 +9,12 @@ Without this configuration present, some functionality in the IDE may be limited
     <authentication-manager alias="authenticationManager">
         <authentication-provider ref="casAuthProvider"/>
     </authentication-manager>
+    <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
+        <config-files>
+            <config-file>src/main/webapp/WEB-INF/applicationContext-security.xml</config-file>
+        </config-files>
+        <config-file-groups/>
+    </spring-data>
     <properties xmlns="http://www.netbeans.org/ns/maven-properties-data/1">
         <!--
 Properties that influence various parts of the IDE, especially code formatting and the like. 
@@ -27,11 +33,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <org-netbeans-modules-css-prep.sass_2e_enabled>false</org-netbeans-modules-css-prep.sass_2e_enabled>
         <org-netbeans-modules-css-prep.less_2e_compiler_2e_options/>
         <org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>js</org-netbeans-modules-web-clientproject-api.js_2e_libs_2e_folder>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_getMatriculas>http://localhost:8080/getMatriculas/getMatriculas?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_getMatriculas>
+        <org-netbeans-modules-maven-jaxws._5f_C_5f_espolPhantom>http://localhost:8080/espolPhantom/espolPhantom?wsdl</org-netbeans-modules-maven-jaxws._5f_C_5f_espolPhantom>
     </properties>
-    <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
-        <config-files>
-            <config-file>src/main/webapp/WEB-INF/applicationContext-security.xml</config-file>
-        </config-files>
-        <config-file-groups/>
-    </spring-data>
 </project-shared-configuration>

@@ -134,38 +134,6 @@
                 <groupId>org.jvnet.jax-ws-commons</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>ws.espol.edu.ec/saac/directorioespol.asmx.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <packageName>app.rongo.services</packageName>
-                            <wsdlLocation>https://ws.espol.edu.ec/saac/directorioespol.asmx?WSDL</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/directorioespol.asmx.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-directorioespol.asmx</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                    <execution>
-                        <goals>
-                            <goal>wsimport</goal>
-                        </goals>
-                        <configuration>
-                            <wsdlFiles>
-                                <wsdlFile>ws.espol.edu.ec/saac/wsSAAC.asmx.wsdl</wsdlFile>
-                            </wsdlFiles>
-                            <packageName>app.rongo.services</packageName>
-                            <wsdlLocation>https://ws.espol.edu.ec/saac/wsSAAC.asmx?WSDL</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/wsSAAC.asmx.stale</staleFile>
-                        </configuration>
-                        <id>wsimport-generate-wsSAAC.asmx</id>
-                        <phase>generate-sources</phase>
-                    </execution>
-                </executions>
                 <dependencies>
                     <dependency>
                         <groupId>javax.xml</groupId>

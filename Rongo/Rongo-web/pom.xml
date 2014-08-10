@@ -14,7 +14,78 @@
     <packaging>war</packaging>
 
     <name>Rongo-web</name>
-    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jvnet.jax-ws-commons</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/getMatriculas/getMatriculas.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>app.get.matriculas</packageName>
+                            <wsdlLocation>http://localhost:8080/getMatriculas/getMatriculas?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/getMatriculas.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-getMatriculas</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFiles>
+                                <wsdlFile>localhost_8080/espolPhantom/espolPhantom.wsdl</wsdlFile>
+                            </wsdlFiles>
+                            <packageName>app.espol.phantom</packageName>
+                            <wsdlLocation>http://localhost:8080/espolPhantom/espolPhantom?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/espolPhantom.stale</staleFile>
+                        </configuration>
+                        <id>wsimport-generate-espolPhantom</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>javax.xml</groupId>
+                        <artifactId>webservices-api</artifactId>
+                        <version>2.0</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <sourceDestDir>${project.build.directory}/generated-sources/jaxws-wsimport</sourceDestDir>
+                    <xnocompile>true</xnocompile>
+                    <verbose>true</verbose>
+                    <extension>true</extension>
+                    <catalog>${basedir}/src/jax-ws-catalog.xml</catalog>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.0.2</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>src</directory>
+                            <targetPath>WEB-INF</targetPath>
+                            <includes>
+                                <include>jax-ws-catalog.xml</include>
+                                <include>wsdl/**</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
