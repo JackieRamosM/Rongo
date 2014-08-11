@@ -35,7 +35,7 @@
                 <h1 class="header">CURSOS QUE TOMA ACTUALMENTE <i class="fa fa-book icon"></i></h1>
                 <div id="courses">
                     <ul>
-                        <ui:repeat value="#{clasesActualesBean.materias}" var="m">
+                        <ui:repeat value="#{estudianteBean.materias}" var="m">
                             <li> <h3><h:outputText  class="available" value="#{m}" /></h3></li>
                         </ui:repeat> 
                     </ul>
