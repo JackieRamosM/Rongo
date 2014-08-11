@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Estudiante - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -31,21 +32,9 @@
                 <h1 class="header">CURSOS QUE TOMA ACTUALMENTE<i class="fa fa-book icon"></i></h1>
                 <div id="courses">
                     <ul>
-                        <li class="available">
-                            <h3><h:link value="INGENIERÍA DE SOFTWARE II (FIEC03053)" outcome="ayudantes"/></h3>
-                        </li>
-                        <li>
-                            <h3>INTERACCIÓN HOMBRE MÁQUINA (FIEC01545)</h3>
-                        </li>
-                        <li>
-                            <h3>PROCESAMIENTO DE AUDIO Y VIDEO (FIEC05413)</h3>
-                        </li>
-                        <li class="available">
-                            <h3>PROCESAMIENTO DIGITAL DE IMÁGENES (FIEC05439)</h3>
-                        </li>
-                        <li class="available">
-                            <h3>MANDARÍN BASICO A (CELEX00265)</h3>
-                        </li>
+                        <ui:repeat value="#{clasesActualesBean.materias}" var="m">
+                            <li> <h3><h:outputText  class="available" value="#{m}" /></h3></li>
+                        </ui:repeat> 
                     </ul>
                 </div>
                 <h:graphicImage value="/faces/resources/images/book.png" />

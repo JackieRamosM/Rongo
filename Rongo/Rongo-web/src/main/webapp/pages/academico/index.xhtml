@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ayudante Académico - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -34,27 +34,11 @@
             <article>
                 <h1 class="header">CURSOS QUE TOMA ACTUALMENTE <i class="fa fa-book icon"></i></h1>
                 <div id="courses">
-                    <!--ul>
-                        <li class="available">
-                            <h3><h:link value="INGENIERÍA DE SOFTWARE II (FIEC03053)" outcome="ayudantes"/></h3>
-                        </li>
-                        <li>
-                            <h3>INTERACCIÓN HOMBRE MÁQUINA (FIEC01545)</h3>
-                        </li>
-                        <li>
-                            <h3>PROCESAMIENTO DE AUDIO Y VIDEO (FIEC05413)</h3>
-                        </li>
-                        <li class="available">
-                            <h3>PROCESAMIENTO DIGITAL DE IMÁGENES (FIEC05439)</h3>
-                        </li>
-                        <li class="available">
-                            <h3>MANDARÍN BASICO A (CELEX00265)</h3>
-                        </li>
-                    </ul-->
-                    
-                    <ui:repeat value="#{clasesActualesBean.materias}" var="m">
-                        <h:outputText  class="available" value="#{m}" /><br/>
-                    </ui:repeat>  
+                    <ul>
+                        <ui:repeat value="#{clasesActualesBean.materias}" var="m">
+                            <li> <h3><h:outputText  class="available" value="#{m}" /></h3></li>
+                        </ui:repeat> 
+                    </ul>
                 </div>
                 <h:graphicImage value="/faces/resources/images/book.png" />
             </article>

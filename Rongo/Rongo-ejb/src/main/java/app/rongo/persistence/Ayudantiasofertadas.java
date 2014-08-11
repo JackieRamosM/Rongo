@@ -40,7 +40,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Ayudantiasofertadas.findByDescripcion", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.descripcion = :descripcion"),
     @NamedQuery(name = "Ayudantiasofertadas.findByVigentedesde", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.vigentedesde = :vigentedesde"),
     @NamedQuery(name = "Ayudantiasofertadas.findByVigentehasta", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.vigentehasta = :vigentehasta"),
-    @NamedQuery(name = "Ayudantiasofertadas.findByTipodeayudantia", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.tipodeayudantia = :tipodeayudantia")})
+    @NamedQuery(name = "Ayudantiasofertadas.findByTipodeayudantia", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.tipodeayudantia = :tipodeayudantia"),
+    @NamedQuery(name = "Ayudantiasofertadas.findByNombreayudanatia", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.nombreayudanatia = :nombreayudanatia")})
 public class Ayudantiasofertadas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,14 +53,10 @@ public class Ayudantiasofertadas implements Serializable {
     @NotNull
     @Column(name = "cargasemanal")
     private int cargasemanal;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 1000)
+    @Size(max = 1000)
     @Column(name = "requisitos")
     private String requisitos;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 500)
+    @Size(max = 500)
     @Column(name = "descripcion")
     private String descripcion;
     @Basic(optional = false)
@@ -77,6 +74,9 @@ public class Ayudantiasofertadas implements Serializable {
     @Size(min = 1, max = 15)
     @Column(name = "tipodeayudantia")
     private String tipodeayudantia;
+    @Size(max = 60)
+    @Column(name = "nombreayudanatia")
+    private String nombreayudanatia;
     @JoinColumn(name = "idsupervisor", referencedColumnName = "idsupervisor")
     @ManyToOne(optional = false)
     private Supervisor idsupervisor;
@@ -88,11 +88,9 @@ public class Ayudantiasofertadas implements Serializable {
         this.idayudantiasofertadas = idayudantiasofertadas;
     }
 
-    public Ayudantiasofertadas(Integer idayudantiasofertadas, int cargasemanal, String requisitos, String descripcion, Date vigentedesde, Date vigentehasta, String tipodeayudantia) {
+    public Ayudantiasofertadas(Integer idayudantiasofertadas, int cargasemanal, Date vigentedesde, Date vigentehasta, String tipodeayudantia) {
         this.idayudantiasofertadas = idayudantiasofertadas;
         this.cargasemanal = cargasemanal;
-        this.requisitos = requisitos;
-        this.descripcion = descripcion;
         this.vigentedesde = vigentedesde;
         this.vigentehasta = vigentehasta;
         this.tipodeayudantia = tipodeayudantia;
@@ -152,6 +150,14 @@ public class Ayudantiasofertadas implements Serializable {
 
     public void setTipodeayudantia(String tipodeayudantia) {
         this.tipodeayudantia = tipodeayudantia;
+    }
+
+    public String getNombreayudanatia() {
+        return nombreayudanatia;
+    }
+
+    public void setNombreayudanatia(String nombreayudanatia) {
+        this.nombreayudanatia = nombreayudanatia;
     }
 
     public Supervisor getIdsupervisor() {

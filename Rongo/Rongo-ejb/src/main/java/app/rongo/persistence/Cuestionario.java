@@ -9,7 +9,6 @@ package app.rongo.persistence;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -62,7 +61,7 @@ public class Cuestionario implements Serializable {
     @JoinColumn(name = "idcamposcuestionario", referencedColumnName = "idcamposcuestionario")
     @ManyToOne(optional = false)
     private Camposcuestionario idcamposcuestionario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcuestionario")
+    @OneToMany(mappedBy = "idcuestionario")
     private List<Estudiante> estudianteList;
     @OneToMany(mappedBy = "idcuestionario")
     private List<Supervisor> supervisorList;

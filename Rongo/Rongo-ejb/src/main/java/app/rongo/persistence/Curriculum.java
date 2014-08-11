@@ -9,7 +9,6 @@ package app.rongo.persistence;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -53,7 +52,7 @@ public class Curriculum implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "archivo")
     private String archivo;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idcurriculum")
+    @OneToMany(mappedBy = "idcurriculum")
     private List<Estudiante> estudianteList;
 
     public Curriculum() {

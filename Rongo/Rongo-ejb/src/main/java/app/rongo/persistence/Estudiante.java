@@ -65,10 +65,10 @@ public class Estudiante implements Serializable {
     @Column(name = "idUsuario")
     private Integer idUsuario;
     @JoinColumn(name = "idcurriculum", referencedColumnName = "idcurriculum")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Curriculum idcurriculum;
     @JoinColumn(name = "idcuestionario", referencedColumnName = "idcuestionario")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Cuestionario idcuestionario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
     private List<Ayudante> ayudanteList;

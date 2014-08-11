@@ -26,7 +26,7 @@ public class getMatriculas {
     public String getMatricula(@WebParam(name = "username") String username) {
         switch (username) {
             case "ljramos":
-                return "201009374";
+                return "201009347";
             case "hcarpio":
                 return "200803369";
             case "davalbar":
