@@ -39,7 +39,8 @@
                 <h:form styleClass="hForm">
                     <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
                         <div class="lista-ayudantes">
-                            <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/><br/><br/>
+                            <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
+                            <h:commandButton value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton><br/><br/>
                             <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                             <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
                             <h:outputText value="Requisitos: " styleClass="hlabel"/>
@@ -58,66 +59,14 @@
                             <h:outputText value="#{ao.idsupervisor.nombre} #{ao.idsupervisor.apellido}" styleClass="hvalue"/>
                             <h:outputText value="Email: " styleClass="hlabel"/>
                             <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
-                            <br/><br/>
+                            <br/><br/><br/>
                             <hr/>
                         </div>
                     </ui:repeat>
                 </h:form>
-                <div class="lista-ayudantes">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th colspan="2">
-                                    <h1>Ayudante de Investigación - CTI ESPOL</h1>
-                                    <h:button value="Eliminar"></h:button>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>Carga semanal:</th>
-                                <td>10 Horas</td>
-                            </tr>
-                            <tr>
-                                <th>Requisitos:</th>
-                                <td>
-                                    <ol>
-                                        <li>Haber aprovado la materia Programación Orientada a Objetos.</li>
-                                        <li>Buen nivel de escritura y lectura en Inglés.</li>
-                                        <li>Ser responsable, respetuoso, colaborador, demostrar iniciativa y capacidad para trabajar bajo presión.</li>
-                                        <li>Disponibilidad de tiempo a 20 horas.</li>
-                                        <li>Pertenecer a la Carrera de Ingeniería en Ciencias Computacionales.</li>
-                                        <li>Orientació en Multimedia. (No indispensable)</li>
-                                        <li>Buen nivel de conocimiento en programación.</li>
-                                    </ol>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Descripci&oacute;n:</th>
-                                <td>Oportunidad para trabajar en proyectos de Investigación en el area Multimedia e Interacción Hombre - Máquina.</td>
-                            </tr>
-                            <tr>
-                                <th>Vigente desde:</th>
-                                <td>Enero 06 de 2014</td>
-                            </tr>
-                            <tr>
-                                <th>Vigente hasta:</th>
-                                <td>Enero 15 de 2014</td>
-                            </tr>
-                            <tr>
-                                <th>Supervisor:</th>
-                                <td>MSc. Vanessa Echeverría</td>
-                            </tr>
-                            <tr>
-                                <th>Email:</th>
-                                <td>vecheverria@cti.espol.edu.ec</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </article>
         </section>
-        <footer>
+        <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
