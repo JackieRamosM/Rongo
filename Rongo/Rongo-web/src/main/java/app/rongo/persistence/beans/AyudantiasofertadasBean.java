@@ -38,6 +38,7 @@ public class AyudantiasofertadasBean implements Serializable {
     }
     
     public void init(){
+        ayudantiaofertada.setNombreayudanatia("");
         ayudantiaofertada.setCargasemanal(0);
         ayudantiaofertada.setRequisitos("");
         ayudantiaofertada.setDescripcion("");
@@ -51,7 +52,7 @@ public class AyudantiasofertadasBean implements Serializable {
     public void encontrarAyudantiasofertadas(){
         ayudantiasofertadas = ayudantiasofertadasFacade.findAll();
     }
-    public void setAyudantiasofertadas(Ayudantiasofertadas ao) throws IOException{
+    public void ofertarAyudantia(Ayudantiasofertadas ao) throws IOException{
         ayudantiasofertadasFacade.create(ao);
         FacesContext.getCurrentInstance().getExternalContext().redirect("ofertas.xhtml");
     }
