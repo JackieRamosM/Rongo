@@ -6,6 +6,12 @@
     http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
     version="2.0">
  
+    <managed-bean eager="true">
+        <managed-bean-name>ayudantiasofertadasBean</managed-bean-name>
+        <managed-bean-class>app.rongo.persistence.beans.AyudantiasofertadasBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
     <!--
       - Navigation Rules
       - Ayudante Académico
