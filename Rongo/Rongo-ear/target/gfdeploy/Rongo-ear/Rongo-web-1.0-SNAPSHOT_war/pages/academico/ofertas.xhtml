@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Ayudantias Ofertadas - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -32,7 +34,35 @@
             </div>
             <article>
                 <h1 class="header">AYUDANT&Iacute;AS ACAD&Eacute;MICAS <i class="fa fa-suitcase icon"></i></h1>
-                <p>Informaci&oacute;n no disponible.</p>
+                #{ayudantiasofertadasBean.encontrarAyudantiasofertadas()}
+                <h:form styleClass="hForm">
+                    <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
+                        <div class="lista-ayudantes">
+                            <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
+                            <h:commandButton value="Postularse" styleClass="hremove"></h:commandButton><br/><br/>
+                            <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
+                            <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
+                            <h:outputText value="Requisitos: " styleClass="hlabel"/>
+                            <h:outputText value="#{ao.requisitos}" styleClass="hvalue"/><br/><br/>
+                            <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
+                            <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
+                            <h:outputText value="Vigente Desde: " styleClass="hlabel"/>
+                            <h:outputText value="#{ao.vigentedesde}" styleClass="hvalue">
+                                <f:convertDateTime pattern="MM/dd/yyyy"/>
+                            </h:outputText>
+                            <h:outputText value="Vigente Hasta: " styleClass="hlabel"/>
+                            <h:outputText value="#{ao.vigentehasta}" styleClass="hvalue">
+                                <f:convertDateTime pattern="MM/dd/yyyy"/>
+                            </h:outputText>
+                            <h:outputText value="Supervisor: " styleClass="hlabel"/>
+                            <h:outputText value="#{ao.idsupervisor.nombre} #{ao.idsupervisor.apellido}" styleClass="hvalue"/>
+                            <h:outputText value="Email: " styleClass="hlabel"/>
+                            <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
+                            <br/><br/><br/>
+                            <hr/>
+                        </div>
+                    </ui:repeat>
+                </h:form>
             </article>
             <article>
                 <h1 class="header">AYUDANT&Iacute;AS DE ACTIVIDADES VARIAS <i class="fa fa-suitcase icon"></i></h1>

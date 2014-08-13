@@ -54,7 +54,7 @@ public class EstudianteBean implements Serializable {
         }
         
         intereses = estudiante.getIntereses();
-        admin = estudiante.getAdmin();
+        //admin = estudiante.getAdmin();
         skype = estudiante.getSkype();
         twitter = estudiante.getTwitter();
         user = estudiante.getUsuario();
