@@ -23,7 +23,7 @@ header {
     header h2 {
         margin: 0;
         font-size: 2.5em;
-        padding: 10px 1%;
+        padding: 5px 1%;
         display: inline-block;
         width: 18%;
         vertical-align: middle;
@@ -66,8 +66,8 @@ nav {
             color: white;
             padding: 10px 5px 5px 5px;
             cursor: pointer;
-            border-bottom: 2px solid #245166;
             border-bottom: 5px solid #245166;
+            font-size: 0.8em;
         }
         nav ul li:hover{
             border-bottom: 5px solid #3C83A7;
@@ -87,7 +87,7 @@ section {
     padding: 20px 0 80px 0;
 }
     section header {
-        margin-left: 5%;
+        margin: 0 0 10px 5%;
         width: 90%;
         background-color: transparent;
         color: black;
@@ -95,15 +95,17 @@ section {
         section header a {
             text-decoration: none;
             color: black;
+            display: inline-block;
         }
             section header a i {
-                font-size: 3em;
+                font-size: 2em;
                 vertical-align: middle;
-                margin-right: 20px;
+                margin-right: 10px;
+                display: inline-block;
             }
         section header div {
             display: inline-block;
-            width: 90%;
+            width: auto;
             text-align: left;
             vertical-align: middle;
         }
@@ -116,8 +118,8 @@ section {
             }
     .message {
         display: inline-block;
-        width: 80%;
-        margin-left: 10%;
+        width: 90%;
+        margin-left: 5%;
         border: 2px solid #3C83A7;
         color: #3C83A7;
         padding: 5px 0;
@@ -140,54 +142,37 @@ section {
         color: rgb(153,0,0);
     }
     section article {
-        margin-left: 10%;
-        width: 80%;
+        margin-left: 5%;
+        width: 90%;
         padding: 0;
     }
-        section article h1 { font-size: 2em }
+        section article h1 { 
+            font-size: 1em;
+        }
         .header {
-            padding: 7px 7px;
+            padding: 0 0 0 7px;
             background-color: #3C83A7;
             color: #F5F5F5;
+            height: 40px;
+            text-align: right;
+        }
+        .header label{
+            float: left;
+            margin-top: 10px;
         }
         section article a {
             text-decoration: none;
         }
         section article input[type="button"] {
-            background-color: #3C83A7;
             cursor: pointer;
-            color: white;
-            font-size: 1.2em;
-            display: block;
-            width: 25%;
-            margin-left: 75%;
-            padding: 10px 0;
-            border: none;
-            margin-bottom: 5px;
-            position:relative;
-            border: none;
-            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
-        }
-        section article input[type="button"]:active {
-            top:3px;
-            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+            height: 40px;
+            vertical-align: middle;
+            margin: 0;
+            font-size: 1em;
         }
         section article div {
             text-align: right;
         }
-            section article div input[type="button"] {
-                background-color: #3C83A7;
-                cursor: pointer;
-                color: white;
-                font-size: 1.2em;
-                display: block;
-                width: 20%;
-                margin: 0 0 0 10px;
-                padding: 10px 0;
-                border: none;
-                margin-bottom: 5px;
-                display: inline-block;
-            }
         section article span{
             display: block;
             vertical-align: middle;
@@ -243,7 +228,7 @@ section {
                 width: 100%;
             }
                 section article .lista-ayudantes ul li {
-                    border-bottom: 2px solid #3C83A7;
+                    border-bottom: 1px solid #3C83A7;
                 }
                     section article .lista-ayudantes ul li div {
                         vertical-align: middle;
@@ -256,7 +241,6 @@ section {
                         text-align: left;
                     }
                         section article .lista-ayudantes ul li .lista-ayudantes-datos h2 {
-                            font-size: 2em;
                             margin: 0;
                         }
                         section article .lista-ayudantes ul li .lista-ayudantes-datos h3, section article .lista-ayudantes ul li .lista-ayudantes-datos h4 {
@@ -266,18 +250,6 @@ section {
                     section article .lista-ayudantes ul li .lista-ayudantes-accion{
                         width: 29%;
                     }
-                        section article .lista-ayudantes ul li .lista-ayudantes-accion input[type="button"] {
-                            background-color: #3C83A7;
-                            cursor: pointer;
-                            color: white;
-                            font-size: 1.2em;
-                            display: block;
-                            width: 100%;
-                            padding: 10px 0;
-                            border: none;
-                            margin-bottom: 7px;
-                            margin-left: 0;
-                        }
     section .ayudantia-semana {
         display: block;
         width: 100%;
@@ -321,8 +293,8 @@ section {
                 }
             section .ayudantia-semana div #semana .circle {
                 padding: 0;
-                width: 210px;
-                height: 210px;
+                width: 180px;
+                height: 180px;
                 background: #245166;
                 border-radius: 100%;
                 color: white;
@@ -334,10 +306,10 @@ section {
                 border: none;
                 padding: 0;
             }
-            section .ayudantia-semana div #semana .circle h2 {
-                margin-top: 80px;
+            section .ayudantia-semana div #semana .circle h3 {
+                margin-top: 60px;
             }
-                section .ayudantia-semana div #semana .circle h2 a {
+                section .ayudantia-semana div #semana .circle h3 a {
                     color: white;
                     text-decoration: none;
                     vertical-align: middle;
@@ -415,13 +387,12 @@ section {
                 width: 33%;
                 text-align: center;
             }
+            
     section article .lista-ayudantes table tbody tr th{
-        width: 20%;
-        padding-right: 2%;
-        text-align: right;
+        text-align: left;
     }
     section article .lista-ayudantes table tbody tr td{
-        width: 78%;
+        width: 40%;
         text-align: left;
     }
         section article .lista-ayudantes table tbody tr td input[type="text"],
@@ -498,19 +469,22 @@ section {
             .cuestionario table tbody tr td:nth-child(4){
                 display: inline-block;
                 width: 30%;
+                text-align: center;
             }
         
         
         
 footer {
     display: block;
-    padding: 10px 0;
+    padding: 0;
     background: rgb(96,96,96);
     color: white;
     text-align: center;
 }
     footer h3 {
         font-size: 0.8em;
+        margin: 0;
+        padding: 10px 0;
     }
     
 // Auxiliares
@@ -531,9 +505,9 @@ footer {
     right: 12px;
 }
 .icon {
-    float: right;
-    right: 5px;
-    padding-top: 4px;
+    margin-right: 10px;
+    padding-top: 12px;
+    vertical-align: top;
 }
 
 #cuestionario {
@@ -551,11 +525,11 @@ footer {
 .hForm {
     display: inline-block;
     width: 100%;
-    text-align: left;
+    text-align: right;
 }
     .hForm .label {
         display: inline-block;
-        font-size: 1.3em;
+        font-size: 1.2em;
         width: 45%;
         margin: 10px 5px;
         text-align: right;
@@ -563,53 +537,17 @@ footer {
     }
     .hForm .input {
         display: inline-block;
-        font-size: 1.3em;
-        width: 50%;
+        font-size: 1.2em;
+        width: 40%;
         vertical-align: middle;
     }
     .hForm .input input {
         width: 100%;
     }
     .hForm .hButton, .hForm .hEdit {
-        background-color: #3C83A7;
-        cursor: pointer;
-        color: white;
-        font-size: 1.2em;
-        width: 25%;
-        margin-left: 75%;
-        padding: 10px 0;
-        border: none;
-        margin-bottom: 5px;
-        position:relative;
-        border: none;
-        box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
-    }
-        .hForm .hButton:active, .hForm .hEdit:active {
-            top:3px;
-            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
-        }
-        .hForm .hEdit {
-            margin-left: 50%;
-            width: 45%;
-        }
-.outterButton {
-    background-color: #3C83A7;
-    cursor: pointer;
-    color: white;
-    font-size: 1.2em;
-    display: block;
-    width: 25%;
-    margin-left: 75%;
-    padding: 10px 0;
-    border: none;
-    margin-bottom: 5px;
-    position:relative;
-    border: none;
-    box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e;
-}
-    .outterButton:active {
-        top:3px;
-        box-shadow: inset 0px 1px 0px #2ab7ec, 0px 2px 0px 0px #07526e, 0px 5px 3px #999;
+        height: 30px;
+        margin: 5px 0 5px 5px;
+        font-size: 1em;
     }
 
 .nuevo-supervisor, .editar-supervisor{
@@ -640,24 +578,51 @@ footer {
     display: inline-block;
     font-weight: bold;
     font-size: 2.1em;
-    width: 75%;
+    width: 85%;
     text-align: left;
 }
 
 .lista-ayudantes .hremove {
-    background-color: rgb(153,0,0);
     cursor: pointer;
-    color: white;
-    font-size: 1.2em;
-    width: 20%;
+    font-size: 1em;
+    width: 15%;
     padding: 10px 0;
-    border: none;
     margin-bottom: 5px;
-    position:relative;
-    border: none;
-    box-shadow: inset 0px 1px 0px rgb(153,100,0), 0px 5px 0px 0px rgb(103,10,0);
 }
-    .lista-ayudantes .hremove:active {
-        top:3px;
-        box-shadow: inset 0px 1px 0px rgb(153,100,0), 0px 5px 0px 0px rgb(103,10,0);
+
+.submit {
+    cursor: pointer;
+    height: 40px;
+    vertical-align: middle;
+    margin: 5px;
+    font-size: 1em;
+}
+    
+.supervisor-table, .ayudante-table{
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+    .supervisor-table tbody, .ayudante-table tbody {
+        display: block;
+        width: 100%;
     }
+    .supervisor-table tbody tr, .ayudante-table tbody tr{
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+    }
+    .supervisor-table tbody tr:nth-child(1),
+    .ayudante-table tbody tr:nth-child(1){ border-bottom: 1px solid #3C83A7; }
+        .supervisor-table tbody tr th, .supervisor-table tbody tr td,
+        .ayudante-table tbody tr th, .ayudante-table tbody tr td{ display: inline-block; }
+        .supervisor-table tbody tr th:nth-child(1), .supervisor-table tbody tr td:nth-child(1){ width: 50%; }
+        .supervisor-table tbody tr th:nth-child(2), .supervisor-table tbody tr td:nth-child(2){ width: 25%; }
+        .supervisor-table tbody tr th:nth-child(3), .supervisor-table tbody tr td:nth-child(3){ width: 10%; text-align: center;}
+        .supervisor-table tbody tr th:nth-child(4), .supervisor-table tbody tr td:nth-child(4){ width: 10%; text-align: center;}
+        
+        .ayudante-table tbody tr th:nth-child(1), .ayudante-table tbody tr td:nth-child(1){ width: 25%; }
+        .ayudante-table tbody tr th:nth-child(2), .ayudante-table tbody tr td:nth-child(2){ width: 21% }
+        .ayudante-table tbody tr th:nth-child(3), .ayudante-table tbody tr td:nth-child(3){ width: 21%; }
+        .ayudante-table tbody tr th:nth-child(4), .ayudante-table tbody tr td:nth-child(4){ width: 7%; text-align: center;}
+        .ayudante-table tbody tr th:nth-child(5), .ayudante-table tbody tr td:nth-child(5){ width: 23%; text-align: center;}

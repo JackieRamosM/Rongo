@@ -31,16 +31,12 @@
         </nav>
         <section>
             <article>
-                <h1 class="header">SUPERVISORES<i class="fa fa-male icon"></i></h1>
-                <input type="button" value="Agregar Supervisor" class="outterButton"></input>
-                <br/>
+                <h1 class="header">
+                    <label>SUPERVISORES</label>
+                    <i class="fa fa-male icon"></i>
+                    <input type="button" value="Agregar Supervisor" class="outterButton"></input>
+                </h1>
                 <div class="nuevo-supervisor">
-                    <header>
-                        <div>
-                            <h2>Agregar Supervisor</h2>
-                        </div>
-                        <br/><br/>
-                    </header>
                     #{supervisoresBean.init()}
                     <f:view>
                         <h:form styleClass="hForm">
@@ -48,53 +44,53 @@
                             <p:inputText id="nombres" value="#{supervisoresBean.supervisor.nombre}" styleClass="input"></p:inputText><br></br>
                             <p:outputLabel for="apellidos" value="Apellidos:" styleClass="label"/>
                             <p:inputText id="apellidos" value="#{supervisoresBean.supervisor.apellido}" styleClass="input"></p:inputText><br></br>
-                            <p:outputLabel for="cedula" value="Cedula:" styleClass="label"/>
+                            <p:outputLabel for="cedula" value="C&eacute;dula:" styleClass="label"/>
                             <p:inputText id="cedula" value="#{supervisoresBean.supervisor.cedula}" onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;" styleClass="input"></p:inputText><br></br>
                             <p:outputLabel for="email" value="Correo:" styleClass="label"/>
                             <p:inputText id="email" value="#{supervisoresBean.supervisor.correo}" styleClass="input">
                                 <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
                             </p:inputText><br></br><br></br>
+                            <h:commandButton value="Cancelar" styleClass="hButton" id="cancelarAdd"></h:commandButton>
                             <h:commandButton value="Agregar Supervisor" action="#{supervisoresBean.setSupervisores()}" styleClass="hButton"></h:commandButton>
                         </h:form>
                     </f:view>
                 </div>
-                <br/>
                 #{supervisoresBean.encontrarSupervisores()}
+                <br/>
                 <div class="lista-ayudantes">
                     <h:form styleClass="hForm">
-                        <ul>
+                        <table class="supervisor-table">
+                            <tr>
+                                <th>SUPERVISOR</th>
+                                <th>CORREO</th>
+                                <th>ESTADO</th>
+                                <th>ACCI&Oacute;N</th>
+                            </tr>
                             <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
-                                <li>
-                                    <div class="lista-ayudantes-datos">
-                                        <h2><h:outputText value="#{sup.nombre} #{sup.apellido}" styleClass="supervisoresh2"/></h2>
-                                        <h4><h:outputText value="#{sup.correo}" styleClass="supervisoresh4"/></h4>
-                                        <h4><h:outputText value="Activo: #{sup.activo}" styleClass="supervisoresh4"/></h4>
-                                    </div>
-                                    <div class="lista-ayudantes-accion">
-                                        <input type="button" value="Editar" class="hEdit" id="#{sup.cedula}"></input>
-                                    </div>
-                                    <div class="editar-supervisor" id="edit-#{sup.cedula}">
-                                        <header>
-                                            <h1>Editar Supervisor</h1>
-                                        </header>
-                                        <p:outputLabel for="nombres" value="Nombres:" styleClass="label"/>
-                                        <p:inputText id="nombres" value="#{sup.nombre}" styleClass="input"></p:inputText><br></br>
-                                        <p:outputLabel for="apellidos" value="Apellidos:" styleClass="label"/>
-                                        <p:inputText id="apellidos" value="#{sup.apellido}" styleClass="input"></p:inputText><br></br>
-                                        <p:outputLabel for="cedula" value="Cedula:" styleClass="label"/>
-                                        <p:inputText id="cedula" value="#{sup.cedula}" onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;" styleClass="input"></p:inputText><br></br>
-                                        <p:outputLabel for="email" value="Correo:" styleClass="label"/>
-                                        <p:inputText id="email" value="#{sup.correo}" styleClass="input">
-                                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
-                                        </p:inputText><br/><br/>
-                                        <p:outputLabel for="activo" value="Activo:" styleClass="label"/>
-                                        <h:selectBooleanCheckbox id="activo" value="#{sup.activo}"></h:selectBooleanCheckbox><br/><br/>
-                                        <h:commandButton value="Editar y Guardar" action="#{supervisoresBean.editarSupervisor(sup)}" styleClass="hButton"></h:commandButton>
-                                    </div>
-                                    <br/><br/>
-                                </li>
+                                <tr>
+                                    <td>#{sup.apellido} #{sup.nombre}</td>
+                                    <td>#{sup.correo}</td>
+                                    <td>#{sup.activo}</td>
+                                    <td><input type="button" value="Editar" class="hEdit" id="#{sup.cedula}"></input></td>
+                                </tr>
+                                <div id="edit-#{sup.cedula}" style="display: none;">
+                                    <p:outputLabel for="nombres" value="Nombres:" styleClass="label"/>
+                                    <p:inputText id="nombres" value="#{sup.nombre}" styleClass="input"></p:inputText><br></br>
+                                    <p:outputLabel for="apellidos" value="Apellidos:" styleClass="label"/>
+                                    <p:inputText id="apellidos" value="#{sup.apellido}" styleClass="input"></p:inputText><br></br>
+                                    <p:outputLabel for="cedula" value="Cedula:" styleClass="label"/>
+                                    <p:inputText id="cedula" value="#{sup.cedula}" onkeypress="if(event.which &lt; 48 || event.which &gt; 57) return false;" styleClass="input"></p:inputText><br></br>
+                                    <p:outputLabel for="email" value="Correo:" styleClass="label"/>
+                                    <p:inputText id="email" value="#{sup.correo}" styleClass="input">
+                                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                                    </p:inputText><br/>
+                                    <p:outputLabel for="activo" value="Activo:" styleClass="label"/>
+                                    <h:selectBooleanCheckbox id="activo" value="#{sup.activo}"></h:selectBooleanCheckbox><br/>
+                                    <h:commandButton value="Cancelar" styleClass="hButton" id="cancelarEdit"></h:commandButton>
+                                    <h:commandButton value="Editar y Guardar" action="#{supervisoresBean.editarSupervisor(sup)}" styleClass="hButton"></h:commandButton><br/><br/>
+                                </div>
                             </ui:repeat>
-                        </ul>
+                        </table>
                     </h:form>
                 </div>
                 <br/><br/><br/>

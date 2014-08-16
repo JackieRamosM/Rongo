@@ -32,7 +32,10 @@
                 <h4>X</h4>
             </div>
             <article>
-                <h1 class="header">CURSOS QUE TOMA ACTUALMENTE <i class="fa fa-book icon"></i></h1>
+                <h1 class="header">
+                    <label>CURSOS QUE TOMA ACTUALMENTE</label>
+                    <i class="fa fa-book icon"></i>
+                </h1>
                 <div id="courses">
                     <ul>
                         <ui:repeat value="#{estudianteBean.materias}" var="m">
@@ -43,7 +46,10 @@
                 <h:graphicImage value="/faces/resources/images/book.png" />
             </article>
             <article>
-                <h1 class="header">CURSOS DE LOS QUE ES AYUDANTE<i class="fa fa-pencil icon"></i></h1>
+                <h1 class="header">
+                    <label>CURSOS DE LOS QUE ES AYUDANTE</label>
+                    <i class="fa fa-pencil icon"></i>
+                </h1>
                 <div id="courses">
                     <ul>
                         <li class="available">
@@ -53,15 +59,19 @@
                 </div>
             </article>
             <article>
-                <h1 class="header">INFORMACI&Oacute;N P&Uacute;BLICA <i class="fa fa-database icon"></i></h1>
-                <div class="info-publica">
+                <h1 class="header">
+                    <label>INFORMACI&Oacute;N P&Uacute;BLICA</label>
+                    <i class="fa fa-database icon"></i>
+                </h1>
+                <h:form class="info-publica">
+                    #{estudianteBean.init()}
                     <ul>
                         <li>
                             <div>
                                 <i class="fa fa-envelope"></i>
                             </div>
                             <div>
-                                <label>vvillegas@espol.edu.ec</label>
+                                <label>#{estudianteBean.user}@espol.edu.ec</label>
                             </div>
                         </li>
                         <li>
@@ -72,16 +82,12 @@
                                 <label>Ingeniería en Ciencias Computacionales</label>
                             </div>
                         </li>
-                    </ul>
-                </div>
-                <div class="info-publica">
-                    <ul>
                         <li>
                             <div>
                                 <i class="fa fa-comments"></i>
                             </div>
                             <div>
-                                <label>No ha especificado intereses.</label>
+                                <label>#{estudianteBean.intereses}</label>
                             </div>
                         </li>
                         <li>
@@ -89,7 +95,7 @@
                                 <i class="fa fa-skype"></i>
                             </div>
                             <div>
-                                <label>vvillegas</label>
+                                <label>#{estudianteBean.skype}</label>
                             </div>
                         </li>
                         <li>
@@ -97,12 +103,12 @@
                                 <i class="fa fa-twitter"></i>
                             </div>
                             <div>
-                                <label>vvillegas</label>
+                                <label>#{estudianteBean.twitter}</label>
                             </div>
                         </li>
-                        <h:button value="Editar" class="edit"></h:button>
-                    </ul>           
-                </div>
+                        <h:button value="Editar" class="edit" style="padding: 0 10px;margin-right: 10px"></h:button>
+                    </ul>
+                </h:form>
             </article>
         </section>
         <footer>

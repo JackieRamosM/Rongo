@@ -32,10 +32,7 @@
         <section>
             <header>
                 <h:link outcome="ofertas"><i class="fa fa-arrow-circle-o-left"></i></h:link>
-                <div>
-                    <h2>Ofertar nueva ayudant&iacute;a:</h2>
-                </div>
-                <br></br><br></br>
+                <div><h3>Ofertar nueva ayudant&iacute;a:</h3></div>
             </header>
             <article>
                 <div class="lista-ayudantes">
@@ -43,49 +40,67 @@
                     #{supervisoresBean.init()}
                     <h:form styleClass="hForm">
                         #{supervisoresBean.encontrarSupervisores()}
-                        <p:outputLabel for="tipo" value="Tipo de ayudant&iacute;a:" styleClass="label"/>
-                        <h:selectOneMenu id="tipo" value="#{ayudantiasofertadasBean.ayudantiaofertada.tipodeayudantia}" styleClass="input">
-                            <f:selectItem itemValue="null" itemLabel="Seleccione una ayudant&iacute;a"/> 
-                            <f:selectItem itemValue="academica" itemLabel="Gesti&oacute;n de Docencia" />
-                            <f:selectItem itemValue="varias" itemLabel="Actividades Varias" />
-                            <f:ajax render="groups" />
-                        </h:selectOneMenu><br></br>
-                        <p:outputLabel for="groups" value="Nombre de la ayuidant&iacute;a:" styleClass="label"/>
-                        <h:panelGroup id="groups" styleClass="input">
-                            <h:panelGroup rendered="#{ayudantiasofertadasBean.ayudantiaofertada.tipodeayudantia == 'academica'}">
-                                <p:selectOneMenu value="#{ayudantiasofertadasBean.ayudantiaofertada.nombreayudanatia}">
-                                    <f:selectItem itemLabel="Ingenier&iacute;a de Software II" itemValue="FIEC03053"/>
-                                    <f:selectItem itemLabel="Procesamiento Digital de Im&aacute;genes" itemValue="FIEC054391"/>
-                                    <f:selectItem itemLabel="Procesamiento de Audio y Video" itemValue="FIEC054131" />
-                                </p:selectOneMenu>
+                        <div style="display: inline-block;width: 100%;text-align: left;">
+                            <p:outputLabel for="tipo" value="Tipo de ayudant&iacute;a:" styleClass="label"/>
+                            <p:selectOneMenu id="tipo" value="#{ayudantiasofertadasBean.ayudantiaofertada.tipodeayudantia}" styleClass="input" style="width: 40.6%;">
+                                <f:selectItem itemValue="null" itemLabel="Seleccione una ayudant&iacute;a"/> 
+                                <f:selectItem itemValue="academica" itemLabel="Gesti&oacute;n de Docencia" />
+                                <f:selectItem itemValue="varias" itemLabel="Actividades Varias" />
+                                <f:ajax render="groups" />
+                            </p:selectOneMenu>
+                        </div>
+                        <div style="display: inline-block;width: 100%;text-align: left;">
+                            <p:outputLabel for="groups" value="Nombre de la ayuidant&iacute;a:" styleClass="label"/>
+                            <h:panelGroup id="groups" style="display: inline-block;width: 40.6%;">
+                                <h:panelGroup rendered="#{ayudantiasofertadasBean.ayudantiaofertada.tipodeayudantia == 'academica'}" style="width: 100%;">
+                                    <p:selectOneMenu value="#{ayudantiasofertadasBean.ayudantiaofertada.nombreayudanatia}" style="width: 100%;">
+                                        <f:selectItem itemLabel="Ingenier&iacute;a de Software II" itemValue="FIEC03053"/>
+                                        <f:selectItem itemLabel="Procesamiento Digital de Im&aacute;genes" itemValue="FIEC054391"/>
+                                        <f:selectItem itemLabel="Procesamiento de Audio y Video" itemValue="FIEC054131" />
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{ayudantiasofertadasBean.ayudantiaofertada.tipodeayudantia == 'varias'}" style="width: 100%;">
+                                    <p:inputText value="#{ayudantiasofertadasBean.ayudantiaofertada.nombreayudanatia}" style="width: 98%;"></p:inputText>
+                                </h:panelGroup>
                             </h:panelGroup>
-                            <h:panelGroup rendered="#{ayudantiasofertadasBean.ayudantiaofertada.tipodeayudantia == 'varias'}">
-                                <p:inputText value="#{ayudantiasofertadasBean.ayudantiaofertada.nombreayudanatia}"></p:inputText>
-                            </h:panelGroup>
-                        </h:panelGroup>
-                        <br></br>
-                        <p:outputLabel for="horas" value="Horas requeridas:" styleClass="label"/>
-                        <p:selectOneMenu id="horas" value="#{ayudantiasofertadasBean.ayudantiaofertada.cargasemanal}" styleClass="input">
-                            <f:selectItem itemValue="5" itemLabel="5 horas" />
-                            <f:selectItem itemValue="10" itemLabel="10 horas" />
-                            <f:selectItem itemValue="15" itemLabel="15 horas" />
-                            <f:selectItem itemValue="20" itemLabel="20 horas" />
-                        </p:selectOneMenu><br></br>
-                        <p:outputLabel for="requisitos" value="Requisitos:" styleClass="label"/>
-                        <p:inputTextarea id="requisitos" value="#{ayudantiasofertadasBean.ayudantiaofertada.requisitos}" styleClass="input"></p:inputTextarea><br/><br/>
-                        <p:outputLabel for="descripcion" value="Descripci&oacute;n:" styleClass="label"/>
-                        <p:inputTextarea id="descripcion" value="#{ayudantiasofertadasBean.ayudantiaofertada.descripcion}" styleClass="input"></p:inputTextarea><br></br>
-                        <p:outputLabel for="desde" value="Vigente desde:" styleClass="label"/>
-                        <p:calendar id="desde" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentedesde}" pattern="MM/dd/yyyy" styleClass="input"/><br></br>
-                        <p:outputLabel for="hasta" value="Vigente hasta:" styleClass="label"/>
-                        <p:calendar id="hasta" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentehasta}" pattern="MM/dd/yyyy" styleClass="input"/><br></br>
-                        <p:outputLabel for="supervisor" value="Supervisor:" styleClass="label"/>
-                        <p:selectOneMenu id="supervisor" value="#{ayudantiasofertadasBean.ayudantiaofertada.idsupervisor}" styleClass="input">
-                            <f:selectItems value="#{supervisoresBean.supervisores}" var="sup"
-                                itemLabel="#{sup.nombre} #{sup.apellido}" itemValue="#{sup}" />
-                            <f:converter converterId="app.rongo.persistence.beans.SupervisorConverter" />
-                        </p:selectOneMenu><br></br>
-                        <h:commandButton value="Ofertar" action="#{ayudantiasofertadasBean.ofertarAyudantia(ayudantiasofertadasBean.ayudantiaofertada)}" styleClass="hButton"></h:commandButton>                        
+                        </div>
+                        <div style="display: inline-block;width: 100%;text-align: left;">
+                            <p:outputLabel for="horas" value="Horas requeridas:" styleClass="label"/>
+                            <p:selectOneMenu id="horas" value="#{ayudantiasofertadasBean.ayudantiaofertada.cargasemanal}" styleClass="input" style="width: 40.6%;">
+                                <f:selectItem itemValue="5" itemLabel="5 horas" />
+                                <f:selectItem itemValue="10" itemLabel="10 horas" />
+                                <f:selectItem itemValue="15" itemLabel="15 horas" />
+                                <f:selectItem itemValue="20" itemLabel="20 horas" />
+                            </p:selectOneMenu>
+                        </div>
+                        <div style="display: inline-block;width: 100%;text-align: left;margin: 2px 0;">
+                            <p:outputLabel for="requisitos" value="Requisitos:" styleClass="label"/>
+                            <p:inputTextarea id="requisitos" value="#{ayudantiasofertadasBean.ayudantiaofertada.requisitos}" styleClass="input"></p:inputTextarea>
+                        </div>
+                        <div style="display: inline-block;width: 100%;text-align: left;margin: 2px 0;">
+                            <p:outputLabel for="descripcion" value="Descripci&oacute;n:" styleClass="label"/>
+                            <p:inputTextarea id="descripcion" value="#{ayudantiasofertadasBean.ayudantiaofertada.descripcion}" styleClass="input"></p:inputTextarea>
+                        </div>
+                        <div style="display: inline-block;width: 100%;text-align: left;">
+                            <p:outputLabel for="desde" value="Vigente desde:" styleClass="label"/>
+                            <p:calendar id="desde" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentedesde}" pattern="MM/dd/yyyy" styleClass="input"/>
+                        </div>
+                        <div style="display: inline-block;width: 100%;text-align: left;">
+                            <p:outputLabel for="hasta" value="Vigente hasta:" styleClass="label"/>
+                            <p:calendar id="hasta" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentehasta}" pattern="MM/dd/yyyy" styleClass="input"/>
+                            
+                        </div>
+                        <div style="display: inline-block;width: 100%;text-align: left;">
+                            <p:outputLabel for="supervisor" value="Supervisor:" styleClass="label"/>
+                            <p:selectOneMenu id="supervisor" value="#{ayudantiasofertadasBean.ayudantiaofertada.idsupervisor}" styleClass="input" style="width: 40.6%;">
+                                <f:selectItems value="#{supervisoresBean.supervisores}" var="sup"
+                                    itemLabel="#{sup.nombre} #{sup.apellido}" itemValue="#{sup}" />
+                                <f:converter converterId="app.rongo.persistence.beans.SupervisorConverter" />
+                            </p:selectOneMenu>
+                        </div>
+                        <div style="text-align: right; width: 87%; margin: 10px 13% 0 0">
+                            <h:commandButton value="Ofertar" action="#{ayudantiasofertadasBean.ofertarAyudantia(ayudantiasofertadasBean.ayudantiaofertada)}" styleClass="hButton"></h:commandButton>
+                        </div>
                     </h:form>
                 </div>
             </article>
@@ -93,6 +108,5 @@
         <footer>
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
-        <h:outputScript name="js/index.js" />
     </h:body>  
 </html>

@@ -8,8 +8,14 @@ function init() {
     $(".outterButton").click(function(){
         $(".nuevo-supervisor").fadeIn();
     });
+    $("#cancelarAdd").click(function(){
+        $(".nuevo-supervisor").fadeOut();
+    });
     $(".hEdit").click(function(){
         $("#edit-" + $(this).attr('id')).fadeIn();
+    });
+    $("#cancelarEdit").click(function(){
+        $("#edit-" + $('.hEdit').attr('id')).fadeOut();
     });
 }
 

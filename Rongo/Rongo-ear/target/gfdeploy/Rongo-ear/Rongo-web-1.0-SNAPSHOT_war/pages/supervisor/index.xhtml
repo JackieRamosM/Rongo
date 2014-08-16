@@ -29,21 +29,29 @@
         </nav>
         <section>
             <article>
-                <h1 class="header">AYUDANTES ACAD&Eacute;MICOS <i class="fa fa-pencil icon"></i></h1>
+                <h1 class="header">
+                    <label>AYUDANTES ACAD&Eacute;MICOS</label>
+                    <i class="fa fa-pencil icon"></i>
+                </h1>
                 <div class="lista-ayudantes">
-                    <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Juan Manuel Romero</h2>
-                                <h4>Ayudante del curso de Ingeniería de Software I</h4>
-                                <h4>Carga semanal: 5 horas</h4>
-                                <h4>jromero@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Ver ayudant&iacute;as" outcome="ayudante"></h:button>
-                            </div>
-                        </li>
-                    </ul>
+                    <h:form styleClass="hForm">
+                        <table class="ayudante-table ayudante-academico">
+                            <tr>
+                                <th>Ayudante</th>
+                                <th>Ayudant&iacute;a</th>
+                                <th>Correo</th>
+                                <th>Horas</th>
+                                <th>Acci&oacute;n</th>
+                            </tr>
+                            <tr>
+                                <td>Mayra Alejandra Moreira Solorzano</td>
+                                <td>Laboratorios de la FIEC</td>
+                                <td>mmoreira@espol.edu.ec</td>
+                                <td>10</td>
+                                <td><h:button value="Ver ayudant&iacute;as" outcome="ayudante"></h:button></td>
+                            </tr>
+                        </table>
+                    </h:form>
                 </div>
             </article>
         </section>

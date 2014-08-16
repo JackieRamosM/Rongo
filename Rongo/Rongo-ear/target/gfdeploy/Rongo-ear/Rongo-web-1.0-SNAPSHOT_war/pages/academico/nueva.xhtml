@@ -27,7 +27,7 @@
             <header>
                 <h:link outcome="ayudantias"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h2>Registro de Ayudant&iacute;a</h2>
+                    <h3>Registro de Ayudant&iacute;a</h3>
                 </div>
             </header>
             <article>
@@ -40,16 +40,24 @@
                     <h2>Junio 30 a Julio 4 de 2014</h2>
                 </div>
                 <div class="lista-ayudantes nueva-semana">
-                    <h:form id="form">
-                        <h:outputLabel for="dia" value="D&iacute;a:" />
-                        <p:calendar id="dia" value="#{calendarView.date1}" pattern="MM/dd/yyyy" required="true"/>
-                        <h:outputLabel for="inicio" value="Inicio:" />
-                        <p:calendar id="inicio" value="#{calendarView.date2}" pattern="HH:mm a" timeOnly="true" required="true"/>
-                        <h:outputLabel for="fin" value="Fin:" />
-                        <p:calendar id="fin" value="#{calendarView.date3}" pattern="HH:mm a" timeOnly="true" required="true"/>
-                        <h:outputLabel for="descripcion" value="Descripci&oacute;n:" />
-                        <p:inputTextarea id="descripcion" required="true"></p:inputTextarea>
-                        <h:button value="Guardar"></h:button>
+                    <h:form styleClass="hForm">
+                        <div style="padding-right: 1%;">
+                            <h:outputLabel for="dia" value="D&iacute;a:" styleClass="label"/>
+                            <p:calendar id="dia" value="#{calendarView.date1}" pattern="MM/dd/yyyy" styleClass="input"/>
+                        </div>
+                        <div style="padding-right: 1%;">
+                            <h:outputLabel for="inicio" value="Inicio:" styleClass="label"/>
+                            <p:calendar id="inicio" value="#{calendarView.date2}" pattern="HH:mm a" timeOnly="true" styleClass="input"/>
+                        </div>
+                        <div style="padding-right: 1%;">
+                            <h:outputLabel for="fin" value="Fin:" styleClass="label"/>
+                            <p:calendar id="fin" value="#{calendarView.date3}" pattern="HH:mm a" timeOnly="true" styleClass="input"/>
+                        </div>
+                        <div style="margin: 5px 0;">
+                            <h:outputLabel for="descripcion" value="Descripci&oacute;n:" styleClass="label"/>
+                            <p:inputTextarea id="descripcion" styleClass="input"></p:inputTextarea>
+                        </div>
+                        <div><h:button value="Guardar"></h:button></div>
                     </h:form>
                 </div>
             </article>

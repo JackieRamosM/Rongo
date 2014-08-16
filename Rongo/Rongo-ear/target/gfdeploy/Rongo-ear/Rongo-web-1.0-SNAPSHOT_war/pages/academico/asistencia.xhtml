@@ -28,7 +28,7 @@
             <header>
                 <h:link outcome="ayudantias"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h2>Asistencia</h2>
+                    <h3>Asistencia</h3>
                 </div>
             </header>
             <article>
@@ -38,32 +38,32 @@
                     <h4>Paralelo 1</h4>
                 </div>
                 <div class="asistencia">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Nombres</th>
-                                <th>Email</th>
-                                <th>Matr&iacute;cula</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>David Alejandro Barrera Guano</td>
-                                <td>davalbar@espol.edu.ec</td>
-                                <td>200913451</td>
-                            </tr>
-                            <tr>
-                                <td>Denny Klever Schuldt Vizuete</td>
-                                <td>dschuldt@espol.edu.ec</td>
-                                <td>201015278</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <label><strong>Matr&iacute;cula del estudiante: </strong></label>
-                    <p:inputText></p:inputText>
-                    <h:button value="Registrar alumno"></h:button>
+                    <h:form>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Email</th>
+                                    <th>Matr&iacute;cula</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>David Alejandro Barrera Guano</td>
+                                    <td>davalbar@espol.edu.ec</td>
+                                    <td>200913451</td>
+                                </tr>
+                                <tr>
+                                    <td>Denny Klever Schuldt Vizuete</td>
+                                    <td>dschuldt@espol.edu.ec</td>
+                                    <td>201015278</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br/><br/><label><strong>Matr&iacute;cula del estudiante: </strong></label>
+                        <p:inputText></p:inputText><br/><br/>
+                        <h:button value="Registrar alumno"></h:button>
+                    </h:form>
                 </div>
             </article>
         </section>

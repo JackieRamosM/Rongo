@@ -28,57 +28,84 @@
                 <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
             </ul>
         </nav>
+        #{supervisoresBean.encontrarSupervisores()}
         <section>
             <article>
-                <h1 class="header">AYUDANTES ACAD&Eacute;MICOS <i class="fa fa-pencil icon"></i></h1>
+                <h1 class="header">
+                    <label>AYUDANTES ACAD&Eacute;MICOS</label>
+                    <i class="fa fa-pencil icon"></i>
+                </h1>
                 <div class="lista-ayudantes">
                     <h:form styleClass="hForm">
-                        <ul>
+                        <table class="ayudante-table ayudante-academico">
+                            <tr>
+                                <th>Ayudante</th>
+                                <th>Ayudant&iacute;a</th>
+                                <th>Correo</th>
+                                <th>Horas</th>
+                                <th>Acci&oacute;n</th>
+                            </tr>
                             <ui:repeat var="sup" value="#{supervisoresBean.supervisores}" >
-                                <li>
-                                    <div class="lista-ayudantes-datos">
-                                        <h2>Juan Manuel Romero</h2>
-                                        <h4>Ayudante del curso de Ingeniería de Software I</h4>
-                                        <h4>Carga semanal: 5 horas</h4>
-                                        <h4>jromero@espol.edu.ec</h4>
-                                    </div>
-                                    <div class="lista-ayudantes-accion">
-                                        <h:button value="Reporte de Clases" outcome="ayudante"></h:button>
-                                        <h:button value="Finalizar Ayudantia"></h:button>
-                                    </div>
-                                </li>
+                                <tr>
+                                    <td>Juan Manuel Romero</td>
+                                    <td>Ingeniería de Software I</td>
+                                    <td>jromero@espol.edu.ec</td>
+                                    <td>5</td>
+                                    <td>
+                                        <h:button value="Clases" outcome="ayudante"></h:button>
+                                        <h:commandButton value="Terminar Ayudantia" styleClass="submit"></h:commandButton>
+                                    </td>
+                                </tr>
                             </ui:repeat>
-                        </ul>
+                        </table>
                     </h:form>
                 </div>
             </article>
             <article>
-                <h1 class="header">AYUDANTES DE ACTIVIDADES VARIAS<i class="fa fa-folder icon"></i></h1>
+                <h1 class="header">
+                    <label>AYUDANTES DE ACTIVIDADES VARIAS</label>
+                    <i class="fa fa-folder icon"></i>
+                </h1>
                 <div class="lista-ayudantes">
-                    <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Mayra Alejandra Moreira Solorzano</h2>
-                                <h4>Ayudante de laboratorios de la FIEC</h4>
-                                <h4>Carga semanal: 10 horas</h4>
-                                <h4>mmoreira@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Finalizar Ayudantia"></h:button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Xavier Agustin Villacres Ventura</h2>
-                                <h4>Ayudante del Departamento de Soporte Técnico de la FIEC</h4>
-                                <h4>Carga semanal: 10 horas</h4>
-                                <h4>xvillacres@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Finalizar Ayudantia"></h:button>
-                            </div>
-                        </li>
-                    </ul>
+                    <h:form styleClass="hForm">
+                        <table class="ayudante-table ayudante-academico">
+                            <tr>
+                                <th>Ayudante</th>
+                                <th>Ayudant&iacute;a</th>
+                                <th>Correo</th>
+                                <th>Horas</th>
+                                <th>Acci&oacute;n</th>
+                            </tr>
+                            <tr>
+                                <td>Mayra Alejandra Moreira Solorzano</td>
+                                <td>Laboratorios de la FIEC</td>
+                                <td>mmoreira@espol.edu.ec</td>
+                                <td>10</td>
+                                <td><h:commandButton value="Terminar Ayudantia" styleClass="submit"></h:commandButton></td>
+                            </tr>
+                            <tr>
+                                <td>Mayra Alejandra Moreira Solorzano</td>
+                                <td>Laboratorios de la FIEC</td>
+                                <td>mmoreira@espol.edu.ec</td>
+                                <td>10</td>
+                                <td><h:commandButton value="Terminar Ayudantia" styleClass="submit"></h:commandButton></td>
+                            </tr>
+                            <tr>
+                                <td>Mayra Alejandra Moreira Solorzano</td>
+                                <td>Laboratorios de la FIEC</td>
+                                <td>mmoreira@espol.edu.ec</td>
+                                <td>10</td>
+                                <td><h:commandButton value="Terminar Ayudantia" styleClass="submit"></h:commandButton></td>
+                            </tr>
+                            <tr>
+                                <td>Mayra Alejandra Moreira Solorzano</td>
+                                <td>Laboratorios de la FIEC</td>
+                                <td>mmoreira@espol.edu.ec</td>
+                                <td>10</td>
+                                <td><h:commandButton value="Terminar Ayudantia" styleClass="submit"></h:commandButton></td>
+                            </tr>
+                        </table>
+                    </h:form>
                 </div>
             </article>
         </section>
