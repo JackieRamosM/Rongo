@@ -40,6 +40,7 @@
                     #{supervisoresBean.init()}
                     <h:form styleClass="hForm">
                         #{supervisoresBean.encontrarSupervisores()}
+                        #{supervisoresBean.supervisoresActivos()}
                         <div style="display: inline-block;width: 100%;text-align: left;">
                             <p:outputLabel for="tipo" value="Tipo de ayudant&iacute;a:" styleClass="label"/>
                             <p:selectOneMenu id="tipo" value="#{ayudantiasofertadasBean.ayudantiaofertada.tipodeayudantia}" styleClass="input" style="width: 40.6%;">
@@ -88,7 +89,6 @@
                         <div style="display: inline-block;width: 100%;text-align: left;">
                             <p:outputLabel for="hasta" value="Vigente hasta:" styleClass="label"/>
                             <p:calendar id="hasta" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentehasta}" pattern="MM/dd/yyyy" styleClass="input"/>
-                            
                         </div>
                         <div style="display: inline-block;width: 100%;text-align: left;">
                             <p:outputLabel for="supervisor" value="Supervisor:" styleClass="label"/>

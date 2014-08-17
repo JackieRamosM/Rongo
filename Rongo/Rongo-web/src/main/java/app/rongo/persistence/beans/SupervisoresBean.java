@@ -10,6 +10,7 @@ import app.rongo.facade.SupervisorFacadeLocal;
 import app.rongo.persistence.Supervisor;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -42,6 +43,15 @@ public class SupervisoresBean implements Serializable {
         supervisor.setCorreo("");
         supervisor.setIdsupervisor(Integer.SIZE);
     }
+    
+    public void supervisoresActivos(){
+        Iterator<Supervisor> i = supervisores.iterator();
+        while (i.hasNext()) {
+            Supervisor s = i.next();
+            if(s.getActivo() == false) i.remove();
+        }
+    }
+    
     
     public void encontrarSupervisores(){
         supervisores = supervisorFacade.findAll();

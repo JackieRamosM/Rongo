@@ -70,7 +70,12 @@
                                 <tr>
                                     <td>#{sup.apellido} #{sup.nombre}</td>
                                     <td>#{sup.correo}</td>
-                                    <td>#{sup.activo}</td>
+                                    <h:panelGroup rendered="#{sup.activo == true}">
+                                        <td>Activo</td>
+                                    </h:panelGroup>
+                                    <h:panelGroup rendered="#{sup.activo == false}">
+                                        <td>Inactivo</td>
+                                    </h:panelGroup>
                                     <td><input type="button" value="Editar" class="hEdit" id="#{sup.cedula}"></input></td>
                                 </tr>
                                 <div id="edit-#{sup.cedula}" style="display: none;">
