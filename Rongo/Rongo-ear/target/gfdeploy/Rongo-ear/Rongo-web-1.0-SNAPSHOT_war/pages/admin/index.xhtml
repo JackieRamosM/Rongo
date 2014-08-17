@@ -53,7 +53,7 @@
                                     <td>5</td>
                                     <td>
                                         <h:button value="Clases" outcome="ayudante"></h:button>
-                                        <h:commandButton value="Terminar Ayudantia" styleClass="submit"></h:commandButton>
+                                        <h:commandButton onclick="if (!confirm('¿Está seguro de querer termina la ayudantía?')) return false" value="Terminar Ayudantia" styleClass="submit"></h:commandButton>
                                     </td>
                                 </tr>
                             </ui:repeat>

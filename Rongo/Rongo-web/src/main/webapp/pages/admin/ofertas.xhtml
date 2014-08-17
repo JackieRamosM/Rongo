@@ -42,7 +42,7 @@
                     <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
                         <div class="lista-ayudantes">
                             <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                            <h:commandButton value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
+                            <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
                             <hr/>
                             <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                             <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -59,10 +59,10 @@
                                 <f:convertDateTime pattern="MM/dd/yyyy"/>
                             </h:outputText>
                             <h:outputText value="Supervisor: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.idsupervisor.nombre} #{ao.idsupervisor.apellido}" styleClass="hvalue"/>
+                            <h:outputText value="#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}" styleClass="hvalue"/>
                             <h:outputText value="Email: " styleClass="hlabel"/>
                             <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
-                            <br/><br/><br/>
+                            <br/>
                         </div>
                     </ui:repeat>
                 </h:form>

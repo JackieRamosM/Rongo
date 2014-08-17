@@ -41,7 +41,7 @@
                                 <h4>Este cuestionario ser&aacute; llenado por un estudiante asistente a las clases de un ayudante, con el fin de evaluar al ayudante acad&eacute;mico correspondiente.</h4>
                             </div>
                             <div class="lista-ayudantes-accion">
-                                <h:button value="Habilitar"></h:button>
+                                <h:form><h:commandButton onclick="if(!confirm('¿Está seguro de querer habilitar el cuestionario?')) return false" value="Habilitar" style="padding: 10px 0;width: 150px;"></h:commandButton></h:form>
                             </div>
                         </li>
                         <li>
@@ -50,7 +50,7 @@
                                 <h4>Este cuestionario ser&aacute; llenado por el supervisor de un ayudante acad&eacute;mico, o de un ayudante de actividades varias.</h4>
                             </div>
                             <div class="lista-ayudantes-accion">
-                                <h:button value="Habilitar"></h:button>
+                                <h:form><h:commandButton onclick="if(!confirm('¿Está seguro de querer habilitar el cuestionario?')) return false" value="Habilitar" style="padding: 10px 0;width: 150px;"></h:commandButton></h:form>
                             </div>
                         </li>
                     </ul>

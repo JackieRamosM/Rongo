@@ -17,6 +17,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -53,9 +54,19 @@ public class AyudantiasofertadasBean implements Serializable {
         ayudantiasofertadas = ayudantiasofertadasFacade.findAll();
     }
     public void ofertarAyudantia(Ayudantiasofertadas ao) throws IOException{
-        ayudantiasofertadasFacade.create(ao);
+        Date desde = ao.getVigentedesde();
+        Date hasta = ao.getVigentehasta();
+        if((desde.compareTo(hasta) == 0) || (desde.compareTo(hasta)<0))
+            ayudantiasofertadasFacade.create(ao);
         FacesContext.getCurrentInstance().getExternalContext().redirect("ofertas.xhtml");
     }
+    
+    public void validarFecha(){
+        Date d1 = ayudantiaofertada.getVigentedesde();
+        Date d2 = ayudantiaofertada.getVigentehasta();
+        if(d1.compareTo(d2)>0) RequestContext.getCurrentInstance().execute("alert('La fecha vigencia debe ser después o igual a la de inicio.')");
+    }
+    
     public void removerAyudantiaofertada(Ayudantiasofertadas ao) throws IOException{
         ayudantiasofertadasFacade.remove(ao);
         FacesContext.getCurrentInstance().getExternalContext().redirect("ofertas.xhtml");
