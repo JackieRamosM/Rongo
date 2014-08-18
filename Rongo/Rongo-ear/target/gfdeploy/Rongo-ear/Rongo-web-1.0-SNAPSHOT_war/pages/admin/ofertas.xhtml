@@ -35,35 +35,77 @@
                     <i class="fa fa-suitcase icon"></i>
                     <h:button value="Ofertar nueva ayudant&iacute;a" outcome="nueva" styleClass="outterButton"></h:button>
                 </h1>
+                #{ayudantiasofertadasBean.encontrarAyudantiasofertadas()}
             </article>
-            #{ayudantiasofertadasBean.encontrarAyudantiasofertadas()}
             <article>
+                <h1 class="header">
+                    <label>AYUDANT&Iacute;AS ACAD&Eacute;MICAS</label>
+                    <i class="fa fa-suitcase icon"></i>
+                </h1>
                 <h:form styleClass="hForm">
                     <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
-                        <div class="lista-ayudantes">
-                            <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                            <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
-                            <hr/>
-                            <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
-                            <h:outputText value="Requisitos: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.requisitos}" styleClass="hvalue"/><br/><br/>
-                            <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
-                            <h:outputText value="Vigente Desde: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.vigentedesde}" styleClass="hvalue">
-                                <f:convertDateTime pattern="MM/dd/yyyy"/>
-                            </h:outputText>
-                            <h:outputText value="Vigente Hasta: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.vigentehasta}" styleClass="hvalue">
-                                <f:convertDateTime pattern="MM/dd/yyyy"/>
-                            </h:outputText>
-                            <h:outputText value="Supervisor: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}" styleClass="hvalue"/>
-                            <h:outputText value="Email: " styleClass="hlabel"/>
-                            <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
-                            <br/>
-                        </div>
+                        <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
+                            <div class="lista-ayudantes">
+                                <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
+                                <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
+                                <hr/>
+                                <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
+                                <h:outputText value="Requisitos: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.requisitos}" styleClass="hvalue"/><br/><br/>
+                                <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
+                                <h:outputText value="Vigente Desde: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.vigentedesde}" styleClass="hvalue">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                </h:outputText>
+                                <h:outputText value="Vigente Hasta: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.vigentehasta}" styleClass="hvalue">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                </h:outputText>
+                                <h:outputText value="Supervisor: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}" styleClass="hvalue"/>
+                                <h:outputText value="Email: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
+                                <br/>
+                            </div>
+                        </h:panelGroup>
+                    </ui:repeat>
+                </h:form>
+            </article>
+            <article>
+                <h1 class="header">
+                    <label>AYUDANT&Iacute;AS DE ACTIVIDADES VARIAS</label>
+                    <i class="fa fa-suitcase icon"></i>
+                </h1>
+                <h:form styleClass="hForm">
+                    <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
+                        <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
+                            <div class="lista-ayudantes">
+                                <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
+                                <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
+                                <hr/>
+                                <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
+                                <h:outputText value="Requisitos: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.requisitos}" styleClass="hvalue"/><br/><br/>
+                                <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
+                                <h:outputText value="Vigente Desde: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.vigentedesde}" styleClass="hvalue">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                </h:outputText>
+                                <h:outputText value="Vigente Hasta: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.vigentehasta}" styleClass="hvalue">
+                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
+                                </h:outputText>
+                                <h:outputText value="Supervisor: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}" styleClass="hvalue"/>
+                                <h:outputText value="Email: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
+                                <br/>
+                            </div>
+                        </h:panelGroup>
                     </ui:repeat>
                 </h:form>
             </article>
