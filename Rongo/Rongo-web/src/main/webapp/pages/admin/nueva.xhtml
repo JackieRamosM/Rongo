@@ -84,17 +84,21 @@
                         </div>
                         <div style="display: inline-block;width: 100%;text-align: left;">
                             <p:outputLabel for="desde" value="Vigente desde:" styleClass="label"/>
-                            <p:calendar id="desde" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentedesde}" pattern="MM/dd/yyyy" styleClass="input"/>
+                            <p:calendar id="desde" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentedesde}" pattern="MM/dd/yyyy" styleClass="input">
+                                <p:ajax event="dateSelect" listener="#{ayudantiasofertadasBean.validarFecha()}"/>
+                            </p:calendar>
                         </div>
                         <div style="display: inline-block;width: 100%;text-align: left;">
                             <p:outputLabel for="hasta" value="Vigente hasta:" styleClass="label"/>
-                            <p:calendar id="hasta" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentehasta}" pattern="MM/dd/yyyy" styleClass="input"/>
+                            <p:calendar id="hasta" value="#{ayudantiasofertadasBean.ayudantiaofertada.vigentehasta}" pattern="MM/dd/yyyy" styleClass="input">
+                                <p:ajax event="dateSelect" listener="#{ayudantiasofertadasBean.validarFecha()}"/>
+                            </p:calendar>
                         </div>
                         <div style="display: inline-block;width: 100%;text-align: left;">
                             <p:outputLabel for="supervisor" value="Supervisor:" styleClass="label"/>
                             <p:selectOneMenu id="supervisor" value="#{ayudantiasofertadasBean.ayudantiaofertada.idsupervisor}" styleClass="input" style="width: 40.6%;">
                                 <f:selectItems value="#{supervisoresBean.supervisores}" var="sup"
-                                    itemLabel="#{sup.nombre} #{sup.apellido}" itemValue="#{sup}" />
+                                    itemLabel="#{sup.apellido} #{sup.nombre}" itemValue="#{sup}" />
                                 <f:converter converterId="app.rongo.persistence.beans.SupervisorConverter" />
                             </p:selectOneMenu>
                         </div>

@@ -10,6 +10,8 @@ import app.rongo.facade.SupervisorFacadeLocal;
 import app.rongo.persistence.Supervisor;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
@@ -55,6 +57,11 @@ public class SupervisoresBean implements Serializable {
     
     public void encontrarSupervisores(){
         supervisores = supervisorFacade.findAll();
+        Collections.sort(supervisores,new Comparator<Supervisor>(){
+            public int compare(Supervisor s1, Supervisor s2) {
+                return s1.getApellido().compareTo(s2.getApellido());
+            }
+        });
     }
     public void setSupervisores() throws IOException{
         supervisorFacade.create(supervisor);
