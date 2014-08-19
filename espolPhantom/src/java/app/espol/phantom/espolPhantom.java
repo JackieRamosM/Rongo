@@ -54,4 +54,28 @@ public class espolPhantom {
         }
         return materias;
     }
+
+    /**
+     * Web service operation
+     * @param matricula
+     * @return 
+     */
+    @WebMethod(operationName = "getDatos")
+    public String getDatos(@WebParam(name = "matricula") String matricula) {
+        //TODO write your implementation code here:
+        if(matricula.equals("201009347")){
+            return "Ingenería en Ciencias Computacionales Orientación Sistemas Multimedia";
+        }
+        if(matricula.equals("201018322")){
+            return "Ingenería en Ciencias Computacionales Orientación Sistemas Multimedia";
+        }
+        if(matricula.equals("201015278")){
+            return "Ingenería en Ciencias Computacionales Orientación Sistemas Multimedia";
+        }
+        if(matricula.equals("200803369")){
+            return "Ingenería en Ciencias Computacionales Orientación Sistemas de Información";
+        }
+        return null;
+    }
 }
+

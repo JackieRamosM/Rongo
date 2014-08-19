@@ -16,12 +16,14 @@ public class Session{
     
     private String user;
     private String matriculauser;
+    private String datos;
     private List<String> materiasuser;
   
     
     public void getUserFromCas() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        setUser(facesContext.getExternalContext().getRemoteUser());
+        //setUser(facesContext.getExternalContext().getRemoteUser());
+        setUser("ljramos");
         
     }
     
@@ -54,10 +56,23 @@ public class Session{
         } catch (Exception ex) {
             // TODO handle custom exceptions here
         }
-
     }
     
-    
+    private void datosService(){
+        
+        try { // Call Web Service Operation
+            app.espol.phantom.EspolPhantom_Service service = new app.espol.phantom.EspolPhantom_Service();
+            app.espol.phantom.EspolPhantom port = service.getEspolPhantomPort();
+            // TODO initialize WS operation arguments here
+            java.lang.String matricula = getMatriculauser();
+            // TODO process result here
+            datos = port.getDatos(matricula);
+            System.out.println("Result = "+datos);
+        } catch (Exception ex) {
+            // TODO handle custom exceptions here
+        }
+    }
+      
 
     public String getUser() {
         getUserFromCas();
@@ -67,14 +82,10 @@ public class Session{
     public void setUser(String user) {
         this.user = user;
     }
-
+    
     public String getMatriculauser() {
         matriculaService();
         return matriculauser;
-    }
-
-    public void setMatriculauser(String matricula) {
-        this.matriculauser = matricula;
     }
 
     public List<String> getMateriasuser() {
@@ -82,8 +93,8 @@ public class Session{
         return materiasuser;
     }
 
-    public void setMateriasuser(List<String> materiasuser) {
-        this.materiasuser = materiasuser;
+    public String getDatos() {
+        datosService();
+        return datos;
     }
-    
 }

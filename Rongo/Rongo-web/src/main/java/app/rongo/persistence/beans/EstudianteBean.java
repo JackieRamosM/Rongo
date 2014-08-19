@@ -33,6 +33,7 @@ public class EstudianteBean implements Serializable {
     private final Session session = new Session();
     private final String usuario = session.getUser();
     private List<String> materias = session.getMateriasuser();
+    private String datos = session.getDatos();
     private String user;
     private String skype;
     private String intereses;
@@ -122,8 +123,8 @@ public class EstudianteBean implements Serializable {
         return user;
     }
 
-   
+    public String getDatos() {
+        return datos;
+    }
     
-    
-
 }
