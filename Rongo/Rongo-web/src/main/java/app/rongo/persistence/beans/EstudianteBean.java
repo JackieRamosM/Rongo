@@ -9,14 +9,13 @@ import app.rongo.beans.Session;
 import app.rongo.facade.EstudianteFacade;
 import app.rongo.facade.EstudianteFacadeLocal;
 import app.rongo.persistence.Estudiante;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.persistence.EntityManager;
-import javax.persistence.NamedQuery;
-import javax.persistence.Query;
 
 /**
  *
@@ -27,7 +26,7 @@ import javax.persistence.Query;
 public class EstudianteBean implements Serializable {
 
     @EJB
-    private EstudianteFacadeLocal estudianteFacade = new EstudianteFacade();
+    private EstudianteFacadeLocal estudianteFacade;
     private List<Estudiante> estudiantes;
     private Estudiante estudiante = new Estudiante();
     private final Session session = new Session();
@@ -41,26 +40,23 @@ public class EstudianteBean implements Serializable {
     private boolean admin;
 
     public EstudianteBean() {
-       
     }
     
     public void findEstudiante(){
-         estudiantes = estudianteFacade.findAll();
-
+        estudiantes = estudianteFacade.findAll();
         for (Estudiante e : estudiantes) {
             if (e.getUsuario().equals(usuario)) {
                 estudiante = e;
                 break;
             }
         }
-        
         intereses = estudiante.getIntereses();
         //admin = estudiante.getAdmin();
         skype = estudiante.getSkype();
         twitter = estudiante.getTwitter();
         user = estudiante.getUsuario();
-        
     }
+    
     public void init(){
         estudiante.setAdmin(false);
         estudiante.setIdUsuario(Integer.MIN_VALUE);
@@ -69,6 +65,14 @@ public class EstudianteBean implements Serializable {
         estudiante.setUsuario("");
         estudiante.setSkype("");
         findEstudiante();
+    }
+    
+    public void editarEstudiante() throws IOException{
+        estudiante.setIntereses(intereses);
+        estudiante.setTwitter(twitter);
+        estudiante.setSkype(skype);
+        estudianteFacade.edit(estudiante);        
+        FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
     
     public List<String> getMaterias() {

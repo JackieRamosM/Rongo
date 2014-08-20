@@ -626,3 +626,8 @@ footer {
         .ayudante-table tbody tr th:nth-child(3), .ayudante-table tbody tr td:nth-child(3){ width: 21%; }
         .ayudante-table tbody tr th:nth-child(4), .ayudante-table tbody tr td:nth-child(4){ width: 7%; text-align: center;}
         .ayudante-table tbody tr th:nth-child(5), .ayudante-table tbody tr td:nth-child(5){ width: 23%; text-align: center;}
+        
+.estudiante-editar {
+    display: none;
+    vertical-align: middle;
+}

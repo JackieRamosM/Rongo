@@ -71,7 +71,8 @@
                                 <i class="fa fa-comments"></i>
                             </div>
                             <div>
-                                <label>#{estudianteBean.intereses}</label>
+                                <label class="estudiante-hide">#{estudianteBean.intereses}</label>
+                                <p:inputText id="intereses" value="#{estudianteBean.intereses}" styleClass="estudiante-editar" style="margin-left: 15px;"></p:inputText>
                             </div>
                         </li>
                         <li>
@@ -79,7 +80,8 @@
                                 <i class="fa fa-skype"></i>
                             </div>
                             <div>
-                                <label>#{estudianteBean.skype}</label>
+                                <label class="estudiante-hide">#{estudianteBean.skype}</label>
+                                <p:inputText id="skype" value="#{estudianteBean.skype}" styleClass="estudiante-editar" style="margin-left: 15px;"></p:inputText>
                             </div>
                         </li>
                         <li>
@@ -87,10 +89,12 @@
                                 <i class="fa fa-twitter"></i>
                             </div>
                             <div>
-                                <label>#{estudianteBean.twitter}</label>
+                                <label class="estudiante-hide">#{estudianteBean.twitter}</label>
+                                <p:inputText id="twitter" value="#{estudianteBean.twitter}" styleClass="estudiante-editar" style="margin-left: 15px;"></p:inputText>
                             </div>
                         </li>
-                        <h:button value="Editar" class="edit" style="padding: 0 10px;margin-right: 10px"></h:button>
+                        <input type="button" value="Editar" class="edit editar" style="padding: 0 10px;margin-right: 10px" onclick="$('.estudiante-hide').fadeOut('fast',function(){$('.editar').fadeOut('fast',function(){;$('.estudiante-editar').fadeIn('fast');})});"/>
+                        <h:commandButton value="Guardar" action="#{estudianteBean.editarEstudiante()}" styleClass="edit estudiante-editar" style="padding: 10px 10px;margin-right: 10px;font-size: 1em;"></h:commandButton>
                     </ul>
                 </h:form>
             </article>

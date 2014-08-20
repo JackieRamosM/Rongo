@@ -54,7 +54,6 @@ public class SupervisoresBean implements Serializable {
         }
     }
     
-    
     public void encontrarSupervisores(){
         supervisores = supervisorFacade.findAll();
         Collections.sort(supervisores,new Comparator<Supervisor>(){
