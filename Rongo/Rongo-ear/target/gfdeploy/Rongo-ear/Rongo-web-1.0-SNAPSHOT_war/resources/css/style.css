@@ -631,3 +631,39 @@ footer {
     display: none;
     vertical-align: middle;
 }
+
+#postularse-background {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 1000;
+}
+#postularse-content {
+    width: 40%;
+    margin: 16% 30%;
+    padding: 20px;
+    background-color: white;
+    text-align: justify;
+    border-bottom: 5px solid #3C83A7;
+}
+    #postularse-content label{
+        display: block;
+    }
+    #postularse-content input[type="file"]{
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 1em;
+        cursor: pointer;
+    }
+    #postularse-content input[type="button"], #postularse-content input[type="submit"]{
+        display: inline-block;
+        font-size: 1em;
+        height: 40px;
+        float: right;
+        cursor: pointer;
+    }

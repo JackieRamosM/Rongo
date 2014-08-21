@@ -28,10 +28,6 @@
             </ul>
         </nav>
         <section>
-            <div class="message wrong">
-                <h3>Usted no cumple con los requisitos para ser ayudante</h3>
-                <h4>X</h4>
-            </div>
             #{ayudantiasofertadasBean.encontrarAyudantiasofertadas()}
             <article>
                 <h1 class="header">
@@ -43,7 +39,7 @@
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
+                                <input type="button" value="Postularse" class="postularse-button"/>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -79,7 +75,7 @@
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
+                                <input type="button" value="Postularse" class="postularse-button"/>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -109,7 +105,28 @@
         <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
+        <div id="postularse-background">
+            #{curriculumBean.init()}
+            <h:form id="postularse-content" enctype="multipart/form-data">
+                <h:outputLabel>Postularse en la Ayudant&iacute;a: <strong>Ejemplo</strong></h:outputLabel>
+                <h:outputLabel>Carga semanal: <strong>5 Horas</strong></h:outputLabel>
+                <p>Para completar el proceso de postulaci&oacute;n, suba su hoja de vida en formato PDF. El archivo no debe pesar m&aacute;s de 4MB.</p>
+                <h:inputFile id="file" value="#{curriculumBean.file}"/>
+                <h:commandButton value="Subir" action="#{curriculumBean.upload()}"/>
+                <input type="button" value="Cancelar" class="cancelar"/>
+            </h:form>
+        </div>
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
+        <h:outputScript name="js/jquery.udraggable.js" />
+        <script>
+            $('#postularse-content').udraggable({});
+            $('.postularse-button').click(function(){
+               $('#postularse-background').fadeIn('fast'); 
+            });
+            $('.cancelar').click(function(){
+               $('#postularse-background').fadeOut('fast');
+            });
+        </script>
     </h:body>  
 </html>
