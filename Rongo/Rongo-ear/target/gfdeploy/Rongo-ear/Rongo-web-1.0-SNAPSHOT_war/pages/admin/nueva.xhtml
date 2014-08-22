@@ -73,10 +73,15 @@
                                 <f:selectItem itemValue="15" itemLabel="15 horas" />
                                 <f:selectItem itemValue="20" itemLabel="20 horas" />
                             </p:selectOneMenu>
+                        </div >
+                        <div style="display: inline-block;width: 100%;text-align: left;margin: 2px 0;">
+                            <h:outputText value="Requisitos: " styleClass="label"/><br/>
+                            <h:outputText value="Ser estudiante regular" styleClass="label"/><h:selectBooleanCheckbox id="estudianteregular" value="#{ayudantiasofertadasBean.ayudantiaofertada.estudianteregular}"></h:selectBooleanCheckbox><br/>
+                            <h:outputText value="Tener promedio general mayor al promedio de la carrera" styleClass="label"/><h:selectBooleanCheckbox id="promediocarrera" value="#{ayudantiasofertadasBean.ayudantiaofertada.promediomayorcarrera}"></h:selectBooleanCheckbox><br/>
                         </div>
                         <div style="display: inline-block;width: 100%;text-align: left;margin: 2px 0;">
-                            <p:outputLabel for="requisitos" value="Requisitos:" styleClass="label"/>
-                            <p:inputTextarea id="requisitos" value="#{ayudantiasofertadasBean.ayudantiaofertada.requisitos}" styleClass="input"></p:inputTextarea>
+                            <p:outputLabel for="requisitos" value="Otros Requisitos:" styleClass="label"/>
+                            <p:inputTextarea id="requisitos" value="#{ayudantiasofertadasBean.ayudantiaofertada.otrorequisito}" styleClass="input"></p:inputTextarea>
                         </div>
                         <div style="display: inline-block;width: 100%;text-align: left;margin: 2px 0;">
                             <p:outputLabel for="descripcion" value="Descripci&oacute;n:" styleClass="label"/>

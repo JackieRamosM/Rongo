@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -33,8 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Curriculum.findAll", query = "SELECT c FROM Curriculum c"),
     @NamedQuery(name = "Curriculum.findByIdcurriculum", query = "SELECT c FROM Curriculum c WHERE c.idcurriculum = :idcurriculum"),
-    @NamedQuery(name = "Curriculum.findByNombre", query = "SELECT c FROM Curriculum c WHERE c.nombre = :nombre"),
-    @NamedQuery(name = "Curriculum.findByArchivo", query = "SELECT c FROM Curriculum c WHERE c.archivo = :archivo")})
+    @NamedQuery(name = "Curriculum.findByNombre", query = "SELECT c FROM Curriculum c WHERE c.nombre = :nombre")})
 public class Curriculum implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,9 +49,9 @@ public class Curriculum implements Serializable {
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 255)
+    @Lob
     @Column(name = "archivo")
-    private String archivo;
+    private byte[] archivo;
     @OneToMany(mappedBy = "idcurriculum")
     private List<Estudiante> estudianteList;
 
@@ -62,7 +62,7 @@ public class Curriculum implements Serializable {
         this.idcurriculum = idcurriculum;
     }
 
-    public Curriculum(Integer idcurriculum, String nombre, String archivo) {
+    public Curriculum(Integer idcurriculum, String nombre, byte[] archivo) {
         this.idcurriculum = idcurriculum;
         this.nombre = nombre;
         this.archivo = archivo;
@@ -84,11 +84,11 @@ public class Curriculum implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getArchivo() {
+    public byte[] getArchivo() {
         return archivo;
     }
 
-    public void setArchivo(String archivo) {
+    public void setArchivo(byte[] archivo) {
         this.archivo = archivo;
     }
 

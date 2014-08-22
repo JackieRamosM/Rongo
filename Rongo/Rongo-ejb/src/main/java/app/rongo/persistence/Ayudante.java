@@ -49,12 +49,12 @@ public class Ayudante implements Serializable {
     @Size(max = 500)
     @Column(name = "observacion")
     private String observacion;
-    @JoinColumn(name = "idayudantia", referencedColumnName = "idayudantia")
-    @ManyToOne(optional = false)
-    private Ayudantia idayudantia;
     @JoinColumn(name = "idEstudiante", referencedColumnName = "idUsuario")
     @ManyToOne(optional = false)
     private Estudiante idEstudiante;
+    @JoinColumn(name = "idayudantia", referencedColumnName = "idayudantia")
+    @ManyToOne(optional = false)
+    private Ayudantia idayudantia;
 
     public Ayudante() {
     }
@@ -87,20 +87,20 @@ public class Ayudante implements Serializable {
         this.observacion = observacion;
     }
 
-    public Ayudantia getIdayudantia() {
-        return idayudantia;
-    }
-
-    public void setIdayudantia(Ayudantia idayudantia) {
-        this.idayudantia = idayudantia;
-    }
-
     public Estudiante getIdEstudiante() {
         return idEstudiante;
     }
 
     public void setIdEstudiante(Estudiante idEstudiante) {
         this.idEstudiante = idEstudiante;
+    }
+
+    public Ayudantia getIdayudantia() {
+        return idayudantia;
+    }
+
+    public void setIdayudantia(Ayudantia idayudantia) {
+        this.idayudantia = idayudantia;
     }
 
     @Override

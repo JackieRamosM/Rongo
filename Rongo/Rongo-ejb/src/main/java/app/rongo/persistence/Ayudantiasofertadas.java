@@ -36,12 +36,14 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Ayudantiasofertadas.findAll", query = "SELECT a FROM Ayudantiasofertadas a"),
     @NamedQuery(name = "Ayudantiasofertadas.findByIdayudantiasofertadas", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.idayudantiasofertadas = :idayudantiasofertadas"),
     @NamedQuery(name = "Ayudantiasofertadas.findByCargasemanal", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.cargasemanal = :cargasemanal"),
-    @NamedQuery(name = "Ayudantiasofertadas.findByRequisitos", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.requisitos = :requisitos"),
+    @NamedQuery(name = "Ayudantiasofertadas.findByOtrorequisito", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.otrorequisito = :otrorequisito"),
     @NamedQuery(name = "Ayudantiasofertadas.findByDescripcion", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.descripcion = :descripcion"),
     @NamedQuery(name = "Ayudantiasofertadas.findByVigentedesde", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.vigentedesde = :vigentedesde"),
     @NamedQuery(name = "Ayudantiasofertadas.findByVigentehasta", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.vigentehasta = :vigentehasta"),
     @NamedQuery(name = "Ayudantiasofertadas.findByTipodeayudantia", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.tipodeayudantia = :tipodeayudantia"),
-    @NamedQuery(name = "Ayudantiasofertadas.findByNombreayudanatia", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.nombreayudanatia = :nombreayudanatia")})
+    @NamedQuery(name = "Ayudantiasofertadas.findByNombreayudanatia", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.nombreayudanatia = :nombreayudanatia"),
+    @NamedQuery(name = "Ayudantiasofertadas.findByEstudianteregular", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.estudianteregular = :estudianteregular"),
+    @NamedQuery(name = "Ayudantiasofertadas.findByPromediomayorcarrera", query = "SELECT a FROM Ayudantiasofertadas a WHERE a.promediomayorcarrera = :promediomayorcarrera")})
 public class Ayudantiasofertadas implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,8 +56,8 @@ public class Ayudantiasofertadas implements Serializable {
     @Column(name = "cargasemanal")
     private int cargasemanal;
     @Size(max = 1000)
-    @Column(name = "requisitos")
-    private String requisitos;
+    @Column(name = "otrorequisito")
+    private String otrorequisito;
     @Size(max = 500)
     @Column(name = "descripcion")
     private String descripcion;
@@ -77,6 +79,10 @@ public class Ayudantiasofertadas implements Serializable {
     @Size(max = 60)
     @Column(name = "nombreayudanatia")
     private String nombreayudanatia;
+    @Column(name = "estudianteregular")
+    private Boolean estudianteregular;
+    @Column(name = "promediomayorcarrera")
+    private Boolean promediomayorcarrera;
     @JoinColumn(name = "idsupervisor", referencedColumnName = "idsupervisor")
     @ManyToOne(optional = false)
     private Supervisor idsupervisor;
@@ -112,12 +118,12 @@ public class Ayudantiasofertadas implements Serializable {
         this.cargasemanal = cargasemanal;
     }
 
-    public String getRequisitos() {
-        return requisitos;
+    public String getOtrorequisito() {
+        return otrorequisito;
     }
 
-    public void setRequisitos(String requisitos) {
-        this.requisitos = requisitos;
+    public void setOtrorequisito(String otrorequisito) {
+        this.otrorequisito = otrorequisito;
     }
 
     public String getDescripcion() {
@@ -158,6 +164,22 @@ public class Ayudantiasofertadas implements Serializable {
 
     public void setNombreayudanatia(String nombreayudanatia) {
         this.nombreayudanatia = nombreayudanatia;
+    }
+
+    public Boolean getEstudianteregular() {
+        return estudianteregular;
+    }
+
+    public void setEstudianteregular(Boolean estudianteregular) {
+        this.estudianteregular = estudianteregular;
+    }
+
+    public Boolean getPromediomayorcarrera() {
+        return promediomayorcarrera;
+    }
+
+    public void setPromediomayorcarrera(Boolean promediomayorcarrera) {
+        this.promediomayorcarrera = promediomayorcarrera;
     }
 
     public Supervisor getIdsupervisor() {

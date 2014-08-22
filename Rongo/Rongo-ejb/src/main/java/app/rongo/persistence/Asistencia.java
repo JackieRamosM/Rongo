@@ -37,12 +37,12 @@ public class Asistencia implements Serializable {
     @Basic(optional = false)
     @Column(name = "idasistencia")
     private Integer idasistencia;
-    @JoinColumn(name = "idclase", referencedColumnName = "idclase")
-    @ManyToOne(optional = false)
-    private Clase idclase;
     @JoinColumn(name = "idestudiante", referencedColumnName = "idUsuario")
     @ManyToOne(optional = false)
     private Estudiante idestudiante;
+    @JoinColumn(name = "idclase", referencedColumnName = "idclase")
+    @ManyToOne(optional = false)
+    private Clase idclase;
 
     public Asistencia() {
     }
@@ -59,20 +59,20 @@ public class Asistencia implements Serializable {
         this.idasistencia = idasistencia;
     }
 
-    public Clase getIdclase() {
-        return idclase;
-    }
-
-    public void setIdclase(Clase idclase) {
-        this.idclase = idclase;
-    }
-
     public Estudiante getIdestudiante() {
         return idestudiante;
     }
 
     public void setIdestudiante(Estudiante idestudiante) {
         this.idestudiante = idestudiante;
+    }
+
+    public Clase getIdclase() {
+        return idclase;
+    }
+
+    public void setIdclase(Clase idclase) {
+        this.idclase = idclase;
     }
 
     @Override

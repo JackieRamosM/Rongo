@@ -46,13 +46,17 @@
                     <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                             <div class="lista-ayudantes">
-                                <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
+                                <h:outputText value="#{ao.nombreayudanatia}" style="font-size: 1.8em;float: left"/>
                                 <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
-                                <h:outputText value="Requisitos: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.requisitos}" styleClass="hvalue"/><br/><br/>
+                                <p:outputLabel value="Ser estudiante regular" styleClass="hlabel"/>
+                                <h:selectBooleanCheckbox id="estudianteregular" value="#{ao.estudianteregular}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
+                                <p:outputLabel value="Tener promedio mayor a la carrera" styleClass="hlabel" />
+                                <h:selectBooleanCheckbox id="promediocarrera" value="#{ao.promediomayorcarrera}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
+                                <h:outputText value="Otros Requisitos: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.otrorequisito}" styleClass="hvalue"/><br/><br/>
                                 <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
                                 <h:outputText value="Vigente Desde: " styleClass="hlabel"/>
@@ -82,13 +86,17 @@
                     <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
                             <div class="lista-ayudantes">
-                                <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
+                                <h:outputText value="#{ao.nombreayudanatia}" style="font-size: 1.8em;float: left"/>
                                 <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
-                                <h:outputText value="Requisitos: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.requisitos}" styleClass="hvalue"/><br/><br/>
+                                <p:outputLabel value="Ser estudiante regular" styleClass="hlabel"/>
+                                <h:selectBooleanCheckbox id="estudianteregular" value="#{ao.estudianteregular}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
+                                <p:outputLabel value="Tener promedio mayor a la carrera" styleClass="hlabel"/>
+                                <h:selectBooleanCheckbox id="promediocarrera" value="#{ao.promediomayorcarrera}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
+                                <h:outputText value="Otros Requisitos: " styleClass="hlabel"/>
+                                <h:outputText value="#{ao.otrorequisito}" styleClass="hvalue"/><br/><br/>
                                 <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
                                 <h:outputText value="Vigente Desde: " styleClass="hlabel"/>

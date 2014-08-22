@@ -41,8 +41,8 @@ public class CurriculumBean implements Serializable {
  
     public void init(){
         curriculum = new Curriculum();
-        curriculum.setArchivo("");
-        curriculum.setNombre("test");
+       /* curriculum.setArchivo("");
+        curriculum.setNombre("test");*/
         file = Part.class.getEnumConstants()[0];
         fileContent = "";
     }
@@ -51,7 +51,7 @@ public class CurriculumBean implements Serializable {
         try {
             fileContent = new Scanner(file.getInputStream()).useDelimiter("\\A").next();
             curriculum.setNombre("Test");
-            curriculum.setArchivo(fileContent);
+          //  curriculum.setArchivo(fileContent);
             curriculumFacade.create(curriculum);
         } catch (IOException e) {}
     }

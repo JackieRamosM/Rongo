@@ -41,7 +41,9 @@ public class AyudantiasofertadasBean implements Serializable {
     public void init(){
         ayudantiaofertada.setNombreayudanatia("");
         ayudantiaofertada.setCargasemanal(0);
-        ayudantiaofertada.setRequisitos("");
+        ayudantiaofertada.setOtrorequisito("");
+        ayudantiaofertada.setPromediomayorcarrera(Boolean.TRUE);
+        ayudantiaofertada.setEstudianteregular(Boolean.TRUE);
         ayudantiaofertada.setDescripcion("");
         ayudantiaofertada.setIdayudantiasofertadas(Integer.SIZE);
         ayudantiaofertada.setIdsupervisor(new Supervisor());
