@@ -6,6 +6,7 @@
 
 package app.rongo.persistence.beans;
 
+import app.rongo.facade.AyudantiasofertadasFacade;
 import app.rongo.facade.AyudantiasofertadasFacadeLocal;
 import app.rongo.persistence.Ayudantiasofertadas;
 import app.rongo.persistence.Supervisor;
@@ -27,7 +28,7 @@ import org.primefaces.context.RequestContext;
 @SessionScoped
 public class AyudantiasofertadasBean implements Serializable {
     @EJB
-    private AyudantiasofertadasFacadeLocal ayudantiasofertadasFacade;   
+    private AyudantiasofertadasFacadeLocal ayudantiasofertadasFacade ;   
     private Ayudantiasofertadas ayudantiaofertada = new Ayudantiasofertadas();
     private List<Ayudantiasofertadas> ayudantiasofertadas;
     
@@ -36,6 +37,7 @@ public class AyudantiasofertadasBean implements Serializable {
      * Creates a new instance of SupervisorBean
      */
     public AyudantiasofertadasBean() {
+        ayudantiaofertada = new Ayudantiasofertadas();
     }
     
     public void init(){
@@ -98,4 +100,8 @@ public class AyudantiasofertadasBean implements Serializable {
         this.ayudantiasofertadas = ayudantiasofertadas;
     }
     
+    public List<Ayudantiasofertadas> getAyudantiasofertadas2() {
+        encontrarAyudantiasofertadas();
+        return ayudantiasofertadas;
+    }
 }

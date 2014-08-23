@@ -64,14 +64,13 @@ public class Estudiante implements Serializable {
     @Basic(optional = false)
     @Column(name = "idUsuario")
     private Integer idUsuario;
-    @JoinColumn(name = "idcurriculum", referencedColumnName = "idcurriculum")
-    @ManyToOne
-    private Curriculum idcurriculum;
     @JoinColumn(name = "idcuestionario", referencedColumnName = "idcuestionario")
     @ManyToOne
     private Cuestionario idcuestionario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
     private List<Ayudante> ayudanteList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
+    private List<Postulacion> postulacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
     private List<Asistencia> asistenciaList;
 
@@ -135,14 +134,6 @@ public class Estudiante implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public Curriculum getIdcurriculum() {
-        return idcurriculum;
-    }
-
-    public void setIdcurriculum(Curriculum idcurriculum) {
-        this.idcurriculum = idcurriculum;
-    }
-
     public Cuestionario getIdcuestionario() {
         return idcuestionario;
     }
@@ -158,6 +149,15 @@ public class Estudiante implements Serializable {
 
     public void setAyudanteList(List<Ayudante> ayudanteList) {
         this.ayudanteList = ayudanteList;
+    }
+
+    @XmlTransient
+    public List<Postulacion> getPostulacionList() {
+        return postulacionList;
+    }
+
+    public void setPostulacionList(List<Postulacion> postulacionList) {
+        this.postulacionList = postulacionList;
     }
 
     @XmlTransient

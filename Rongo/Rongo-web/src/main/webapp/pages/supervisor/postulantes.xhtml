@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Postulantes - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -34,36 +35,22 @@
                 </h1>
                 <div class="lista-ayudantes">
                     <ul>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Liliana Jaqueline Ramos Menéndez</h2>
-                                <h4>Promedio General: 7.99</h4>
-                                <h4>Carrera: Ingeniería en Ciencias Computacionales Orientación Sistemas Multimedia</h4>
-                                <h4>Ayudantía: Ayudante de Investigación - CTI ESPOL</h4>
-                                <h4>Sanciones: no</h4>
-                                <h4>Reprobó en el término anterior: no</h4>
-                                <h4>ljramos@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Aceptar"></h:button>
-                                <h:button value="Rechazar"></h:button>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>David Alejandro Barrera Guano</h2>
-                                <h4>Promedio General: 7.94</h4>
-                                <h4>Carrera: Ingeniería en Ciencias Computacionales Orientación Sistemas Multimedia</h4>
-                                <h4>Ayudantía: Programación Orientada a Objetos</h4>
-                                <h4>Sanciones: no</h4>
-                                <h4>Reprobó en el término anterior: no</h4>
-                                <h4>davalbar@espol.edu.ec</h4>
-                            </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Aceptar"></h:button>
-                                <h:button value="Rechazar"></h:button>
-                            </div>
-                        </li>
+                        #{supervisoresBean.datosEstudiante()}
+                        <ui:repeat var="estudiante" value="#{supervisoresBean.estc}" >
+                            <li>
+                                <div class="lista-ayudantes-datos">
+                                    <h2>#{estudiante.nombre}</h2>
+                                    <h4>Promedio General: #{estudiante.promediogeneral}</h4>
+                                    <h4>Carrera: #{estudiante.carrera}</h4>
+                                    <h4>Ayudantía: #{estudiante.ayudantiaaplicada}</h4>
+                                    <h4>Correo: #{estudiante.usuario}@espol.edu.ec</h4>
+                                </div>
+                                <div class="lista-ayudantes-accion">
+                                    <h:button value="Aceptar"></h:button>
+                                    <h:button value="Rechazar"></h:button>
+                                </div>
+                            </li>
+                        </ui:repeat>
                     </ul>
                 </div>
             </article>

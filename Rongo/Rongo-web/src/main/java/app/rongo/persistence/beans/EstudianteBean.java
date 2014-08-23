@@ -6,7 +6,6 @@
 package app.rongo.persistence.beans;
 
 import app.rongo.beans.Session;
-import app.rongo.facade.EstudianteFacade;
 import app.rongo.facade.EstudianteFacadeLocal;
 import app.rongo.persistence.Estudiante;
 import java.io.IOException;

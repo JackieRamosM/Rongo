@@ -77,5 +77,104 @@ public class espolPhantom {
         }
         return null;
     }
+
+    /**
+     * Web service operation
+     * @param codigo
+     * @return 
+     */
+    @WebMethod(operationName = "obtenerMateriasDesdeCodigo")
+    public String obtenerMateriasDesdeCodigo(@WebParam(name = "codigo") String codigo) {
+        //TODO write your implementation code here:
+        if(codigo.equals("FIEC05884")){
+            return "Desarrollo de Aplicaciones Web";
+        }
+        if(codigo.equals("FIEC04341")){
+            return "Fundamentos de Programación";
+        }
+        if(codigo.equals("FIEC05553")){
+            return "Sistema de Bases de Datos I";
+        }
+        if(codigo.equals("FIEC03012")){
+            return "Estructuras de Datos";
+        }
+        if(codigo.equals("FIEC03046")){
+            return "Ingeniería de Software I";
+        }
+        if(codigo.equals("FIEC03053")){
+            return "Ingeniería de Software II";
+        }
+        if(codigo.equals("FIEC04622")){
+            return "Programación Orientada a Objetos";
+        }
+        return null;
+    }
+
+    /**
+     * Web service operation
+     * @param matricula
+     * @return 
+     */
+    @WebMethod(operationName = "getEstadoRegular")
+    public boolean getEstadoRegular(@WebParam(name = "matricula") String matricula) {
+        //TODO write your implementation code here:
+        if(matricula.equals("201009347")){
+            return true;
+        }
+        if(matricula.equals("201018322")){
+            return true;
+        }
+        if(matricula.equals("201015278")){
+            return false;
+        }
+        if(matricula.equals("200803369")){
+            return false;
+        }
+        return false;
+    }
+
+    /**
+     * Web service operation
+     * @param matricula
+     * @return 
+     */
+    @WebMethod(operationName = "getPromedioGeneral")
+    public double getPromedioGeneral(@WebParam(name = "matricula") String matricula) {
+        //TODO write your implementation code here:
+        if(matricula.equals("201009347")){
+            return 7.5;
+        }
+        if(matricula.equals("201018322")){
+            return 8.9;
+        }
+        if(matricula.equals("201015278")){
+            return 7.0;
+        }
+        if(matricula.equals("200803369")){
+            return 9.0;
+        }
+        return 0;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getNombre")
+    public String getNombre(@WebParam(name = "matricula") String matricula) {
+        //TODO write your implementation code here:
+        if(matricula.equals("201009347")){
+            return "LILIANA JACQUELINE RAMOS MENENDEZ";
+        }
+        if(matricula.equals("201018322")){
+            return "DAVID ALEJANDRO BARRERA GUANO";
+        }
+        if(matricula.equals("201015278")){
+            return "DENNY KLEVER SCHULDT VIZUETE";
+        }
+        if(matricula.equals("200803369")){
+            return "HARRY ALBERTO CARPIO SALVATIERRA";
+        }
+        return null;
+    }
 }
 

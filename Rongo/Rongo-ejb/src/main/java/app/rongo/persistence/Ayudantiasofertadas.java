@@ -8,7 +8,9 @@ package app.rongo.persistence;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,12 +20,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -86,6 +90,8 @@ public class Ayudantiasofertadas implements Serializable {
     @JoinColumn(name = "idsupervisor", referencedColumnName = "idsupervisor")
     @ManyToOne(optional = false)
     private Supervisor idsupervisor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idayudantiaofertada")
+    private List<Postulacion> postulacionList;
 
     public Ayudantiasofertadas() {
     }
@@ -188,6 +194,15 @@ public class Ayudantiasofertadas implements Serializable {
 
     public void setIdsupervisor(Supervisor idsupervisor) {
         this.idsupervisor = idsupervisor;
+    }
+
+    @XmlTransient
+    public List<Postulacion> getPostulacionList() {
+        return postulacionList;
+    }
+
+    public void setPostulacionList(List<Postulacion> postulacionList) {
+        this.postulacionList = postulacionList;
     }
 
     @Override

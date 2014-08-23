@@ -4,9 +4,49 @@
 
 <xs:element name="getDatosResponse" type="tns:getDatosResponse"/>
 
+<xs:element name="getEstadoRegular" type="tns:getEstadoRegular"/>
+
+<xs:element name="getEstadoRegularResponse" type="tns:getEstadoRegularResponse"/>
+
 <xs:element name="getMaterias" type="tns:getMaterias"/>
 
 <xs:element name="getMateriasResponse" type="tns:getMateriasResponse"/>
+
+<xs:element name="getNombre" type="tns:getNombre"/>
+
+<xs:element name="getNombreResponse" type="tns:getNombreResponse"/>
+
+<xs:element name="getPromedioGeneral" type="tns:getPromedioGeneral"/>
+
+<xs:element name="getPromedioGeneralResponse" type="tns:getPromedioGeneralResponse"/>
+
+<xs:element name="obtenerMateriasDesdeCodigo" type="tns:obtenerMateriasDesdeCodigo"/>
+
+<xs:element name="obtenerMateriasDesdeCodigoResponse" type="tns:obtenerMateriasDesdeCodigoResponse"/>
+
+<xs:complexType name="getEstadoRegular">
+<xs:sequence>
+<xs:element name="matricula" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getEstadoRegularResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNombre">
+<xs:sequence>
+<xs:element name="matricula" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getNombreResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
 
 <xs:complexType name="getMaterias">
 <xs:sequence>
@@ -20,6 +60,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="getPromedioGeneral">
+<xs:sequence>
+<xs:element name="matricula" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPromedioGeneralResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="getDatos">
 <xs:sequence>
 <xs:element name="matricula" type="xs:string" minOccurs="0"/>
@@ -27,6 +79,18 @@
 </xs:complexType>
 
 <xs:complexType name="getDatosResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerMateriasDesdeCodigo">
+<xs:sequence>
+<xs:element name="codigo" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="obtenerMateriasDesdeCodigoResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>

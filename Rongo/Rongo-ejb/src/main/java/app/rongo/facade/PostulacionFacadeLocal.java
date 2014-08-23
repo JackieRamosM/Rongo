@@ -6,7 +6,7 @@
 
 package app.rongo.facade;
 
-import app.rongo.persistence.Curriculum;
+import app.rongo.persistence.Postulacion;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,19 +15,19 @@ import javax.ejb.Local;
  * @author Liliana
  */
 @Local
-public interface CurriculumFacadeLocal {
+public interface PostulacionFacadeLocal {
 
-    void create(Curriculum curriculum);
+    void create(Postulacion postulacion);
 
-    void edit(Curriculum curriculum);
+    void edit(Postulacion postulacion);
 
-    void remove(Curriculum curriculum);
+    void remove(Postulacion postulacion);
 
-    Curriculum find(Object id);
+    Postulacion find(Object id);
 
-    List<Curriculum> findAll();
+    List<Postulacion> findAll();
 
-    List<Curriculum> findRange(int[] range);
+    List<Postulacion> findRange(int[] range);
 
     int count();
     
