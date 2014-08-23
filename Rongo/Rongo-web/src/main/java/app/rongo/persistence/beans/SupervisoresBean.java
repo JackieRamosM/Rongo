@@ -25,6 +25,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -32,8 +33,8 @@ import javax.inject.Named;
  * @author Liliana
  */
 @Named(value = "supervisoresBean")
-@SessionScoped
-public class SupervisoresBean implements Serializable {
+@ViewScoped
+public class SupervisoresBean {
 
     @EJB
     private SupervisorFacadeLocal supervisorFacade;
