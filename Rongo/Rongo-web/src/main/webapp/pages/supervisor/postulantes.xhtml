@@ -33,10 +33,11 @@
                     <label>POSTULANTES</label>
                     <i class="fa fa-users icon"></i>
                 </h1>
-                <div class="lista-ayudantes">
-                    <ul>
-                        #{supervisoresBean.datosEstudiante()}
-                        <ui:repeat var="estudiante" value="#{supervisoresBean.estc}" >
+
+                #{supervisoresBean.datosEstudiante()}
+                <ui:repeat var="estudiante" value="#{supervisoresBean.estc}" >
+                    <h:form class="lista-ayudantes">
+                        <ul>
                             <li>
                                 <div class="lista-ayudantes-datos">
                                     <h2>#{estudiante.nombre}</h2>
@@ -46,13 +47,14 @@
                                     <h4>Correo: #{estudiante.usuario}@espol.edu.ec</h4>
                                 </div>
                                 <div class="lista-ayudantes-accion">
-                                    <h:button value="Aceptar"></h:button>
-                                    <h:button value="Rechazar"></h:button>
+                                    <h:commandButton value="Aceptar" action="#{supervisoresBean.aceptarPostulante(estudiante)}"></h:commandButton>
+                                    <h:commandButton value="Rechazar" ></h:commandButton>
                                 </div>
                             </li>
-                        </ui:repeat>
-                    </ul>
-                </div>
+                        </ul>
+                    </h:form>
+                </ui:repeat>
+
             </article>
         </section>
         <footer>

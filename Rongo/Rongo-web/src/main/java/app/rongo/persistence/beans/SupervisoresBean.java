@@ -7,23 +7,26 @@ package app.rongo.persistence.beans;
 
 import app.rongo.beans.Postulante;
 import app.rongo.beans.Session;
+import app.rongo.facade.AyudanteFacadeLocal;
+import app.rongo.facade.AyudantiaFacadeLocal;
 import app.rongo.facade.AyudantiasofertadasFacadeLocal;
+import app.rongo.facade.EstudianteFacadeLocal;
 import app.rongo.facade.PostulacionFacadeLocal;
 import app.rongo.facade.SupervisorFacadeLocal;
+import app.rongo.persistence.Ayudante;
+import app.rongo.persistence.Ayudantia;
 import app.rongo.persistence.Ayudantiasofertadas;
 import app.rongo.persistence.Estudiante;
 import app.rongo.persistence.Postulacion;
 import app.rongo.persistence.Supervisor;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -35,26 +38,35 @@ import javax.inject.Named;
 @Named(value = "supervisoresBean")
 @ViewScoped
 public class SupervisoresBean {
-
+    @EJB
+    private EstudianteFacadeLocal estudianteFacade;
+    private Estudiante estudiante = new Estudiante();
+    @EJB
+    private AyudanteFacadeLocal ayudanteFacade;
+    private Ayudante ayudante = new Ayudante();
+    private List<Ayudante> ayudantes = new ArrayList();
+    @EJB
+    private AyudantiaFacadeLocal ayudantiaFacade;
+    private Ayudantia ayudantia = new Ayudantia();
+    private List<Ayudantia> ayudantias = new ArrayList();
     @EJB
     private SupervisorFacadeLocal supervisorFacade;
     private Supervisor supervisor = new Supervisor();
-    private PostulanteBean postulante = new PostulanteBean();
     @EJB
     private AyudantiasofertadasFacadeLocal ayudantiasofertadasFacade;
-    private Ayudantiasofertadas ayudantiaofertada = new Ayudantiasofertadas();
     @EJB
     private PostulacionFacadeLocal postulacionFacade;
     private List<Postulacion> postulantes;
+    
 
     private List<Postulacion> postulantesporsupervisor = new ArrayList();
-    private AyudantiasofertadasBean aob = new AyudantiasofertadasBean();
     private List<Ayudantiasofertadas> ayudantiasofertadas;
     private List<Ayudantiasofertadas> ayudantiasofertadasporsupervisor = new ArrayList();
     private final Session session = new Session();
     private final String usuario = session.getUser();
     private List<Supervisor> supervisores;
     private List<Postulante> estc = new ArrayList();
+    private PostulanteBean postulante = new PostulanteBean();
 
     public void init() {
         supervisor.setActivo(true);
@@ -124,6 +136,7 @@ public class SupervisoresBean {
     }
 
     public void obtenerSupervisorLogueado() {
+        supervisores = new ArrayList();
         encontrarSupervisores();
         for (Supervisor s : supervisores) {
             String[] str = s.getCorreo().split("@");
@@ -136,6 +149,8 @@ public class SupervisoresBean {
 
     public void obtenerAyudantiasOfertadasPorSupervisor() {
         obtenerSupervisorLogueado();
+        ayudantiasofertadas = new ArrayList();
+        ayudantiasofertadasporsupervisor = new ArrayList();
         try {
             ayudantiasofertadas = ayudantiasofertadasFacade.findAll();
 
@@ -151,7 +166,9 @@ public class SupervisoresBean {
 
     public void obtenerPostulatesPorSupervisor() {
         obtenerAyudantiasOfertadasPorSupervisor();
+        postulantes = new ArrayList();
         postulantes = postulacionFacade.findAll();
+        setPostulantesporsupervisor(new ArrayList());
 
         try {
             for (Postulacion p : getPostulantes()) {
@@ -168,37 +185,81 @@ public class SupervisoresBean {
 
     public void datosEstudiante() {
         Session s = new Session();
-        String mat;
-        String cod;
+        String mat = "";
+        String cod = "";
+        setPostulantesporsupervisor(new ArrayList());
         obtenerPostulatesPorSupervisor();
+        estc = new ArrayList();
         for (Postulacion p : getPostulantesporsupervisor()) {
             Estudiante e = p.getIdestudiante();
-                Postulante est = new Postulante();
-                mat = s.matriculaService(e.getUsuario());
-                est.setCarrera(s.carreraService(mat));
-                est.setNombre(s.nombreService(mat));
-                est.setPromediogeneral("" + s.promedioService(mat));
-                est.setUsuario(e.getUsuario());
-                est.setMatricula(mat);
-                if(p.getIdayudantiaofertada().getTipodeayudantia().equals("academica")){
-                    cod=s.codigoService(p.getIdayudantiaofertada().getNombreayudanatia());
-                    est.setAyudantiaaplicada(cod);
-                }
-                else
-                    est.setAyudantiaaplicada(p.getIdayudantiaofertada().getNombreayudanatia());
-                if (s.estadoService(mat)) {
-                    est.setEstado("activo");
-                } else {
-                    est.setEstado("inactivo");
-                }
-
-                estc.add(est);
-            
+            Postulante est = new Postulante();
+            mat = s.matriculaService(e.getUsuario());
+            est.setCarrera(s.carreraService(mat));
+            est.setNombre(s.nombreService(mat));
+            est.setPromediogeneral("" + s.promedioService(mat));
+            est.setUsuario(e.getUsuario());
+            est.setMatricula(mat);
+            if (p.getIdayudantiaofertada().getTipodeayudantia().equals("academica")) {
+                cod = s.codigoService(p.getIdayudantiaofertada().getNombreayudanatia());
+                est.setAyudantiaaplicada(cod);
+            } else {
+                est.setAyudantiaaplicada(p.getIdayudantiaofertada().getNombreayudanatia());
+            }
+            if (s.estadoService(mat)) {
+                est.setEstado("activo");
+            } else {
+                est.setEstado("inactivo");
+            }
+            estc.add(est);
         }
     }
 
-    public AyudantiasofertadasBean getAob() {
-        return aob;
+    public void aceptarPostulante(Postulante e) {
+        Ayudantiasofertadas a = new Ayudantiasofertadas();
+        Ayudantia ayudantiaencontrada = new Ayudantia();
+        Postulacion postula = new Postulacion();
+        List<Estudiante> es = new ArrayList();
+        Supervisor s;
+        
+        obtenerPostulatesPorSupervisor();
+        s = getSupervisor();
+        
+        es = estudianteFacade.findAll();
+        
+        for(Estudiante b : es){
+            if(b.getUsuario().equals(e.getUsuario()))
+                estudiante = b;
+        }
+        
+        
+        
+        for(Postulacion p: getPostulantesporsupervisor()){
+            if(p.getIdestudiante().equals(estudiante)){
+                a = p.getIdayudantiaofertada();
+                postula = p;
+            }
+        }
+        getAyudantia().setIdayudantia(Integer.SIZE);
+        getAyudantia().setIdsupervisor(s);
+        getAyudantia().setNombre(a.getNombreayudanatia());
+        getAyudantia().setTipodeayudantia(a.getTipodeayudantia());
+        ayudantiaFacade.create(getAyudantia());
+        ayudantias = ayudantiaFacade.findAll();
+        
+        for(Ayudantia ay: ayudantias){
+            if(ay.getIdsupervisor().equals(s) && ay.getNombre().equals(a.getNombreayudanatia())){
+                ayudantiaencontrada = ay;
+            }
+        }
+        getAyudante().setFechaayudante(new Date());
+        getAyudante().setIdEstudiante(estudiante);
+        getAyudante().setIdayudante(Integer.SIZE);
+        getAyudante().setIdayudantia(ayudantiaencontrada);
+        getAyudante().setObservacion("");
+        ayudanteFacade.create(getAyudante());
+        
+        postulacionFacade.remove(postula);
+        
     }
 
     public List<Ayudantiasofertadas> getAyudantiasofertadas() {
@@ -249,4 +310,29 @@ public class SupervisoresBean {
         this.estc = estc;
     }
 
+    public Ayudantia getAyudantia() {
+        return ayudantia;
+    }
+
+    public void setAyudantia(Ayudantia ayudantia) {
+        this.ayudantia = ayudantia;
+    }
+
+    public List<Ayudante> getAyudantes() {
+        return ayudantes;
+    }
+
+    public void setAyudante(List<Ayudante> ayudante) {
+        this.ayudantes = ayudante;
+    }
+
+    public Ayudante getAyudante() {
+        return ayudante;
+    }
+
+    public void setAyudante(Ayudante ayudante) {
+        this.ayudante = ayudante;
+    }
+    
 }
+
