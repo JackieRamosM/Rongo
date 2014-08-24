@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Estudiante - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -36,7 +36,18 @@
                 <div id="courses">
                     <ul>
                         <ui:repeat value="#{estudianteBean.materias}" var="m">
-                            <li> <h3><h:outputText  class="available" value="#{m}" /></h3></li>
+                            <h:panelGroup rendered="#{ayudantiaBean.ayudantiaExiste(m) == true}">
+                                <li>
+                                    <h3>
+                                        <h:link class="available" value="#{m}" outcome="ayudantes">
+                                            <f:param name="ayudantia" value="#{m}"></f:param>
+                                        </h:link>
+                                    </h3>
+                                </li>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{ayudantiaBean.ayudantiaExiste(m) == false}">
+                                <li><h3><h:outputText class="not-available" value="#{m}"/></h3></li>
+                            </h:panelGroup>
                         </ui:repeat> 
                     </ul>
                 </div>
@@ -93,7 +104,12 @@
                                 <p:inputText id="twitter" value="#{estudianteBean.twitter}" styleClass="estudiante-editar" style="margin-left: 15px;"></p:inputText>
                             </div>
                         </li>
-                        <input type="button" value="Editar" class="edit editar" style="padding: 0 10px;margin-right: 10px" onclick="$('.estudiante-hide').fadeOut('fast',function(){$('.editar').fadeOut('fast',function(){;$('.estudiante-editar').fadeIn('fast');})});"/>
+                        <input type="button" value="Editar" class="edit editar" style="padding: 0 10px;margin-right: 10px" onclick="$('.estudiante-hide').fadeOut('fast', function() {
+                                    $('.editar').fadeOut('fast', function() {
+                                        ;
+                                        $('.estudiante-editar').fadeIn('fast');
+                                    })
+                                });"/>
                         <h:commandButton value="Guardar" action="#{estudianteBean.editarEstudiante()}" styleClass="edit estudiante-editar" style="padding: 10px 10px;margin-right: 10px;font-size: 1em;"></h:commandButton>
                     </ul>
                 </h:form>

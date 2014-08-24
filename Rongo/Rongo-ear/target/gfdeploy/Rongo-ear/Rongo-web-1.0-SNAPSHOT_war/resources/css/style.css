@@ -209,6 +209,11 @@ section {
                     }
             .available { 
                 border-left: 5px solid #3C83A7;
+                padding-left: 10px;
+            }
+            .not-available { 
+                border-left: 5px solid transparent;
+                padding-left: 10px;
             }
             .not-available {background-color: #3C83A7; }
         section article img {
