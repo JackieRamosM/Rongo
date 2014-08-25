@@ -18,6 +18,12 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
+    <managed-bean eager="true">
+        <managed-bean-name>ayudantiaBean</managed-bean-name>
+        <managed-bean-class>app.rongo.persistence.beans.AyudantiaBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
     <!--
       - Navigation Rules
       - Ayudante Académico

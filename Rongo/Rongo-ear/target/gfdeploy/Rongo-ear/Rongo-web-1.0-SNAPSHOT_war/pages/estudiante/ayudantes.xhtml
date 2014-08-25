@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ayudantes - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -30,7 +31,7 @@
             <header>
                 <h:link outcome="index"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h3>Ingenier&iacute;a de Software II</h3>
+                    <h3 id="ayudantia"></h3>
                     <h3>Ayudantes</h3>
                 </div>
             </header>
@@ -39,15 +40,15 @@
                 <div>
                     <i class="fa fa-angle-left"></i>  
                     <div id="semana">
-                        <div class="circle">
-                            <h3><h:link value="Juan Manuel Romero" outcome="ayudante"/></h3>
-                        </div>
-                        <div class="circle">
-                            <h3><h:link value="Juan Manuel Romero" outcome="ayudante"/></h3>
-                        </div>
-                        <div class="circle">
-                            <h3><h:link value="Juan Manuel Romero" outcome="ayudante"/></h3>
-                        </div>
+                        <ui:repeat value="#{ayudantiaBean.encontrarAyudantes()}" var="a">
+                            <div class="circle">
+                                <h3>
+                                    <h:link value="#{a.idEstudiante.usuario}" outcome="ayudante">
+                                        <f:param name="ayudantia" value="#{ayudantiaBean.materia}"></f:param>
+                                    </h:link>
+                                </h3>
+                            </div>
+                        </ui:repeat>
                     </div>
                     <i class="fa fa-angle-right"></i>
                 </div>
@@ -58,5 +59,6 @@
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
+        <h:outputScript name="js/estudiante_ayudantes.js" />
     </h:body>  
 </html>

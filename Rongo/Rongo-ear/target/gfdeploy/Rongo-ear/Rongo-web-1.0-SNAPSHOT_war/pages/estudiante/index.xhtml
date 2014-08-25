@@ -46,7 +46,7 @@
                                 </li>
                             </h:panelGroup>
                             <h:panelGroup rendered="#{ayudantiaBean.ayudantiaExiste(m) == false}">
-                                <li><h3><h:outputText class="not-available" value="#{m}"/></h3></li>
+                                <li><h3><h:outputText class="no-available" value="#{m}"/></h3></li>
                             </h:panelGroup>
                         </ui:repeat> 
                     </ul>
@@ -106,9 +106,8 @@
                         </li>
                         <input type="button" value="Editar" class="edit editar" style="padding: 0 10px;margin-right: 10px" onclick="$('.estudiante-hide').fadeOut('fast', function() {
                                     $('.editar').fadeOut('fast', function() {
-                                        ;
                                         $('.estudiante-editar').fadeIn('fast');
-                                    })
+                                    });
                                 });"/>
                         <h:commandButton value="Guardar" action="#{estudianteBean.editarEstudiante()}" styleClass="edit estudiante-editar" style="padding: 10px 10px;margin-right: 10px;font-size: 1em;"></h:commandButton>
                     </ul>

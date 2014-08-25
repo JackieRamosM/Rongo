@@ -28,10 +28,13 @@
         </nav>
         <section>
             <header>
-                <h:link outcome="ayudantes"><i class="fa fa-arrow-circle-o-left"></i></h:link>
+                <h:link outcome="ayudantes">
+                    <i class="fa fa-arrow-circle-o-left"></i>
+                    <f:param name="ayudantia" value="#{ayudantiaBean.getLinkMateria()}"></f:param>
+                </h:link>
                 <div>
                     <h3>Juan Manuel Romero</h3>
-                    <h3>Ayudante de Ingenier&iacute;a de Software I</h3>
+                    <h3 id="ayudante-de"></h3>
                 </div>
             </header>
             <div class="ayudantia-semana">
@@ -104,5 +107,6 @@
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
+        <h:outputScript name="js/estudiante_ayudantes.js" />
     </h:body>  
 </html>

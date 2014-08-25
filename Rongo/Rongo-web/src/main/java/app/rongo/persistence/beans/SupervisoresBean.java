@@ -169,7 +169,6 @@ public class SupervisoresBean {
         postulantes = new ArrayList();
         postulantes = postulacionFacade.findAll();
         setPostulantesporsupervisor(new ArrayList());
-
         try {
             for (Postulacion p : getPostulantes()) {
                 for (Ayudantiasofertadas ao : getAyudantiasofertadasporsupervisor()) {
@@ -220,19 +219,13 @@ public class SupervisoresBean {
         Postulacion postula = new Postulacion();
         List<Estudiante> es = new ArrayList();
         Supervisor s;
-        
         obtenerPostulatesPorSupervisor();
         s = getSupervisor();
-        
         es = estudianteFacade.findAll();
-        
         for(Estudiante b : es){
             if(b.getUsuario().equals(e.getUsuario()))
                 estudiante = b;
         }
-        
-        
-        
         for(Postulacion p: getPostulantesporsupervisor()){
             if(p.getIdestudiante().equals(estudiante)){
                 a = p.getIdayudantiaofertada();
@@ -245,7 +238,6 @@ public class SupervisoresBean {
         getAyudantia().setTipodeayudantia(a.getTipodeayudantia());
         ayudantiaFacade.create(getAyudantia());
         ayudantias = ayudantiaFacade.findAll();
-        
         for(Ayudantia ay: ayudantias){
             if(ay.getIdsupervisor().equals(s) && ay.getNombre().equals(a.getNombreayudanatia())){
                 ayudantiaencontrada = ay;
@@ -257,7 +249,6 @@ public class SupervisoresBean {
         getAyudante().setIdayudantia(ayudantiaencontrada);
         getAyudante().setObservacion("");
         ayudanteFacade.create(getAyudante());
-        
         postulacionFacade.remove(postula);
         
     }
@@ -333,6 +324,5 @@ public class SupervisoresBean {
     public void setAyudante(Ayudante ayudante) {
         this.ayudante = ayudante;
     }
-    
 }
 
