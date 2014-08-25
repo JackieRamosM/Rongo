@@ -72,6 +72,9 @@ public class Clase implements Serializable {
     @JoinColumn(name = "idayudantia", referencedColumnName = "idayudantia")
     @ManyToOne(optional = false)
     private Ayudantia idayudantia;
+    @JoinColumn(name = "idayudante", referencedColumnName = "idayudante")
+    @ManyToOne(optional = false)
+    private Ayudante idayudante;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idclase")
     private List<Asistencia> asistenciaList;
 
@@ -142,6 +145,14 @@ public class Clase implements Serializable {
 
     public void setIdayudantia(Ayudantia idayudantia) {
         this.idayudantia = idayudantia;
+    }
+
+    public Ayudante getIdayudante() {
+        return idayudante;
+    }
+
+    public void setIdayudante(Ayudante idayudante) {
+        this.idayudante = idayudante;
     }
 
     @XmlTransient
