@@ -36,6 +36,7 @@ public class EstudianteBean implements Serializable {
     private String skype;
     private String intereses;
     private String twitter;
+    private String nombre;
     private boolean admin;
 
     public EstudianteBean() {
@@ -72,6 +73,10 @@ public class EstudianteBean implements Serializable {
         estudiante.setSkype(skype);
         estudianteFacade.edit(estudiante);        
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+    }
+    
+    public String estudianteName(String user){
+        return session.nombreService(session.matriculaService(user));
     }
     
     public List<String> getMaterias() {
@@ -122,6 +127,22 @@ public class EstudianteBean implements Serializable {
         this.admin = admin;
     }
 
+    public Estudiante getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(Estudiante estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getUser() {
         return user;
     }
@@ -129,5 +150,6 @@ public class EstudianteBean implements Serializable {
     public String getDatos() {
         return datos;
     }
+    
     
 }

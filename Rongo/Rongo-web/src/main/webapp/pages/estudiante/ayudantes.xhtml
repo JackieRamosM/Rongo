@@ -43,7 +43,7 @@
                         <ui:repeat value="#{ayudantiaBean.encontrarAyudantes()}" var="a">
                             <div class="circle">
                                 <h3>
-                                    <h:link value="#{a.idEstudiante.usuario}" outcome="ayudante">
+                                    <h:link value="#{estudianteBean.estudianteName(a.idEstudiante.usuario)}" outcome="ayudante">
                                         <f:param name="ayudantia" value="#{ayudantiaBean.materia}"></f:param>
                                     </h:link>
                                 </h3>
