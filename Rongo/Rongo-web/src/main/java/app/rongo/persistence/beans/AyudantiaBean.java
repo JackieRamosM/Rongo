@@ -33,7 +33,7 @@ public class AyudantiaBean implements Serializable {
     private Ayudantia ayudantia = new Ayudantia();
     private List<Ayudantia> ayudantias = new ArrayList();
     
-    private String materia = "";
+    private int idAyudantia;
     
     public AyudantiaBean() {}
     
@@ -45,28 +45,23 @@ public class AyudantiaBean implements Serializable {
         boolean res = false;
         getAyudantiasDisponibles();
         for(Ayudantia a : ayudantias){
-            if(ayudantia.toLowerCase().contains(a.getNombre().toLowerCase()))
+            if(ayudantia.toLowerCase().contains(a.getNombre().toLowerCase())){
                 res = true;
+                setIdAyudantia(a.getIdayudantia());
+            }
         }
         return res;
     }
     
     public List<Ayudante> encontrarAyudantes(){
-        String a = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("ayudantia");
-        setMateria(a);
-        getAyudantiasDisponibles();
-        Ayudantia ayu = null;
-        for(Ayudantia ay : ayudantias){
-            System.out.println(ay.getNombre());
-            if(a.contains(ay.getNombre()))
-                ayu = ay;
-        }
+        int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("a"));
+        setIdAyudantia(id);
+        Ayudantia a = ayudantiaFacade.find(id);
         ayudantes = ayudanteFacade.findAll();
-        System.out.println(ayudantes);
         Iterator<Ayudante> i = ayudantes.iterator();
         while (i.hasNext()) {
             try{
-                if (i.next().getIdayudantia().getIdayudantia() != ayu.getIdayudantia()) {
+                if (!i.next().getIdayudantia().getIdayudantia().equals(a.getIdayudantia())) {
                     i.remove();
                 }
             }catch(Error e){}
@@ -74,8 +69,14 @@ public class AyudantiaBean implements Serializable {
         return ayudantes;
     }
 
-    public String getLinkMateria(){
-        return FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("ayudantia");
+    public String getAyudantiaNombre(){
+        int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("a"));
+        Ayudantia a = ayudantiaFacade.find(id);
+        return a.getNombre();
+    }
+    
+    public int getAyudantiaId(){
+        return Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("a"));
     }
 
     public AyudanteFacadeLocal getAyudanteFacade() {
@@ -126,11 +127,13 @@ public class AyudantiaBean implements Serializable {
         this.ayudantias = ayudantias;
     }
 
-    public String getMateria() {
-        return materia;
+    public int getIdAyudantia() {
+        return idAyudantia;
     }
 
-    public void setMateria(String materia) {
-        this.materia = materia;
+    public void setIdAyudantia(int idAyudantia) {
+        this.idAyudantia = idAyudantia;
     }
+    
+    
 }

@@ -31,7 +31,7 @@
             <header>
                 <h:link outcome="index"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h3 id="ayudantia"></h3>
+                    <h3>#{ayudantiaBean.ayudantiaNombre}</h3>
                     <h3>Ayudantes</h3>
                 </div>
             </header>
@@ -40,11 +40,12 @@
                 <div>
                     <i class="fa fa-angle-left"></i>  
                     <div id="semana">
-                        <ui:repeat value="#{ayudantiaBean.encontrarAyudantes()}" var="a">
+                        <ui:repeat value="#{ayudantiaBean.encontrarAyudantes()}" var="ayu">
                             <div class="circle">
                                 <h3>
-                                    <h:link value="#{estudianteBean.estudianteName(a.idEstudiante.usuario)}" outcome="ayudante">
-                                        <f:param name="ayudantia" value="#{ayudantiaBean.materia}"></f:param>
+                                    <h:link value="#{ayudanteBean.getAyudanteName(ayu.idayudante)}" outcome="ayudante">
+                                        <f:param name="a" value="#{ayudantiaBean.idAyudantia}"/>
+                                        <f:param name="b" value="#{ayu.idayudante}"/>
                                     </h:link>
                                 </h3>
                             </div>
@@ -59,6 +60,5 @@
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
-        <h:outputScript name="js/estudiante_ayudantes.js" />
     </h:body>  
 </html>

@@ -24,6 +24,18 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
+    <managed-bean eager="true">
+        <managed-bean-name>claseBean</managed-bean-name>
+        <managed-bean-class>app.rongo.persistence.beans.ClaseBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
+    <managed-bean eager="true">
+        <managed-bean-name>ayudanteBean</managed-bean-name>
+        <managed-bean-class>app.rongo.persistence.beans.AyudanteBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    
     <!--
       - Navigation Rules
       - Ayudante Académico
