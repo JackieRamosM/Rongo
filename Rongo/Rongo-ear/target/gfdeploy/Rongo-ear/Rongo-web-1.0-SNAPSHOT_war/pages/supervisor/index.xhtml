@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui">
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Supervisor - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -21,8 +22,7 @@
         </header>
         <nav>
             <ul>
-                <li class="active"><h:link value="Ayudantes acad&eacute;micos"/></li>
-                <li><h:link value="Ayudantes de actividades varias" outcome="varias"/></li>
+                <li class="active"><h:link value="Ayudantes"/></li>
                 <li><h:link value="Postulantes" outcome="postulantes"/></li>
                 <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
             </ul>
@@ -34,22 +34,25 @@
                     <i class="fa fa-pencil icon"></i>
                 </h1>
                 <div class="lista-ayudantes">
+                    #{supervisoresBean.obtenerAyudantesporsupervisor()}
                     <h:form styleClass="hForm">
                         <table class="ayudante-table ayudante-academico">
-                            <tr>
-                                <th>Ayudante</th>
-                                <th>Ayudant&iacute;a</th>
-                                <th>Correo</th>
-                                <th>Horas</th>
-                                <th>Acci&oacute;n</th>
-                            </tr>
-                            <tr>
-                                <td>Mayra Alejandra Moreira Solorzano</td>
-                                <td>Laboratorios de la FIEC</td>
-                                <td>mmoreira@espol.edu.ec</td>
-                                <td>10</td>
-                                <td><h:button value="Ver ayudant&iacute;as" outcome="ayudante"></h:button></td>
-                            </tr>
+                            <ui:repeat value="#{supervisoresBean.estudiantes}" var="ayudante">
+                                <tr>
+                                    <th>Ayudante</th>
+                                    <th>Ayudant&iacute;a</th>
+                                    <th>Correo</th>
+                                    <th>Horas</th>
+                                    <th>Acci&oacute;n</th>
+                                </tr>
+                                <tr>
+                                    <td>Mayra Alejandra Moreira Solorzano</td>
+                                    <td>Laboratorios de la FIEC</td>
+                                    <td>#{ayudante.usuario}@espol.edu.ec</td>
+                                    <td>10</td>
+                                    <td><h:button value="Ver ayudant&iacute;as" outcome="ayudante"></h:button></td>
+                                </tr>
+                            </ui:repeat>
                         </table>
                     </h:form>
                 </div>

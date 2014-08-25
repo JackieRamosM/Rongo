@@ -38,9 +38,11 @@ import javax.inject.Named;
 @Named(value = "supervisoresBean")
 @ViewScoped
 public class SupervisoresBean {
+
     @EJB
     private EstudianteFacadeLocal estudianteFacade;
     private Estudiante estudiante = new Estudiante();
+    private List<Estudiante> estudiantes = new ArrayList();
     @EJB
     private AyudanteFacadeLocal ayudanteFacade;
     private Ayudante ayudante = new Ayudante();
@@ -57,7 +59,6 @@ public class SupervisoresBean {
     @EJB
     private PostulacionFacadeLocal postulacionFacade;
     private List<Postulacion> postulantes;
-    
 
     private List<Postulacion> postulantesporsupervisor = new ArrayList();
     private List<Ayudantiasofertadas> ayudantiasofertadas;
@@ -67,7 +68,8 @@ public class SupervisoresBean {
     private List<Supervisor> supervisores;
     private List<Postulante> estc = new ArrayList();
     private PostulanteBean postulante = new PostulanteBean();
-
+    private List<Ayudante> ayudantesporsupervisor = new ArrayList();
+    
     public void init() {
         supervisor.setActivo(true);
         supervisor.setApellido("");
@@ -169,6 +171,7 @@ public class SupervisoresBean {
         postulantes = new ArrayList();
         postulantes = postulacionFacade.findAll();
         setPostulantesporsupervisor(new ArrayList());
+
         try {
             for (Postulacion p : getPostulantes()) {
                 for (Ayudantiasofertadas ao : getAyudantiasofertadasporsupervisor()) {
@@ -219,15 +222,20 @@ public class SupervisoresBean {
         Postulacion postula = new Postulacion();
         List<Estudiante> es = new ArrayList();
         Supervisor s;
+
         obtenerPostulatesPorSupervisor();
         s = getSupervisor();
+
         es = estudianteFacade.findAll();
-        for(Estudiante b : es){
-            if(b.getUsuario().equals(e.getUsuario()))
+
+        for (Estudiante b : es) {
+            if (b.getUsuario().equals(e.getUsuario())) {
                 estudiante = b;
+            }
         }
-        for(Postulacion p: getPostulantesporsupervisor()){
-            if(p.getIdestudiante().equals(estudiante)){
+
+        for (Postulacion p : getPostulantesporsupervisor()) {
+            if (p.getIdestudiante().equals(estudiante)) {
                 a = p.getIdayudantiaofertada();
                 postula = p;
             }
@@ -238,8 +246,9 @@ public class SupervisoresBean {
         getAyudantia().setTipodeayudantia(a.getTipodeayudantia());
         ayudantiaFacade.create(getAyudantia());
         ayudantias = ayudantiaFacade.findAll();
-        for(Ayudantia ay: ayudantias){
-            if(ay.getIdsupervisor().equals(s) && ay.getNombre().equals(a.getNombreayudanatia())){
+
+        for (Ayudantia ay : ayudantias) {
+            if (ay.getIdsupervisor().equals(s) && ay.getNombre().equals(a.getNombreayudanatia())) {
                 ayudantiaencontrada = ay;
             }
         }
@@ -249,8 +258,37 @@ public class SupervisoresBean {
         getAyudante().setIdayudantia(ayudantiaencontrada);
         getAyudante().setObservacion("");
         ayudanteFacade.create(getAyudante());
+
         postulacionFacade.remove(postula);
+
+    }
+
+    public void obtenerAyudantesporsupervisor() {
+        Supervisor s;
+        List<Ayudantia> ayu = new ArrayList();
         
+        obtenerSupervisorLogueado();
+        s = getSupervisor();
+        ayudantias = ayudantiaFacade.findAll();
+
+        for (Ayudantia a : ayudantias) {
+            if (a.getIdsupervisor().equals(s)) {
+                ayu.add(a);
+            }
+        }
+        ayudantes = ayudanteFacade.findAll();
+        for (Ayudante a : ayudantes) {
+            for (Ayudantia ay : ayu) {
+                if (a.getIdayudantia().equals(ay)) {
+                    ayudantesporsupervisor.add(a);
+                }
+            }
+        } 
+        
+        for(Ayudante ay : ayudantesporsupervisor){
+            System.out.println("aaaa"+ ay.getIdEstudiante().getUsuario());
+            estudiantes.add(ay.getIdEstudiante());
+        }
     }
 
     public List<Ayudantiasofertadas> getAyudantiasofertadas() {
@@ -324,5 +362,23 @@ public class SupervisoresBean {
     public void setAyudante(Ayudante ayudante) {
         this.ayudante = ayudante;
     }
-}
 
+    public List<Ayudante> getAyudantesporsupervisor() {
+        return ayudantesporsupervisor;
+    }
+
+    public void setAyudantesporsupervisor(List<Ayudante> ayudantesporsupervisor) {
+        this.ayudantesporsupervisor = ayudantesporsupervisor;
+    }
+
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
+    
+    
+    
+}
