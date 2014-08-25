@@ -37,20 +37,20 @@
                     #{supervisoresBean.obtenerAyudantesporsupervisor()}
                     <h:form styleClass="hForm">
                         <table class="ayudante-table ayudante-academico">
-                            <ui:repeat value="#{supervisoresBean.estudiantes}" var="ayudante">
+                            <ui:repeat value="#{supervisoresBean.ayudantesporsupervisor}" var="ayudante">
                                 <tr>
                                     <th>Ayudante</th>
                                     <th>Ayudant&iacute;a</th>
                                     <th>Correo</th>
-                                    <th>Horas</th>
                                     <th>Acci&oacute;n</th>
                                 </tr>
                                 <tr>
-                                    <td>Mayra Alejandra Moreira Solorzano</td>
-                                    <td>Laboratorios de la FIEC</td>
-                                    <td>#{ayudante.usuario}@espol.edu.ec</td>
-                                    <td>10</td>
-                                    <td><h:button value="Ver ayudant&iacute;as" outcome="ayudante"></h:button></td>
+                                    <td>#{estudianteBean.estudianteName(ayudante.getIdEstudiante().usuario)}</td>
+                                    <td>#{ayudante.getIdayudantia().getNombre()}</td>
+                                    <td>#{ayudante.getIdEstudiante().usuario}@espol.edu.ec</td>
+                                    <h:panelGroup rendered="#{ayudante.getIdayudantia().getTipodeayudantia() == 'academica'}">
+                                        <td><h:button value="Ver ayudant&iacute;as" outcome="ayudante"></h:button></td>
+                                    </h:panelGroup>
                                 </tr>
                             </ui:repeat>
                         </table>

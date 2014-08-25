@@ -13,8 +13,10 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -38,10 +40,23 @@ public class EstudianteBean implements Serializable {
     private String twitter;
     private String nombre;
     private boolean admin;
-
-    public EstudianteBean() {
+    private UploadedFile file;
+ 
+    public UploadedFile getFile() {
+        return file;
     }
-    
+ 
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+     
+    public void upload() {
+        if(file != null) {
+            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+
     public void findEstudiante(){
         estudiantes = estudianteFacade.findAll();
         for (Estudiante e : estudiantes) {

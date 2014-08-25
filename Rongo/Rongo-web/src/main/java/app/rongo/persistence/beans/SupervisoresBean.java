@@ -69,7 +69,7 @@ public class SupervisoresBean {
     private List<Postulante> estc = new ArrayList();
     private PostulanteBean postulante = new PostulanteBean();
     private List<Ayudante> ayudantesporsupervisor = new ArrayList();
-    
+
     public void init() {
         supervisor.setActivo(true);
         supervisor.setApellido("");
@@ -266,7 +266,7 @@ public class SupervisoresBean {
     public void obtenerAyudantesporsupervisor() {
         Supervisor s;
         List<Ayudantia> ayu = new ArrayList();
-        
+
         obtenerSupervisorLogueado();
         s = getSupervisor();
         ayudantias = ayudantiaFacade.findAll();
@@ -283,12 +283,12 @@ public class SupervisoresBean {
                     ayudantesporsupervisor.add(a);
                 }
             }
-        } 
-        
-        for(Ayudante ay : ayudantesporsupervisor){
-            System.out.println("aaaa"+ ay.getIdEstudiante().getUsuario());
-            estudiantes.add(ay.getIdEstudiante());
         }
+
+        /*for (Ayudante ay : ayudantesporsupervisor) {
+            estudiantes.add(ay.getIdEstudiante());
+            
+        }*/
     }
 
     public List<Ayudantiasofertadas> getAyudantiasofertadas() {
@@ -378,7 +378,5 @@ public class SupervisoresBean {
     public void setEstudiantes(List<Estudiante> estudiantes) {
         this.estudiantes = estudiantes;
     }
-    
-    
-    
+
 }

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ayudantias Ofertadas - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -34,12 +34,20 @@
                     <label>AYUDANT&Iacute;AS ACAD&Eacute;MICAS</label>
                     <i class="fa fa-suitcase icon"></i>
                 </h1>
-                <h:form styleClass="hForm">
+                <h:form styleClass="hForm" enctype="multipart/form-data">
                     <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <input type="button" value="Postularse" class="postularse-button"/>
+                                <!--input type="button" value="Postularse" class="postularse-button"/-->
+                               
+                                <p:growl id="messages" showDetail="true" />
+
+                                <p:fileUpload value="#{estudianteBean.file}" mode="simple" disabled="true" />
+
+                                <p:commandButton value="Submit" ajax="false" actionListener="#{estudianteBean.upload}" disabled="true" />
+
+
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -121,11 +129,11 @@
         <h:outputScript name="js/jquery.udraggable.js" />
         <script>
             $('#postularse-content').udraggable({});
-            $('.postularse-button').click(function(){
-               $('#postularse-background').fadeIn('fast'); 
+            $('.postularse-button').click(function() {
+                $('#postularse-background').fadeIn('fast');
             });
-            $('.cancelar').click(function(){
-               $('#postularse-background').fadeOut('fast');
+            $('.cancelar').click(function() {
+                $('#postularse-background').fadeOut('fast');
             });
         </script>
     </h:body>  
