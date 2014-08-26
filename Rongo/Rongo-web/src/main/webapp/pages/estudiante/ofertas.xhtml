@@ -39,15 +39,7 @@
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <!--input type="button" value="Postularse" class="postularse-button"/-->
-                               
-                                <p:growl id="messages" showDetail="true" />
-
-                                <p:fileUpload value="#{estudianteBean.file}" mode="simple" disabled="true" />
-
-                                <p:commandButton value="Submit" ajax="false" actionListener="#{estudianteBean.upload}" disabled="true" />
-
-
+                                <input type="button" value="Postularse" class="postularse-button"/>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -114,13 +106,12 @@
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
         <div id="postularse-background">
-            #{curriculumBean.init()}
             <h:form id="postularse-content" enctype="multipart/form-data">
                 <h:outputLabel>Postularse en la Ayudant&iacute;a: <strong>Ejemplo</strong></h:outputLabel>
                 <h:outputLabel>Carga semanal: <strong>5 Horas</strong></h:outputLabel>
                 <p>Para completar el proceso de postulaci&oacute;n, suba su hoja de vida en formato PDF. El archivo no debe pesar m&aacute;s de 4MB.</p>
-                <h:inputFile id="file" value="#{curriculumBean.file}"/>
-                <h:commandButton value="Subir" action="#{curriculumBean.upload()}"/>
+                <p:fileUpload  id="file" value="#{estudianteBean.file}"  mode="simple" />
+                <h:commandButton value="Subir" action="#{estudianteBean.upload()}"/>
                 <input type="button" value="Cancelar" class="cancelar"/>
             </h:form>
         </div>

@@ -12,6 +12,7 @@
         <h:outputStylesheet name="css/style.css"/>
     </h:head>  
     <h:body>
+        
         <header>
             <h2>Rongo</h2>
             <div>
@@ -46,6 +47,9 @@
                                     <h4>Correo: #{estudiante.usuario}@espol.edu.ec</h4>
                                 </div>
                                 <div class="lista-ayudantes-accion">
+                                    <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                                        <p:fileDownload value="#{fileDownloadView.file}" />
+                                    </p:commandButton>
                                     <h:commandButton value="Aceptar" action="#{supervisoresBean.aceptarPostulante(estudiante)}"></h:commandButton>
                                     <h:commandButton value="Rechazar" ></h:commandButton>
                                 </div>
