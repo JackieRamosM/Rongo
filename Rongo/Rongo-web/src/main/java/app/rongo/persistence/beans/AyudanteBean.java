@@ -55,6 +55,10 @@ public class AyudanteBean {
         return e.getUsuario();
     }
     
+    public int getIdAyudante(){
+        return Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("b"));
+    }
+    
     public Estudiante getEstudiante() {
         int id = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("b"));
         Ayudante a = ayudanteFacade.find(id);

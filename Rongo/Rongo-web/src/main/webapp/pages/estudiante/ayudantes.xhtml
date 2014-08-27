@@ -31,14 +31,13 @@
             <header>
                 <h:link outcome="index"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h3>#{ayudantiaBean.ayudantiaNombre}</h3>
                     <h3>Ayudantes</h3>
+                    <h3>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h3>
                 </div>
             </header>
             <div class="ayudantia-semana">
                 <h1>Ayudantes disponibles</h1>
                 <div>
-                    <i class="fa fa-angle-left"></i>  
                     <div id="semana">
                         <ui:repeat value="#{ayudantiaBean.encontrarAyudantes()}" var="ayu">
                             <div class="circle">
@@ -46,12 +45,12 @@
                                     <h:link value="#{ayudanteBean.getAyudanteName(ayu.idayudante)}" outcome="ayudante">
                                         <f:param name="a" value="#{ayudantiaBean.idAyudantia}"/>
                                         <f:param name="b" value="#{ayu.idayudante}"/>
+                                        <f:param name="c" value="0"/>
                                     </h:link>
                                 </h3>
                             </div>
                         </ui:repeat>
                     </div>
-                    <i class="fa fa-angle-right"></i>
                 </div>
             </div>
         </section>

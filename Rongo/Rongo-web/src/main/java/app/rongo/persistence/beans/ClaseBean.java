@@ -9,16 +9,18 @@ package app.rongo.persistence.beans;
 import app.rongo.facade.AyudantiaFacadeLocal;
 import app.rongo.facade.ClaseFacadeLocal;
 import app.rongo.facade.EstudianteFacadeLocal;
-import app.rongo.persistence.Ayudante;
 import app.rongo.persistence.Ayudantia;
 import app.rongo.persistence.Clase;
-import app.rongo.persistence.Estudiante;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -45,25 +47,59 @@ public class ClaseBean implements Serializable {
     public ClaseBean() {
     }
     
-    public List<Clase> getClasesAyudanteMateria(int idestudiante, String ayudantia){
-        ayudantias = ayudantiaFacade.findAll();
-        Ayudantia ayu = null;
-        for(Ayudantia ay : ayudantias){
-            System.out.println(ay.getNombre());
-            if(ayudantia.contains(ay.getNombre()))
-                ayu = ay;
-        }
-        ayu.getIdayudantia();
-        Estudiante e = estudianteFacade.find(idestudiante);
+    public List<Clase> getClasesAyudanteMateria(int idAyudante, int idAyudantia){
+        int index = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("c"));
         clases = clase.findAll();
         Iterator<Clase> i = clases.iterator();
-        /*while (i.hasNext()) {
+        while (i.hasNext()) {
             try{
-                if (!i.next().getIdayudantia().getIdayudantia().equals(ayu.getIdayudantia()))i.remove();
-                if(!i.next().getIdayudante().getIdayudante().equals(idestudiante)) i.remove();
+                if (!i.next().getIdayudante().getIdayudante().equals(idAyudante)) i.remove();
+                if(!i.next().getIdayudantia().getIdayudantia().equals(idAyudantia)) i.remove();
             }catch(Error err){}
-        }*/
+        }
+        if(index < 0) {
+            for(int k=index; k==0; k++) {
+            }
+        }
+        else if(index > 0) {
+            for(int k=index; k==0; k--) {
+            }
+        }
+        else {
+            Calendar cal = Calendar.getInstance();
+        }
         return clases;
+    }
+    
+    public String getWeek(){
+        int index = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("c"));
+        String week = "";
+        if(index < 0) {
+            for(int k=0; k<index; k--) {
+                Calendar cal = Calendar.getInstance(Locale.US);
+                cal.set(Calendar.WEEK_OF_YEAR, k);
+                cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                week = "Semana del " + new SimpleDateFormat("d").format(cal.getTime()) + " al ";
+                cal.set(Calendar.DAY_OF_WEEK, 6);
+                week = week + new SimpleDateFormat("d").format(cal.getTime()) + " de " + new SimpleDateFormat("MMMM").format(cal.getTime()) + " de " + new SimpleDateFormat("YYYY").format(cal.getTime());
+            }
+        }
+        else if(index > 0) {
+            for(int k=index; k==0; k--) {
+            }
+        }
+        else {
+            Calendar cal = Calendar.getInstance(Locale.US);
+            cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            week = "Semana del " + new SimpleDateFormat("d").format(cal.getTime()) + " al ";
+            cal.set(Calendar.DAY_OF_WEEK, 6);
+            week = week + new SimpleDateFormat("d").format(cal.getTime()) + " de " + new SimpleDateFormat("MMMM").format(cal.getTime()) + " de " + new SimpleDateFormat("YYYY").format(cal.getTime());
+        }
+        return week;
+    }
+    
+    public int getIndex() {
+        return Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("c"));
     }
     
     public List<Clase> getClases(){

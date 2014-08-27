@@ -34,15 +34,20 @@
                 </h:link>
                 <div>
                     <h3>#{ayudanteBean.ayudanteNombre}</h3>
-                    <h3>#{ayudantiaBean.ayudantiaNombre}</h3>
+                    <h3>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h3>
                 </div>
             </header>
             <div class="ayudantia-semana">
-                <h1>Semana del 23 al 27 de junio de 2014</h1>
+                <h1>#{claseBean.week}</h1>
                 <div>
-                    <i class="fa fa-angle-left"></i>  
+                    <h:link outcome="ayudante">
+                        <i class="fa fa-angle-left"></i>
+                        <f:param name="a" value="#{ayudantiaBean.ayudantiaId}"></f:param>
+                        <f:param name="b" value="#{ayudanteBean.idAyudante}"></f:param>
+                        <f:param name="c" value="#{claseBean.index - 1}"></f:param>
+                    </h:link>
                     <div id="semana">
-                        <ui:repeat value="#{estudianteBean.materias}" var="m">
+                        <ui:repeat value="#{claseBean.getClasesAyudanteMateria(ayudanteBean.idAyudante,ayudantiaBean.ayudantiaId)}" var="c">
                             <div>
                                 <h2>Lunes 23 de Junio de 2014</h2>
                                 <h3>Horario: 14:30 - 16:30</h3>
@@ -50,7 +55,12 @@
                             </div>
                         </ui:repeat>
                     </div>
-                    <i class="fa fa-angle-right"></i>
+                    <h:link outcome="ayudante">
+                        <i class="fa fa-angle-right"></i>
+                        <f:param name="a" value="#{ayudantiaBean.ayudantiaId}"></f:param>
+                        <f:param name="b" value="#{ayudanteBean.idAyudante}"></f:param>
+                        <f:param name="c" value="#{claseBean.index + 1}"></f:param>
+                    </h:link>
                 </div>
             </div><br/><br/>
             <article>

@@ -36,6 +36,12 @@
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
     
+    <managed-bean eager="true">
+        <managed-bean-name>materiaBean</managed-bean-name>
+        <managed-bean-class>app.rongo.persistence.beans.MateriaBean</managed-bean-class>
+        <managed-bean-scope>dependent</managed-bean-scope>
+    </managed-bean>
+    
     <!--
       - Navigation Rules
       - Ayudante Académico
