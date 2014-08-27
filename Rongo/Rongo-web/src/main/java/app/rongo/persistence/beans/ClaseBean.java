@@ -18,8 +18,9 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
@@ -28,18 +29,12 @@ import javax.inject.Named;
  * @author Liliana
  */
 @Named(value = "claseBean")
-@SessionScoped
+@RequestScoped
 public class ClaseBean implements Serializable {
     
     @EJB
     ClaseFacadeLocal clase;
     List<Clase> clases;
-    @EJB
-    private AyudantiaFacadeLocal ayudantiaFacade;
-    private Ayudantia ayudantia = new Ayudantia();
-    private List<Ayudantia> ayudantias = new ArrayList();
-    @EJB
-    private EstudianteFacadeLocal estudianteFacade;
     
     /**
      * Creates a new instance of ClaseBean
@@ -53,7 +48,6 @@ public class ClaseBean implements Serializable {
         Iterator<Clase> i = clases.iterator();
         while (i.hasNext()) {
             try{
-                if (!i.next().getIdayudante().getIdayudante().equals(idAyudante)) i.remove();
                 if(!i.next().getIdayudantia().getIdayudantia().equals(idAyudantia)) i.remove();
             }catch(Error err){}
         }
@@ -75,14 +69,14 @@ public class ClaseBean implements Serializable {
         int index = Integer.parseInt(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("c"));
         String week = "";
         if(index < 0) {
-            for(int k=0; k<index; k--) {
-                Calendar cal = Calendar.getInstance(Locale.US);
-                cal.set(Calendar.WEEK_OF_YEAR, k);
-                cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-                week = "Semana del " + new SimpleDateFormat("d").format(cal.getTime()) + " al ";
-                cal.set(Calendar.DAY_OF_WEEK, 6);
-                week = week + new SimpleDateFormat("d").format(cal.getTime()) + " de " + new SimpleDateFormat("MMMM").format(cal.getTime()) + " de " + new SimpleDateFormat("YYYY").format(cal.getTime());
-            }
+            Calendar cal = Calendar.getInstance(Locale.US);
+            cal.set(Calendar.WEEK_OF_YEAR, 0);
+            cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+            for(int k=index; k==0; k++) cal.add(Calendar.DAY_OF_MONTH, -7);
+            week = "Semana del " + new SimpleDateFormat("d").format(cal.getTime()) + " al ";
+            cal.set(Calendar.DAY_OF_WEEK, 6);
+            week = week + new SimpleDateFormat("d").format(cal.getTime()) + " de " + new SimpleDateFormat("MMMM").format(cal.getTime()) + " de " + new SimpleDateFormat("YYYY").format(cal.getTime());
+            
         }
         else if(index > 0) {
             for(int k=index; k==0; k--) {

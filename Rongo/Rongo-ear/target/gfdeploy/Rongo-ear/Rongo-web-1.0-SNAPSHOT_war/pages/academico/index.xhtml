@@ -2,10 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
       xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Ayudante Académico - Rongo</title>
+        <title>Estudiante - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
         <h:outputStylesheet name="css/primeui-1.0-min.css"/>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
@@ -27,10 +28,6 @@
             </ul>
         </nav>
         <section>
-            <div class="message">
-                <h3>Usted es ayudante del curso ESTRUCTURAS DE DATOS (FIEC03012)</h3>
-                <h4>X</h4>
-            </div>
             <article>
                 <h1 class="header">
                     <label>CURSOS QUE TOMA ACTUALMENTE</label>
@@ -39,7 +36,18 @@
                 <div id="courses">
                     <ul>
                         <ui:repeat value="#{estudianteBean.materias}" var="m">
-                            <li> <h3><h:outputText  class="available" value="#{m}" /></h3></li>
+                            <h:panelGroup rendered="#{ayudantiaBean.ayudantiaExiste(m) == true}">
+                                <li>
+                                    <h3>
+                                        <h:link class="available" value="#{m}" outcome="ayudantes">
+                                            <f:param name="a" value="#{ayudantiaBean.idAyudantia}"></f:param>
+                                        </h:link>
+                                    </h3>
+                                </li>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="#{ayudantiaBean.ayudantiaExiste(m) == false}">
+                                <li><h3><h:outputText class="no-available" value="#{m}"/></h3></li>
+                            </h:panelGroup>
                         </ui:repeat> 
                     </ul>
                 </div>
@@ -52,9 +60,9 @@
                 </h1>
                 <div id="courses">
                     <ul>
-                        <li class="available">
+			<li class="available">
                             <h3><h:link value="ESTRUCTURAS DE DATOS (FIEC03012)" outcome="ayudantias"/></h3>
-                        </li>
+			</li>
                     </ul>
                 </div>
             </article>
@@ -109,7 +117,11 @@
                                 <p:inputText id="twitter" value="#{estudianteBean.twitter}" styleClass="estudiante-editar" style="margin-left: 15px;"></p:inputText>
                             </div>
                         </li>
-                        <input type="button" value="Editar" class="edit editar" style="padding: 0 10px;margin-right: 10px" onclick="$('.estudiante-hide').fadeOut('fast',function(){$('.editar').fadeOut('fast',function(){;$('.estudiante-editar').fadeIn('fast');})});"/>
+                        <input type="button" value="Editar" class="edit editar" style="padding: 0 10px;margin-right: 10px" onclick="$('.estudiante-hide').fadeOut('fast', function() {
+                                    $('.editar').fadeOut('fast', function() {
+                                        $('.estudiante-editar').fadeIn('fast');
+                                    });
+                                });"/>
                         <h:commandButton value="Guardar" action="#{estudianteBean.editarEstudiante()}" styleClass="edit estudiante-editar" style="padding: 10px 10px;margin-right: 10px;font-size: 1em;"></h:commandButton>
                     </ul>
                 </h:form>

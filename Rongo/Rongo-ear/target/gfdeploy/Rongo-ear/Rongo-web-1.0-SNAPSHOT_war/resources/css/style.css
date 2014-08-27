@@ -266,7 +266,6 @@ section {
         }
         section .ayudantia-semana div {
             width: 100%;
-            background-color: #3C83A7;
             padding: 10px 0;
             text-align: center;
         }
@@ -639,7 +638,6 @@ footer {
 }
 
 #postularse-background {
-    display: none;
     width: 100%;
     height: 100%;
     position: fixed;

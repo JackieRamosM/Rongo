@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ayudantía - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -37,32 +38,31 @@
                     <h3>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h3>
                 </div>
             </header>
-            <div class="ayudantia-semana">
-                <h1>#{claseBean.week}</h1>
-                <div>
-                    <h:link outcome="ayudante">
-                        <i class="fa fa-angle-left"></i>
-                        <f:param name="a" value="#{ayudantiaBean.ayudantiaId}"></f:param>
-                        <f:param name="b" value="#{ayudanteBean.idAyudante}"></f:param>
-                        <f:param name="c" value="#{claseBean.index - 1}"></f:param>
-                    </h:link>
-                    <div id="semana">
-                        <ui:repeat value="#{claseBean.getClasesAyudanteMateria(ayudanteBean.idAyudante,ayudantiaBean.ayudantiaId)}" var="c">
-                            <div>
-                                <h2>Lunes 23 de Junio de 2014</h2>
-                                <h3>Horario: 14:30 - 16:30</h3>
-                                <p>Descripci&oacute;n: Est&aacute;ndares de XML: XML Languaje Specification, XML Namespaces, XML Schema, XPath, DTD, XSL</p>
-                            </div>
-                        </ui:repeat>
-                    </div>
-                    <h:link outcome="ayudante">
-                        <i class="fa fa-angle-right"></i>
-                        <f:param name="a" value="#{ayudantiaBean.ayudantiaId}"></f:param>
-                        <f:param name="b" value="#{ayudanteBean.idAyudante}"></f:param>
-                        <f:param name="c" value="#{claseBean.index + 1}"></f:param>
-                    </h:link>
-                </div>
-            </div><br/><br/>
+            <h:form styleClass="ayudantia-semana">
+                <p:dataTable var="clase" value="#{claseBean.getClasesAyudanteMateria(ayudanteBean.idAyudante,ayudantiaBean.ayudantiaId)}" paginator="true" rows="5"
+                            paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                            rowsPerPageTemplate="5" id="claseTable">
+                    <p:column headerText="Fecha" width="120">
+                        <p:calendar value="#{clase.fecha}" pattern="dd/MM/yyyy" readonly="true"/>
+                    </p:column>
+                    <p:column headerText="Horario" width="300">
+                        <h:outputText value="Desde: "/><p:calendar value="#{clase.horaini}" pattern="HH:mm" readonly="true"/><br/>
+                        <h:outputText value="Hasta: "/><p:calendar value="#{clase.horafin}" pattern="HH:mm" readonly="true"/>
+                    </p:column>
+                    <p:column headerText="Descripci&oacute;n">
+                        <h:outputText value="#{clase.descripcion}" />
+                    </p:column>
+                    <p:column headerText="Ayudant&iacute;a dada" width="100">
+                        <h:panelGroup rendered="#{clase.dioclase == true}">
+                            <h:outputText value="Si"/>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{clase.dioclase == false}">
+                            <h:outputText value="No"/>
+                        </h:panelGroup>
+                    </p:column>
+                </p:dataTable>
+                <p:dialog></p:dialog>
+            </h:form><br/><br/>
             <article>
                 <h1>INFORMACI&Oacute;N DEL AYUDANTE:</h1>
                 <ul>

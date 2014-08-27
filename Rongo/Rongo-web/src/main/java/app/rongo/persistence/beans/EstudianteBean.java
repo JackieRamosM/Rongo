@@ -7,14 +7,30 @@ package app.rongo.persistence.beans;
 
 import app.rongo.beans.Session;
 import app.rongo.facade.EstudianteFacadeLocal;
+import app.rongo.persistence.Ayudantiasofertadas;
 import app.rongo.persistence.Estudiante;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
+import org.apache.commons.io.FileUtils;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -39,6 +55,7 @@ public class EstudianteBean implements Serializable {
     private String nombre;
     private int idestudiante;
     private boolean admin;
+    private UploadedFile file;
 
     public EstudianteBean() {
     }
@@ -77,6 +94,40 @@ public class EstudianteBean implements Serializable {
     
     public String estudianteName(String user){
         return session.nombreService(session.matriculaService(user));
+    }
+    
+    public UploadedFile getFile() {
+        return file;
+    }
+
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+
+    public void upload() {
+        if (file != null) {
+            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+            //FacesContext.getCurrentInstance().addMessage(null, message);
+            UploadedFile uploadedFile = file;
+            //create an InputStream from the uploaded file
+            InputStream inputStr = null;
+            try {
+                inputStr = uploadedFile.getInputstream();
+            } catch (IOException e) {
+                //log error
+            }
+            //create destination File
+            String destPath = "C:\\Users\\Liliana\\Documents\\Git\\rongo\\Rongo\\tmp\\file2.pdf";
+            File destFile = new File(destPath);
+            //use org.apache.commons.io.FileUtils to copy the File
+            try {
+                FileUtils.copyInputStreamToFile(inputStr, destFile);
+            } catch (IOException e) {
+                //log error
+            }
+        } else {
+            System.out.println("I'm Groot");
+        }
     }
     
     public List<String> getMaterias() {

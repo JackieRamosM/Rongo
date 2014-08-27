@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
     xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ayudantes - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -30,26 +31,26 @@
             <header>
                 <h:link outcome="index"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h3>Ingenier&iacute;a de Software II</3>
                     <h3>Ayudantes</h3>
+                    <h3>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h3>
                 </div>
             </header>
             <div class="ayudantia-semana">
                 <h1>Ayudantes disponibles</h1>
                 <div>
-                    <i class="fa fa-angle-left"></i>  
                     <div id="semana">
-                        <div class="circle">
-                            <h2><h:link value="Juan Manuel Romero" outcome="ayudante"/></h2>
-                        </div>
-                        <div class="circle">
-                            <h2>Melissa Vallejo Loor</h2>
-                        </div>
-                        <div class="circle">
-                            <h2>Eduardo Armijos Carrera</h2>
-                        </div>
+                        <ui:repeat value="#{ayudantiaBean.encontrarAyudantes()}" var="ayu">
+                            <div class="circle">
+                                <h3>
+                                    <h:link value="#{ayudanteBean.getAyudanteName(ayu.idayudante)}" outcome="ayudante">
+                                        <f:param name="a" value="#{ayudantiaBean.idAyudantia}"/>
+                                        <f:param name="b" value="#{ayu.idayudante}"/>
+                                        <f:param name="c" value="0"/>
+                                    </h:link>
+                                </h3>
+                            </div>
+                        </ui:repeat>
                     </div>
-                    <i class="fa fa-angle-right"></i>
                 </div>
             </div>
         </section>
