@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <welcome-file-list>
-        <welcome-file>faces/pages/getname.jsp</welcome-file>
+        <welcome-file>getName</welcome-file>
     </welcome-file-list>
     <context-param>
         <param-name>primefaces.THEME</param-name>
@@ -25,6 +25,24 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>getNameServlet</servlet-name>
+        <servlet-class>app.rongo.getNameServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>getNameServlet</servlet-name>
+        <url-pattern>/getName</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>redirectServlet</servlet-name>
+        <servlet-class>app.rongo.redirectServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>redirectServlet</servlet-name>
+        <url-pattern>/redirect</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
@@ -90,7 +108,13 @@
     </listener>
     <error-page>
         <error-code>403</error-code>
-        <location>/redirect.jsp</location>
+        <location>/redirect</location>
     </error-page>
-    
+    <resource-ref>
+        <description>jdbc:mysql://localhost:3306/rongo?zeroDateTimeBehavior=convertToNull</description>
+        <res-ref-name>rongo</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 </web-app>

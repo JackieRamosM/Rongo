@@ -17,6 +17,19 @@
             <sec:filter-chain pattern="/faces/pages/logout.jsp" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi,logoutFilter, singleLogoutFilter"/>
         </sec:filter-chain-map>
     </bean-->
+    
+    <bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+        <sec:filter-chain-map path-type="ant">
+           <sec:filter-chain pattern="/getName" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+           <sec:filter-chain pattern="/faces/pages/getname.jsp" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+            <sec:filter-chain pattern="/faces/pages/estudiante/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+            <sec:filter-chain pattern="/faces/pages/admin/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+            <sec:filter-chain pattern="/faces/pages/academico/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+            <sec:filter-chain pattern="/faces/pages/supervisor/*" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi"/>
+            <sec:filter-chain pattern="/faces/pages/bridge.jsp" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi,logoutFilter, singleLogoutFilter"/>
+            <sec:filter-chain pattern="/faces/pages/logout.jsp" filters="casAuthenticationFilter, casValidationFilter, wrappingFilter, sif,j2eePreAuthFilter,logoutFilter,etf,fsi,logoutFilter, singleLogoutFilter"/>
+        </sec:filter-chain-map>
+    </bean>
  
     <bean id="sif" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
  
@@ -24,13 +37,16 @@
         <sec:authentication-provider ref="preAuthAuthProvider"/>
     </sec:authentication-manager>
  
-    <bean id="preAuthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+ <bean id="preAuthAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
         <property name="preAuthenticatedUserDetailsService">
             <bean id="userDetailsServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
-                <property name="userDetailsService" ref="userService"/>
+               <!-- <property name="userDetailsService" ref="userService"/>-->
+                <property name="userDetailsService" ref="customUserService"/>
             </bean>
         </property>
     </bean>
+    <bean id="customUserService" class="app.rongo.CustomUserService"/> 
+ 
  
     <bean id="preAuthEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint" />
  
