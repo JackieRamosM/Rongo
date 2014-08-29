@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
     xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Ayudantía - Rongo</title>
@@ -11,7 +12,7 @@
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
         <h:outputStylesheet name="css/style.css"/>
     </h:head>  
-    <h:body>
+    <h:body style="overflow-y: scroll;overflow-x: hidden;">
         <header>
             <h2>Rongo</h2>
             <div>
@@ -21,7 +22,7 @@
         </header>
         <nav>
             <ul>
-                <li class="active"><h:link value="Ayudantes acad&eacute;micos"/></li>
+                <li class="active">Ayudantes</li>
                 <li><h:link value="Postulantes" outcome="postulantes"/></li>
                 <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
             </ul>
@@ -30,31 +31,36 @@
             <header>
                 <h:link outcome="index"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h3>Juan Manuel Romero</h3>
-                    <h3>Ayudante de Ingenier&iacute;a de Software I</h3>
+                    <h3>#{ayudanteBean.ayudanteNombre}</h3>
+                    <h3>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h3>
                 </div>
             </header>
-            <div class="ayudantia-semana">
-                <h1>Semana del 23 al 27 de junio de 2014</h1>
-                <div>
-                    <i class="fa fa-angle-left"></i>  
-                    <div id="semana">
-                        <div>
-                            <h2>Lunes 23 de Junio de 2014</h2>
-                            <h3>Horario: 14:30 - 16:30</h3>
-                            <p>Descripci&oacute;n: Est&aacute;ndares de XML: XML Languaje Specification, XML Namespaces, XML Schema, XPath, DTD, XSL</p>
-                        </div>
-                        <div>
-                            <h2>Mi&eacute;rcoles 25 de Junio de 2014</h2>
-                            <h3>Horario: 14:30 - 16:30</h3>
-                            <p>Descripci&oacute;n: Est&aacute;ndares de XML: XML Languaje Specification, XML Namespaces, XML Schema, XPath, DTD, XSL</p>
-                        </div>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-            </div>
+            <h:form styleClass="ayudantia-semana">
+                <p:dataTable var="clase" value="#{claseBean.getClasesAyudanteMateria(ayudanteBean.idAyudante,ayudantiaBean.ayudantiaId)}" paginator="true"
+                            paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+                            id="claseTable">
+                    <p:column headerText="Fecha" width="120">
+                        <p:calendar value="#{clase.fecha}" pattern="dd/MM/yyyy" readonly="true"/>
+                    </p:column>
+                    <p:column headerText="Horario" width="300">
+                        <h:outputText value="Desde: "/><p:calendar value="#{clase.horaini}" pattern="HH:mm" readonly="true"/><br/>
+                        <h:outputText value="Hasta: "/><p:calendar value="#{clase.horafin}" pattern="HH:mm" readonly="true"/>
+                    </p:column>
+                    <p:column headerText="Descripci&oacute;n">
+                        <h:outputText value="#{clase.descripcion}" />
+                    </p:column>
+                    <p:column headerText="Ayudant&iacute;a dada" width="100">
+                        <h:panelGroup rendered="#{clase.dioclase == true}">
+                            <h:outputText value="Si"/>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{clase.dioclase == false}">
+                            <h:outputText value="No"/>
+                        </h:panelGroup>
+                    </p:column>
+                </p:dataTable>
+                <p:dialog></p:dialog>
+            </h:form><br/><br/>
             <article>
-                <br/><br/>
                 <h1>INFORMACI&Oacute;N DEL AYUDANTE:</h1>
                 <ul>
                     <li>
@@ -62,7 +68,7 @@
                             <i class="fa fa-envelope"></i>
                         </div>
                         <div>
-                            <label>jromero@espol.edu.ec</label>
+                            <label>#{ayudanteBean.estudiante.usuario}@espol.edu.ec</label>
                         </div>
                     </li>
                     <li>
@@ -70,7 +76,7 @@
                             <i class="fa fa-graduation-cap"></i>
                         </div>
                         <div>
-                            <label>Ingeniería en Ciencias Computacionales</label>
+                            <label>#{ayudanteBean.estudianteMateria}</label>
                         </div>
                     </li>
                     <li>
@@ -78,7 +84,7 @@
                             <i class="fa fa-comments"></i>
                         </div>
                         <div>
-                            <label>No ha especificado intereses.</label>
+                            <label>#{ayudanteBean.estudiante.intereses}</label>
                         </div>
                     </li>
                     <li>
@@ -86,7 +92,7 @@
                             <i class="fa fa-skype"></i>
                         </div>
                         <div>
-                            <label>jromero</label>
+                            <label>#{ayudanteBean.estudiante.skype}</label>
                         </div>
                     </li>
                     <li>
@@ -94,7 +100,7 @@
                             <i class="fa fa-twitter"></i>
                         </div>
                         <div>
-                            <label>jromero</label>
+                            <label>#{ayudanteBean.estudiante.twitter}</label>
                         </div>
                     </li>
                 </ul>

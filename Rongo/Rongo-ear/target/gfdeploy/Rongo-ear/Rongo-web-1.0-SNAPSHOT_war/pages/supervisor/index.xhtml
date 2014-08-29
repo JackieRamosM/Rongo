@@ -27,6 +27,7 @@
                 <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
             </ul>
         </nav>
+        #{supervisoresBean.obtenerAyudantesporsupervisor()}
         <section>
             <article>
                 <h1 class="header">
@@ -34,24 +35,55 @@
                     <i class="fa fa-pencil icon"></i>
                 </h1>
                 <div class="lista-ayudantes">
-                    #{supervisoresBean.obtenerAyudantesporsupervisor()}
                     <h:form styleClass="hForm">
                         <table class="ayudante-table ayudante-academico">
+                            <tr>
+                                <th style="width: 40%;">Ayudante</th>
+                                <th>Ayudant&iacute;a</th>
+                                <th>Correo</th>
+                                <th>Acci&oacute;n</th>
+                            </tr>
                             <ui:repeat value="#{supervisoresBean.ayudantesporsupervisor}" var="ayudante">
-                                <tr>
-                                    <th>Ayudante</th>
-                                    <th>Ayudant&iacute;a</th>
-                                    <th>Correo</th>
-                                    <th>Acci&oacute;n</th>
-                                </tr>
-                                <tr>
-                                    <td>#{estudianteBean.estudianteName(ayudante.getIdEstudiante().usuario)}</td>
-                                    <td>#{ayudante.getIdayudantia().getNombre()}</td>
-                                    <td>#{ayudante.getIdEstudiante().usuario}@espol.edu.ec</td>
-                                    <h:panelGroup rendered="#{ayudante.getIdayudantia().getTipodeayudantia() == 'academica'}">
-                                        <td><h:button value="Ver ayudant&iacute;as" outcome="ayudante"></h:button></td>
-                                    </h:panelGroup>
-                                </tr>
+                                <h:panelGroup rendered="#{ayudante.idayudantia.tipodeayudantia == 'academica'}">
+                                    <tr>
+                                        <td style="width: 40%;">#{ayudanteBean.getAyudanteName(ayudante.idayudante)}</td>
+                                        <td>#{materiaBean.getMateriaNombre(ayudante.idayudantia.nombre)}</td>
+                                        <td>#{ayudante.idEstudiante.usuario}@espol.edu.ec</td>
+                                        <td>
+                                            <h:link value="Ver ayudant&iacute;as" outcome="ayudante">
+                                                <f:param name="a" value="#{ayudante.idayudantia.idayudantia}"/>
+                                                <f:param name="b" value="#{ayudante.idayudante}"/>
+                                                <f:param name="c" value="0"/>
+                                            </h:link>    
+                                        </td>
+                                    </tr>
+                                </h:panelGroup>
+                            </ui:repeat>
+                        </table>
+                    </h:form>
+                </div>
+            </article>
+            <article>
+                <h1 class="header">
+                    <label>AYUDANTES DE ACTIVIDADES VARIAS</label>
+                    <i class="fa fa-pencil icon"></i>
+                </h1>
+                <div class="lista-ayudantes">
+                    <h:form styleClass="hForm">
+                        <table class="ayudante-table ayudante-academico">
+                            <tr>
+                                <th style="width: 40%;">Ayudante</th>
+                                <th>Ayudant&iacute;a</th>
+                                <th>Correo</th>
+                            </tr>
+                            <ui:repeat value="#{supervisoresBean.ayudantesporsupervisor}" var="ayudante">
+                                <h:panelGroup rendered="#{ayudante.idayudantia.tipodeayudantia == 'varias'}">
+                                    <tr style="width: 40%;">
+                                        <td>#{ayudanteBean.getAyudanteName(ayudante.idayudante)}</td>
+                                        <td>#{ayudante.idayudantia.nombre}</td>
+                                        <td>#{ayudante.idEstudiante.usuario}@espol.edu.ec</td>
+                                    </tr>
+                                </h:panelGroup>
                             </ui:repeat>
                         </table>
                     </h:form>

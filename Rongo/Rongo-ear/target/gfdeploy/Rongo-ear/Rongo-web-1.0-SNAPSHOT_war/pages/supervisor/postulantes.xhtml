@@ -46,12 +46,12 @@
                                     <h4>Ayudantía: #{estudiante.ayudantiaaplicada}</h4>
                                     <h4>Correo: #{estudiante.usuario}@espol.edu.ec</h4>
                                 </div>
-                                <div class="lista-ayudantes-accion">
-                                    <p:commandButton value="Download" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s">
+                                <div class="lista-ayudantes-accion" style="text-align: center">
+                                    <h:commandButton value="Aceptar" action="#{supervisoresBean.aceptarPostulante(estudiante)}"></h:commandButton>
+                                    <h:commandButton value="Rechazar" ></h:commandButton><br/>
+                                    <p:commandButton value="Descargar CV" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s" style="color:black;font-weight:normal;padding:0;margin:2px;">
                                         <p:fileDownload value="#{fileDownloadView.file}" />
                                     </p:commandButton>
-                                    <h:commandButton value="Aceptar" action="#{supervisoresBean.aceptarPostulante(estudiante)}"></h:commandButton>
-                                    <h:commandButton value="Rechazar" ></h:commandButton>
                                 </div>
                             </li>
                         </ul>
@@ -60,7 +60,7 @@
 
             </article>
         </section>
-        <footer>
+        <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
