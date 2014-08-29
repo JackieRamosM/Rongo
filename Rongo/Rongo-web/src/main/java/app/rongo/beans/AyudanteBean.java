@@ -16,6 +16,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.Dependent;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 /**
@@ -23,7 +24,7 @@ import javax.inject.Named;
  * @author Administrador
  */
 @Named(value = "ayudanteBean")
-@Dependent
+@ViewScoped
 public class AyudanteBean {
 
     @EJB

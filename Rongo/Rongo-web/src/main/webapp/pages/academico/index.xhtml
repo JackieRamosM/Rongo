@@ -62,7 +62,7 @@
                     <ui:repeat value="#{ayudanteBean.ayudantiasdelayudante}" var="ayudantia">
                         <ul>
                             <li class="available">
-                                <h3><h:link value="#{ayudanteBean.session.codigoService(ayudantia.nombre)}" outcome="ayudantias"/></h3>
+                                <h3><h:link value="#{materiaBean.getMateriaNombre(ayudantia.nombre)}" outcome="ayudantias"/></h3>
                             </li>
                         </ul>
                     </ui:repeat>
