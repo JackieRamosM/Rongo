@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Ayudantes - Rongo</title>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
@@ -24,7 +25,12 @@
         </nav>
         <section>
             <header>
-                <h:link outcome="ayudantias"><i class="fa fa-arrow-circle-o-left"></i></h:link>
+                <h:link outcome="ayudantias">
+                    <i class="fa fa-arrow-circle-o-left"></i>
+                    <f:param name="a" value="#{ayudantiaBean.ayudantiaId}"></f:param>
+                    <f:param name="b" value="#{ayudanteBean.idAyudante}"></f:param>
+                </h:link>
+                <h:link outcome="ayudantias"></h:link>
                 <div>
                     <h3>Registro de Ayudant&iacute;a</h3>
                 </div>
@@ -32,11 +38,7 @@
             <article>
                 <div class="ayudantia">
                     <h4>Ayudantia</h4>
-                    <h2>Estructura de Datos</h2>
-                    <h4>Paralelo 1</h4>
-                </div>
-                <div class="semana">
-                    <h2>Junio 30 a Julio 4 de 2014</h2>
+                    <h2>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h2>
                 </div>
                 <div class="lista-ayudantes nueva-semana">
                     <h:form styleClass="hForm">
@@ -61,7 +63,7 @@
                 </div>
             </article>
         </section>
-        <footer>
+        <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
     </h:body>  
