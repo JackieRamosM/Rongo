@@ -30,7 +30,7 @@
             <header>
                 <h:link outcome="index"><i class="fa fa-arrow-circle-o-left"></i></h:link>
                 <div>
-                    <h3>ESTRUCTURAS DE DATOS (FIEC03012)</h3>
+                    <h3>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h3>
                     <h3>Ayudant&iacute;as dictadas</h3>
                 </div>
             </header>
@@ -40,86 +40,54 @@
                     <ul>
                         <li>
                             <div class="lista-ayudantes-datos">
-                                <h2>Ayudant&iacute;as por semana</h2>
+                                <h2>Ayudant&iacute;as dictadas</h2>
                             </div>
                             <div class="lista-ayudantes-accion">
-                                <h:button value="Agregar nueva clase" outcome="nueva"></h:button>
+                                <h:link value="Agregar nueva clase" outcome="nueva">
+                                    <f:param name="a" value="#{ayudantiaBean.idAyudantia}"></f:param>
+                                    <f:param name="b" value="#{ayudanteBean.idAyudante}"></f:param>
+                                </h:link>
                             </div>
                         </li>
                     </ul>
                 </div>
                 <br></br><br></br>
-            </article>
-            <div class="ayudantia-semana">
-                <div>
-                    <i class="fa fa-angle-left"></i>  
-                    <div id="semana">
-                        <h:commandButton  value="Junio 16 a Junio 20 de 2014" styleClass="circle" ></h:commandButton>
-                    </div>
-                    <i class="fa fa-angle-right"></i>
-                </div>
-            </div>
-            <article class="details">
-                <h1>Detalles:</h1>
-
-                
-                <f:view>
-                   
-                    <h:form>
-                        <h1><h:outputText value="List"/></h1>
-                        <p:dataTable value="#{claseBean.clases}" var="item">
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Idclase"/>
-                                </f:facet>
-                                <h:outputText value="#{item.idclase}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Horaini"/>
-                                </f:facet>
-                                <h:outputText value="#{item.horaini}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Horafin"/>
-                                </f:facet>
-                                <h:outputText value="#{item.horafin}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Descripcion"/>
-                                </f:facet>
-                                <h:outputText value="#{item.descripcion}"/>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
+                <div class="lista-ayudantes" style="text-align: left">
+                    <h:form styleClass="ayudantia-semana">
+                        <h:dataTable var="clase" value="#{claseBean.getClasesAyudanteMateria(ayudanteBean.idAyudante,ayudantiaBean.ayudantiaId)}" styleClass="ayudante-clases">
+                            <h:column>
+                                <f:facet name="header"><!--140-->
                                     <h:outputText value="Fecha"/>
                                 </f:facet>
-                                <h:outputText value="#{item.fecha}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                </h:outputText>
-                            </p:column>
-                            <p:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Dioclase"/>
+                                <p:calendar value="#{clase.fecha}" pattern="dd/MM/yyyy" readonly="true"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><!--300-->
+                                    <h:outputText value="Horario"/>
                                 </f:facet>
-                                <h:outputText value="#{item.dioclase}"/>
-                            </p:column>
-                            <p:column>
+                                <h:outputText value="Desde: "/><p:calendar value="#{clase.horaini}" pattern="HH:mm" readonly="true"/><br/>
+                                <h:outputText value="Hasta: "/><p:calendar value="#{clase.horafin}" pattern="HH:mm" readonly="true"/>
+                            </h:column>
+                            <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Idayudantia"/>
+                                    <h:outputText value="Descripci&oacute;n"/>
                                 </f:facet>
-                                <h:outputText value="#{item.idayudantia}"/>
-                            </p:column>
-                        </p:dataTable>
-                    </h:form>
-                </f:view>
-                <br></br><br></br>
+                                <h:outputText value="#{clase.descripcion}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Ayudant&iacute;a dada"/>
+                                </f:facet>
+                                <h:panelGroup rendered="#{clase.dioclase == true}">
+                                    <h:outputText value="Si"/>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{clase.dioclase == false}">
+                                    <h:outputText value="No"/>
+                                </h:panelGroup>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form><br/><br/>
+                </div>
             </article>
         </section>
         <footer class="fixed-bottom">
