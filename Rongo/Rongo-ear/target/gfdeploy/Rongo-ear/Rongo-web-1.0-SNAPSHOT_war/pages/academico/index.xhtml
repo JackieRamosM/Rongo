@@ -52,17 +52,20 @@
                 </div>
                 <h:graphicImage value="/faces/resources/images/book.png" />
             </article>
+            #{ayudanteBean.obtenerAyudantiasDelAyudante()}
             <article>
                 <h1 class="header">
                     <label>CURSOS DE LOS QUE ES AYUDANTE</label>
                     <i class="fa fa-pencil icon"></i>
                 </h1>
                 <div id="courses">
-                    <ul>
-			<li class="available">
-                            <h3><h:link value="ESTRUCTURAS DE DATOS (FIEC03012)" outcome="ayudantias"/></h3>
-			</li>
-                    </ul>
+                    <ui:repeat value="#{ayudanteBean.ayudantiasdelayudante}" var="ayudantia">
+                        <ul>
+                            <li class="available">
+                                <h3><h:link value="#{ayudanteBean.session.codigoService(ayudantia.nombre)}" outcome="ayudantias"/></h3>
+                            </li>
+                        </ul>
+                    </ui:repeat>
                 </div>
             </article>
             <article>
