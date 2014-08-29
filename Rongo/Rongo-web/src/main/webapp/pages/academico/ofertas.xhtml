@@ -24,22 +24,22 @@
             <ul>
                 <li><h:link value="Inicio" outcome="index"/></li>
                 <li class="active">Ayudant&iacute;as ofertadas</li>
-                <li><h:link value="Cuestionarios" outcome="cuestionarios"/></li>
             </ul>
         </nav>
         <section>
             #{ayudantiasofertadasBean.encontrarAyudantiasofertadas()}
+            #{estudianteBean.initpostulacion()}
             <article>
                 <h1 class="header">
                     <label>AYUDANT&Iacute;AS ACAD&Eacute;MICAS</label>
                     <i class="fa fa-suitcase icon"></i>
                 </h1>
-                <h:form styleClass="hForm" enctype="multipart/form-data">
+                <h:form styleClass="hForm">
                     <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <input type="button" value="Postularse" class="postularse-button"/>
+                                <h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}"></h:commandButton>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -63,6 +63,7 @@
                             </div>
                         </h:panelGroup>
                     </ui:repeat>
+                    
                 </h:form>
             </article>
             <article>
@@ -75,7 +76,7 @@
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <input type="button" value="Postularse" class="postularse-button"/>
+                                <h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}"></h:commandButton>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -105,20 +106,11 @@
         <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
-        <div id="postularse-background">
-            <h:form id="postularse-content" enctype="multipart/form-data">
-                <h:outputLabel>Postularse en la Ayudant&iacute;a: <strong>Ejemplo</strong></h:outputLabel>
-                <h:outputLabel>Carga semanal: <strong>5 Horas</strong></h:outputLabel>
-                <p>Para completar el proceso de postulaci&oacute;n, suba su hoja de vida en formato PDF. El archivo no debe pesar m&aacute;s de 4MB.</p>
-                <p:fileUpload  id="file" value="#{estudianteBean.file}"  mode="simple" />
-                <h:commandButton value="Subir" action="#{estudianteBean.upload()}"/>
-                <input type="button" value="Cancelar" class="cancelar"/>
-            </h:form>
-        </div>
+       
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
         <h:outputScript name="js/jquery.udraggable.js" />
-        <script>
+        <!--script>
             $('#postularse-content').udraggable({});
             $('.postularse-button').click(function() {
                 $('#postularse-background').fadeIn('fast');
@@ -126,6 +118,6 @@
             $('.cancelar').click(function() {
                 $('#postularse-background').fadeOut('fast');
             });
-        </script>
+        </script-->
     </h:body>  
 </html>

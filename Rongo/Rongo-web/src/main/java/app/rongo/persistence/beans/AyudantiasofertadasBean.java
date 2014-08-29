@@ -10,29 +10,35 @@ import app.rongo.facade.AyudantiasofertadasFacade;
 import app.rongo.facade.AyudantiasofertadasFacadeLocal;
 import app.rongo.persistence.Ayudantiasofertadas;
 import app.rongo.persistence.Supervisor;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import org.apache.commons.io.FileUtils;
 import org.primefaces.context.RequestContext;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
  * @author Liliana
  */
 @Named(value = "ayudantiasofertadasBean")
-@SessionScoped
+@ViewScoped
 public class AyudantiasofertadasBean implements Serializable {
     @EJB
     private AyudantiasofertadasFacadeLocal ayudantiasofertadasFacade ;   
     private Ayudantiasofertadas ayudantiaofertada = new Ayudantiasofertadas();
     private List<Ayudantiasofertadas> ayudantiasofertadas;
-    
-
+       
     /**
      * Creates a new instance of SupervisorBean
      */
@@ -57,6 +63,8 @@ public class AyudantiasofertadasBean implements Serializable {
     public void encontrarAyudantiasofertadas(){
         ayudantiasofertadas = ayudantiasofertadasFacade.findAll();
     }
+    
+    
     public void ofertarAyudantia(Ayudantiasofertadas ao) throws IOException{
         Date desde = ao.getVigentedesde();
         Date hasta = ao.getVigentehasta();
@@ -64,7 +72,7 @@ public class AyudantiasofertadasBean implements Serializable {
             ayudantiasofertadasFacade.create(ao);
         FacesContext.getCurrentInstance().getExternalContext().redirect("ofertas.xhtml");
     }
-    
+   
     public void validarFecha(){
         Date d1 = ayudantiaofertada.getVigentedesde();
         Date d2 = ayudantiaofertada.getVigentehasta();
@@ -104,4 +112,6 @@ public class AyudantiasofertadasBean implements Serializable {
         encontrarAyudantiasofertadas();
         return ayudantiasofertadas;
     }
+    
+    
 }

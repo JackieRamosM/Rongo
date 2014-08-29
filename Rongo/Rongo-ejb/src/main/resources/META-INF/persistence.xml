@@ -9,11 +9,11 @@
     <class>app.rongo.persistence.Camposcuestionario</class>
     <class>app.rongo.persistence.Clase</class>
     <class>app.rongo.persistence.Cuestionario</class>
-    <class>app.rongo.persistence.Curriculum</class>
     <class>app.rongo.persistence.Estudiante</class>
     <class>app.rongo.persistence.Supervisor</class>
     <class>app.rongo.persistence.Valordeldesempeno</class>
-    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <class>app.rongo.persistence.Postulacion</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
 </persistence>

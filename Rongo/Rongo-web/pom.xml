@@ -27,13 +27,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/getMatriculas/getMatriculas.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/espolPhantom/espolPhantom.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName>app.get.matriculas</packageName>
-                            <wsdlLocation>http://localhost:8080/getMatriculas/getMatriculas?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/getMatriculas.stale</staleFile>
+                            <packageName>app.espol.phantom</packageName>
+                            <wsdlLocation>http://localhost:8080/espolPhantom/espolPhantom?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/espolPhantom.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-getMatriculas</id>
+                        <id>wsimport-generate-espolPhantom</id>
                         <phase>generate-sources</phase>
                     </execution>
                     <execution>
@@ -42,13 +42,13 @@
                         </goals>
                         <configuration>
                             <wsdlFiles>
-                                <wsdlFile>localhost_8080/espolPhantom/espolPhantom.wsdl</wsdlFile>
+                                <wsdlFile>localhost_8080/getMatriculas/getMatriculas.wsdl</wsdlFile>
                             </wsdlFiles>
-                            <packageName>app.espol.phantom</packageName>
-                            <wsdlLocation>http://localhost:8080/espolPhantom/espolPhantom?wsdl</wsdlLocation>
-                            <staleFile>${project.build.directory}/jaxws/stale/espolPhantom.stale</staleFile>
+                            <packageName>app.get.matriculas</packageName>
+                            <wsdlLocation>http://localhost:8080/getMatriculas/getMatriculas?wsdl</wsdlLocation>
+                            <staleFile>${project.build.directory}/jaxws/stale/getMatriculas.stale</staleFile>
                         </configuration>
-                        <id>wsimport-generate-espolPhantom</id>
+                        <id>wsimport-generate-getMatriculas</id>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>

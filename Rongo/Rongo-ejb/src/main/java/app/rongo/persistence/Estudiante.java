@@ -69,7 +69,7 @@ public class Estudiante implements Serializable {
     private Cuestionario idcuestionario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
     private List<Ayudante> ayudanteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
+    @OneToMany(mappedBy = "idestudiante")
     private List<Postulacion> postulacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
     private List<Asistencia> asistenciaList;

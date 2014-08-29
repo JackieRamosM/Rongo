@@ -4,11 +4,11 @@
 <xsd:import namespace="http://phantom.espol.app/" schemaLocation="http://localhost:8080/espolPhantom/espolPhantom?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="getNombre">
-<part name="parameters" element="tns:getNombre"/>
+<message name="getMaterias">
+<part name="parameters" element="tns:getMaterias"/>
 </message>
-<message name="getNombreResponse">
-<part name="parameters" element="tns:getNombreResponse"/>
+<message name="getMateriasResponse">
+<part name="parameters" element="tns:getMateriasResponse"/>
 </message>
 <message name="getDatos">
 <part name="parameters" element="tns:getDatos"/>
@@ -16,17 +16,11 @@
 <message name="getDatosResponse">
 <part name="parameters" element="tns:getDatosResponse"/>
 </message>
-<message name="getMaterias">
-<part name="parameters" element="tns:getMaterias"/>
+<message name="getNombre">
+<part name="parameters" element="tns:getNombre"/>
 </message>
-<message name="getMateriasResponse">
-<part name="parameters" element="tns:getMateriasResponse"/>
-</message>
-<message name="getEstadoRegular">
-<part name="parameters" element="tns:getEstadoRegular"/>
-</message>
-<message name="getEstadoRegularResponse">
-<part name="parameters" element="tns:getEstadoRegularResponse"/>
+<message name="getNombreResponse">
+<part name="parameters" element="tns:getNombreResponse"/>
 </message>
 <message name="getPromedioGeneral">
 <part name="parameters" element="tns:getPromedioGeneral"/>
@@ -40,22 +34,24 @@
 <message name="obtenerMateriasDesdeCodigoResponse">
 <part name="parameters" element="tns:obtenerMateriasDesdeCodigoResponse"/>
 </message>
+<message name="getEstadoRegular">
+<part name="parameters" element="tns:getEstadoRegular"/>
+</message>
+<message name="getEstadoRegularResponse">
+<part name="parameters" element="tns:getEstadoRegularResponse"/>
+</message>
 <portType name="espolPhantom">
-<operation name="getNombre">
-<input wsam:Action="http://phantom.espol.app/espolPhantom/getNombreRequest" message="tns:getNombre"/>
-<output wsam:Action="http://phantom.espol.app/espolPhantom/getNombreResponse" message="tns:getNombreResponse"/>
+<operation name="getMaterias">
+<input wsam:Action="http://phantom.espol.app/espolPhantom/getMateriasRequest" message="tns:getMaterias"/>
+<output wsam:Action="http://phantom.espol.app/espolPhantom/getMateriasResponse" message="tns:getMateriasResponse"/>
 </operation>
 <operation name="getDatos">
 <input wsam:Action="http://phantom.espol.app/espolPhantom/getDatosRequest" message="tns:getDatos"/>
 <output wsam:Action="http://phantom.espol.app/espolPhantom/getDatosResponse" message="tns:getDatosResponse"/>
 </operation>
-<operation name="getMaterias">
-<input wsam:Action="http://phantom.espol.app/espolPhantom/getMateriasRequest" message="tns:getMaterias"/>
-<output wsam:Action="http://phantom.espol.app/espolPhantom/getMateriasResponse" message="tns:getMateriasResponse"/>
-</operation>
-<operation name="getEstadoRegular">
-<input wsam:Action="http://phantom.espol.app/espolPhantom/getEstadoRegularRequest" message="tns:getEstadoRegular"/>
-<output wsam:Action="http://phantom.espol.app/espolPhantom/getEstadoRegularResponse" message="tns:getEstadoRegularResponse"/>
+<operation name="getNombre">
+<input wsam:Action="http://phantom.espol.app/espolPhantom/getNombreRequest" message="tns:getNombre"/>
+<output wsam:Action="http://phantom.espol.app/espolPhantom/getNombreResponse" message="tns:getNombreResponse"/>
 </operation>
 <operation name="getPromedioGeneral">
 <input wsam:Action="http://phantom.espol.app/espolPhantom/getPromedioGeneralRequest" message="tns:getPromedioGeneral"/>
@@ -65,10 +61,14 @@
 <input wsam:Action="http://phantom.espol.app/espolPhantom/obtenerMateriasDesdeCodigoRequest" message="tns:obtenerMateriasDesdeCodigo"/>
 <output wsam:Action="http://phantom.espol.app/espolPhantom/obtenerMateriasDesdeCodigoResponse" message="tns:obtenerMateriasDesdeCodigoResponse"/>
 </operation>
+<operation name="getEstadoRegular">
+<input wsam:Action="http://phantom.espol.app/espolPhantom/getEstadoRegularRequest" message="tns:getEstadoRegular"/>
+<output wsam:Action="http://phantom.espol.app/espolPhantom/getEstadoRegularResponse" message="tns:getEstadoRegularResponse"/>
+</operation>
 </portType>
 <binding name="espolPhantomPortBinding" type="tns:espolPhantom">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="getNombre">
+<operation name="getMaterias">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -86,16 +86,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getMaterias">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getEstadoRegular">
+<operation name="getNombre">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -114,6 +105,15 @@
 </output>
 </operation>
 <operation name="obtenerMateriasDesdeCodigo">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getEstadoRegular">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

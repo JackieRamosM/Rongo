@@ -7,30 +7,19 @@ package app.rongo.persistence.beans;
 
 import app.rongo.beans.Session;
 import app.rongo.facade.EstudianteFacadeLocal;
+import app.rongo.facade.PostulacionFacadeLocal;
 import app.rongo.persistence.Ayudantiasofertadas;
 import app.rongo.persistence.Estudiante;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import app.rongo.persistence.Postulacion;
+
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.servlet.ServletContext;
-import org.apache.commons.io.FileUtils;
-import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.DefaultStreamedContent;
-import org.primefaces.model.StreamedContent;
-import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -42,7 +31,11 @@ public class EstudianteBean implements Serializable {
 
     @EJB
     private EstudianteFacadeLocal estudianteFacade;
+    @EJB
+    private PostulacionFacadeLocal postulacionFacade;
+
     private List<Estudiante> estudiantes;
+    private Postulacion p = new Postulacion();
     private Estudiante estudiante = new Estudiante();
     private final Session session = new Session();
     private final String usuario = session.getUser();
@@ -55,12 +48,8 @@ public class EstudianteBean implements Serializable {
     private String nombre;
     private int idestudiante;
     private boolean admin;
-    private UploadedFile file;
 
-    public EstudianteBean() {
-    }
-    
-    public void findEstudiante(){
+    public void findEstudiante() {
         estudiantes = estudianteFacade.findAll();
         for (Estudiante e : estudiantes) {
             if (e.getUsuario().equals(usuario)) {
@@ -73,8 +62,8 @@ public class EstudianteBean implements Serializable {
         twitter = estudiante.getTwitter();
         user = estudiante.getUsuario();
     }
-    
-    public void init(){
+
+    public void init() {
         estudiante.setAdmin(false);
         estudiante.setIdUsuario(Integer.MIN_VALUE);
         estudiante.setIntereses("");
@@ -83,53 +72,19 @@ public class EstudianteBean implements Serializable {
         estudiante.setSkype("");
         findEstudiante();
     }
-    
-    public void editarEstudiante() throws IOException{
+
+    public void editarEstudiante() throws IOException {
         estudiante.setIntereses(intereses);
         estudiante.setTwitter(twitter);
         estudiante.setSkype(skype);
-        estudianteFacade.edit(estudiante);        
+        estudianteFacade.edit(estudiante);
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
     }
-    
-    public String estudianteName(String user){
+
+    public String estudianteName(String user) {
         return session.nombreService(session.matriculaService(user));
     }
-    
-    public UploadedFile getFile() {
-        return file;
-    }
 
-    public void setFile(UploadedFile file) {
-        this.file = file;
-    }
-
-    public void upload() {
-        if (file != null) {
-            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
-            //FacesContext.getCurrentInstance().addMessage(null, message);
-            UploadedFile uploadedFile = file;
-            //create an InputStream from the uploaded file
-            InputStream inputStr = null;
-            try {
-                inputStr = uploadedFile.getInputstream();
-            } catch (IOException e) {
-                //log error
-            }
-            //create destination File
-            String destPath = "C:\\Users\\Liliana\\Documents\\Git\\rongo\\Rongo\\tmp\\file2.pdf";
-            File destFile = new File(destPath);
-            //use org.apache.commons.io.FileUtils to copy the File
-            try {
-                FileUtils.copyInputStreamToFile(inputStr, destFile);
-            } catch (IOException e) {
-                //log error
-            }
-        } else {
-            System.out.println("I'm Groot");
-        }
-    }
-    
     public List<String> getMaterias() {
         return materias;
     }
@@ -201,6 +156,30 @@ public class EstudianteBean implements Serializable {
     public String getDatos() {
         return datos;
     }
+    
+    public void initpostulacion(){
+        p = new Postulacion();
+        p.setArchivo("");
+        p.setIdayudantiaofertada(new Ayudantiasofertadas());
+        p.setIdestudiante(new Estudiante());
+        p.setIdpostulacion(Integer.MAX_VALUE);
+    }
+    public void postularse(Ayudantiasofertadas ao) {
+        System.out.println("ao="+ao.getNombreayudanatia());
+        findEstudiante();
+        System.out.println("est="+estudiante.getUsuario());
+        p.setIdpostulacion(Integer.SIZE);
+        p.setArchivo("");
+        p.setIdayudantiaofertada(ao);
+        p.setIdestudiante(estudiante);
+               
+        postulacionFacade.create(p);
+
+        /*FacesContext facesContext = FacesContext.getCurrentInstance();
+        FacesMessage facesMessage = new FacesMessage("Usted ha sido postulado a la ayudantía" + ao.getNombreayudanatia());
+        facesContext.addMessage(null, facesMessage);*/
+
+    }
 
     public List<Estudiante> getEstudiantes() {
         return estudiantes;
@@ -216,6 +195,14 @@ public class EstudianteBean implements Serializable {
 
     public void setIdestudiante(int idestudiante) {
         this.idestudiante = idestudiante;
+    }
+
+    public Postulacion getP() {
+        return p;
+    }
+
+    public void setP(Postulacion p) {
+        this.p = p;
     }
 
 }

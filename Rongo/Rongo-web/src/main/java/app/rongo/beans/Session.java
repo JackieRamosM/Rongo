@@ -23,8 +23,8 @@ public class Session {
 
     public void getUserFromCas() {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-        //setUser(facesContext.getExternalContext().getRemoteUser());
-        setUser("dschuldt");
+        setUser(facesContext.getExternalContext().getRemoteUser());
+       
 
     }
 
