@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.persistence;
 
 import java.io.Serializable;
@@ -28,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Entity
 @Table(name = "ayudantia")
@@ -55,11 +53,11 @@ public class Ayudantia implements Serializable {
     private String tipodeayudantia;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idayudantia")
     private List<Ayudante> ayudanteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idayudantia")
-    private List<Clase> claseList;
     @JoinColumn(name = "idsupervisor", referencedColumnName = "idsupervisor")
     @ManyToOne(optional = false)
     private Supervisor idsupervisor;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idayudantia")
+    private List<Clase> claseList;
 
     public Ayudantia() {
     }
@@ -106,6 +104,14 @@ public class Ayudantia implements Serializable {
         this.ayudanteList = ayudanteList;
     }
 
+    public Supervisor getIdsupervisor() {
+        return idsupervisor;
+    }
+
+    public void setIdsupervisor(Supervisor idsupervisor) {
+        this.idsupervisor = idsupervisor;
+    }
+
     @XmlTransient
     public List<Clase> getClaseList() {
         return claseList;
@@ -113,14 +119,6 @@ public class Ayudantia implements Serializable {
 
     public void setClaseList(List<Clase> claseList) {
         this.claseList = claseList;
-    }
-
-    public Supervisor getIdsupervisor() {
-        return idsupervisor;
-    }
-
-    public void setIdsupervisor(Supervisor idsupervisor) {
-        this.idsupervisor = idsupervisor;
     }
 
     @Override

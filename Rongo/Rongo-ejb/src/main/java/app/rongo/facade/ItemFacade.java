@@ -1,22 +1,20 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.facade;
 
-import app.rongo.persistence.Camposcuestionario;
+import app.rongo.persistence.Item;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Stateless
-public class CamposcuestionarioFacade extends AbstractFacade<Camposcuestionario> implements CamposcuestionarioFacadeLocal {
+public class ItemFacade extends AbstractFacade<Item> implements ItemFacadeLocal {
     @PersistenceContext(unitName = "app.rongo_Rongo-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,8 +23,8 @@ public class CamposcuestionarioFacade extends AbstractFacade<Camposcuestionario>
         return em;
     }
 
-    public CamposcuestionarioFacade() {
-        super(Camposcuestionario.class);
+    public ItemFacade() {
+        super(Item.class);
     }
     
 }

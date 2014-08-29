@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.persistence;
 
 import java.io.Serializable;
@@ -15,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Entity
 @Table(name = "estudiante")
@@ -64,12 +60,9 @@ public class Estudiante implements Serializable {
     @Basic(optional = false)
     @Column(name = "idUsuario")
     private Integer idUsuario;
-    @JoinColumn(name = "idcuestionario", referencedColumnName = "idcuestionario")
-    @ManyToOne
-    private Cuestionario idcuestionario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
     private List<Ayudante> ayudanteList;
-    @OneToMany(mappedBy = "idestudiante")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
     private List<Postulacion> postulacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
     private List<Asistencia> asistenciaList;
@@ -132,14 +125,6 @@ public class Estudiante implements Serializable {
 
     public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public Cuestionario getIdcuestionario() {
-        return idcuestionario;
-    }
-
-    public void setIdcuestionario(Cuestionario idcuestionario) {
-        this.idcuestionario = idcuestionario;
     }
 
     @XmlTransient

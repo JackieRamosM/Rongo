@@ -35,6 +35,11 @@
         <managed-bean-class>app.rongo.beans.AyudanteBean</managed-bean-class>
     
         <managed-bean-scope>session</managed-bean-scope></managed-bean>
+        
+    <managed-bean eager="true">
+        <managed-bean-name>supervisoresBean</managed-bean-name>
+        <managed-bean-class>app.rongo.beans.SupervisoresBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean eager="true">
         <managed-bean-name>materiaBean</managed-bean-name>

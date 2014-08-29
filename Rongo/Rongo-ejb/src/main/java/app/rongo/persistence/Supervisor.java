@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.persistence;
 
 import java.io.Serializable;
@@ -15,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -28,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Entity
 @Table(name = "supervisor")
@@ -72,13 +68,12 @@ public class Supervisor implements Serializable {
     @NotNull
     @Column(name = "activo")
     private boolean activo;
-    @JoinColumn(name = "idcuestionario", referencedColumnName = "idcuestionario")
-    @ManyToOne
-    private Cuestionario idcuestionario;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsupervisor")
-    private List<Ayudantiasofertadas> ayudantiasofertadasList;
+    @OneToMany(mappedBy = "idsupervisor")
+    private List<Cuestionario> cuestionarioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsupervisor")
     private List<Ayudantia> ayudantiaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idsupervisor")
+    private List<Ayudantiasofertadas> ayudantiasofertadasList;
 
     public Supervisor() {
     }
@@ -144,21 +139,13 @@ public class Supervisor implements Serializable {
         this.activo = activo;
     }
 
-    public Cuestionario getIdcuestionario() {
-        return idcuestionario;
-    }
-
-    public void setIdcuestionario(Cuestionario idcuestionario) {
-        this.idcuestionario = idcuestionario;
-    }
-
     @XmlTransient
-    public List<Ayudantiasofertadas> getAyudantiasofertadasList() {
-        return ayudantiasofertadasList;
+    public List<Cuestionario> getCuestionarioList() {
+        return cuestionarioList;
     }
 
-    public void setAyudantiasofertadasList(List<Ayudantiasofertadas> ayudantiasofertadasList) {
-        this.ayudantiasofertadasList = ayudantiasofertadasList;
+    public void setCuestionarioList(List<Cuestionario> cuestionarioList) {
+        this.cuestionarioList = cuestionarioList;
     }
 
     @XmlTransient
@@ -168,6 +155,15 @@ public class Supervisor implements Serializable {
 
     public void setAyudantiaList(List<Ayudantia> ayudantiaList) {
         this.ayudantiaList = ayudantiaList;
+    }
+
+    @XmlTransient
+    public List<Ayudantiasofertadas> getAyudantiasofertadasList() {
+        return ayudantiasofertadasList;
+    }
+
+    public void setAyudantiasofertadasList(List<Ayudantiasofertadas> ayudantiasofertadasList) {
+        this.ayudantiasofertadasList = ayudantiasofertadasList;
     }
 
     @Override

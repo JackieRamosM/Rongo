@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.facade;
 
 import app.rongo.persistence.Postulacion;
@@ -12,7 +10,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Local
 public interface PostulacionFacadeLocal {

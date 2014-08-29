@@ -6,13 +6,15 @@
     <class>app.rongo.persistence.Ayudante</class>
     <class>app.rongo.persistence.Ayudantia</class>
     <class>app.rongo.persistence.Ayudantiasofertadas</class>
-    <class>app.rongo.persistence.Camposcuestionario</class>
     <class>app.rongo.persistence.Clase</class>
     <class>app.rongo.persistence.Cuestionario</class>
     <class>app.rongo.persistence.Estudiante</class>
     <class>app.rongo.persistence.Supervisor</class>
     <class>app.rongo.persistence.Valordeldesempeno</class>
     <class>app.rongo.persistence.Postulacion</class>
+    <class>app.rongo.persistence.HoraAsignada</class>
+    <class>app.rongo.persistence.Item</class>
+    <class>app.rongo.persistence.Valoracion</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

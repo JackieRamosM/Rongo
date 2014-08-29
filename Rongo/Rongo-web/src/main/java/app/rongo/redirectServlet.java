@@ -22,10 +22,10 @@ public class redirectServlet extends HttpServlet {
             res.sendRedirect("/Rongo-web/faces/pages/academico/index.xhtml");
             break;
             case 2:
-            res.sendRedirect("/Rongo-web/faces/pages/admin/index.xhtml");
+            res.sendRedirect("/Rongo-web/faces/pages/supervisor/index.xhtml");
             break;
             case 3:
-            res.sendRedirect("/Rongo-web/faces/pages/supervisor/index.xhtml");
+            res.sendRedirect("/Rongo-web/faces/pages/estudiante/index.xhtml");
            break;
            }
         }

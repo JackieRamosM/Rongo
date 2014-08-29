@@ -42,14 +42,20 @@ public UserDetails loadUserByUsername(String username)throws UsernameNotFoundExc
             List<String> roles = new ArrayList<String>();
         try {
             c=rongo.getConnection("root","root");
+            boolean isSupervisor=isSupervisor(username);
+            boolean isAyudante=isAyudante(username);
             
-            if(isSupervisor(username)){
+            if(isSupervisor){
                 roles.add("ROLE_SUPERVISOR");
-            }else if(isAyudante(username)){
+            }
+            if(isAyudante){
                 roles.add("ROLE_AYUDANTE");
-            }else if(isAdmin(username)){
+            }
+            if(isAdmin(username)){
                 roles.add("ROLE_ADMIN");
-            }else{
+            }
+            
+            if(!isAyudante&&!isSupervisor){
                 roles.add("ROLE_USER");
             }
             currentUser.setUserAuthorities(roles);

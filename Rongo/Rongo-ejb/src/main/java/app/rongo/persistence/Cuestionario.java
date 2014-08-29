@@ -1,18 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.persistence;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,6 +17,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -27,120 +26,188 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Entity
 @Table(name = "cuestionario")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Cuestionario.findAll", query = "SELECT c FROM Cuestionario c"),
-    @NamedQuery(name = "Cuestionario.findByIdcuestionario", query = "SELECT c FROM Cuestionario c WHERE c.idcuestionario = :idcuestionario"),
-    @NamedQuery(name = "Cuestionario.findByTipocuestionario", query = "SELECT c FROM Cuestionario c WHERE c.tipocuestionario = :tipocuestionario"),
-    @NamedQuery(name = "Cuestionario.findByDescripcion", query = "SELECT c FROM Cuestionario c WHERE c.descripcion = :descripcion"),
-    @NamedQuery(name = "Cuestionario.findByRuta", query = "SELECT c FROM Cuestionario c WHERE c.ruta = :ruta")})
+    @NamedQuery(name = "Cuestionario.findByIdevaluacionDesempeno", query = "SELECT c FROM Cuestionario c WHERE c.idevaluacionDesempeno = :idevaluacionDesempeno"),
+    @NamedQuery(name = "Cuestionario.findByArea", query = "SELECT c FROM Cuestionario c WHERE c.area = :area"),
+    @NamedQuery(name = "Cuestionario.findByIdayudante", query = "SELECT c FROM Cuestionario c WHERE c.idayudante = :idayudante"),
+    @NamedQuery(name = "Cuestionario.findByDesde", query = "SELECT c FROM Cuestionario c WHERE c.desde = :desde"),
+    @NamedQuery(name = "Cuestionario.findByHasta", query = "SELECT c FROM Cuestionario c WHERE c.hasta = :hasta"),
+    @NamedQuery(name = "Cuestionario.findByAnioacademicodesde", query = "SELECT c FROM Cuestionario c WHERE c.anioacademicodesde = :anioacademicodesde"),
+    @NamedQuery(name = "Cuestionario.findByAnioacademicohasta", query = "SELECT c FROM Cuestionario c WHERE c.anioacademicohasta = :anioacademicohasta"),
+    @NamedQuery(name = "Cuestionario.findByFecha", query = "SELECT c FROM Cuestionario c WHERE c.fecha = :fecha"),
+    @NamedQuery(name = "Cuestionario.findByTipo", query = "SELECT c FROM Cuestionario c WHERE c.tipo = :tipo")})
 public class Cuestionario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "idcuestionario")
-    private Integer idcuestionario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 15)
-    @Column(name = "tipocuestionario")
-    private String tipocuestionario;
-    @Size(max = 500)
-    @Column(name = "descripcion")
-    private String descripcion;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
-    @Column(name = "ruta")
-    private String ruta;
-    @JoinColumn(name = "idcamposcuestionario", referencedColumnName = "idcamposcuestionario")
-    @ManyToOne(optional = false)
-    private Camposcuestionario idcamposcuestionario;
-    @OneToMany(mappedBy = "idcuestionario")
-    private List<Estudiante> estudianteList;
-    @OneToMany(mappedBy = "idcuestionario")
-    private List<Supervisor> supervisorList;
+    @Column(name = "idevaluacion_desempeno")
+    private Integer idevaluacionDesempeno;
+    @Size(max = 45)
+    @Column(name = "area")
+    private String area;
+    @Column(name = "idayudante")
+    private Integer idayudante;
+    @Column(name = "desde")
+    @Temporal(TemporalType.DATE)
+    private Date desde;
+    @Column(name = "hasta")
+    @Temporal(TemporalType.DATE)
+    private Date hasta;
+    @Column(name = "anioacademicodesde")
+    private Integer anioacademicodesde;
+    @Column(name = "anioacademicohasta")
+    private Integer anioacademicohasta;
+    @Column(name = "fecha")
+    @Temporal(TemporalType.DATE)
+    private Date fecha;
+    @Column(name = "tipo")
+    private Integer tipo;
+    @JoinColumn(name = "idsupervisor", referencedColumnName = "idsupervisor")
+    @ManyToOne
+    private Supervisor idsupervisor;
+    @OneToMany(mappedBy = "idevaluacion1")
+    private List<HoraAsignada> horaAsignadaList;
+    @OneToMany(mappedBy = "idevaluacion")
+    private List<Valoracion> valoracionList;
+    @OneToMany(mappedBy = "idevaluacion5")
+    private List<Item> itemList;
+    @OneToMany(mappedBy = "idevaluacion2")
+    private List<Valordeldesempeno> valordeldesempenoList;
 
     public Cuestionario() {
     }
 
-    public Cuestionario(Integer idcuestionario) {
-        this.idcuestionario = idcuestionario;
+    public Cuestionario(Integer idevaluacionDesempeno) {
+        this.idevaluacionDesempeno = idevaluacionDesempeno;
     }
 
-    public Cuestionario(Integer idcuestionario, String tipocuestionario, String ruta) {
-        this.idcuestionario = idcuestionario;
-        this.tipocuestionario = tipocuestionario;
-        this.ruta = ruta;
+    public Integer getIdevaluacionDesempeno() {
+        return idevaluacionDesempeno;
     }
 
-    public Integer getIdcuestionario() {
-        return idcuestionario;
+    public void setIdevaluacionDesempeno(Integer idevaluacionDesempeno) {
+        this.idevaluacionDesempeno = idevaluacionDesempeno;
     }
 
-    public void setIdcuestionario(Integer idcuestionario) {
-        this.idcuestionario = idcuestionario;
+    public String getArea() {
+        return area;
     }
 
-    public String getTipocuestionario() {
-        return tipocuestionario;
+    public void setArea(String area) {
+        this.area = area;
     }
 
-    public void setTipocuestionario(String tipocuestionario) {
-        this.tipocuestionario = tipocuestionario;
+    public Integer getIdayudante() {
+        return idayudante;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public void setIdayudante(Integer idayudante) {
+        this.idayudante = idayudante;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public Date getDesde() {
+        return desde;
     }
 
-    public String getRuta() {
-        return ruta;
+    public void setDesde(Date desde) {
+        this.desde = desde;
     }
 
-    public void setRuta(String ruta) {
-        this.ruta = ruta;
+    public Date getHasta() {
+        return hasta;
     }
 
-    public Camposcuestionario getIdcamposcuestionario() {
-        return idcamposcuestionario;
+    public void setHasta(Date hasta) {
+        this.hasta = hasta;
     }
 
-    public void setIdcamposcuestionario(Camposcuestionario idcamposcuestionario) {
-        this.idcamposcuestionario = idcamposcuestionario;
+    public Integer getAnioacademicodesde() {
+        return anioacademicodesde;
+    }
+
+    public void setAnioacademicodesde(Integer anioacademicodesde) {
+        this.anioacademicodesde = anioacademicodesde;
+    }
+
+    public Integer getAnioacademicohasta() {
+        return anioacademicohasta;
+    }
+
+    public void setAnioacademicohasta(Integer anioacademicohasta) {
+        this.anioacademicohasta = anioacademicohasta;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Integer getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Integer tipo) {
+        this.tipo = tipo;
+    }
+
+    public Supervisor getIdsupervisor() {
+        return idsupervisor;
+    }
+
+    public void setIdsupervisor(Supervisor idsupervisor) {
+        this.idsupervisor = idsupervisor;
     }
 
     @XmlTransient
-    public List<Estudiante> getEstudianteList() {
-        return estudianteList;
+    public List<HoraAsignada> getHoraAsignadaList() {
+        return horaAsignadaList;
     }
 
-    public void setEstudianteList(List<Estudiante> estudianteList) {
-        this.estudianteList = estudianteList;
+    public void setHoraAsignadaList(List<HoraAsignada> horaAsignadaList) {
+        this.horaAsignadaList = horaAsignadaList;
     }
 
     @XmlTransient
-    public List<Supervisor> getSupervisorList() {
-        return supervisorList;
+    public List<Valoracion> getValoracionList() {
+        return valoracionList;
     }
 
-    public void setSupervisorList(List<Supervisor> supervisorList) {
-        this.supervisorList = supervisorList;
+    public void setValoracionList(List<Valoracion> valoracionList) {
+        this.valoracionList = valoracionList;
+    }
+
+    @XmlTransient
+    public List<Item> getItemList() {
+        return itemList;
+    }
+
+    public void setItemList(List<Item> itemList) {
+        this.itemList = itemList;
+    }
+
+    @XmlTransient
+    public List<Valordeldesempeno> getValordeldesempenoList() {
+        return valordeldesempenoList;
+    }
+
+    public void setValordeldesempenoList(List<Valordeldesempeno> valordeldesempenoList) {
+        this.valordeldesempenoList = valordeldesempenoList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idcuestionario != null ? idcuestionario.hashCode() : 0);
+        hash += (idevaluacionDesempeno != null ? idevaluacionDesempeno.hashCode() : 0);
         return hash;
     }
 
@@ -151,7 +218,7 @@ public class Cuestionario implements Serializable {
             return false;
         }
         Cuestionario other = (Cuestionario) object;
-        if ((this.idcuestionario == null && other.idcuestionario != null) || (this.idcuestionario != null && !this.idcuestionario.equals(other.idcuestionario))) {
+        if ((this.idevaluacionDesempeno == null && other.idevaluacionDesempeno != null) || (this.idevaluacionDesempeno != null && !this.idevaluacionDesempeno.equals(other.idevaluacionDesempeno))) {
             return false;
         }
         return true;
@@ -159,7 +226,7 @@ public class Cuestionario implements Serializable {
 
     @Override
     public String toString() {
-        return "app.rongo.persistence.Cuestionario[ idcuestionario=" + idcuestionario + " ]";
+        return "app.rongo.persistence.Cuestionario[ idevaluacionDesempeno=" + idevaluacionDesempeno + " ]";
     }
     
 }

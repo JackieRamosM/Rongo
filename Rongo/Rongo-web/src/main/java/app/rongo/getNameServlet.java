@@ -31,6 +31,6 @@ session.setAttribute("name",req.getRemoteUser());
 session.setAttribute("status",new Integer(1));
 res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 res.setDateHeader("Expires",-1);
-res.sendRedirect("faces/pages/estudiante/index.xhtml");
+res.sendRedirect("faces/pages/admin/index.xhtml");
     }
 }

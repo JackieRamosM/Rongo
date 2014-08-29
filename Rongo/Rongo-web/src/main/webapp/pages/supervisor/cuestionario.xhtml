@@ -35,6 +35,7 @@
                     <h1>Valoración de Desempeño</h1>
                     <p>Escala  -  4:MS(Muy Satisfactorio)  |  3:S(Satisfactorio)  |  2:PS:(Pocosatisfactorio)  |  1:I(Insatisfactorio)</p>
                 </div>
+                <h:form>
                 <div class="cuestionario">
                     <table>
                         <thead>
@@ -79,7 +80,14 @@
                         </tbody>
                     </table>
                 </div>
-                <h:button value="Calificar"></h:button>
+                <h:commandButton value="Calificar" action="#{supervisoresBean.generarPrimeraEvaluacion()}" onclick="calificado()"/>
+                </h:form>
+                <script type="text/javascript">
+                    function calificado(){
+                        alert("calificado");
+                    }
+                    
+                </script>
             </article>
         </section>
         <footer>

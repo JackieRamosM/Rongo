@@ -13,6 +13,7 @@ import app.rongo.facade.AyudantiasofertadasFacadeLocal;
 import app.rongo.facade.EstudianteFacadeLocal;
 import app.rongo.facade.PostulacionFacadeLocal;
 import app.rongo.facade.SupervisorFacadeLocal;
+import app.rongo.pdfmatico.PDFPrimera;
 import app.rongo.persistence.Ayudante;
 import app.rongo.persistence.Ayudantia;
 import app.rongo.persistence.Ayudantiasofertadas;
@@ -27,6 +28,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -36,7 +38,7 @@ import javax.inject.Named;
  * @author Liliana
  */
 @Named(value = "supervisoresBean")
-@ViewScoped
+@SessionScoped
 public class SupervisoresBean {
 
     @EJB
@@ -107,7 +109,26 @@ public class SupervisoresBean {
         supervisorFacade.remove(supervisor);
         FacesContext.getCurrentInstance().getExternalContext().redirect("supervisores.xhtml");
     }
-
+public void generarPrimeraEvaluacion(){
+        PDFPrimera pdf=new PDFPrimera();
+        System.out.println("usuario: "+usuario);
+        System.out.println("nombre: "+getSupervisor().getNombre());
+        pdf.setUnidadAcademica("FIEC");
+        pdf.setNombreAyudante("<esperando>");
+        pdf.setMatricula("<esperando>");
+        pdf.setJefe(getSupervisor().getNombre()+" "+getSupervisor().getApellido());
+        pdf.setDesde("<esperando>", "<esperando>", "<esperando>");
+        pdf.setHasta("<esperando>", "<esperando>", "<esperando>");
+        pdf.setAñoAcademico(0000,0000);
+        
+        //pdf.setHorario(l, mar, mi, j, v, s, d);
+        for(int i=0;i<5;i++){
+            pdf.setCalificacion(0,i);
+            pdf.setObservaciones("<escribir observacion aqui>", i);
+        }
+        pdf.generate();
+        
+    }
     public void editarSupervisor(Supervisor supervisor) throws IOException {
         supervisorFacade.edit(supervisor);
         FacesContext.getCurrentInstance().getExternalContext().redirect("supervisores.xhtml");
