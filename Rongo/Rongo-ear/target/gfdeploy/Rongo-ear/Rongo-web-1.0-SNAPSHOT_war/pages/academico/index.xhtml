@@ -59,13 +59,18 @@
                     <i class="fa fa-pencil icon"></i>
                 </h1>
                 <div id="courses">
-                    <ui:repeat value="#{ayudanteBean.ayudantiasdelayudante}" var="ayudantia">
-                        <ul>
-                            <li class="available">
-                                <h3><h:link value="#{materiaBean.getMateriaNombre(ayudantia.nombre)}" outcome="ayudantias"/></h3>
+                    <ul>
+                        <ui:repeat value="#{ayudanteBean.ayudantiasdelayudante}" var="ayudantia">
+                            <li>
+                                <h3>
+                                    <h:link class="available" value="#{materiaBean.getMateriaNombre(ayudantia.nombre)}" outcome="ayudantias">
+                                        <f:param name="a" value="#{ayudantia.idayudantia}"></f:param>
+                                        <f:param name="b" value="#{ayudantiaBean.encontrarAyudante(ayudantia)}"></f:param>
+                                    </h:link>
+                                </h3>
                             </li>
-                        </ul>
-                    </ui:repeat>
+                        </ui:repeat>
+                    </ul>
                 </div>
             </article>
             <article>
