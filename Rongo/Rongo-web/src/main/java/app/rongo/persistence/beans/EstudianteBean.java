@@ -156,28 +156,31 @@ public class EstudianteBean implements Serializable {
     public String getDatos() {
         return datos;
     }
-    
-    public void initpostulacion(){
+
+    public void initpostulacion() {
         p = new Postulacion();
         p.setArchivo("");
         p.setIdayudantiaofertada(new Ayudantiasofertadas());
         p.setIdestudiante(new Estudiante());
         p.setIdpostulacion(Integer.MAX_VALUE);
     }
-    public void postularse(Ayudantiasofertadas ao) {
-        System.out.println("ao="+ao.getNombreayudanatia());
-        findEstudiante();
-        System.out.println("est="+estudiante.getUsuario());
-        p.setIdpostulacion(Integer.SIZE);
-        p.setArchivo("");
-        p.setIdayudantiaofertada(ao);
-        p.setIdestudiante(estudiante);
-               
-        postulacionFacade.create(p);
 
-        /*FacesContext facesContext = FacesContext.getCurrentInstance();
-        FacesMessage facesMessage = new FacesMessage("Usted ha sido postulado a la ayudantía" + ao.getNombreayudanatia());
-        facesContext.addMessage(null, facesMessage);*/
+    public void postularse(Ayudantiasofertadas ao) {
+        try {
+            findEstudiante();
+            p.setIdpostulacion(Integer.SIZE);
+            p.setArchivo("");
+            p.setIdayudantiaofertada(ao);
+            p.setIdestudiante(estudiante);
+
+            postulacionFacade.create(p);
+
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+             FacesMessage facesMessage = new FacesMessage("Usted ha sido postulado a la ayudantía" + ao.getNombreayudanatia());
+             facesContext.addMessage(null, facesMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 

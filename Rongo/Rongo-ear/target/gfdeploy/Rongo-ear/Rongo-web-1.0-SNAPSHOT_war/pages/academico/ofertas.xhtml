@@ -39,7 +39,7 @@
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}"></h:commandButton>
+                                <h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}" onclick="postulado()"></h:commandButton>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -76,7 +76,7 @@
                         <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
                             <div class="lista-ayudantes">
                                 <h:outputText value="#{ao.nombreayudanatia}" styleClass="htitle"/>
-                                <h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}"></h:commandButton>
+                                <h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}" onclick="postulado()"></h:commandButton>
                                 <hr/>
                                 <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
                                 <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
@@ -110,14 +110,10 @@
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
         <h:outputScript name="js/jquery.udraggable.js" />
-        <!--script>
-            $('#postularse-content').udraggable({});
-            $('.postularse-button').click(function() {
-                $('#postularse-background').fadeIn('fast');
-            });
-            $('.cancelar').click(function() {
-                $('#postularse-background').fadeOut('fast');
-            });
-        </script-->
+        <script>
+            function postulado(){
+                alert("Usted ha postulado");
+            }
+        </script>
     </h:body>  
 </html>
