@@ -671,3 +671,16 @@ footer {
         float: right;
         cursor: pointer;
     }
+    
+.ayudante-clases {
+    display: inline-block;
+    width: 100%;
+}
+    .ayudante-clases thead, .ayudante-clases tbody { display: inline-block; width: 100%; }
+    .ayudante-clases thead tr, .ayudante-clases tbody tr { display: inline-block; width: 100%; }
+    .ayudante-clases thead tr { border-bottom: 1px solid #3C83A7; }
+    .ayudante-clases tbody tr { border-bottom: 1px solid lightgray; }
+    .ayudante-clases thead tr th:nth-child(1) { display: inline-block; width: 15%; }
+    .ayudante-clases thead tr th:nth-child(2) { display: inline-block; width: 20%; }
+    .ayudante-clases thead tr th:nth-child(3) { display: inline-block; width: 45%; }
+    .ayudante-clases thead tr th:nth-child(4) { display: inline-block; width: 18%; }
