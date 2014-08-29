@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.rongo.persistence.beans;
+package app.rongo.beans;
 import app.rongo.facade.AyudanteFacadeLocal;
 import app.rongo.facade.AyudantiaFacadeLocal;
 import app.rongo.persistence.Ayudante;

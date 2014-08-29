@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app.rongo.persistence.beans;
+package app.rongo.beans;
 
-import app.rongo.beans.Postulante;
-import app.rongo.beans.Session;
+import app.rongo.Postulante;
+import app.rongo.Session;
 import app.rongo.facade.AyudanteFacadeLocal;
 import app.rongo.facade.AyudantiaFacadeLocal;
 import app.rongo.facade.AyudantiasofertadasFacadeLocal;

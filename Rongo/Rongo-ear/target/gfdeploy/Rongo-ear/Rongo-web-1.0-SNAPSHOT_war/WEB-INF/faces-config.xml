@@ -8,39 +8,39 @@
  
     <managed-bean eager="true">
         <managed-bean-name>ayudantiasofertadasBean</managed-bean-name>
-        <managed-bean-class>app.rongo.persistence.beans.AyudantiasofertadasBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>app.rongo.beans.AyudantiasofertadasBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean eager="true">
         <managed-bean-name>estudianteBean</managed-bean-name>
-        <managed-bean-class>app.rongo.persistence.beans.EstudianteBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>app.rongo.beans.EstudianteBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean eager="true">
         <managed-bean-name>ayudantiaBean</managed-bean-name>
-        <managed-bean-class>app.rongo.persistence.beans.AyudantiaBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>app.rongo.beans.AyudantiaBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean eager="true">
         <managed-bean-name>claseBean</managed-bean-name>
-        <managed-bean-class>app.rongo.persistence.beans.ClaseBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>app.rongo.beans.ClaseBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean eager="true">
         <managed-bean-name>ayudanteBean</managed-bean-name>
-        <managed-bean-class>app.rongo.persistence.beans.AyudanteBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>app.rongo.beans.AyudanteBean</managed-bean-class>
+    
+        <managed-bean-scope>session</managed-bean-scope></managed-bean>
     
     <managed-bean eager="true">
         <managed-bean-name>materiaBean</managed-bean-name>
-        <managed-bean-class>app.rongo.persistence.beans.MateriaBean</managed-bean-class>
-        <managed-bean-scope>dependent</managed-bean-scope>
-    </managed-bean>
+        <managed-bean-class>app.rongo.beans.MateriaBean</managed-bean-class>
+    
+        <managed-bean-scope>dependent</managed-bean-scope></managed-bean>
     
     <!--
       - Navigation Rules

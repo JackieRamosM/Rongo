@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package app.rongo.beans;
+package app.rongo;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

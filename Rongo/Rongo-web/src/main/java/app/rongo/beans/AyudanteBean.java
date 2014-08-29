@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package app.rongo.persistence.beans;
+package app.rongo.beans;
 
-import app.rongo.beans.Session;
+import app.rongo.Session;
 import app.rongo.facade.AyudanteFacadeLocal;
 import app.rongo.facade.EstudianteFacadeLocal;
 import app.rongo.persistence.Ayudante;

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package app.rongo.persistence.beans;
+package app.rongo.beans;
 
 import app.rongo.facade.AyudantiaFacadeLocal;
 import app.rongo.facade.ClaseFacadeLocal;

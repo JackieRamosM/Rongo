@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 
-package app.rongo.persistence.beans;
+package app.rongo.beans;
 
-import app.rongo.beans.Session;
+import app.rongo.Session;
 import javax.enterprise.context.Dependent;
 import javax.inject.Named;
 
