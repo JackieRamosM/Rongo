@@ -4,11 +4,12 @@
  * and open the template in the editor.
  */
 package app.rongo.beans;
+import app.rongo.Session;
 import app.rongo.facade.AyudanteFacadeLocal;
 import app.rongo.facade.AyudantiaFacadeLocal;
 import app.rongo.persistence.Ayudante;
-import app.rongo.persistence.Ayudantia;
-import java.io.Serializable;import java.util.ArrayList;
+import app.rongo.persistence.Ayudantia;import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.ejb.EJB;
@@ -32,6 +33,8 @@ public class AyudantiaBean implements Serializable {
     private AyudantiaFacadeLocal ayudantiaFacade;
     private Ayudantia ayudantia = new Ayudantia();
     private List<Ayudantia> ayudantias = new ArrayList();
+    
+    private final Session session = new Session();
     
     private int idAyudantia;
     
@@ -67,6 +70,15 @@ public class AyudantiaBean implements Serializable {
             }catch(Error e){}
         }
         return ayudantes;
+    }
+    
+    public int encontrarAyudante(Ayudantia a) {
+        String user = session.getUser();
+        for(Ayudante ayudante: a.getAyudanteList()) {
+            if(ayudante.getIdEstudiante().getUsuario().equals(user))
+                return ayudante.getIdEstudiante().getIdUsuario();
+        }
+        return 0;
     }
 
     public String getAyudantiaNombre(){
