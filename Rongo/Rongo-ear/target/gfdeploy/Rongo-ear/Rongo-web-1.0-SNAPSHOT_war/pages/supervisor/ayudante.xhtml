@@ -34,33 +34,44 @@
                     <h3>#{ayudanteBean.ayudanteNombre}</h3>
                     <h3>#{materiaBean.getMateriaNombre(ayudantiaBean.ayudantiaNombre)}</h3>
                 </div>
-            </header>
-            <h:form styleClass="ayudantia-semana">
-                <p:dataTable var="clase" value="#{claseBean.getClasesAyudanteMateria(ayudanteBean.idAyudante,ayudantiaBean.ayudantiaId)}" paginator="true"
-                            paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
-                            id="claseTable">
-                    <p:column headerText="Fecha" width="120">
-                        <p:calendar value="#{clase.fecha}" pattern="dd/MM/yyyy" readonly="true"/>
-                    </p:column>
-                    <p:column headerText="Horario" width="300">
-                        <h:outputText value="Desde: "/><p:calendar value="#{clase.horaini}" pattern="HH:mm" readonly="true"/><br/>
-                        <h:outputText value="Hasta: "/><p:calendar value="#{clase.horafin}" pattern="HH:mm" readonly="true"/>
-                    </p:column>
-                    <p:column headerText="Descripci&oacute;n">
-                        <h:outputText value="#{clase.descripcion}" />
-                    </p:column>
-                    <p:column headerText="Ayudant&iacute;a dada" width="100">
-                        <h:panelGroup rendered="#{clase.dioclase == true}">
-                            <h:outputText value="Si"/>
-                        </h:panelGroup>
-                        <h:panelGroup rendered="#{clase.dioclase == false}">
-                            <h:outputText value="No"/>
-                        </h:panelGroup>
-                    </p:column>
-                </p:dataTable>
-                <p:dialog></p:dialog>
-            </h:form><br/><br/>
+            </header><br/><br/>
             <article>
+                <div class="lista-ayudantes" style="text-align: left">
+                    <h:form styleClass="ayudantia-semana">
+                        <h:dataTable var="clase" value="#{claseBean.getClasesAyudanteMateria(ayudanteBean.idAyudante,ayudantiaBean.ayudantiaId)}" styleClass="ayudante-clases">
+                            <h:column>
+                                <f:facet name="header"><!--140-->
+                                    <h:outputText value="Fecha"/>
+                                </f:facet>
+                                <p:calendar value="#{clase.fecha}" pattern="dd/MM/yyyy" readonly="true"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header"><!--300-->
+                                    <h:outputText value="Horario"/>
+                                </f:facet>
+                                <h:outputText value="Desde: "/><p:calendar value="#{clase.horaini}" pattern="HH:mm" readonly="true"/><br/>
+                                <h:outputText value="Hasta: "/><p:calendar value="#{clase.horafin}" pattern="HH:mm" readonly="true"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Descripci&oacute;n"/>
+                                </f:facet>
+                                <h:outputText value="#{clase.descripcion}" />
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Ayudant&iacute;a dada"/>
+                                </f:facet>
+                                <h:panelGroup rendered="#{clase.dioclase == true}">
+                                    <h:outputText value="Si"/>
+                                </h:panelGroup>
+                                <h:panelGroup rendered="#{clase.dioclase == false}">
+                                    <h:outputText value="No"/>
+                                </h:panelGroup>
+                            </h:column>
+                        </h:dataTable>
+                    </h:form><br/><br/>
+                </div><br/><br/>
                 <h1>INFORMACI&Oacute;N DEL AYUDANTE:</h1>
                 <ul>
                     <li>
@@ -106,7 +117,7 @@
                 </ul>
             </article>
         </section>
-        <footer>
+        <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
