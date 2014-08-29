@@ -6,26 +6,18 @@
 
 package app.rongo.persistence.beans;
 
-import app.rongo.facade.AyudantiasofertadasFacade;
 import app.rongo.facade.AyudantiasofertadasFacadeLocal;
 import app.rongo.persistence.Ayudantiasofertadas;
 import app.rongo.persistence.Supervisor;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-import org.apache.commons.io.FileUtils;
 import org.primefaces.context.RequestContext;
-import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -63,8 +55,7 @@ public class AyudantiasofertadasBean implements Serializable {
     public void encontrarAyudantiasofertadas(){
         ayudantiasofertadas = ayudantiasofertadasFacade.findAll();
     }
-    
-    
+     
     public void ofertarAyudantia(Ayudantiasofertadas ao) throws IOException{
         Date desde = ao.getVigentedesde();
         Date hasta = ao.getVigentehasta();
@@ -112,6 +103,4 @@ public class AyudantiasofertadasBean implements Serializable {
         encontrarAyudantiasofertadas();
         return ayudantiasofertadas;
     }
-    
-    
 }
