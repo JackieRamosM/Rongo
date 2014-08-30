@@ -238,7 +238,6 @@ public void generarPrimeraEvaluacion(){
 
     public void rechazarPostulante(Postulante e){
         Postulacion pos = new Postulacion();
-        System.out.println("aa "+ e.getIdPostulacion());
         pos=postulacionFacade.find(e.getIdPostulacion());
         postulacionFacade.remove(pos);
     }
