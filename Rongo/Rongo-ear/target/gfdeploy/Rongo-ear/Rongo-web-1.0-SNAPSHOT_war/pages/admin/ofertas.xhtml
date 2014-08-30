@@ -37,91 +37,112 @@
                 </h1>
                 #{ayudantiasofertadasBean.encontrarAyudantiasofertadas()}
             </article>
+            #{estudianteBean.initpostulacion()}
             <article>
                 <h1 class="header">
                     <label>AYUDANT&Iacute;AS ACAD&Eacute;MICAS</label>
                     <i class="fa fa-suitcase icon"></i>
                 </h1>
-                <h:form styleClass="hForm">
-                    <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
-                        <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
-                            <div class="lista-ayudantes">
-                                <h:outputText value="#{ao.nombreayudanatia}" style="font-size: 1.8em;float: left"/>
-                                <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
-                                <hr/>
-                                <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
-                                <p:outputLabel value="Ser estudiante regular" styleClass="hlabel"/>
-                                <h:selectBooleanCheckbox id="estudianteregular" value="#{ao.estudianteregular}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
-                                <p:outputLabel value="Tener promedio mayor a la carrera" styleClass="hlabel" />
-                                <h:selectBooleanCheckbox id="promediocarrera" value="#{ao.promediomayorcarrera}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
-                                <h:outputText value="Otros Requisitos: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.otrorequisito}" styleClass="hvalue"/><br/><br/>
-                                <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
-                                <h:outputText value="Vigente Desde: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.vigentedesde}" styleClass="hvalue">
-                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
-                                </h:outputText>
-                                <h:outputText value="Vigente Hasta: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.vigentehasta}" styleClass="hvalue">
-                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
-                                </h:outputText>
-                                <h:outputText value="Supervisor: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}" styleClass="hvalue"/>
-                                <h:outputText value="Email: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
-                                <br/>
-                            </div>
-                        </h:panelGroup>
-                    </ui:repeat>
-                </h:form>
+                <div >
+                    <h:form>
+                        <table>
+                            <tr>
+                                <th>Nombre de la Ayudant&iacute;a</th>
+                                <th>Carga Semanal</th>
+                                <th>Requisitos</th>
+                                <th>Descripcion</th>
+                                <th>Vigente Desde</th>
+                                <th>Vigente Hasta</th>
+                                <th>Supervisor</th>
+                                <th>Correo del Supervisor</th>
+                           </tr>
+                            <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
+                                <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
+                                    <tr>
+                                        <td>#{materiaBean.getMateriaNombre(ao.nombreayudanatia)}</td>
+                                        <td>#{ao.cargasemanal}</td>
+                                        <td>#{ao.otrorequisito}</td>
+                                        <td>#{ao.descripcion}</td>
+                                        <td><h:outputText value="#{ao.vigentedesde}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
+                                        <td><h:outputText value="#{ao.vigentehasta}" >
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
+                                        <td>#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}</td>
+                                        <td>#{ao.idsupervisor.correo}</td>
+                                    </tr>
+                                </h:panelGroup>
+
+                            </ui:repeat>
+                        </table>
+                    </h:form>
+                </div>
             </article>
             <article>
                 <h1 class="header">
                     <label>AYUDANT&Iacute;AS DE ACTIVIDADES VARIAS</label>
                     <i class="fa fa-suitcase icon"></i>
                 </h1>
-                <h:form styleClass="hForm">
-                    <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
-                        <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
-                            <div class="lista-ayudantes">
-                                <h:outputText value="#{ao.nombreayudanatia}" style="font-size: 1.8em;float: left"/>
-                                <h:commandButton onclick="if(!confirm('¿Está seguro de querer eliminar la oferta de ayudantía?')) return false" value="Eliminar" action="#{ayudantiasofertadasBean.removerAyudantiaofertada(ao)}" styleClass="hremove"></h:commandButton>
-                                <hr/>
-                                <h:outputText value="Carga Semanal: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.cargasemanal} Horas" styleClass="hvalue"/><br/><br/>
-                                <p:outputLabel value="Ser estudiante regular" styleClass="hlabel"/>
-                                <h:selectBooleanCheckbox id="estudianteregular" value="#{ao.estudianteregular}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
-                                <p:outputLabel value="Tener promedio mayor a la carrera" styleClass="hlabel"/>
-                                <h:selectBooleanCheckbox id="promediocarrera" value="#{ao.promediomayorcarrera}" styleClass="hvalue" disabled="true"></h:selectBooleanCheckbox><br/>
-                                <h:outputText value="Otros Requisitos: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.otrorequisito}" styleClass="hvalue"/><br/><br/>
-                                <h:outputText value="Descripci&oacute;n: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.descripcion}" styleClass="hvalue"/>
-                                <h:outputText value="Vigente Desde: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.vigentedesde}" styleClass="hvalue">
-                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
-                                </h:outputText>
-                                <h:outputText value="Vigente Hasta: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.vigentehasta}" styleClass="hvalue">
-                                    <f:convertDateTime pattern="MM/dd/yyyy"/>
-                                </h:outputText>
-                                <h:outputText value="Supervisor: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}" styleClass="hvalue"/>
-                                <h:outputText value="Email: " styleClass="hlabel"/>
-                                <h:outputText value="#{ao.idsupervisor.correo}" styleClass="hvalue"/>
-                                <br/>
-                            </div>
-                        </h:panelGroup>
-                    </ui:repeat>
-                </h:form>
+                <div>
+                    <h:form>
+                        <table>
+                            <tr>
+                                <th>Nombre de la Ayudant&iacute;a</th>
+                                <th>Carga Semanal</th>
+                                <th>Requisitos</th>
+                                <th>Descripcion</th>
+                                <th>Vigente Desde</th>
+                                <th>Vigente Hasta</th>
+                                <th>Supervisor</th>
+                                <th>Correo del Supervisor</th>
+                            </tr>
+                            <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
+                                <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
+                                    <tr>
+                                        <td>#{ao.nombreayudanatia}</td>
+                                        <td>#{ao.cargasemanal}</td>
+                                        <td>#{ao.otrorequisito}</td>
+                                        <td>#{ao.descripcion}</td>
+                                        <td><h:outputText value="#{ao.vigentedesde}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
+                                        <td><h:outputText value="#{ao.vigentehasta}" >
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
+                                        <td>#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}</td>
+                                        <td>#{ao.idsupervisor.correo}</td>
+                                        </tr>
+                                </h:panelGroup>
+
+                            </ui:repeat>
+                        </table>
+                    </h:form>
+                </div>
             </article>
         </section>
         <footer class="fixed-bottom">
             <h3>Rongo. Sistema de control, contrataci&oacute;n y postulaci&oacute;n de ayudant&iacute;as de la FIEC. &copy;</h3>
         </footer>
+
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
+        <h:outputScript name="js/jquery.udraggable.js" />
+        <script>
+            function postulado() {
+                alert("Usted ha postulado");
+            }
+        </script>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th,td
+            {
+                border-bottom:  1px solid #1c94c4;
+                text-align: center;
+            }
+            th {
+                height: 50px;
+            }
+            
+        </style>
     </h:body>  
 </html>

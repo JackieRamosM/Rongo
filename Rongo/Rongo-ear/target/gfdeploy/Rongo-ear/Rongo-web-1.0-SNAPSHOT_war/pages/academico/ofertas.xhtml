@@ -34,9 +34,9 @@
                     <label>AYUDANT&Iacute;AS ACAD&Eacute;MICAS</label>
                     <i class="fa fa-suitcase icon"></i>
                 </h1>
-                <div class="lista-ayudantes">
-                    <h:form styleClass="hForm">
-                        <table class="ayudante-table ayudante-academico">
+                <div >
+                    <h:form>
+                        <table>
                             <tr>
                                 <th>Nombre de la Ayudant&iacute;a</th>
                                 <th>Carga Semanal</th>
@@ -49,15 +49,16 @@
                                 <th>Postular</th>
                             </tr>
                             <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
-
                                 <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                                     <tr>
-                                        <td>#{ao.nombreayudanatia}</td>
+                                        <td>#{materiaBean.getMateriaNombre(ao.nombreayudanatia)}</td>
                                         <td>#{ao.cargasemanal}</td>
                                         <td>#{ao.otrorequisito}</td>
                                         <td>#{ao.descripcion}</td>
-                                        <td>#{ao.vigentedesde}</td>
-                                        <td>#{ao.vigentehasta}</td>
+                                        <td><h:outputText value="#{ao.vigentedesde}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
+                                        <td><h:outputText value="#{ao.vigentehasta}" >
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
                                         <td>#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}</td>
                                         <td>#{ao.idsupervisor.correo}</td>
                                         <td><h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}" onclick="postulado()"></h:commandButton></td>
@@ -74,9 +75,9 @@
                     <label>AYUDANT&Iacute;AS DE ACTIVIDADES VARIAS</label>
                     <i class="fa fa-suitcase icon"></i>
                 </h1>
-                <div class="lista-ayudantes">
-                    <h:form styleClass="hForm">
-                        <table class="ayudante-table ayudante-academico">
+                <div>
+                    <h:form>
+                        <table>
                             <tr>
                                 <th>Nombre de la Ayudant&iacute;a</th>
                                 <th>Carga Semanal</th>
@@ -89,24 +90,22 @@
                                 <th>Postular</th>
                             </tr>
                             <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
-
-
                                 <h:panelGroup rendered="#{ao.tipodeayudantia == 'varias'}">
-
                                     <tr>
                                         <td>#{ao.nombreayudanatia}</td>
                                         <td>#{ao.cargasemanal}</td>
                                         <td>#{ao.otrorequisito}</td>
                                         <td>#{ao.descripcion}</td>
-                                        <td>#{ao.vigentedesde}</td>
-                                        <td>#{ao.vigentehasta}</td>
+                                        <td><h:outputText value="#{ao.vigentedesde}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
+                                        <td><h:outputText value="#{ao.vigentehasta}" >
+                                                <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
                                         <td>#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}</td>
                                         <td>#{ao.idsupervisor.correo}</td>
                                         <td><h:commandButton value="Postularse" class="postularse-button" action="#{estudianteBean.postularse(ao)}" onclick="postulado()"></h:commandButton></td>
                                     </tr>
-
-
                                 </h:panelGroup>
+
                             </ui:repeat>
                         </table>
                     </h:form>
@@ -125,5 +124,20 @@
                 alert("Usted ha postulado");
             }
         </script>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th,td
+            {
+                border-bottom:  1px solid #1c94c4;
+                text-align: center;
+            }
+            th {
+                height: 50px;
+            }
+            
+        </style>
     </h:body>  
 </html>

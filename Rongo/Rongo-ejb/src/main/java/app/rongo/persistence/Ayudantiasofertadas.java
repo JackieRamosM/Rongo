@@ -1,14 +1,15 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package app.rongo.persistence;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SEHORE
+ * @author Liliana
  */
 @Entity
 @Table(name = "ayudantiasofertadas")
@@ -85,7 +86,7 @@ public class Ayudantiasofertadas implements Serializable {
     private Boolean estudianteregular;
     @Column(name = "promediomayorcarrera")
     private Boolean promediomayorcarrera;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idayudantiaofertada")
+    @OneToMany(mappedBy = "idayudantiaofertada")
     private List<Postulacion> postulacionList;
     @JoinColumn(name = "idsupervisor", referencedColumnName = "idsupervisor")
     @ManyToOne(optional = false)

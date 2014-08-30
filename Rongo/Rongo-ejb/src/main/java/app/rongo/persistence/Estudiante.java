@@ -1,7 +1,9 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package app.rongo.persistence;
 
 import java.io.Serializable;
@@ -24,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author SEHORE
+ * @author Liliana
  */
 @Entity
 @Table(name = "estudiante")
@@ -62,7 +64,7 @@ public class Estudiante implements Serializable {
     private Integer idUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEstudiante")
     private List<Ayudante> ayudanteList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
+    @OneToMany(mappedBy = "idestudiante")
     private List<Postulacion> postulacionList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idestudiante")
     private List<Asistencia> asistenciaList;

@@ -84,10 +84,6 @@ public class EstudianteBean implements Serializable {
     public String estudianteName(String user) {
         return session.nombreService(session.matriculaService(user));
     }
-    
-    public String estudianteMatricula(String user) {
-        return session.matriculaService(user);
-    }
 
     public List<String> getMaterias() {
         return materias;
@@ -179,9 +175,6 @@ public class EstudianteBean implements Serializable {
 
             postulacionFacade.create(p);
 
-            FacesContext facesContext = FacesContext.getCurrentInstance();
-             FacesMessage facesMessage = new FacesMessage("Usted ha sido postulado a la ayudantía" + ao.getNombreayudanatia());
-             facesContext.addMessage(null, facesMessage);
         } catch (Exception e) {
             e.printStackTrace();
         }

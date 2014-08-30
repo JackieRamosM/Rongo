@@ -1,6 +1,11 @@
 /* 
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
+
+ import java.sql.Connection;
+ import java.sql.ResultSet;
+ import java.sql.SQLException;
+ import java.sql.St
  */
 package app.rongo;
 
@@ -8,7 +13,6 @@ package app.rongo;
  *
  * @author SEHORE
  */
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,9 +29,11 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-public class CustomUserService implements UserDetailsService/*, AuthenticationUserDetailsService */{
+public class CustomUserService implements UserDetailsService/*, AuthenticationUserDetailsService */ {
+
     DataSource rongo;
     Connection c;
+
     public CustomUserService() {
         super();
         try {
@@ -36,22 +42,22 @@ public class CustomUserService implements UserDetailsService/*, AuthenticationUs
             Logger.getLogger(CustomUserService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @Override
-public UserDetails loadUserByUsername(String username)throws UsernameNotFoundException {
-            User currentUser = new User(username);
-            List<String> roles = new ArrayList<String>();
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User currentUser = new User(username);
+        List<String> roles = new ArrayList<String>();
         try {
-            c=rongo.getConnection("root","root");
+            c = rongo.getConnection("root", "root");
             boolean isSupervisor=isSupervisor(username);
             boolean isAyudante=isAyudante(username);
-            
-            if(isSupervisor){
+            if (isSupervisor) {
                 roles.add("ROLE_SUPERVISOR");
-            }
-            if(isAyudante){
+            } 
+            if (isAyudante) {
                 roles.add("ROLE_AYUDANTE");
             }
-            if(isAdmin(username)){
+            if (isAdmin(username)) {
                 roles.add("ROLE_ADMIN");
             }
             
@@ -59,71 +65,73 @@ public UserDetails loadUserByUsername(String username)throws UsernameNotFoundExc
                 roles.add("ROLE_USER");
             }
             currentUser.setUserAuthorities(roles);
-            
-             c.close();
+
+            c.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomUserService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-       return currentUser;
-}
-private boolean isAyudante(String Username){
-    
-    try {
-            Statement st= c.createStatement();
-            String query = "SELECT * FROM ayudante t1, estudiante t2 WHERE t1.idEstudiante = t2.idUsuario AND t2.Usuario = '"+Username+"'";
-            ResultSet rs = st.executeQuery(query);
-            if (rs.next()){
-                    st.close();
-                    rs.close();
-                    return true;
-            }
-                st.close();
-                rs.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomUserService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         return false;
-}
-private boolean isAdmin(String Username){
+        return currentUser;
+    }
+
+    private boolean isAyudante(String Username) {
+
         try {
-            Statement st= c.createStatement();
-            String query = "SELECT * FROM estudiante WHERE Usuario = '"+Username+"' AND admin = '1'";
+            Statement st = c.createStatement();
+            String query = "SELECT * FROM ayudante t1, estudiante t2 WHERE t1.idEstudiante = t2.idUsuario AND t2.Usuario = '" + Username + "'";
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                    st.close();
-                    rs.close();
-                    return true;
-                }
                 st.close();
                 rs.close();
+                return true;
+            }
+            st.close();
+            rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomUserService.class.getName()).log(Level.SEVERE, null, ex);
         }
-         return false;
-}
-private boolean isSupervisor(String Username){
-try {
-            Statement st= c.createStatement();
-            String query = "SELECT * FROM supervisor WHERE correo = '"+Username+"@espol.edu.ec'";
+        return false;
+    }
+
+    private boolean isAdmin(String Username) {
+        try {
+            Statement st = c.createStatement();
+            String query = "SELECT * FROM estudiante WHERE Usuario = '" + Username + "' AND admin = '1'";
             ResultSet rs = st.executeQuery(query);
             if (rs.next()) {
-                    st.close();
-                    rs.close();
-                    return true;
-                }
                 st.close();
                 rs.close();
+                return true;
+            }
+            st.close();
+            rs.close();
         } catch (SQLException ex) {
             Logger.getLogger(CustomUserService.class.getName()).log(Level.SEVERE, null, ex);
         }
-         return false;
-}
+        return false;
+    }
+
+    private boolean isSupervisor(String Username) {
+        try {
+            Statement st = c.createStatement();
+            String query = "SELECT * FROM supervisor WHERE correo = '" + Username + "@espol.edu.ec'";
+            ResultSet rs = st.executeQuery(query);
+            if (rs.next()) {
+                st.close();
+                rs.close();
+                return true;
+            }
+            st.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomUserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     private DataSource getRongo() throws NamingException {
         Context c = new InitialContext();
         return (DataSource) c.lookup("java:comp/env/rongo");
     }
 
-    
 }
