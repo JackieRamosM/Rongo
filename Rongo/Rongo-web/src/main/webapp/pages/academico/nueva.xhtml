@@ -44,21 +44,21 @@
                     <h:form styleClass="hForm">
                         <div style="padding-right: 1%;">
                             <h:outputLabel for="dia" value="D&iacute;a:" styleClass="label"/>
-                            <p:calendar id="dia" value="#{calendarView.date1}" pattern="MM/dd/yyyy" styleClass="input"/>
+                            <p:calendar id="dia" value="#{claseBean.fecha}" styleClass="input"/>
                         </div>
                         <div style="padding-right: 1%;">
                             <h:outputLabel for="inicio" value="Inicio:" styleClass="label"/>
-                            <p:calendar id="inicio" value="#{calendarView.date2}" pattern="HH:mm a" timeOnly="true" styleClass="input"/>
+                            <p:calendar id="inicio" value="#{claseBean.horaini}" pattern="HH:mm a" timeOnly="true" styleClass="input"/>
                         </div>
                         <div style="padding-right: 1%;">
                             <h:outputLabel for="fin" value="Fin:" styleClass="label"/>
-                            <p:calendar id="fin" value="#{calendarView.date3}" pattern="HH:mm a" timeOnly="true" styleClass="input"/>
+                            <p:calendar id="fin" value="#{claseBean.horafin}" pattern="HH:mm a" timeOnly="true" styleClass="input"/>
                         </div>
                         <div style="margin: 5px 0;">
                             <h:outputLabel for="descripcion" value="Descripci&oacute;n:" styleClass="label"/>
-                            <p:inputTextarea id="descripcion" styleClass="input"></p:inputTextarea>
+                            <p:inputTextarea id="descripcion" value="#{claseBean.descripcion}" styleClass="input"></p:inputTextarea>
                         </div>
-                        <div><h:button value="Guardar"></h:button></div>
+                        <div><h:commandButton value="Guardar" action="#{claseBean.insertarClase(ayudantiaBean.ayudantiaId,ayudanteBean.idAyudante)}" styleClass="hButton"></h:commandButton></div>
                     </h:form>
                 </div>
             </article>

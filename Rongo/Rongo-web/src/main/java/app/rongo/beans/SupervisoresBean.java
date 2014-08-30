@@ -287,6 +287,7 @@ public void generarPrimeraEvaluacion(){
     public void obtenerAyudantesporsupervisor() {
         Supervisor s;
         List<Ayudantia> ayu = new ArrayList();
+        ayudantesporsupervisor = new ArrayList();
 
         obtenerSupervisorLogueado();
         s = getSupervisor();

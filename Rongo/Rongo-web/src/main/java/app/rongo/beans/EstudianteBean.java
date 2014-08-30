@@ -84,6 +84,10 @@ public class EstudianteBean implements Serializable {
     public String estudianteName(String user) {
         return session.nombreService(session.matriculaService(user));
     }
+    
+    public String estudianteMatricula(String user) {
+        return session.matriculaService(user);
+    }
 
     public List<String> getMaterias() {
         return materias;

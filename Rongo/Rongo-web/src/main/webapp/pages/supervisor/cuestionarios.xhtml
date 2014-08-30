@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html" 
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cuestionarios - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -31,17 +32,27 @@
                     <label>CUESTIONARIOS</label>
                     <i class="fa fa-file-text icon"></i>
                 </h1>
+                <div class="lista-ayudantes" style="text-align: left;">
+                    <h2 style="margin: 0;">Cuestionarios para Supervisores</h2>
+                    <h4 style="margin: 0;font-weight: normal;">Cada cuestionario deber&aacute; ser llenado por el supervisor de un ayudante acad&eacute;mico, o de un ayudante de actividades varias.</h4>
+                </div><br/><br/>
+                #{supervisoresBean.obtenerAyudantesporsupervisor()}
                 <div class="lista-ayudantes">
                     <ul>
+                    <ui:repeat value="#{supervisoresBean.ayudantesporsupervisor}" var="ayudantes">
                         <li>
-                            <div class="lista-ayudantes-datos">
-                                <h2>Cuestionario para supervisores</h2>
-                                <h4>Este cuestionario ser&aacute; llenado por el supervisor de un ayudante acad&eacute;mico, o de un ayudante de actividades varias.</h4>
+                            <div style="width: 90%;text-align: left;display: inline-block;padding-bottom:5px;">
+                                <label style="font-size:1em;">Estudiante: #{estudianteBean.estudianteName(ayudantes.idEstudiante.usuario)}</label><br/>
+                                <label style="font-size:1em;">Ayudant&iacute;a: #{materiaBean.getMateriaNombre(ayudantes.idayudantia.nombre)}</label>
                             </div>
-                            <div class="lista-ayudantes-accion">
-                                <h:button value="Llenar" outcome="cuestionario"></h:button>
+                            <div style="width: 9%;display:inline-block;">
+                                <h:link value="Llenar" outcome="cuestionario">
+                                    <f:param name="a" value="#{ayudantes.idayudantia.idayudantia}"></f:param>
+                                    <f:param name="b" value="#{ayudantes.idEstudiante.idUsuario}"></f:param>
+                                </h:link>
                             </div>
                         </li>
+                    </ui:repeat>
                     </ul>
                 </div>
             </article>
