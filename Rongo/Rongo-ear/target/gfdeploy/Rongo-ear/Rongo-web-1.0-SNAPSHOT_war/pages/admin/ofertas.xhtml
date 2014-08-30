@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
-    xmlns:h="http://java.sun.com/jsf/html"  
-    xmlns:f="http://java.sun.com/jsf/core"  
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Ayudantías Ofertadas - Rongo</title>
         <h:outputStylesheet name="css/jquery-ui-1.10.4.min.css"/>
@@ -55,7 +55,7 @@
                                 <th>Vigente Hasta</th>
                                 <th>Supervisor</th>
                                 <th>Correo del Supervisor</th>
-                           </tr>
+                            </tr>
                             <ui:repeat value="#{ayudantiasofertadasBean.ayudantiasofertadas}" var="ao">
                                 <h:panelGroup rendered="#{ao.tipodeayudantia == 'academica'}">
                                     <tr>
@@ -108,7 +108,7 @@
                                                 <f:convertDateTime pattern="MM/dd/yyyy"/></h:outputText></td>
                                         <td>#{ao.idsupervisor.apellido} #{ao.idsupervisor.nombre}</td>
                                         <td>#{ao.idsupervisor.correo}</td>
-                                        </tr>
+                                    </tr>
                                 </h:panelGroup>
 
                             </ui:repeat>
@@ -142,7 +142,7 @@
             th {
                 height: 50px;
             }
-            
+
         </style>
     </h:body>  
 </html>

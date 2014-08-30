@@ -48,10 +48,7 @@
                                 </div>
                                 <div class="lista-ayudantes-accion" style="text-align: center">
                                     <h:commandButton value="Aceptar" action="#{supervisoresBean.aceptarPostulante(estudiante)}"></h:commandButton>
-                                    <h:commandButton value="Rechazar" ></h:commandButton><br/>
-                                    <p:commandButton value="Descargar CV" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);" icon="ui-icon-arrowthick-1-s" style="color:black;font-weight:normal;padding:0;margin:2px;">
-                                        <p:fileDownload value="#{fileDownloadView.file}" />
-                                    </p:commandButton>
+                                    <h:commandButton value="Rechazar" action="#{supervisoresBean.rechazarPostulante(estudiante)}"></h:commandButton><br/>
                                 </div>
                             </li>
                         </ul>
@@ -65,5 +62,6 @@
         </footer>
         <h:outputScript name="js/jquery-1.10.2.js" />
         <h:outputScript name="js/index.js" />
+        
     </h:body>  
 </html>

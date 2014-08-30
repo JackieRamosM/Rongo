@@ -19,6 +19,7 @@ public class Postulante {
     private String usuario;
     private String matricula;
     private String ayudantiaaplicada;
+    private int idPostulacion;
 
     public String getNombre() {
         return nombre;
@@ -75,4 +76,13 @@ public class Postulante {
     public void setAyudantiaaplicada(String ayudantiaaplicada) {
         this.ayudantiaaplicada = ayudantiaaplicada;
     }       
+
+    public int getIdPostulacion() {
+        return idPostulacion;
+    }
+
+    public void setIdPostulacion(int idPostulacion) {
+        this.idPostulacion = idPostulacion;
+    }
+    
 }

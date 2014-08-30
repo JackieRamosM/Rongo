@@ -111,8 +111,6 @@ public class SupervisoresBean {
     }
 public void generarPrimeraEvaluacion(){
         PDFPrimera pdf=new PDFPrimera();
-        System.out.println("usuario: "+usuario);
-        System.out.println("nombre: "+getSupervisor().getNombre());
         pdf.setUnidadAcademica("FIEC");
         pdf.setNombreAyudante("<esperando>");
         pdf.setMatricula("<esperando>");
@@ -222,6 +220,7 @@ public void generarPrimeraEvaluacion(){
             est.setPromediogeneral("" + s.promedioService(mat));
             est.setUsuario(e.getUsuario());
             est.setMatricula(mat);
+            est.setIdPostulacion(p.getIdpostulacion());
             if (p.getIdayudantiaofertada().getTipodeayudantia().equals("academica")) {
                 cod = s.codigoService(p.getIdayudantiaofertada().getNombreayudanatia());
                 est.setAyudantiaaplicada(cod);
@@ -237,6 +236,13 @@ public void generarPrimeraEvaluacion(){
         }
     }
 
+    public void rechazarPostulante(Postulante e){
+        Postulacion pos = new Postulacion();
+        System.out.println("aa "+ e.getIdPostulacion());
+        pos=postulacionFacade.find(e.getIdPostulacion());
+        postulacionFacade.remove(pos);
+    }
+    
     public void aceptarPostulante(Postulante e) {
         Ayudantiasofertadas a = new Ayudantiasofertadas();
         Ayudantia ayudantiaencontrada = new Ayudantia();
