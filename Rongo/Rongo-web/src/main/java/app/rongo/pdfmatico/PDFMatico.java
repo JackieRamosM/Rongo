@@ -24,7 +24,7 @@ import java.net.MalformedURLException;
  * @author SEHORE
  */
 public abstract class PDFMatico {
-    private static String FILE = "c:/temp/FirstPdf.pdf";
+    private static String FILE = "../pdf/cuestionario.pdf";
     
     protected String title1;
     protected String title2;
@@ -55,14 +55,8 @@ public abstract class PDFMatico {
         this.Fecha_evaluacion = Fecha_evaluacion;
     }
 
-    public void setHorario(int l,int mar,int mi,int j,int v,int s,int d) {
-        this.Horario[0]=l;
-        this.Horario[1]=mar;
-        this.Horario[2]=mi;
-        this.Horario[3]=j;
-        this.Horario[4]=v;
-        this.Horario[5]=s;
-        this.Horario[6]=d;
+    public void setHorario(int lugar,int Hora) {
+        this.Horario[lugar]=Hora;
     }
     public void setDesempeño(String desempeño) {
         this.desempeño = desempeño;

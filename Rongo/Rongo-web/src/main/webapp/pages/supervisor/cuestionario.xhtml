@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"  
     xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Cuestionario - Rongo</title>
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"></link>
@@ -56,44 +57,43 @@
                             <tr>
                                 <td><strong>1</strong></td>
                                 <td>Asistencia y puntualidad</td>
-                                <td><p:inputText></p:inputText></td>
-                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.observacion0}"></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.calificacion0}"></p:inputText></td>
                             </tr>
                             <tr>
                                 <td><strong>2</strong></td>
                                 <td>Cumplimiento de Tareas Asignadas</td>
-                                <td><p:inputText></p:inputText></td>
-                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.observacion1}"></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.calificacion1}"></p:inputText></td>
                             </tr>
                             <tr>
                                 <td><strong>3</strong></td>
                                 <td>Calidad en los trabajos realizados</td>
-                                <td><p:inputText></p:inputText></td>
-                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.observacion2}"></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.calificacion2}"></p:inputText></td>
                             </tr>
                             <tr>
                                 <td><strong>4</strong></td>
                                 <td>Volumen de Trabajo Cubierto</td>
-                                <td><p:inputText></p:inputText></td>
-                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.observacion3}"></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.calificacion3}"></p:inputText></td>
                             </tr>
                             <tr>
                                 <td><strong>5</strong></td>
                                 <td>Relaciones Interpersonales (actitudes)</td>
-                                <td><p:inputText></p:inputText></td>
-                                <td><p:inputText></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.observacion4}"></p:inputText></td>
+                                <td><p:inputText value="#{supervisoresBean.calificacion4}"></p:inputText></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <h:commandButton value="Calificar" action="#{supervisoresBean.generarPrimeraEvaluacion()}" onclick="calificado()"/>
+                    <f:metadata>
+                        <f:viewParam name="b" value="#{supervisoresBean.idEstudiante}" />
+                      </f:metadata>
+                     <input type="hidden" name="hidden" value="this is hidden2" />
+                    <h:commandButton  value="Calificar" action="#{supervisoresBean.generarPrimeraEvaluacion()}" />
                 </h:form>
-                <script type="text/javascript">
-                    function calificado(){
-                        alert("calificado");
-                    }
-                    
-                </script>
+                
             </article>
         </section>
         <footer>

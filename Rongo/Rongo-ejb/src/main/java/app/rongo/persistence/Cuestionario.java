@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.persistence;
 
 import java.io.Serializable;
@@ -28,7 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Entity
 @Table(name = "cuestionario")
@@ -74,6 +72,8 @@ public class Cuestionario implements Serializable {
     @JoinColumn(name = "idsupervisor", referencedColumnName = "idsupervisor")
     @ManyToOne
     private Supervisor idsupervisor;
+    @OneToMany(mappedBy = "idcuestionario")
+    private List<ObservacionesActividad> observacionesActividadList;
     @OneToMany(mappedBy = "idevaluacion1")
     private List<HoraAsignada> horaAsignadaList;
     @OneToMany(mappedBy = "idevaluacion")
@@ -168,6 +168,15 @@ public class Cuestionario implements Serializable {
 
     public void setIdsupervisor(Supervisor idsupervisor) {
         this.idsupervisor = idsupervisor;
+    }
+
+    @XmlTransient
+    public List<ObservacionesActividad> getObservacionesActividadList() {
+        return observacionesActividadList;
+    }
+
+    public void setObservacionesActividadList(List<ObservacionesActividad> observacionesActividadList) {
+        this.observacionesActividadList = observacionesActividadList;
     }
 
     @XmlTransient

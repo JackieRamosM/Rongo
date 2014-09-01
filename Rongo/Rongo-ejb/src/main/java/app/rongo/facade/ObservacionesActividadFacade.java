@@ -4,7 +4,7 @@
  */
 package app.rongo.facade;
 
-import app.rongo.persistence.Supervisor;
+import app.rongo.persistence.ObservacionesActividad;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,7 +14,7 @@ import javax.persistence.PersistenceContext;
  * @author SEHORE
  */
 @Stateless
-public class SupervisorFacade extends AbstractFacade<Supervisor> implements SupervisorFacadeLocal {
+public class ObservacionesActividadFacade extends AbstractFacade<ObservacionesActividad> implements ObservacionesActividadFacadeLocal {
     @PersistenceContext(unitName = "app.rongo_Rongo-ejb_ejb_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -23,8 +23,8 @@ public class SupervisorFacade extends AbstractFacade<Supervisor> implements Supe
         return em;
     }
 
-    public SupervisorFacade() {
-        super(Supervisor.class);
+    public ObservacionesActividadFacade() {
+        super(ObservacionesActividad.class);
     }
     
 }

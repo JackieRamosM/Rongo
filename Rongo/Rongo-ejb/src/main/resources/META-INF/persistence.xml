@@ -15,6 +15,7 @@
     <class>app.rongo.persistence.HoraAsignada</class>
     <class>app.rongo.persistence.Item</class>
     <class>app.rongo.persistence.Valoracion</class>
+    <class>app.rongo.persistence.ObservacionesActividad</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>

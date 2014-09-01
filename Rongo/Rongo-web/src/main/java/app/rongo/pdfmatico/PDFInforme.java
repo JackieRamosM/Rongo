@@ -20,17 +20,17 @@ public class PDFInforme extends PDFMatico {
    private int[] Horas={-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
    
    
-   public void setCalificacion(int H,int lugar) {
+   public void setHoras(int H,int lugar) {
         this.Horas[lugar] = H;
    }
-   public void setCalificacion(String act,int lugar) {
+   public void setActividad(String act,int lugar) {
         this.actividades[lugar] = act;
    }
     public void setHoras_laboradas(String horas_laboradas) {
         this.horas_laboradas = horas_laboradas;
     }
 
-    public void setObservaciones(String observaciones) {
+    public void setObservacionesGenerales(String observaciones) {
         this.observaciones = observaciones;
     }
    

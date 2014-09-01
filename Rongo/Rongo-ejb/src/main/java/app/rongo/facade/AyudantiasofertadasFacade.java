@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.facade;
 
 import app.rongo.persistence.Ayudantiasofertadas;
@@ -13,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Stateless
 public class AyudantiasofertadasFacade extends AbstractFacade<Ayudantiasofertadas> implements AyudantiasofertadasFacadeLocal {

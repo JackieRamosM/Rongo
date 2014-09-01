@@ -1,9 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package app.rongo.persistence;
 
 import java.io.Serializable;
@@ -23,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Liliana
+ * @author SEHORE
  */
 @Entity
 @Table(name = "valordeldesempeno")
@@ -41,9 +39,8 @@ public class Valordeldesempeno implements Serializable {
     @Basic(optional = false)
     @Column(name = "idvalordeldesempeno")
     private Integer idvalordeldesempeno;
-    @Size(max = 20)
     @Column(name = "criterio")
-    private String criterio;
+    private Integer criterio;
     @Column(name = "calificacion")
     private Integer calificacion;
     @Size(max = 500)
@@ -68,11 +65,11 @@ public class Valordeldesempeno implements Serializable {
         this.idvalordeldesempeno = idvalordeldesempeno;
     }
 
-    public String getCriterio() {
+    public Integer getCriterio() {
         return criterio;
     }
 
-    public void setCriterio(String criterio) {
+    public void setCriterio(Integer criterio) {
         this.criterio = criterio;
     }
 

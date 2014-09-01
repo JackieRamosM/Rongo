@@ -72,13 +72,16 @@ public class EstudianteBean implements Serializable {
         estudiante.setSkype("");
         findEstudiante();
     }
-
+    public String estudianteMatricula(String user) {
+            return session.matriculaService(user);
+        }
     public void editarEstudiante() throws IOException {
         estudiante.setIntereses(intereses);
         estudiante.setTwitter(twitter);
         estudiante.setSkype(skype);
         estudianteFacade.edit(estudiante);
         FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+        
     }
 
     public String estudianteName(String user) {
